@@ -1,0 +1,101 @@
+% !TEX encoding = UTF-8
+% !TEX TS-program = pdflatex
+% !TEX root = ../tesi.tex
+
+%**************************************************************
+\chapter{Strumenti utilizzati}
+\label{cap:strumenti-utilizzati}
+%**************************************************************
+
+\section{Strumenti di sviluppo}
+\subsection{Visual Studio Code}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[height=2cm]{vsc_logo}
+    \caption{Logo di Visual Studio Code}
+\end{figure}
+Visual Studio Code è un editor di codice sorgente sviluppato da Microsoft. Include il supporto per il \textit{debugging}, un controllo per Git integrato, controllo della sintassi e \textit{refactoring} del codice. Inoltre, grazie alle molte estensioni sviluppate per l'editor è possibile utilizzare \textit{shortcut}, auto completamento del codice, ed altre funzioni utili. Per Flutter in particolare esiste una sua estensione che rende disponibile, oltre che all'auto completamento e al \textit{refactoring} del codice, anche degli strumenti sviluppatore utili per monitorare il traffico dell'app, l'impianto grafico e la gestione della memoria.
+
+\subsection{Android Studio}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[height=2cm]{as_logo}
+    \caption{Logo di Android Studio}
+\end{figure}
+
+Android Studio è un ambiente di sviluppo integrato per lo sviluppo per la piattaforma Android. È possibile sviluppare con Flutter anche su Android Studio, ma personalmente ho preferito usare Visual Studio Code vista l'eccessiva pesantezza di questo IDE.
+
+\subsection{Docker}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[height=2cm]{docker_logo}
+    \caption{Logo di Docker}
+\end{figure}
+
+Docker è un progetto open-source che automatizza il processo di \textit{deployment} di applicazioni all'interno di contenitori software, fornendo un'astrazione aggiuntiva grazie alla virtualizzazione a livello di sistema operativo di Linux. 
+Ho dovuto usare docker per virtualizzare nel mio computer la parte di backend durante la fase di sviluppo.
+
+\subsection{Dart}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[height=2cm]{dart_logo}
+    \caption{Logo di Dart}
+\end{figure}
+Dart è un linguaggio di programmazione sviluppato da Google con l'obiettivo di sostituire \textit{javascript} per lo sviluppo web.
+Il compilatore Dart permette di scrivere programmi sia per il web sia per desktop e server attraverso l'uso di due diverse piattaforme:
+\begin{itemize}
+    \item \textbf{Dart Native}: per dispositivi, include sia un VM per la compilazione Just-in-time, sia un compilatore per la produzione di codice eseguibile;
+    \item \textbf{Dart Web}: per il web, include un compilatore per lo sviluppo e uno per la produzione.
+\end{itemize}
+
+\subsection{Flutter}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[height=2cm]{flutter_logo}
+    \caption{Logo di Flutter}
+\end{figure}
+Flutter è un framework open source sviluppato da Google per la costruzione di interfacce grafiche.\\
+Flutter usa come linguaggio di programmazione Dart e si compone di quattro diversi componenti principali:
+\begin{itemize}
+    \item \textbf{Dart platform}: Piattaforma per l'utilizzo del linguaggio Dart, comprende anche la Dart Virtual Machine sulla quale girano le applicazioni Flutter;
+    \item \textbf{Flutter engine}: fornisce il supporto per il rendering a basso livello utilizzando la libreria grafica di Google, Skia Graphics. La caratteristica di spicco del Flutter Engine è quella di poter effettuare degli \textit{hot-reload}, ossia visualizzare le modifiche effettuate al codice senza riavviare completamente l'app, ma iniettando il nuovo codice durante lo stato di esecuzione dell'app;
+    \item \textbf{Foundation library}: fornisce le classi e le funzioni di base utilizzate per costruire applicazione che utilizzano Flutter ed è scritta in Dart. La creazione di interfacce con Flutter è effettuata per composizione di widget. Ogni widget è renderizzato dal metodo build() che viene chiamato ricorsivamente per ogni figlio, generando così un albero di widget;
+    \item \textbf{Design-specific widget}: contiene due set di widget conformi a specifici linguaggi di programmazione. I widget in stile Material Design implementano il design di Google, mentre i widget di Cupertino imitano il design iOS di Apple;
+\end{itemize}
+
+Una libreria fondamentale per semplificare l'utilizzo di Flutter è \textbf{Flutter Hooks}. Questa cerca di replicare gli \textit{Hooks} di \textit{React}, ed è utile in quanto si evita di usare \textit{Statefull widget} e \textit{Stateless widget} per la costruzione dei widget. \\
+Con Flutter Hooks ogni widget eredita da \textit{Hook widget}, e si può dare uno stato al widget usando l'hook \textit{useState}. Inoltre viene anche più semplice la gestione dei side-effect e del ciclo di vita del widget grazie all'hook \textit{useEffect}.
+
+%**************************************************************
+\section{Strumenti organizzativi}
+
+\subsection{Slack}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[height=1.5cm]{slack_logo}
+    \caption{Logo di Slack}
+\end{figure}
+
+Slack è un software che rientra nella categoria degli strumenti di collaborazione aziendale utilizzato per inviare messaggi in modo istantaneo ai diversi membri del team.\\
+Slack è utilizzabile da browser, applicazione desktop e applicazione o mobile.\\
+Oltre ai messaggi diretti tra i membri è anche possibile creare diversi canali in modo da separare le conversazioni per argomento, per esempio nel nostro caso utilizzavamo due canali: \#frontend, \#backend.\\
+Slack inoltre permette di integrare nel sistema di messaggistica anche altri servizi, come per esempio Github o Jira.
+
+\subsection{Jira}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[height=3cm]{jira_logo.png}
+    \caption{Logo di Jira}
+\end{figure}
+
+Jira è un software utilizzato per gestire il lavoro collaborativo, segue il principio agile e permette di creare ticket e gestire degli sprint settimanali.\\ Nel nostro caso chiunque poteva aprire un ticket nella sezione \textit{TODO} e assegnarlo a chi di dovere, specificandone i dettagli. Quando il ticket veniva preso in carico lo si spostava nell' apposita sezione \textit{IN PROGRESS} e una volta terminato veniva chiuso nella sezione \textit{DONE}. In questo modo ognuno sa in quale stato è il prodotto e a cosa sta lavorando ogni membro del team.
+
+
+\subsection{Github}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[height=3cm]{github_logo}
+    \caption{Logo di GitHub}
+\end{figure}
+
+GitHub è un servizio di hosting per progetti software ed è una implementazione del sistema di versionamento distribuito Git.\\ Il sito è principalmente utilizzato dagli sviluppatori, che caricano il codice sorgente dei loro programmi e lo possono rendere disponibile al resto degli utenti. Questi ultimi possono interagire con lo sviluppatore tramite un sistema di \textit{issue tracking}, \textit{pull request} e commenti che permette di migliorare il codice del \textit{repository} risolvendo bug o aggiungendo funzionalità.

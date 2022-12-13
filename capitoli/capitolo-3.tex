@@ -1,0 +1,197 @@
+% !TEX encoding = UTF-8
+% !TEX TS-program = pdflatex
+% !TEX root = ../tesi.tex
+
+%**************************************************************
+\chapter{Analisi dei requisiti}
+\label{cap:analisi-requisiti}
+%**************************************************************
+
+\section{Requisiti individuati}
+
+I requisiti individuati a partire dal problema proposto e dalle discussioni con il tutor aziendale sono stati catalogati secondo il codice:\\
+\begin{center}
+    \textbf{R[Importanza][Tipo][Codice]}
+\end{center}
+dove:
+\begin{itemize}
+    \item Importanza: specifica l'importanza del requisito e può assumere i seguenti valori:
+    \begin{itemize}
+        \item \textbf{1: } Requisito obbligatorio;
+        \item \textbf{2: } Requisito desiderabile ma non essenziale per il funzionamento;
+        \item \textbf{3: } Requisito opzionale.
+    \end{itemize}
+    \item Tipologia: specifica la tipologia del requisito e può assumere i seguenti valori:
+    \begin{itemize}
+        \item \textbf{F: }\textit{funzionale,} cioè determina una funzionalità dell'applicazione;
+        \item \textbf{V: }\textit{vincolo,} che riguarda un vincolo che il prodotto deve rispettare.
+    \end{itemize}
+    \item Codice: identificativo univoco del requisito espresso in forma gerarchica padre/figlio.
+\end{itemize}
+
+\subsection{Requisiti app cliente}
+
+\setlength\arrayrulewidth{1pt}
+\renewcommand{\arraystretch}{1.5}
+\begin{longtable}{| c | C{10cm}|}
+\label{tab:requisiti-funzionali-cliente}
+
+\cellcolor{red}\textcolor{white}{\textbf{Requisito}} & \cellcolor{red}\textcolor{white}{\textbf{Descrizione}}\\\hline
+\endhead
+R1F1 & L'utente può utilizzare l'applicazione solo se autenticato\\\hline
+R1F2 & Al primo accesso deve essere presentata una breve descrizione dell'applicazione.\\\hline
+R1F3 & Al primo accesso deve essere presentato all'utente il suo coach.\\\hline
+R1F4 & Al primo accesso l'utente deve compilare un questionario.\\\hline
+R1F5 & L'utente deve poter effettuare il logout dall'applicazione.\\\hline
+R1F6 & L'utente deve poter vedere il totale dei suoi minuti attivi settimanali.\\\hline
+R1F6.1 & L'utente deve poter vedere il totale dei suoi minuti attivi di attività settimanali.\\\hline
+R1F6.2 & L'utente deve poter vedere il totale dei suoi minuti attivi non programmati settimanali.\\\hline
+R1F6.3 & L’utente deve poter analizzare un confronto tra i suoi minuti attivi e il target stabilito dall’OMS \\\hline
+R1F7 & L’utente deve poter vedere la lista dei suoi obiettivi attivi in quel determinato momento. \\\hline
+R1F7.1 & Per ogni voce di un obiettivo (calorie, passi, minuti di attività, minuti non programmati) deve essere mostrato il progresso.\\\hline
+R1F7.2 & L’utente deve poter sapere in quanti giorni scade un dato obiettivo. \\\hline
+R1F7.3 & Per ogni obiettivo l’utente deve poter vedere le informazioni in dettaglio.\\\hline
+R1F8 & L’utente deve poter vedere gli obiettivi passati o non attivi. \\\hline
+R1F8.1 & L’utente deve poter scegliere per quale periodo vedere gli obiettivi passati. \\\hline
+R1F8.2 & L’utente deve poter scegliere per un dato periodo se vedere gli obiettivi passati raggiunti o falliti. \\\hline
+R1F9 & L’utente deve poter vedere un riepilogo con il totale degli obiettivi completati, falliti e in corso. \\\hline
+R1F10 & L’utente deve poter vedere una lista con i prossimi appuntamenti del mese. \\\hline
+R1F10.1 & Per ogni appuntamento l’utente deve poter vedere data, ora, titolo e coach. \\\hline
+R1F10.2 & Per ogni appuntamento l’utente dove poter vedere le informazioni in dettaglio. \\\hline
+R1F11 & L’utente deve poter vedere un calendario in cui saranno presenti tutti i suoi obiettivi attivi e i suoi appuntamenti passati e prossimi.\\\hline
+R1F11.1 & Per ogni giorno del calendario l’utente dove poter vedere una lista con gli obiettivi del giorno e gli appuntamenti del giorno.\\\hline
+R1F12 & L’utente dove poter associare il suo account dell’app a diversi servizi di fitness. \\\hline
+R1F12.1 & L'utente deve poter associare il suo account dell'app all'account di Google Fit \\\hline
+R1F12.2 & L'utente deve poter associare il suo account dell'app all'account di Fitbit \\\hline
+R1F12.3 & L'utente deve poter associare il suo account dell'app all'account di Garmin \\\hline
+R1F13 & L’utente deve poter vedere una schermata con le sue informazioni. \\\hline
+R1F13.1 & L’utente deve poter vedere la sua altezza, il suo peso, la sua età e il suo \gls{BMI}. \\\hline
+R1F13.2 & Deve essere presente una tabella di spiegazione per il \gls{BMI}. \\\hline
+R1F14 & L’utente deve poter vedere chi è il suo coach anche in seguito al primo accesso. \\\hline
+R2F15 & L'utente deve essere avvisato al raggiungimento di determinati obiettivi tramite popup. \\\hline
+R2F15.1 & Quando l'utente sblocca un achievement deve ricevere una notifica e vedere un popup.\\\hline
+R2F15.2 & Quando l'utente completa un obiettivo deve ricevere una notifica e vedere un popup. \\\hline
+R2F15.3 & Quando l'utente raggiunge i minuti attivi consigliati dall'OMS deve vedere un popup. \\\hline
+
+\caption{Tabella del tracciamento dei requisti funzionali}
+\end{longtable}
+
+\setlength\arrayrulewidth{1pt}
+\renewcommand{\arraystretch}{1.5}
+\begin{longtable}{| c | C{10cm}|}
+\label{tab:requisiti-vincolo-cliente}
+\cellcolor{red}\textcolor{white}{\textbf{Requisito}} & \cellcolor{red}\textcolor{white}{\textbf{Descrizione}}\\ \hline
+\endhead
+R1V1 & L'applicazione deve essere sviluppata usando Flutter. \\\hline
+R1V2 & L'applicazione deve funzionare completamente su dispositivi Android. \\\hline
+R2V3 & L'applicazione deve funzionare completamente su dispositivi iOS. \\\hline
+R1V4 & L'interfaccia deve essere facilmente fruibile. \\\hline
+R2V5 & L'applicazione deve presentare elementi di \gls{gamification}.\\\hline
+\caption{Tabella del tracciamento dei requisti vincolo}
+\end{longtable}
+
+\subsection{Requisiti app coach}
+
+\setlength\arrayrulewidth{1pt}
+\renewcommand{\arraystretch}{1.5}
+\begin{longtable}{| c | C{10cm}|}
+\label{tab:requisiti-funzionali-coach}
+
+\cellcolor{red}\textcolor{white}{\textbf{Requisito}} & \cellcolor{red}\textcolor{white}{\textbf{Descrizione}}\\\hline
+\endhead
+R1F1 & Il coach può utilizzare l'applicazione solo se autenticato\\\hline
+R1F2 & Il coach deve poter effettuare il logout dall'applicazione.\\\hline
+R1F3 & Il coach deve poter vedere una lista con i prossimi appuntamenti del mese. \\\hline
+R1F3.1 & Per ogni appuntamento il coach deve poter vedere data, ora, titolo e cliente. \\\hline
+R1F3.2 & Per ogni appuntamento il coach dove poter vedere le informazioni in dettaglio. \\\hline
+R1F4 & Il coach deve poter vedere un calendario in cui saranno presenti tutti i suoi appuntamenti passati e prossimi.\\\hline
+R1F4.1 & Per ogni giorno del calendario il coach dove poter vedere una lista con gli appuntamenti del giorno.\\\hline
+R1F5 & Il coach deve poter scegliere il tenant di cui vedere i clienti.\\\hline
+R1F6 &Il coach deve poter vedere i dettagli di ogni cliente\\\hline
+R1F6.1 & Per ogni cliente il coach deve poter vedere l’altezza, il peso, l’età e il suo \gls{BMI}\\\hline
+R1F6.2 & Per ogni cliente il coach deve poter vedere gli obiettivi in corso a lui assegnati\\\hline
+R1F6.3 & Per ogni clienti il coach deve poter vedere gli obiettivi passati a lui assegnati\\\hline
+
+
+\caption{Tabella del tracciamento dei requisti funzionali}
+\end{longtable}
+
+\setlength\arrayrulewidth{1pt}
+\renewcommand{\arraystretch}{1.5}
+\begin{longtable}{| c | C{10cm}|}
+\label{tab:requisiti-vincolo-coach}
+\cellcolor{red}\textcolor{white}{\textbf{Requisito}} & \cellcolor{red}\textcolor{white}{\textbf{Descrizione}}\\ \hline
+\endhead
+R1V1 & L'applicazione deve essere sviluppata usando Flutter. \\\hline
+R1V2 & L'applicazione deve funzionare completamente su dispositivi Android. \\\hline
+R2V3 & L'applicazione deve funzionare completamente su dispositivi iOS. \\\hline
+R1V4 & L'interfaccia deve essere facilmente fruibile. \\\hline
+R2V5 & L'applicazione deve presentare elementi di \gls{gamification}.\\\hline
+\caption{Tabella del tracciamento dei requisti vincolo}
+\end{longtable}
+
+\section{Riepilogo requisiti}
+\subsection{Riepilogo requisiti app cliente}
+In totale sono stati individuati 39 requisiti, ripartiti tra le varie tipologie secondo quanto riportato nelle seguenti tabelle.\\
+\begin{center}
+\begin{minipage}[c]{0.7\linewidth}
+    \begin{small}
+    \begin{longtable}{|c|c|}
+    \hline
+         \textbf{Importanza}& \# \\\hline
+         Obbligatori & 33\\\hline
+         Desiderabili & 6\\
+         \hline
+    \caption{Numero di requisiti per importanza app cliente}
+    \label{tab:requisiti-importanza-cliente}
+    \end{longtable}   
+    \end{small}
+\end{minipage}
+
+
+\begin{minipage}[c]{0.7\linewidth}
+    \begin{small}
+    \begin{longtable}{|c|c|}
+    \hline
+         \textbf{Tipologia}& \# \\\hline
+         Funzionali & 34\\\hline
+         Vincolo & 5\\
+         \hline
+    \caption{Numero di requisiti per tipologia app cliente}
+    \label{tab:requisiti-tipolgia-cliente}
+    \end{longtable}   
+    \end{small}
+\end{minipage}
+\end{center}
+\subsection{Riepilogo requisiti app coach}
+In totale sono stati individuati 17 requisiti, ripartiti tra le varie tipologie secondo quanto riportato nelle seguenti tabelle.\\
+\begin{center}
+\begin{minipage}[c]{0.7\linewidth}
+    \begin{small}
+    \begin{longtable}{|c|c|}
+    \hline
+         \textbf{Importanza}& \# \\\hline
+         Obbligatori & 15\\\hline
+         Desiderabili & 2\\
+         \hline
+    \caption{Numero di requisiti per importanza app coach}
+    \label{tab:requisiti-importanza-coach}
+    \end{longtable}   
+    \end{small}
+\end{minipage}
+
+
+\begin{minipage}[c]{0.7\linewidth}
+    \begin{small}
+    \begin{longtable}{|c|c|}
+    \hline
+         \textbf{Tipologia}& \# \\\hline
+         Funzionali & 12\\\hline
+         Vincolo & 5\\
+         \hline
+    \caption{Numero di requisiti per tipologia app coach}
+    \label{tab:requisiti-tipolgia-coach}
+    \end{longtable}   
+    \end{small}
+\end{minipage}
+\end{center}

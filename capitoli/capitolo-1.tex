@@ -1,0 +1,94 @@
+% !TEX encoding = UTF-8
+% !TEX TS-program = pdflatex
+% !TEX root = ../tesi.tex
+
+%**************************************************************
+\chapter{Introduzione}
+\label{cap:introduzione}
+%**************************************************************
+
+\section{L'azienda}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[height=3cm]{ds_logo}
+    \caption{Logo Datasoil S.r.l.}
+\end{figure}
+
+Datasoil S.r.l. è una startup innovativa che investe nel capitale umano al fine di formare sviluppatori che riescano a prendere decisioni e responsabilità di progetto avanzate. La loro mission è quella di impiegare tecnologie sempre più innovative e portare novità ai loro clienti. \\Per questi motivi i nuovi sviluppatori junior saranno sempre inseriti su progetti/prodotti core dell’azienda e seguiti da sviluppatori senior full time sulle attività di formazione, progettazione e chiarimenti nel day to day.\\
+Datasoil S.r.l. sviluppa piattaforme per l’industry 4.0 che permettono di fondere le informazioni e gli eventi provenienti da diversi livelli aziendali per creare insight proattivi integrati in tempo reale. Ogni evento, che sia un malfunzionamento o un'eccezione segnalata da altri operatori, viene notificato alla persona giusta al momento giusto anticipando la gestione delle criticità interfunzionali.\\
+Inoltre, in quest'ultimi anni di pandemia, Datasoil S.r.l. ha deciso di sfruttare la competenza dei loro dipendenti per aiutare le aziende a garantire la sicurezza dei lavoratori. Per fare ciò sono stati utilizzati degli smartband, i quali permettono il tracciamento completamente anonimo dei contatti a rischio e garantiscono il rispetto del distanziamento sociale. Nel pieno rispetto della privacy e GDPR gli individui a rischio vengono avvisati da una vibrazione del braccialetto nel caso di contagio.
+
+%**************************************************************
+\section{Il progetto e lo stage}
+
+\subsection{Descrizione}
+Il progetto proposto prevede l’implementazione di due applicazioni mobile multipiattaforma: \textbf{LifestyleSync} e \textbf{LSCoach}.\\
+\textbf{LifestyleSync}, legata al mondo wellness/fitness, serve come supporto della piattaforma di analisi dati realizzata per un prodotto spinoff di Datasoil. \\
+L'idea alla base del progetto è quella di fornire uno strumento per migliorare il benessere dei propri dipendenti alle aziende.\\
+Grazie a questo prodotto ogni dipendente, o cliente, sarà seguito da un coach che lo aiuterà a mantenersi in forma, sia tramite obiettivi di movimento ed allenamento, sia tramite obiettivi alimentari, inoltre i parametri di salute del cliente saranno rilevati e trasmessi al proprio coach in modo da predisporre allenamenti personalizzati. \\
+Lo scopo dell'applicazione è quello di fornire un'interfaccia mobile ai clienti, interfaccia tramite la quale potranno interagire con il proprio coach, visualizzare gli obiettivi a loro assegnati, gli appuntamenti e il loro percorso a livello di fitness.\\
+Per garantire al coach la possibilità di prestare i propri servizi ai clienti in modo unificato, si è resa necessaria la progettazione di una seconda applicazione specifica: \textbf{LSCoach}. Il coach potrà vedere i suoi appuntamenti con i clienti, lo stato di forma e gli obiettivi assegnati ad ogni cliente.
+
+\subsection{Obiettivi}
+\begin{itemize}
+    \item Studio e comprensione del linguaggio di programmazione \textit{Dart} e del framework \textit{Flutter};
+    \item Progettazione, completo sviluppo e verifica delle funzionalità di onboarding e primo login dell'app cliente: breve introduzione all'uso dell'applicazione, sistema di autenticazione e questionario conoscitivo;
+    \item Progettazione, completo sviluppo e verifica delle funzionalità di connessione ai device dell'utente dell'app cliente: connessione ai profili fitness Google Fit, Fitbit e Garmin per il rilevamento di dati;
+    \item Progettazione, sviluppo e verifica delle funzionalità individuate per la dashboard utente dell'app cliente: obiettivi di movimenti, lista degli obiettivi raggiunti e falliti, agenda con gli appuntamenti, pagina del profilo con calcolo del \gls{BMI};
+    \item Progettazione, inizio dello sviluppo e verifica delle funzionalità principali per l'applicazione dei coach: visualizzazione dei clienti con i relativi obiettivi in corso e agenda con gli appuntamenti.
+\end{itemize}
+
+\subsection{Pianificazione del lavoro}
+\begin{itemize}
+    \item \textbf{Settimana 1:} configurazione dell'ambiente di lavoro e studio di Flutter;
+    \item \textbf{Settimana 2:} progettazione e sviluppo delle prime funzionalità onboarding: introduzione all'applicazione;
+    \item \textbf{Settimana 3:} implementazione del login tramite auth0, progettazione e sviluppo del sondaggio iniziale;
+    \item \textbf{Settimana 4:} progettazione e sviluppo delle prime schermate di dashboard utente: Homepage, Device Connection e Profilo;
+    \item \textbf{Settimana 5:} progettazione e sviluppo di ulteriori schermate: Obiettivi con dettaglio, appuntamenti con dettaglio;
+    \item \textbf{Settimana 6:} progettazione e sviluppo della agenda con i relativi impegni settimanali e mensili;
+    \item \textbf{Settimana 7:} testing di diversi sdk per l'implementazione di una chat, progettazione e sviluppo app coach;
+    \item \textbf{Settimana 8:} progettazione e sviluppo di un sistema di notifiche push con l'utilizzo di Google Firebase;
+    \item \textbf{Settimana 9:} raffinamento e completamento delle funzionalità precedentemente sviluppate.
+\end{itemize}
+
+%************************************************************************************************************
+\section{Prodotto ottenuto}
+Il prodotto ottenuto si compone di due diverse applicazioni: applicazione cliente e applicazione coach.\\
+Entrambe le applicazioni sono state sviluppate utilizzando \textit{Flutter} come framework in modo da valutarne anche le potenzialità, infatti l'azienda ha sempre utilizzato React Native per lo sviluppo mobile. Mentre per lo stile dei componenti dell'applicazione si è deciso di utilizzare il \textit{Material Design} di Google già ampiamente utilizzato da Datasoil S.r.l.\\
+L'applicazione cliente allo stato attuale permette la visione dei propri obiettivi di movimento e degli appuntamenti, oltre che una schermata di profilo personale con la possibilità di associazione ai diversi profili fitness al fine di rilevare dati.\\
+L'app cliente è quindi a circa un terzo dello sviluppo, l'azienda ora potrà continuare con lo sviluppo delle restanti sezioni relative alla dieta e alla visualizzazione dello stato di salute del cliente. \\
+L'applicazione coach allo stato attuale permette la visualizzazione della lista dei propri clienti con i relativi obiettivi di movimento e la visualizzazione di un'agenda con gli appuntamenti. L'app coach è in buona parte sviluppata, l'idea aziendale è quella che dall'app il coach possa solo vedere ciò che ha già assegnato dall'interfaccia web (prodotto già sviluppato da Datasoil S.r.l.). \\
+L'azienda quindi dovrà solo aggiungere la visualizzazione della dieta e dei parametri di salute del cliente, omettendo la possibilità di assegnare ulteriori obiettivi dall'app mobile. 
+Per entrambe le applicazioni è stata predisposta una versione minimale di chat in modo che il cliente possa comunicare con il proprio coach. Questa chat sarà in futuro ampiamente rivista in modo da permettere lo scambio di file multimediali e di video chiamate, oltre che limitare lo scambio di messaggi tramite una sorta di abbonamento.
+%************************************************************************************************************
+\section{Difficoltà incontrate}
+La principale difficoltà incontrata durante lo svolgimento del progetto è stata l'apprendimento del linguaggio di programmazione \textit{Dart} e soprattutto del framework \textbf{Flutter}.\\
+Flutter permette di scrivere in modo semplice applicazioni mobile multipiattaforma.\\
+Flutter è un framework più performante di React Native in termini di \textit{rendering} UI, ma allo stesso tempo, vista la sua recente esplosione è ancora poco conosciuto e la documentazione online non è troppo vasta.\\ 
+Per superare questa difficoltà è servito un breve periodo di studio del framework seguendo le guide presenti nel suo sito e la codifica di diverse applicazioni demo.\\
+Un'altra difficoltà è stato l'apprendimento e la progettazione delle questioni \textit{core} dell'applicazione, come la gestione delle richieste asincrone al backend, la gestione degli errori e la gestione dello stato dell'applicazione.\\
+La soluzione a questa difficoltà è stata la comunicazione frequente con il mio tutor, il quale ha chiarito i miei dubbi principali e mi ha consigliato delle applicazioni demo da sviluppare per assodare i concetti.\\
+Un altro problema è sorto durante lo sviluppo, alcune librerie che si intendeva utilizzare avevano bisogno di alcune migliorie e correzione di bug. È stato quindi necessario fare un \gls{fork} alle librerie in questione ed effettuare le diverse modifiche necessarie.\\
+Un'altra difficoltà è sorta nelle ultime settimane: si è deciso di sviluppare una seconda applicazione da utilizzare a lato coach riutilizzando buona parte dei componenti già sviluppati per i clienti.\\
+La difficoltà è stata quella di rendere questi componenti parametrizzabili e di rivedere interamente la struttura della \textit{repository}, oltre che impostare le corrette configurazioni in modo da poter compilare due diverse applicazioni utilizzando dei file in comune.
+
+%**************************************************************
+\section{Struttura della relazione}
+
+\begin{description}
+    \item[{\hyperref[cap:strumenti-utilizzati]{Il secondo capitolo}}] descrive gli strumenti e le tecnologie utilizzate per svolgere il progetto, particolare attenzione è posta sulla presentazione del framework Flutter, in quanto è alla base del prodotto ottenuto;
+    
+    \item[{\hyperref[cap:analisi-requisiti]{Il terzo capitolo}}] espone un'analisi tecnica dei requisiti individuati che il prodotto finale deve soddisfare al termine del periodo di stage;
+    
+    \item[{\hyperref[cap:progettazione]{Il quarto capitolo}}] descrive le scelte progettuali adottate per ottenere una struttura solida manutenibile;
+    
+    \item[{\hyperref[cap:sviluppo]{Il quinto capitolo}}] espone il percorso di realizzazione del prodotto e le soluzioni alle difficoltà incontrate;
+    
+    \item[{\hyperref[cap:conclusioni]{Il sesto capitolo}}] descrive l'esperienza di stage e i risultati ottenuti.
+\end{description}
+
+Riguardo la stesura del testo, relativamente al documento sono state adottate le seguenti convenzioni tipografiche:
+\begin{itemize}
+	\item gli acronimi, le abbreviazioni e i termini ambigui o di uso non comune menzionati vengono definiti nel glossario, situato alla fine del presente documento;
+	\item i termini in lingua straniera o facenti parti del gergo tecnico sono evidenziati con il carattere \emph{corsivo}.
+\end{itemize}
