@@ -9,3 +9,4 @@
 - [ ] tesi-config.tex : riga 34 : twoside 
 - [ ] controllare glossari con overleaf
 - [ ] MVP = model view presenter?
+- [ ] glossary entries descritpions

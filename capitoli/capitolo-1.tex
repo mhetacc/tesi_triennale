@@ -33,12 +33,20 @@ Inoltre, in quest'ultimi anni di pandemia, Datasoil S.r.l. ha deciso di sfruttar
 \section{Il progetto e lo stage}
 
 \subsection{Descrizione}
-Il progetto proposto prevede l’implementazione di due applicazioni mobile multipiattaforma: \textbf{LifestyleSync} e \textbf{LSCoach}.\\
-\textbf{LifestyleSync}, legata al mondo wellness/fitness, serve come supporto della piattaforma di analisi dati realizzata per un prodotto spinoff di Datasoil. \\
+Il progetto proposto prevede l'implementazione di una vista in realtà aumentata per l'applicazione di ticketing e monitoraggio aziendale "\textbf{SYN}".\\
+La componente AR dovrà necessariamente appoggiarsi al servizio di \gls{asa} perchè gli \gls{asset} aziendali tracciati da \textbf{SYN} hanno un \gls{digital twin} ancorato e localizzato proprio tramite le \gls{anchor} di Microsoft, e dovrà idealmente essere cross-platform quindi fornendo l'implementazione adeguata sia per Android che per iOS.\\
+Dalla vista dovrà essere possibile interagire con gli \gls{asset}, quindi ottenendoli dal cloud e presentandoli nella scena AR, e con i ticket a loro associati, provocando l'apparizione di una card all' on-tap dell'\gls{asset}, ovvero mostrando a schermo tramite una lista testuale i vari ticket relativi all'\gls{asset} dopo che questo viene toccato.\\
+Per concludere l'interezza degli obiettivi sarà necessario studiare dei \gls{framework} o degli \gls{SDK} che permettono l'integrazione di \gls{asa} in codice nativo (che sarà Java per Android e Swift per iOS) con il \gls{framework} Flutter e il linguaggio su cui si poggia, ovvero Dart.
+
+
+\textit{
+Il progetto proposto prevede l’implementazione di due applicazioni mobile multipiattaforma: \textbf{Lifestyle\textbf{Syn}c} e \textbf{LSCoach}.\\
+\textbf{Lifestyle\textbf{Syn}c}, legata al mondo wellness/fitness, serve come supporto della piattaforma di analisi dati realizzata per un prodotto spinoff di Datasoil. \\
 L'idea alla base del progetto è quella di fornire uno strumento per migliorare il benessere dei propri dipendenti alle aziende.\\
 Grazie a questo prodotto ogni dipendente, o cliente, sarà seguito da un coach che lo aiuterà a mantenersi in forma, sia tramite obiettivi di movimento ed allenamento, sia tramite obiettivi alimentari, inoltre i parametri di salute del cliente saranno rilevati e trasmessi al proprio coach in modo da predisporre allenamenti personalizzati. \\
 Lo scopo dell'applicazione è quello di fornire un'interfaccia mobile ai clienti, interfaccia tramite la quale potranno interagire con il proprio coach, visualizzare gli obiettivi a loro assegnati, gli appuntamenti e il loro percorso a livello di fitness.\\
 Per garantire al coach la possibilità di prestare i propri servizi ai clienti in modo unificato, si è resa necessaria la progettazione di una seconda applicazione specifica: \textbf{LSCoach}. Il coach potrà vedere i suoi appuntamenti con i clienti, lo stato di forma e gli obiettivi assegnati ad ogni cliente.
+}
 
 \subsection{Obiettivi}
 \begin{itemize}
