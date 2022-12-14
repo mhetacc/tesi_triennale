@@ -4,7 +4,8 @@
 </p>
 
 ## TODO list
-PRESO DA BUGS BUNNY TODO:REDO
-- [ ] README.md 
+- [ ] README.md preso da bug's bunny
 - [ ] sommario aggiungere componente iOS
 - [ ] tesi-config.tex : riga 34 : twoside 
+- [ ] controllare glossari con overleaf
+- [ ] MVP = model view presenter?
