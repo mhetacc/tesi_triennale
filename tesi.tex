@@ -31,7 +31,7 @@
 
 \documentclass[10pt,                    % corpo del font principale
                a4paper,                 % carta A4
-               twoside,                 % impagina per fronte-retro
+               oneside,                 % impagina per fronte-retro 
                openright,               % inizio capitoli a destra
                english,                 
                italian,                 
@@ -120,6 +120,10 @@
                                         % 3. compilare ancora tesi.tex.
                                         
 \usepackage{float}                      % for float option[H]
+
+%**************************************************************
+% Header con logo 
+%**************************************************************
 \usepackage{fancyhdr}                   %for fancy fancy
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash}m{#1}}
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash}m{#1}}
@@ -132,7 +136,25 @@
     \includegraphics[width=0.8cm]{immagini/ds_logo.png}
 }
 \fancyfoot[C]{\thepage}
+
+\fancypagestyle{plain}{
+    \fancyhead[R]{Tesi di Laurea}
+    \fancyhead[L]{
+        \includegraphics[width=0.8cm]{immagini/ds_logo.png}
+    }
+    \fancyfoot[C]{\thepage}
+}
+
+%riduzione spacing tra header e "Capitolo XX"
+\usepackage{titlesec}
+\titleformat{\chapter}[display]   
+{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}   
+\titlespacing*{\chapter}{0pt}{-18pt}{40pt}
+
+%**************************************************************
+
 %\usepackage{minted} %For code in appendix
+
 %**************************************************************
 % Frontespizio
 %**************************************************************

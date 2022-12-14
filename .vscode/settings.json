@@ -1,5 +1,5 @@
 {
     "latex-workshop.latex.outDir": "%WORKSPACE_FOLDER%/build",
     "latex-workshop.latex.autoBuild.run": "never",
-    "window.zoomLevel": -1
+    "window.zoomLevel": -2
 }
