@@ -26,3 +26,4 @@ Solo la prima lettera è in caps, quindi:
 - [ ] controllare glossari con overleaf
 - [ ] MVP = model view presenter?
 - [ ] glossary entries descritpions
+- [ ] intro : prodotto finale
