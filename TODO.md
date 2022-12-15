@@ -3,7 +3,7 @@
     <img src="immagini/ds_logo.png" alt="DataSoil logo" width="220">
 </p>
 
-## PRATICHE DA TENERE
+## Pratiche da Mantenere
 ### Glossario
 Non formattare nessuno dei termini del glossario: 
 Eccezion fatta per il capitolo 1 - sezioni fino a 1.2.2 (compreso) verrà fatto alla fine con un tool automatico. 
