@@ -68,21 +68,53 @@ Per garantire al coach la possibilità di prestare i propri servizi ai clienti i
 \end{itemize}
 
 
-\subsection{Pianificazione del lavoro}
-\begin{itemize}
-    \item \textbf{Settimana 1:} configurazione dell'ambiente di lavoro e studio di Flutter;
-    \item \textbf{Settimana 2:} progettazione e sviluppo delle prime funzionalità onboarding: introduzione all'applicazione;
-    \item \textbf{Settimana 3:} implementazione del login tramite auth0, progettazione e sviluppo del sondaggio iniziale;
-    \item \textbf{Settimana 4:} progettazione e sviluppo delle prime schermate di dashboard utente: Homepage, Device Connection e Profilo;
-    \item \textbf{Settimana 5:} progettazione e sviluppo di ulteriori schermate: Obiettivi con dettaglio, appuntamenti con dettaglio;
-    \item \textbf{Settimana 6:} progettazione e sviluppo della agenda con i relativi impegni settimanali e mensili;
-    \item \textbf{Settimana 7:} testing di diversi sdk per l'implementazione di una chat, progettazione e sviluppo app coach;
-    \item \textbf{Settimana 8:} progettazione e sviluppo di un sistema di notifiche push con l'utilizzo di Google Firebase;
-    \item \textbf{Settimana 9:} raffinamento e completamento delle funzionalità precedentemente sviluppate.
-\end{itemize}
 
+\subsection{Pianificazione del lavoro}
+TODO probabile necessità di modifica, ora è più rendicontazione.
+\begin{itemize}
+    \item \textbf{Settimana 1:} 
+        \begin{itemize}
+            \item Installazione e configurazione del framework \flutter, della SDK Android 
+            \item Configurazione emulatore Android (scelto Pixel 6 API 33) e 
+            developers options sul mio telefono personale;
+            \item Configurazione \vsc e \astudio;
+            \item Sviluppo di piccola app d'esempio con \flutter che sfrutta gli \textit{Stateful Widgets};
+        \end{itemize} 
+    \item \textbf{Settimana 2:} 
+        \begin{itemize}
+            \item Studio degli \textit{Hook Widgets}, simili agli \textit{Hooks} di \texit{Rest};
+            \item Traduzione degli \textit{Stateful Widgets} dell'app d'esempio in \textit{Hook Widgets};
+            \item Sviluppo app d'esempio con gli \textit{Hook Widgets};
+        \end{itemize}
+    \item \textbf{Settimana 3:} 
+        \begin{itemize}
+            \item Studio delle asa;
+            \item Creazione risorse necessarie nel portale di \textit{Azure};
+            \item Deploy app di esempio fornita da \textit{Microsoft};
+        \end{itemize}
+    \item \textbf{Settimana 4:} Studio dei metodi per implementare le asa in \flutter:
+        \begin{itemize}
+            \item Studio dei \textit{Method Channels};
+            \item Studio di \texit{ARwayKit} e valutazione del suo approccio tramite \unity;
+            \item Studio di \arplug;
+        \end{itemize}
+    \item \textbf{Settimana 5:} 
+        \begin{itemize}
+            \item Adattamento dell'esempio \arplug per integrarci le asa;
+            \item Lettura dei logs per filtrarne gli output;
+        \end{itemize}
+    \item \textbf{Settimana 6:} Utilizzo diretto di \arcore in \flutter per capirne il workflow;
+    \item \textbf{Settimana 7:} Integrazione di asa in \flutter senza errori;
+    \item \textbf{Settimana 8:} Integrazione di componenti AR in SYN;
+\end{itemize}
+Questi tre giorni li abbiamo spesi per addattare, e modificare, con successo l'app di esempio di ar_flutter_plugin, integrandoci le Azure Spatial Anchors.
+Ora è possibile posizionare un'anchor, recuperarle tramite ID dal cloud e caricare sullo stesso. Il tutto deve essere ovviamente rifinito e ripulito perchè al momento "it just works".
+Inoltre ho speso del tempo a guardare i vari logs alla ricerca di un modo per filtrare un output che rendeva il debug complesso in quanto la stringa in questione veniva stampata per ogni frame video.
+Dopo essermi accertato fosse in output in stdout, la soluzione che ho trovato infine è stata di lanciare il comando "flutter run" in pipe con "findstr /v" che ci ha permesso di risolvere il problema (in sostanza si tratta dell'alternativa cmd di grep).
 %************************************************************************************************************
 \section{Prodotto ottenuto}
+TODO
+
 Il prodotto ottenuto si compone di due diverse applicazioni: applicazione cliente e applicazione coach.\\
 Entrambe le applicazioni sono state sviluppate utilizzando \textit{Flutter} come framework in modo da valutarne anche le potenzialità, infatti l'azienda ha sempre utilizzato React Native per lo sviluppo mobile. Mentre per lo stile dei componenti dell'applicazione si è deciso di utilizzare il \textit{Material Design} di Google già ampiamente utilizzato da Datasoil S.r.l.\\
 L'applicazione cliente allo stato attuale permette la visione dei propri obiettivi di movimento e degli appuntamenti, oltre che una schermata di profilo personale con la possibilità di associazione ai diversi profili fitness al fine di rilevare dati.\\
