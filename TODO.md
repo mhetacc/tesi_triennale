@@ -5,11 +5,11 @@
 
 ## Pratiche da Mantenere
 ### Glossario
-Non formattare nessuno dei termini del glossario: 
-Eccezion fatta per il capitolo 1 - sezioni fino a 1.2.2 (compreso) verrà fatto alla fine con un tool automatico. 
+Non formattare nessuno dei termini del glossario: eccezion fatta per il capitolo 1 - sezioni fino a 1.2.2 (compreso) verrà fatto alla fine con un tool automatico. 
 
 ### Tabelle
 Mantenere il maiuscolo per ogni elemento delle tabelle, compresi quelli delle sottotabelle. 
+
 Inoltre ogni riga termina con ';', eccezion fatta per l'ultimo elemento che termina con '.'.
 Solo la prima lettera è in caps, quindi:
 
