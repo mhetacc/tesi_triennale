@@ -27,3 +27,4 @@ Solo la prima lettera è in caps, quindi:
 - [ ] MVP = model view presenter?
 - [ ] glossary entries descritpions
 - [ ] § strumenti: kotlin, java, etc non in italic
+- [ ] $ strumenti: fonte wikipedia in tiny keep or trash?
