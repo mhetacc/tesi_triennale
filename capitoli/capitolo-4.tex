@@ -43,21 +43,30 @@ La struttura è risultata quindi la seguente:
     \end{itemize}
 \end{itemize}
 %**************************************************************
-\section{Scelta framework Flutter}
+\section{Confronto framework AR}
 \label{sec:scelta-framework-flutter}
-Inizialmente l'azienda non aveva ancora deciso se l'app sarebbe stata sviluppata con \textit{Flutter} o con \textit{React Native}, framework che loro utilizzano quotidianamente per altri progetti.\\ 
-Sono state quindi analizzate le principali differenze tra i due framework fino a giungere alla conclusione di utilizzare Flutter: sia perché ritenuto su carta il più performante, sia per testarne i limiti.\\
-Essendo infatti questo un progetto di dimensioni ridotte si è deciso di provare Flutter per testarne le potenzialità e capire se possa essere utilizzato dall'azienda anche per applicazioni di dimensioni maggiori.
+\subsection{ARway}
+unity 
+riuso di codice
+ti tira via
+
+\subsection{ar\_flutter\_plugin}
+\subsubsection{il nostro ar flut plug}
+fork per asa 
+"com.gorisse.thomas.sceneform:sceneform:1.21.0" 
+
 %----------------------------------------------------------------
-\section{Onboarding e primo login}
+\section{integrazione asa ar flut plug}
 \label{sec:progettazione-onboarding-primo-login}
-Come prima parte dell'applicazione ho concluso la progettazione delle funzionalità onboarding e di primo login dell'utente, che in parte era già stata effettuata dal mio tutor.
+
+
 %----------------------------------------------------------------
-\subsection{Autenticazione tramite auth0}
+\subsection{flutter <-> ar flut plug}
 \label{sec:autenticazione-tramite-auth0}
-Per l'autenticazione si è deciso di appoggiarsi al servizio Auth0, già ampiamente utilizzato dall'azienda.\\
-Grazie ad Auth0 ci è possibile delegare ad un servizio terzo la gestione dell'autenticazione attraverso diversi servizi come Google, Facebook o semplicemente con nome utente e password.\\
-Auth0 fornisce una pagina web di autenticazione unica per qualsiasi provider indicato. A login avvenuto, l’applicazione riceve dall’API di Auth0 un ID token ed un Refresh Token.\\ Mediante l’ID token sarà possibile accedere alle API LifestyleSync tramite autenticazione \gls{JWT}, includendolo in ogni header delle chiamate HTTP. In questo modo il backend può verificare che il token sia presente nel registro di Auth0 e che l’utente abbia i permessi per accedere ai dati. Tuttavia, prima di effettuare qualsiasi richiesta al backend, è buona pratica controllare la scadenza temporale indicata in ID token: se questo è scaduto è possibile utilizzare Refresh Token per chiedere ad Auth0 un nuovo ID token. Rinnovando i token prima della scadenza è quindi possibile mantenere l’accesso all’applicazione inserendo le credenziali soltanto al primo login.
+passaggio dati app mobilesyn con ar flut plug (assets etc)
+
+[diagramma comunicazione plug in ar - flutter]
+
 
 \begin{figure}[h!]
     \centering
@@ -74,7 +83,8 @@ Dart mette a disposizione due modi per la gestione di questo tipo di chiamate, n
     \caption{Chiamate sincrone VS asincrone}
 \end{figure}
 %*********************************************************************
-\subsection{Richieste API}
+\subsection{progettazione UI ux}
+
 Essendo l'applicazione un supporto ad una piattaforma di analisi dati la presenza di chiamate asincrone al backend è molto frequente, è stato quindi fondamentale progettare un pattern solido da riutilizzare per ogni chiamata.
 Il \textit{pattern} da noi adottato prevede che una qualsiasi chiamata API CRUD possa trovarsi in tre diversi stati:
 \begin{itemize}
