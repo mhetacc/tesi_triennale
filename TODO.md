@@ -3,10 +3,6 @@
     <img src="immagini/ds_logo.png" alt="DataSoil logo" width="220">
 </p>
 
-## Pratiche da Mantenere
-### Glossario
-Non formattare nessuno dei termini del glossario: eccezion fatta per il capitolo 1 - sezioni fino a 1.2.2 (compreso) verrà fatto alla fine con un tool automatico. 
-
 ### Tabelle
 Mantenere il maiuscolo per ogni elemento delle tabelle, compresi quelli delle sottotabelle. 
 
@@ -20,6 +16,9 @@ Solo la prima lettera è in caps, quindi:
 ```
 ### Possibili cambi 
 - Sezione 1.1.x : accorpare tutto in un'unico paragarafo?
+
+### Custom Keybindings 
+- alt + shift + Q : auto italic
 
 ## TODO list
 - [ ] README.md preso da bug's bunny
