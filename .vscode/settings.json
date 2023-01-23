@@ -2,5 +2,16 @@
     "latex-workshop.latex.outDir": "%WORKSPACE_FOLDER%/build",
     "latex-workshop.latex.autoBuild.run": "never",
     "window.zoomLevel": -1,
-    "editor.wordWrap": "on"
+    "editor.wordWrap": "on",
+    "macros": {
+        "insertItalic": [
+            {
+                "command": "type",
+                "args": {
+                    "text": "\\textit{}"
+                }
+            },
+            "cursorLeft"
+        ],
+    }
 }
