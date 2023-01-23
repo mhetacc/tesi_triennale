@@ -1,0 +1,40 @@
+% !TEX encoding = UTF-8
+% !TEX TS-program = pdflatex
+% !TEX root = ../tesi.tex
+
+%**************************************************************
+\chapter{Lo Stage}
+\label{cap:lo-stage}
+%**************************************************************
+\section{Descrizione e temi}
+Il progetto proposto prevede l'implementazione di una vista in realtà aumentata per l'applicazione di ticketing e monitoraggio aziendale "\textbf{SYN}".\\
+La componente AR dovrà necessariamente appoggiarsi al servizio di \gls{asa} perchè gli \gls{asset} aziendali tracciati da \textbf{SYN} hanno un \gls{digital twin} ancorato e localizzato proprio tramite le \gls{anchor} di Microsoft, e dovrà idealmente essere cross-platform quindi fornendo l'implementazione adeguata sia per Android che per iOS.\\
+Dalla vista dovrà essere possibile interagire con gli \gls{asset}, quindi ottenendoli dal cloud e presentandoli nella scena AR, e con i ticket a loro associati, provocando l'apparizione di una card all' on-tap dell'\gls{asset}, ovvero mostrando a schermo tramite una lista testuale i vari ticket relativi all'\gls{asset} dopo che questo viene toccato.\\
+Per concludere l'interezza degli obiettivi sarà necessario studiare dei \gls{framework} o degli \gls{SDK} che permettono l'integrazione di \gls{asa} in codice nativo (che sarà Java per Android e Swift per iOS) con il \gls{framework} Flutter e il linguaggio su cui si poggia, ovvero Dart.
+
+\section{Strategia aziendale}
+\section{Attività a supporto}
+
+
+\section{Obiettivi}
+\begin{itemize}
+    \item Minimi:
+        \begin{itemize}
+            \item Studio e comprensione del linguaggio di programmazione \textit    {Dart} e del \gls{framework} \textit{Flutter};
+            \item Analisi toolkit Azure: Azure Console e \gls{asa};
+            \item Ricerca di \gls{framework} e \gls{SDK} per implementare le \gls   {asa} in \textit{Flutter};
+            \item Eventuale studio di linguaggi ulteriori necessari alle    implementazioni native, come ad esempio \textit{Kotlin}, \textit{Java},    \textit{Unity} o \textit{Swift};
+            \item Completamento del \gls{framework} scelto nell'app \textit{Flutter}    esistente;
+            \item Completamento dello sviluppo dei componenti per rappresentare le \Gls{anchor} nello spazio AR;
+            \item Completamento dello sviluppo delle \acrshort{api} per l'interazione utente con le \Gls{anchor} AR;
+        \end{itemize}
+    \item Massimi: 
+        \begin{itemize}
+            \item Sviluppo di componenti per mappare \gls{asset} aziendali ad \Gls{anchor} AR;
+            \item Sviluppo di componenti UI per la visualizzazione di metriche e informazioni di controllo.
+        \end{itemize}
+\end{itemize}
+
+\subsection{Relazione con strategia aziendale}
+\section{Vincoli}
+\section{Motivazione scelta}

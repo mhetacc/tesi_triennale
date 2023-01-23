@@ -6,51 +6,52 @@
 \chapter{Progettazione}
 \label{cap:progettazione}
 %**************************************************************
-\section{Organizzazione repository e sistema di ticketing}
-\label{sec:organizzazione-repository-sistema-ticketing}
+\section{Studio AR Anchor}
+\label{sec:ar-anchor}
+\subsection{Azure Spatial Anchors}
+\label{subsec:asa}
+\subsection{Google Cloud Anchors}
+\label{subsec:gca}
 
-A livello di organizzazione del repository si è deciso di adottare lo stile generalmente utilizzato dall'azienda.\\
-Partendo da una base stabile dell'applicazione si procede in modo incrementale per aggiunta di funzionalità seguendo un approccio \gls{agile}.\\
-Ogni nuova funzionalità o \textit{issue} viene segnalata attraverso Jira da un membro del team, il quale si occupa anche di fornire un titolo, una breve descrizione e di assegnarla ad uno sviluppatore frontend o backend, in base al tipo di funzionalità. Jira automaticamente crea un ticket con un codice identificativo e la descrizione del problema.\\
-Una volta preso in carico un ticket, a livello di repository, si procede creando un nuovo \gls{branch} con nome uguale al codice identificativo della \textit{issue}. Al termine dello sviluppo per consolidare il lavoro svolto nel \gls{branch} viene creata una \gls{pull request} verso il \gls{branch} principale, ossia il \textit{main}. La richiesta, una volta controllata e priva di conflitti, viene confermata e tutto il codice prodotto viene unito nel \gls{branch} principale, così da avere sempre un prodotto stabile e aggiornato all'ultima funzionalità aggiunta.
-
-\begin{figure}[ht]
-    \centering
-    \includegraphics[height=6.5cm]{ticket}
-    \caption{Esempio di ticket su Jira}
-\end{figure}
-
-Si è deciso inoltre di mantenere entrambe le applicazioni sullo stesso \textit{repository}, per questo motivo si sono dovute organizzare le cartelle in modo da avere un ambiente di lavoro ordinato. La scelta è stata quella di mantenere nella \textit{root} del progetto delle cartelle contenti i file condivisi tra le due applicazioni, e di creare altre due cartelle: \textit{client} e \textit{coach} aventi come figli delle cartelle con lo stesso nome di quelle presenti nella \textit{root}. In queste ultime cartelle vengono raccolti i file utilizzati solamente da una delle due applicazioni.
-La struttura è risultata quindi la seguente:
-\begin{itemize}
-    \item auth, contiene il Provider per l'autenticazione di entrambe le applicazioni
-    \item models, contiene le classi del modello di entrambe le applicazioni
-    \item pages, contiene i widget \textit{fullscreen} utilizzati da entrambe le applicazioni
-    \item widget, contiene i widget utilizzati da entrambe le applicazioni
-    \item client, cartella contenente i file per l'applicazione client
-    \begin{itemize}
-        \item providers, contiene i provider dell'app client
-        \item models, contiene le classi del modello dell'app client
-        \item pages, contiene i widget \textit{fullscreen} dell'app client
-        \item widget, contiene i widget utilizzati dell'app client
-    \end{itemize}
-    \item coach, cartella contenente i file per l'applicazione coach
-    \begin{itemize}
-        \item providers, contiene i provider dell'app coach
-        \item models, contiene le classi del modello dell'app coach
-        \item pages, contiene i widget \textit{fullscreen} dell'app coach
-        \item widget, contiene i widget utilizzati dell'app coach
-    \end{itemize}
-\end{itemize}
 %**************************************************************
 \section{Confronto framework AR}
-\label{sec:scelta-framework-flutter}
-\subsection{ARway}
-unity 
-riuso di codice
-ti tira via
+\label{sec:confronto-framework}
+Essendo lo scopo di questo stage, e quindi il caso di studio di questa tesi, l'implementazione di una vista in realtà aumentata (nello specifico sfruttando asa) in un'applicazione preesistente sviluppata in Flutter, una grossa parte del lavoro svolto si è incentrato sullo studio dei framework e/o plug-in disponibili.\\
+Sfortunatamente, complici la giovinezza di Flutter e la scarsa diffusione di tecnologie AR, le opzioni disponibili sono alquanto ridotte:
+\begin{itemize}
+    \item \textit{ar\_flutter\_plugin}: \href{https://pub.dev/packages/ar_flutter_plugin}{plugin} che punta a implementare le componenti AR in modalità cross-platform, quindi adattandosi autonomamente ad Android e iOS (sfruttando tuttavia le Cloud Anchor di Google). Nasce partendo da due plugin più specializzati: 
+    \begin{itemize}
+        \item \textit{arcore\_flutter\_plugin} (\href{https://github.com/giandifra/arcore_flutter_plugin}{Android});
+        \item \textit{arkit\_flutter\_plugin} (\href{https://github.com/olexale/arkit_flutter_plugin}{iOS});
+    \end{itemize}
+    \item \textit{ARwayKit}: framework che mira a fornire un'integrazione semplificata, e in parte già completata, di una componente AR (ottenuta tramite asa) in Flutter tramite vista in Unity.
+\end{itemize}
+{\footnotesize Al momento della stesura di questo testo non è più possibile accedere liberamente alla \href{https://app.gitbook.com/s/-MCtct_TY9f3e8PrcV9T/arwaykit-with-flutter/quickstart-in-flutter}{documentazione} relativa ad ARwayKit, tuttavia è ancora reperibile un \href{https://medium.com/arway/building-ar-navigation-apps-with-flutter-and-arwaykit-280b69401cd9}{articolo} su \textit{medium.com} che ricalca la guida introduttiva precedentemente fornita dal sito ufficiale dell'azienda (è anche possibile trovarne una \href{https://web.archive.org/web/20220525060655/https://docs.arway.app/arwaykit-with-flutter/quickstart-in-flutter}{versione nella Wayback Machine}).}
+
+\subsection{ARwayKit}
+\label{subsec:arwaykit}
+ARwayKit è un framework formato da un insieme di componenti che si pone l'obiettivo di fornire un'esperienza AR persistente, e lo persegue fornendo una SDK Unity, un'applicazione di Mapping e un insieme di API REST, che implementa le componenti AR in Flutter sfruttando \href{https://pub.dev/packages/flutter_unity_widget}{flutter\_unity\_widget}.\\
+\E{} cross-platform, implementa le Anchor tramite asa e funziona in ambienti "gps-denied", ovvero dove i dati di posizone del gps non vengono utilizzati per muoversi all'interno dell'ambiente virtuale (oppure ambienti con protocolli di privacy elevati), il che lo rende apparentemente perfetto per il caso d'uso specifico di questa tesi, tuttavia presenta delle criticità: in primo luogo obbliga l'uso di Unity (sfruttando la sua caratteristica peculiare di poter essere importato come fosse una libreria) per sviluppare la vista AR, il che comporta non solo dover imparare il linguaggio ma dover anche configurare ulteriori componenti (come ad esempio \textit{Unity Hub}) che poi devono essere adottati assieme a quelli già in uso, appesantendo quindi il processo di codifica.\\
+In secondo luogo troviamo invece il problema maggiore: la vista verrebbe realizzata nativamente in Unity, ovvero si tratta di una componente Unity separata rispetto all'applicazione che la lancia.
+Questo renderebbe complesso se non impossibile usare dentro essa delle funzionalità Flutter: ad esempio, un bottone a schermo sarebbe un pulsante Unity, non Flutter, obbligando quindi poi a costruire una mappatura tra i due linguaggi per ogni funzionalità visualizzata.\\ 
+Una vista così costruita non solo è scomoda da programmare, ma anche difficile da manutenere.\\
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[height=5cm]{ARwayKit_samplegif_screenshot}
+    \caption{Immagine esempio di utilizzo AR con ARwayKit}
+\end{figure}
+
 
 \subsection{ar\_flutter\_plugin}
+\label{subsec:ar_flutter_plugin}
+\arplug{} è un plugin open source collaborativo estremamente giovane (il primo commit sulla repository pubblica risale al 6 febbraio 2021) che si pone l'obiettivo di implementare componenti in realtà aumentata in Flutter.\\
+Per raggiungere lo scopo si serve della libreria archiviata \href{https://developers.google.com/sceneform/develop}{Sceneform}, che si occupa di "renderizzare scene 3D realistiche in applicazioni AR o meno, senza dover imparare OpenGL".\\
+L'architettura di \arplug{} è composta da due parti: una API cross-platform unificata che fornisce un'interfaccia alle applicazioni tramite il plugin e le implementazioni specifiche per le piattaforme Android (in Kotlin) e iOS (in Swift) costruite su ARCore e ARKit rispettivamente, così da garantire accesso continuativo nel tempo a funzionalità aggiornate.\\
+\arplug{} espone dei widget e delle classi 
+
+
+
 \subsubsection{il nostro ar flut plug}
 fork per asa 
 "com.gorisse.thomas.sceneform:sceneform:1.21.0" 
@@ -68,11 +69,6 @@ passaggio dati app mobilesyn con ar flut plug (assets etc)
 [diagramma comunicazione plug in ar - flutter]
 
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[height=10cm]{auth0}
-    \caption{Diagramma di sequenza dell autenticazione usando auth0}
-\end{figure}
 \subsection{Chiamate asincrone}
 Un punto chiave per lo sviluppo dell'app è quello delle chiamate asincrone.\\
 Quando una funzione richiede molto tempo per essere completata, come ad esempio una funzione che richiede dati ad un un server, è opportuno chiamarla in modo asincrono, così da non fermare tutta l'applicazione in attesa del completamento di quella funzione. Utilizzando le chiamate asincrone infatti il flusso delle operazioni che non necessitano il termine della chiamata può continuare indisturbato.\\

@@ -9,189 +9,178 @@
 
 \section{Requisiti individuati}
 
-I requisiti individuati a partire dal problema proposto e dalle discussioni con il tutor aziendale sono stati catalogati secondo il codice:\\
+Di seguito sono riportati i requisti individuati nel piano di lavoro proposto e a seguito di opportuni confronti con il tutor aziendale. Essi sono catalogati secondo la dicitura:
 \begin{center}
-    \textbf{R[Importanza][Tipo][Codice]}
+    \textbf{R[Obbligatorietà][Tipologia][Codice]}
 \end{center}
 dove:
 \begin{itemize}
-    \item Importanza: specifica l'importanza del requisito e può assumere i seguenti valori:
+    \item \textbf{Obbligatorietà}: specifica quanto un requisito sia vincolante per la riuscita del prodotto e può assumere i seguenti valori:
     \begin{itemize}
         \item \textbf{1: } Requisito obbligatorio;
         \item \textbf{2: } Requisito desiderabile ma non essenziale per il funzionamento;
         \item \textbf{3: } Requisito opzionale.
     \end{itemize}
-    \item Tipologia: specifica la tipologia del requisito e può assumere i seguenti valori:
+    \item \textbf{Tipologia}: specifica la tipologia del requisito e può assumere i seguenti valori:
     \begin{itemize}
-        \item \textbf{F: }\textit{funzionale,} cioè determina una funzionalità dell'applicazione;
-        \item \textbf{V: }\textit{vincolo,} che riguarda un vincolo che il prodotto deve rispettare.
+        \item \textbf{F: }\textit{funzionale,} determina una funzionalità necessaria all'applicazione;
+        \item \textbf{V: }\textit{vincolo,} riguarda una caratteristica del prodotto decisa a monte.
     \end{itemize}
-    \item Codice: identificativo univoco del requisito espresso in forma gerarchica padre/figlio.
+    \item \textbf{Codice}: identifica univocamente un requisito all'interno della sua tipologia (ovvero possono esistere due requisiti con lo stesso codice a patto che siano uno funzionale e uno di vincolo). Per i requisti subordinati si usa il "punto" come divisorio (\textit{ReqPadre, ReqPadre.Figlio1})
 \end{itemize}
 
-\subsection{Requisiti app cliente}
+\subsection{Requisiti funzionali}
 
-\setlength\arrayrulewidth{1pt}
-\renewcommand{\arraystretch}{1.5}
-\begin{longtable}{| c | C{10cm}|}
-\label{tab:requisiti-funzionali-cliente}
-
-\cellcolor{red}\textcolor{white}{\textbf{Requisito}} & \cellcolor{red}\textcolor{white}{\textbf{Descrizione}}\\\hline
-\endhead
-R1F1 & L'utente può utilizzare l'applicazione solo se autenticato\\\hline
-R1F2 & Al primo accesso deve essere presentata una breve descrizione dell'applicazione.\\\hline
-R1F3 & Al primo accesso deve essere presentato all'utente il suo coach.\\\hline
-R1F4 & Al primo accesso l'utente deve compilare un questionario.\\\hline
-R1F5 & L'utente deve poter effettuare il logout dall'applicazione.\\\hline
-R1F6 & L'utente deve poter vedere il totale dei suoi minuti attivi settimanali.\\\hline
-R1F6.1 & L'utente deve poter vedere il totale dei suoi minuti attivi di attività settimanali.\\\hline
-R1F6.2 & L'utente deve poter vedere il totale dei suoi minuti attivi non programmati settimanali.\\\hline
-R1F6.3 & L’utente deve poter analizzare un confronto tra i suoi minuti attivi e il target stabilito dall’OMS \\\hline
-R1F7 & L’utente deve poter vedere la lista dei suoi obiettivi attivi in quel determinato momento. \\\hline
-R1F7.1 & Per ogni voce di un obiettivo (calorie, passi, minuti di attività, minuti non programmati) deve essere mostrato il progresso.\\\hline
-R1F7.2 & L’utente deve poter sapere in quanti giorni scade un dato obiettivo. \\\hline
-R1F7.3 & Per ogni obiettivo l’utente deve poter vedere le informazioni in dettaglio.\\\hline
-R1F8 & L’utente deve poter vedere gli obiettivi passati o non attivi. \\\hline
-R1F8.1 & L’utente deve poter scegliere per quale periodo vedere gli obiettivi passati. \\\hline
-R1F8.2 & L’utente deve poter scegliere per un dato periodo se vedere gli obiettivi passati raggiunti o falliti. \\\hline
-R1F9 & L’utente deve poter vedere un riepilogo con il totale degli obiettivi completati, falliti e in corso. \\\hline
-R1F10 & L’utente deve poter vedere una lista con i prossimi appuntamenti del mese. \\\hline
-R1F10.1 & Per ogni appuntamento l’utente deve poter vedere data, ora, titolo e coach. \\\hline
-R1F10.2 & Per ogni appuntamento l’utente dove poter vedere le informazioni in dettaglio. \\\hline
-R1F11 & L’utente deve poter vedere un calendario in cui saranno presenti tutti i suoi obiettivi attivi e i suoi appuntamenti passati e prossimi.\\\hline
-R1F11.1 & Per ogni giorno del calendario l’utente dove poter vedere una lista con gli obiettivi del giorno e gli appuntamenti del giorno.\\\hline
-R1F12 & L’utente dove poter associare il suo account dell’app a diversi servizi di fitness. \\\hline
-R1F12.1 & L'utente deve poter associare il suo account dell'app all'account di Google Fit \\\hline
-R1F12.2 & L'utente deve poter associare il suo account dell'app all'account di Fitbit \\\hline
-R1F12.3 & L'utente deve poter associare il suo account dell'app all'account di Garmin \\\hline
-R1F13 & L’utente deve poter vedere una schermata con le sue informazioni. \\\hline
-R1F13.1 & L’utente deve poter vedere la sua altezza, il suo peso, la sua età e il suo \gls{BMI}. \\\hline
-R1F13.2 & Deve essere presente una tabella di spiegazione per il \gls{BMI}. \\\hline
-R1F14 & L’utente deve poter vedere chi è il suo coach anche in seguito al primo accesso. \\\hline
-R2F15 & L'utente deve essere avvisato al raggiungimento di determinati obiettivi tramite popup. \\\hline
-R2F15.1 & Quando l'utente sblocca un achievement deve ricevere una notifica e vedere un popup.\\\hline
-R2F15.2 & Quando l'utente completa un obiettivo deve ricevere una notifica e vedere un popup. \\\hline
-R2F15.3 & Quando l'utente raggiunge i minuti attivi consigliati dall'OMS deve vedere un popup. \\\hline
-
-\caption{Tabella del tracciamento dei requisti funzionali}
-\end{longtable}
-
-\setlength\arrayrulewidth{1pt}
-\renewcommand{\arraystretch}{1.5}
-\begin{longtable}{| c | C{10cm}|}
-\label{tab:requisiti-vincolo-cliente}
-\cellcolor{red}\textcolor{white}{\textbf{Requisito}} & \cellcolor{red}\textcolor{white}{\textbf{Descrizione}}\\ \hline
-\endhead
-R1V1 & L'applicazione deve essere sviluppata usando Flutter. \\\hline
-R1V2 & L'applicazione deve funzionare completamente su dispositivi Android. \\\hline
-R2V3 & L'applicazione deve funzionare completamente su dispositivi iOS. \\\hline
-R1V4 & L'interfaccia deve essere facilmente fruibile. \\\hline
-R2V5 & L'applicazione deve presentare elementi di \gls{gamification}.\\\hline
-\caption{Tabella del tracciamento dei requisti vincolo}
-\end{longtable}
-
-\subsection{Requisiti app coach}
-
-\setlength\arrayrulewidth{1pt}
-\renewcommand{\arraystretch}{1.5}
-\begin{longtable}{| c | C{10cm}|}
-\label{tab:requisiti-funzionali-coach}
-
-\cellcolor{red}\textcolor{white}{\textbf{Requisito}} & \cellcolor{red}\textcolor{white}{\textbf{Descrizione}}\\\hline
-\endhead
-R1F1 & Il coach può utilizzare l'applicazione solo se autenticato\\\hline
-R1F2 & Il coach deve poter effettuare il logout dall'applicazione.\\\hline
-R1F3 & Il coach deve poter vedere una lista con i prossimi appuntamenti del mese. \\\hline
-R1F3.1 & Per ogni appuntamento il coach deve poter vedere data, ora, titolo e cliente. \\\hline
-R1F3.2 & Per ogni appuntamento il coach dove poter vedere le informazioni in dettaglio. \\\hline
-R1F4 & Il coach deve poter vedere un calendario in cui saranno presenti tutti i suoi appuntamenti passati e prossimi.\\\hline
-R1F4.1 & Per ogni giorno del calendario il coach dove poter vedere una lista con gli appuntamenti del giorno.\\\hline
-R1F5 & Il coach deve poter scegliere il tenant di cui vedere i clienti.\\\hline
-R1F6 &Il coach deve poter vedere i dettagli di ogni cliente\\\hline
-R1F6.1 & Per ogni cliente il coach deve poter vedere l’altezza, il peso, l’età e il suo \gls{BMI}\\\hline
-R1F6.2 & Per ogni cliente il coach deve poter vedere gli obiettivi in corso a lui assegnati\\\hline
-R1F6.3 & Per ogni clienti il coach deve poter vedere gli obiettivi passati a lui assegnati\\\hline
+{
+    \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
+    \renewcommand{\arraystretch}{1.5}
+    \centering
+    \setlength{\aboverulesep}{0pt}
+    \setlength{\belowrulesep}{0pt}
+    \rowcolors{2}{red!10}{white}
+    \begin{longtable}{C{.15\freewidth} | C{1\freewidth}}
+       \toprule
+    \rowcolor{red}
+    \textcolor{white}{\textbf{Codice}}&
+    \textcolor{white}{\textbf{Descrizione}}\\
+    \toprule
+    \endhead
+    
+\iffalse
+    %INTEGRAZIONE FRAMEWORK SCELTO NELL'APP FLUTTER ESISTENTE
+    &\\
+    %SVILUPPO COMPONENTI PER RAPPRESENTARE ANCHOR IN AR
+    &\\
+    %SVILUPPO API PER INTERAZIONE UTENTE CON ANCHOR AR
+    &\\
+    %SVILUPPO COMPONENTI PER MAPPARE ASSET AZIENDALI AD ANCHOR AR
+    &\\
+    %SVILUPPO COMPONENTI UI PER VISUALIZZARE METRICHE ED INFO DI CONTROLLO
+    &\\
+\fi
+    %AR
+    R1F1 & Il plugin-in deve rappresentare asset tramite Anchor AR\\
+    R1F2 & Il plugin-in deve rappresentare ticket tramite Anchor AR\\
+    R1F3 & Il plug-in deve integrare le Anchor tramite asa\\
+    R1F3.1 & Permettere aggiunta di asa\\%C
+    R1F3.2 & Permettere recupero e visualizzazione di asa\\%R
+    R2F3.3 & Permettere modifica di asa\\%U
+    R1F3.4 & Permettere eliminazione di asa\\%D
+    %API BACKEND
+    R1F4 & Comunicare con Syn API\\
+    R1F4.1 & Ricevere asset con Anchor associata\\
+    R1F4.2 & Aggiungere asset con Anchor associata\\
+    R2F4.3 & Ricevere ticket con Anchor associata\\
+    R2F4.4 & Aggiungere ticket con Anchor associata\\
+    %UI FLUTTER
+    R1F5 & Utente deve poter vedere quali asset hanno anchor associata\\
+    R2F6 & Utente deve poter vedere quali ticket hanno anchor associata\\
+    R1F7 & Utente deve poter raggiungere l'anchor in vista AR dalla schermata dell'asset\\
+    R1F8 & On-Tap su una anchor deve aprire una bottom sheet contestuale\\
+    R1F8.1 & Bottom sheet deve presentare identificatore per asset o ticket associato alla anchor\\
+    R1F8.2 & Bottom sheet associato a un asset mostra ultimi tre ticket aperti\\
+    R1F8.3 & Bottom sheet deve fornire Call-To-Action per eliminare l'anchor\\
+    R1F8.4 & Bottom sheet deve fornire Call-To-Action per raggiungere pagina di dettaglio\\
+    R1F9 & Le informazioni contestuali di un ticket includono data e ora di creazione\\
+    %UI AR
+    R1F10 & Anchor hanno rappresentazione visiva contestuale\\ 
+    R1F10.1 & Asset vengono rappresentati come \todo\\
+    R1F10.2 & Ticket vengono rappresentati come \todo\\
+    R1F11 & On-Tap sullo spazio permette di creare una Anchor in posizione\\
+    R1F11.1 & Anchor posizionata nello spazio può essere salvata\\
+    R1F11.2 & Anchor posizionata nello spazio può essere eliminata\\
+    R1F12 & Il salvataggio di un'Anchor è disponibile solo quando è sicuro vada a buon fine\\
+    R1F12.1 & Viene mostrato a schermo un feedback riguardo il livello di sicurezza raggiunto\\
+    \bottomrule
+    \rowcolor{white} 
+    \caption{Tabella dei requisiti funzionali}
+    \label{tab:requisiti-funzionali}
+    \end{longtable}
+}
 
 
-\caption{Tabella del tracciamento dei requisti funzionali}
-\end{longtable}
 
-\setlength\arrayrulewidth{1pt}
-\renewcommand{\arraystretch}{1.5}
-\begin{longtable}{| c | C{10cm}|}
-\label{tab:requisiti-vincolo-coach}
-\cellcolor{red}\textcolor{white}{\textbf{Requisito}} & \cellcolor{red}\textcolor{white}{\textbf{Descrizione}}\\ \hline
-\endhead
-R1V1 & L'applicazione deve essere sviluppata usando Flutter. \\\hline
-R1V2 & L'applicazione deve funzionare completamente su dispositivi Android. \\\hline
-R2V3 & L'applicazione deve funzionare completamente su dispositivi iOS. \\\hline
-R1V4 & L'interfaccia deve essere facilmente fruibile. \\\hline
-R2V5 & L'applicazione deve presentare elementi di \gls{gamification}.\\\hline
-\caption{Tabella del tracciamento dei requisti vincolo}
-\end{longtable}
+\subsection{Requisiti di vincolo}
+
+{
+    \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
+    \renewcommand{\arraystretch}{1.5}
+    \centering
+    \setlength{\aboverulesep}{0pt}
+    \setlength{\belowrulesep}{0pt}
+    \rowcolors{2}{red!10}{white}
+    \begin{longtable}{C{.15\freewidth} C{1\freewidth}} 
+       \toprule
+    \rowcolor{red}
+    \textcolor{white}{\textbf{Codice}}&
+    \textcolor{white}{\textbf{Descrizione}}\\
+    \toprule
+    \endhead
+
+    R1V1 & Framework scelto funziona su Android\\
+    R2V2 & Framework scelto funziona su iOS\\
+    R1V3 & Framework scelto si integra con API Syn\\
+    R1V3.1 & Framework ottiene con Anchor associata i dati degli asset\\
+    R1V3.2 & Framework ottiene con Anchor associata i dati dei ticket\\
+    R1V4 & Il framework scelto utilizza asa\\
+    R1V5 & La vista AR deve essere sviluppata in Flutter\\
+    \bottomrule
+    \rowcolor{white} 
+    \caption{Tabella dei requisiti di vincolo}
+    \label{tab:requisiti-di-vincolo}
+    \end{longtable}
+}
+
+
 
 \section{Riepilogo requisiti}
 \subsection{Riepilogo requisiti app cliente}
-In totale sono stati individuati 39 requisiti, ripartiti tra le varie tipologie secondo quanto riportato nelle seguenti tabelle.\\
-\begin{center}
-\begin{minipage}[c]{0.7\linewidth}
-    \begin{small}
-    \begin{longtable}{|c|c|}
-    \hline
-         \textbf{Importanza}& \# \\\hline
-         Obbligatori & 33\\\hline
-         Desiderabili & 6\\
-         \hline
-    \caption{Numero di requisiti per importanza app cliente}
-    \label{tab:requisiti-importanza-cliente}
-    \end{longtable}   
-    \end{small}
-\end{minipage}
+Sono stati individuati un totale di 36 requisiti, 29 funzionali e 7 di vincolo, di seguito schematizzati:
 
+{
+    \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
+    \renewcommand{\arraystretch}{1.5}
+    \centering
+    \setlength{\aboverulesep}{0pt}
+    \setlength{\belowrulesep}{0pt}
+    \rowcolors{2}{red!10}{white}
+    \begin{longtable}{C{.25\freewidth} C{.2\freewidth}} 
+       \toprule
+    \rowcolor{red}
+    \textcolor{white}{\textbf{Obbligatorietà}}&
+    \textcolor{white}{\textbf{Quantità}}\\
+    \toprule
+    \endhead
 
-\begin{minipage}[c]{0.7\linewidth}
-    \begin{small}
-    \begin{longtable}{|c|c|}
-    \hline
-         \textbf{Tipologia}& \# \\\hline
-         Funzionali & 34\\\hline
-         Vincolo & 5\\
-         \hline
-    \caption{Numero di requisiti per tipologia app cliente}
-    \label{tab:requisiti-tipolgia-cliente}
-    \end{longtable}   
-    \end{small}
-\end{minipage}
-\end{center}
-\subsection{Riepilogo requisiti app coach}
-In totale sono stati individuati 17 requisiti, ripartiti tra le varie tipologie secondo quanto riportato nelle seguenti tabelle.\\
-\begin{center}
-\begin{minipage}[c]{0.7\linewidth}
-    \begin{small}
-    \begin{longtable}{|c|c|}
-    \hline
-         \textbf{Importanza}& \# \\\hline
-         Obbligatori & 15\\\hline
-         Desiderabili & 2\\
-         \hline
-    \caption{Numero di requisiti per importanza app coach}
-    \label{tab:requisiti-importanza-coach}
-    \end{longtable}   
-    \end{small}
-\end{minipage}
+    Obbligatori & 31\\
+    Desiderabili & 5\\
+    \bottomrule
+    \rowcolor{white} 
+    \caption{Numero di requisiti per obbligatorietà}
+    \label{tab:requisiti-obbligatorieta}
+    \end{longtable}
+}
 
+{
+    \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
+    \renewcommand{\arraystretch}{1.5}
+    \centering
+    \setlength{\aboverulesep}{0pt}
+    \setlength{\belowrulesep}{0pt}
+    \rowcolors{2}{red!10}{white}
+    \begin{longtable}{C{.25\freewidth} C{.2\freewidth}} 
+       \toprule
+    \rowcolor{red}
+    \textcolor{white}{\textbf{Tipologia}}&
+    \textcolor{white}{\textbf{Quantità}}\\
+    \toprule
+    \endhead
 
-\begin{minipage}[c]{0.7\linewidth}
-    \begin{small}
-    \begin{longtable}{|c|c|}
-    \hline
-         \textbf{Tipologia}& \# \\\hline
-         Funzionali & 12\\\hline
-         Vincolo & 5\\
-         \hline
-    \caption{Numero di requisiti per tipologia app coach}
-    \label{tab:requisiti-tipolgia-coach}
-    \end{longtable}   
-    \end{small}
-\end{minipage}
-\end{center}
+    Funzionali & 29\\
+    Di Vincolo & 7\\
+    \bottomrule
+    \rowcolor{white} 
+    \caption{Numero di requisiti per tipologia}
+    \label{tab:requisiti-tipolgia}
+    \end{longtable}
+}

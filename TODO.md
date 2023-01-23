@@ -18,6 +18,8 @@ Solo la prima lettera è in caps, quindi:
     \item \textbf{Second Element:} phrase;
     \item Last element.
 ```
+### Possibili cambi 
+- Sezione 1.1.x : accorpare tutto in un'unico paragarafo?
 
 ## TODO list
 - [ ] README.md preso da bug's bunny
@@ -28,3 +30,5 @@ Solo la prima lettera è in caps, quindi:
 - [ ] glossary entries descritpions
 - [ ] § strumenti: kotlin, java, etc non in italic
 - [ ] § strumenti: fonte wikipedia in tiny keep or trash?
+- [ ] § requisiti: allineare larghezza tabelle a header
+- [ ] § requisiti: todo rappresentazione 3d ticket/asset

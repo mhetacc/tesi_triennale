@@ -40,7 +40,7 @@
 %**************************************************************
 % Importazione package
 %************************************************************** 
-
+\usepackage[table]{xcolor}                % colore tabelle
 \PassOptionsToPackage{dvipsnames}{xcolor} % colori PDF/A
 
 \usepackage{colorprofiles}
@@ -100,8 +100,7 @@
 \usepackage{tabularx}                   % tabelle di larghezza prefissata                                    
 \usepackage{longtable}                  % tabelle su più pagine                                        
 \usepackage{ltxtable}                   % tabelle su più pagine e adattabili in larghezza
-\usepackage{xcolor}                     % colore tabelle
-\usepackage{color, colortbl}
+
 
 \usepackage[toc, acronym]{glossaries}   % glossario
                                         % per includerlo nel documento bisogna:
@@ -482,4 +481,6 @@ backgroundcolor=\color{background},
 \definecolor{red}{cmyk}{0,0.87,0.68,0.32}
 \definecolor{todoOrange}{rgb}{0.98, 0.3, 0.0}
 \definecolor{blond}{rgb}{0.98, 0.94, 0.75}
+\definecolor{RoyalBlue}{rgb}{0.0, 0.14, 0.4}
+\newlength{\freewidth}      %necessaria alle tabelle
 %\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
