@@ -10,7 +10,7 @@
 \section{L'azienda}
 \subsection{Descrizione}
 Le informazioni a seguito sono state prese direttamente dall'azienda, tuttavia ritengono siano rappresentative della realtà considerando sia il progetto al quale ho partecipato, sia il resto dell'offerta \textit{software}.\\
-\textbf{Datasoil S.r.l.} è una \textit{startup} innovativa che si occupa di sviluppare applicativi dedicati alla gestione aziendale, altamente integrati con industria 4.0 e \textit{digital twin}: vengono impiegati \textit{machine learning} e analisi predittive per ottenere analitiche migliori rispetto alla concorrenza, con un occhio attento a innovazione, sicurezza e scalabilità, ottenute tramite prototipazione e \textit{Infrastrucutre as Code}, delegando quindi la gestione delle componenti \textit{server} a servizi terzi come \aws{} (ecosistema \textit{software} fornito da Amazon, che va da semplici piattaforme di \textit{cloud storage} fino a sistemi predittivi basati su \textit{machine learning}).\\
+\textbf{Datasoil S.r.l.} è una \textit{startup} innovativa che si occupa di sviluppare applicativi dedicati alla gestione aziendale, altamente integrati con industria 4.0 e \textit{digital twin} (controparte digitale di un oggetto reale, ad esempio un macchinario di una linea produttiva): vengono impiegati \textit{machine learning} e analisi predittive per ottenere analitiche migliori rispetto alla concorrenza, con un occhio attento a innovazione, sicurezza e scalabilità, ottenute tramite prototipazione e \textit{Infrastrucutre as Code}, delegando quindi la gestione delle componenti \textit{server} a servizi terzi come \aws{} (ecosistema \textit{software} fornito da Amazon, che va da semplici piattaforme di \textit{cloud storage} fino a sistemi predittivi basati su \textit{machine learning}).\\
 Il loro obiettivo è manipolare ed elaborare dati di natura inerentemente caotica, ordinarli e presentarli all'utente finale tramite interfacce grafiche intuitive, promuovendo un'interazione efficace tra utilizzatore e mezzo. Prediligono un approccio ai problemi condiviso e modulare per far nascere soluzioni inedite da applicare a grandi progetti, forti di un \textit{know-how} che abbraccia esigenze verticali (vengono impiegate internamente molte tecnologie sia lato \textit{frontend} che lato \textit{backend}).\\
 Le piattaforme dedicate ad \textit{industry} 4.0, \textit{smart building} e \textit{smart city} poggiano su dei \textit{data silos} attualmente esistenti, garantendo un'interpretazione integrata e di alto livello delle informazioni aziendali fondendole con eventi provenienti dai diversi \textit{business level} creando \textit{insight} proattivi in tempo reale. I sistemi predittivi di Datasoil sono in grado di notificare la persona giusta al momento giusto anticipando la gestione delle criticità interfunzionali.\\
 Ho avuto modo di verificare molte di queste affermazioni direttamente tramite il progetto proposto, in quanto si tratta di un applicativo legato all'industria 4.0 che mappa \textit{asset} aziendali (come ad esempio macchinari) ad un gemello digitale, permettendo sia di localizzarli su una mappa tridimensionale sia, obiettivo dello stage, di visualizzarli in realtà aumentata.\\
@@ -20,80 +20,106 @@ Datasoil sviluppa applicazioni che guardano al mondo professionale più che a qu
 Anche un altro prodotto dell'azienda, chiamato LifestyleSync, mira a fornire uno strumento per migliorare il benessere dei dipendenti nelle aziende, permettendo a ogni dipendente di essere seguito da un \textit{coach} che, tramite un'applicazione di supporto LSCoach, può progettare allenamenti personalizzati e vedere la progressione degli stessi.
 
 \subsection{Processi Interni}
+L'azienda si serve di servizi noti e standardizzati per organizzare il lavoro e la comunicazione interna, ovvero Slack per la messaggistica, Meet per la comunicazione a distanza, Jira per gestire il tracciamento delle \textit{issue} e facilitare meccanismi agili di integrazione continua, e infine GitHub per quanto riguarda il controllo di versione.\\
+Durante il progetto di stage che, per sua natura, è altamente sperimentale e ha quindi richiesto un approccio \textit{"trial and error"} ci si è limitati a usare una piccola Kanban Board di Jira per pianificare, per quanto possibile, il lavoro da svolgere.\\
+L'azienda adotta un sistema di lavoro agile (come accennato sopra sfruttando Jira per applicare \textit{continuous delivery}) e fornisce anche ad associazioni esterne \textit{tutoring} riguardo a queste tematiche. 
 
 \subsection{Innovazione}
+E' immediatamente evidente guardando le tecnologie impiegate che Datasoil pone particolare attenzione sul tema dell'innovazione: lato \textit{backend} troviamo servizi \aws{} impiegati per decentralizzare la gestione del \textit{server} (ad esempio S3), e ovviamente il già citato \asa{}.\\
+Lato \textit{frontend} vediamo l'impiego di linguaggi di programmazione e \textit{framework}\footnote{Collezione di codice che fornisce funzionalità generiche che possono essere sovrascritte, specializzandole, per adattarle agli scopi voluti. Sono simili alle librerie se visti come astrazioni riutilizzabili di codice incluso in API (\textit{Application Programming Interface}) ben definite, tuttavia ciò che le differenzia è che il controllo di esecuzione non è dettato dal chiamante, ma dal \textit{framework} stesso. E' proprio questa inversione di controllo la caratteristica principale dei \textit{framework}.} recenti come Dart e Flutter che, va sottolineato, non sono stati scelti solo per rincorrere il nuovo a tutti i costi: sono infatti tecnologie sviluppate da Google che stanno prendendo sempre più piede ed è quindi probabile che affiancheranno se non addirittura soppianteranno concorrenti più radicati come React Native.
+
+
 %************************************************************************************************************
 \section{Tecnologie e Strumenti}
 \label{sec:tecnologie-e-strumenti}
+Di seguito vengono riportate le tecnologie e gli strumenti utilizzati durante il corso dello stage, divisi in due macrocategorie: di sviluppo (quindi legati strettamente alla produzione di \textit{software}) e organizzativi (più interessati alla gestione del codice prodotto e la comunicazione interna).
 
 \subsection{Tecnologie e Strumenti di sviluppo}
+
 \subsubsection{Visual Studio Code}
-\vsc{} è un editor per codice sorgente, sviluppato da \textit{Microsoft} servendosi del framework \textit{Electron}, disponibile per Windows, Linux e macOS. Le sue funzionalità comprendo supporto per debugging, syntax highlighting, intelligent code completion, snippets, code refactoring, e integrazione con Git. \\
-Gli utenti possono configurare tema, macro, preferenze e installare estensioni che ne aumentano le funzionalità aggiungendo ad esempio il supporto ai maggiori linguaggi di porgrammazione attualmente presenti.\\
-Nella \textit{Stack Overflow 2021 Developer Survey}, \vsc{} è risultato essere l'IDE più popolare, adottato dal 70\% degli intervistati. {\tiny Fonte: \href{https://en.wikipedia.org/wiki/Visual_Studio_Code}{Wikipedia}}\\
-\E{} inoltre presente e molto comoda l'estensione di \flutter{} che, tra le altre cose, permette di gestire direttamente in gui i vari dispositivi (smartphone, browser o emulatore) sui quali installare e lanciare l'app che si sta programmando.
+\vsc{} è un \textit{editor} per codice sorgente, sviluppato da Microsoft servendosi del \textit{framework} Electron, disponibile per Windows, Linux e macOS. Le sue funzionalità comprendo supporto per \textit{debugging}, \textit{syntax highlighting}, \textit{intelligent code completion}, \textit{code refactoring}, e integrazione con Git. \\
+Gli utenti possono configurare tema, \textit{macro}, preferenze e installare estensioni che ne aumentano le funzionalità aggiungendo ad esempio il supporto ai maggiori linguaggi di programmazione attualmente presenti.\\
+Nella "Stack Overflow 2021 Developer Survey", \vsc{} è risultato essere l'IDE più popolare, adottato dal 70\% degli intervistati. {\tiny Fonte: \href{https://en.wikipedia.org/wiki/Visual_Studio_Code}{Wikipedia}}\\
+E' inoltre presente e molto comoda l'estensione di Flutter che, tra le altre cose, permette di gestire direttamente nell'interfaccia i vari dispositivi (\textit{smartphone}, \textit{browser} o emulatore) sui quali installare e lanciare l'applicazione che si sta programmando.
 
 \subsubsection{Android Studio}
-\textit{Android Studio} è l'IDE ufficiale del sistema operativo di Gooogle, sostituendo Eclipse dal 2015, costruito sul software IntelliJ di JetBrains e progettato specificatamente per lo sviluppo Android. \E{} disponibile per Windows, Linux e macOS.\\
-Il 7 maggio 2019 Kotlin rimpiazzò Java come linguaggio consigliato per Android, favorendo un'integrazione ancora maggiore con JetBrains che, appunto, ha sviluppato e prodotto Kotlin stesso. {\tiny Fonte: \href{https://en.wikipedia.org/wiki/Android_Studio}{Wikipedia}}\\
-Personalmente ho cercato nonostante tutto di programmare il più possibile su \vsc{} preferendolo quindi ad \textit{Android Studio} in virtù della sua maggiore leggerezza e delle sue più ampie possibilità di personalizzazione.
+\astudio{} è l'IDE (\textit{Integrated Development Environment}, ovvero un \textit{software} per facilitare la scrittura di codice) ufficiale del sistema operativo di Gooogle, sostituendo Eclipse dal 2015, costruito sul \textit{software} IntelliJ di JetBrains e progettato specificatamente per lo sviluppo Android. E' disponibile per Windows, Linux e macOS.\\
+Il 7 maggio 2019 Kotlin rimpiazzò Java come linguaggio consigliato per Android, favorendo un'integrazione ancora maggiore con JetBrains che, appunto, ha sviluppato e prodotto Kotlin stesso.\\
+Personalmente ho cercato nonostante tutto di programmare il più possibile su \vsc{} preferendolo quindi ad \astudio{} in virtù della sua maggiore leggerezza e delle sue più ampie possibilità di personalizzazione.
+
+\subsubsection{Xcode}
+Xcode è l'\textit{Integrated Development Environment} per macOS, utilizzato obbligatoriamente per sviluppare \textit{software} per macOS, iOS, iPadOS, watchOS e tvOS.\\
+Supporta codice sorgente i seguenti linguaggi: C, C++, Objective-C, Objective-C++, Java, AppleScript, Python, Ruby, ResEdit (Rez), e Swift (quest'ultimo è per noi di particolare interesse).\\
+In generale è un \textit{Integrated Development Environment} molto impopolare e viene percepita con grande frustrazione la sua obbligatorietà per lo sviluppo all'interno dell'ecosistema Apple. Personalmente mi sento allineato alla negativa opinione generale, complice soprattutto la scarsa responsività del programma.
+
 
 \subsubsection{Dart}
-Dart è un linguaggio di programmazione sviluppato da Google per il client development, ovvero per web e mobile app, e può anche essere impiegato per la costruzione di applicazione desktop e server.\\
-\E{} un linguaggio object-oriented, class-based, garbage-collected, strongly-typed e con una sintassi nello stile di C. Può compilare sia codice macchina che JavaScript e supporta interefacce, mixins, classi astratte, refined generics e type inference.{\tiny Fonte: \href{https://en.wikipedia.org/wiki/Dart_(programming_language)}{Wikipedia}}\\
-Personalmente l'ho trovato elegante e conciso nella sua struttura, e presenta dei vantaggi consistenti come la null protection e le espressioni ternarie.
+Dart è un linguaggio di programmazione sviluppato da Google per il \textit{client development}, ovvero per applicazioni \textit{web} e \textit{mobile}, e può anche essere impiegato per la costruzione di applicazione \textit{desktop} e \textit{server}.\\
+E' un linguaggio orientato agli oggetti, basato su classi, \textit{garbage-collected}, fortemente tipizzato e con una sintassi nello stile di C. Può compilare sia codice macchina che JavaScript e supporta interefacce, \textit{mixins}, classi astratte, \textit{refined generics} e inferenza di tipo.\\
+Personalmente l'ho trovato elegante e conciso nella sua struttura, e presenta dei vantaggi consistenti come le espressioni ternarie e la \textit{null safety} (ovvero i valori di tipo \textit{null} devono essere esplicitati con sintassi specifiche che riducono enormemente la possibilità di incontrare errori a tempo di esecuzione).
 
 \subsubsection{Flutter}
-Flutter è un framework open-source creato da Google per lo sviluppo della UI di applicazioni cross-platform per Android, iOS, Linux, macOS, Windows, Google Fuchsia e il web partendo da un singolo codebase.\\
-Rialsciato a maggio 2017, le applicazioni in Flutter sono scritte in Dart e sfruttano molte delle features avanzate del linguaggio, e le componenti principali del framework sono:
+Flutter è un \textit{framework open-source} creato da Google per lo sviluppo dell'interfaccia utente di applicazioni multipiattaforma per Android, iOS, Linux, macOS, Windows, Google Fuchsia e il \textit{web} partendo da un singolo \textit{codebase} (collezione di \textit{file} sorgente necessari a ottenere un \textit{software} completo e funzionante).\\
+Rilasciato a maggio 2017, le applicazioni in Flutter sono scritte in Dart e sfruttano molte delle funzionalità avanzate del linguaggio. Le componenti principali del \textit{framework} sono:
 \begin{itemize}
-    \item \textbf{Dart platform:} Flutter gira all'interno della Dart Virtual Machine, che si serve di un execution engine just-in-time;
-    \item \textbf{Flutter engine:} scritto primariamente in C++, fornisce supporto a basso livello per il rendering e implementa accessibilità, file e network I/O, supporto nativo per i plugin e molto altro;
-    \item \textbf{Foundation library:} scritta in Dart, fornisce classi e funzioni di base che vengono usate per costruire gli applcativi in Flutter, come ad esempio le API per la comunicazione con l'engine;
-    \item \textbf{Design-specific widgets:} Flutter contiene due famiglie di widget che si conformano a delle specifiche scuole di design: \textit{Material} per Google e \textit{Cupertino} per Apple;
-    \item \textbf{Flutter DevTools:} famiglia di tools generici che vengono sfruttati per lo sviluppo di software in Flutter.
+    \item \textbf{Dart platform:} Flutter gira all'interno della Dart Virtual Machine, che si serve di un \textit{execution engine just-in-time};
+    \item \textbf{Flutter engine:} scritto primariamente in C++, fornisce supporto a basso livello per il \textit{rendering} e implementa accessibilità, \textit{file} e \textit{network input/output}, supporto nativo per i \textit{plugin} e molto altro;
+    \item \textbf{Foundation library:} scritta in Dart, fornisce classi e funzioni di base che vengono usate per costruire gli applcativi in Flutter, come ad esempio le API (\textit{Application Programming Interface}, permettono a due o più componenti \textit{software} di comunicare) per la comunicazione con l'\textit{engine};
+    \item \textbf{Design-specific widgets:} Flutter contiene due famiglie di \textit{widget} che si conformano a delle specifiche scuole di \textit{design}: "Material" per Google e "Cupertino" per Apple;
+    \item \textbf{Flutter DevTools:} famiglia di strumenti generici che vengono sfruttati per lo sviluppo di \textit{software} in Flutter.
 \end{itemize}
 ~\\
-Inoltre, una libreria fondamentale per semplificare l'utilizzo di Flutter è \textit{Flutter Hooks}: lo scopo è implementare delle strutture simili agli Hooks di React, consentono di sostituire gli Stateful Widget riducendo il boilerplate code e semplificando la gestione di side-effect e ciclo di vita dei widget grazie alla funzione \textit{useEffect}.
+Inoltre, una libreria fondamentale per semplificare l'utilizzo di Flutter è "Flutter Hooks": lo scopo è implementare delle strutture simili agli Hooks di React, che consentono di sostituire gli "Stateful Widget" riducendo la quantità di codice ripetuto e semplificando la gestione del ciclo di vita dei \textit{widget} grazie alla funzione "useEffect".
 
 \subsubsection{Java}
-Java è un linguaggio di programmazione ad alto livello object-oriented progettato per avere il minor numero possibile di dipendenze implementative (favorendo quindi l'uso di interfacce e classi astratte) e, soprattutto, per aderire al motto \textit{"write once, run anywhere"}: il bytecode di Java può infatti girare senza necessità di ricompilazione su qualsiasi piattaforma che supporti la Java Virtual Machine (comunemente abbreviata in JVM).\\  
-La sintassi è simile a quelle di C o C++, ma fornisce funzionalità dinamiche generalmente inedite per i linguaggi compilati, come reflection e modifica del codice a runtime.\\
-Originalmente rilasciato nel 1995 come componente centrale della piattaforma Java per Sun Microsystems e sotto licenza proprietaria, dal 2007 la maggior parte dei suoi componenti sono diventati open-source sotto l'ombrello della \textit{GPL-2.0-only} (licenza specifica per software libero pubblicata dalla Free Software Foundation).\\
-Sebbene Oracle (attuale proprietario di Sun Microsystems) offra un'implementazione proprietaria chiamata \textit{HotSpot JVM}, la specifica ufficiale è la \textit{OpenJDK JVM} che è gratuita, open-source e di default nella maggior parte delle distribuzioni Linux.
+Java è un linguaggio di programmazione ad alto livello orientato agli oggetti progettato per avere il minor numero possibile di dipendenze implementative (favorendo quindi l'uso di interfacce e classi astratte) e, soprattutto, per aderire al motto \textit{"write once, run anywhere"}: il \textit{bytecode} di Java può infatti girare senza necessità di ricompilazione su qualsiasi piattaforma che supporti la Java Virtual Machine (comunemente abbreviata in JVM).\\  
+La sintassi è simile a quelle di C o C++, ma fornisce funzionalità dinamiche generalmente inedite per i linguaggi compilati, come \textit{reflection} (un programma in esecuzione può modificare se stesso) e modifica del codice a \textit{runtime}.\\
+Originalmente rilasciato nel 1995 come componente centrale della piattaforma Java per Sun Microsystems e sotto licenza proprietaria, dal 2007 la maggior parte dei suoi componenti sono diventati \textit{open-source} sotto l'ombrello della "GPL-2.0-only" (licenza specifica per \textit{software} libero pubblicata dalla Free Software Foundation).\\
+Sebbene Oracle (attuale proprietario di Sun Microsystems) offra un'implementazione proprietaria chiamata "HotSpot JVM", la specifica ufficiale è la "OpenJDK JVM" che è gratuita, \textit{open-source} e predefinita nella maggior parte delle distribuzioni Linux.
 
 \subsubsection{Kotlin}
-Kotlin è un linguaggio di programmazione cross-platform, staticamente tipizzato, progettato per avere completa interoperabilità con Java, gode di una sintassi più concisa di quest'ultimo grazie alla type inference di cui è dotato e dipende dalla \textit{Java Class Library} per la versione della JVM da usare.\\
-\E{} inoltre in grado di compilare codice in JavaScript (sfruttato poi da applicazioni frontend) o codice nativo tramite \textit{LLVM} (per app iOS che condividono la business logic con applicazioni Android).\\
-Incluso in Android Studio come alternativa al compilatore standard Java dal 2017, produce bytecode Java 8 di default ma permette al programmatore di scegliere delle versioni target successive (fino a Java 18).
+Kotlin è un linguaggio di programmazione multipiattaforma staticamente tipizzato. Progettato per avere completa interoperabilità con Java, gode di una sintassi più concisa di quest'ultimo grazie all'inferenza di tipo di cui è dotato. Dipende dalla Java Class Library per la versione della Java Virtual Machine da usare.\\
+E' inoltre in grado di compilare codice in JavaScript (sfruttato poi da applicazioni \textit{frontend}) o codice nativo tramite "LLVM" (per app iOS che condividono le logiche operative con applicazioni Android).\\
+Incluso in Android Studio come alternativa al compilatore standard Java dal 2017, produce \textit{bytecode} Java 8 di default ma permette al programmatore di scegliere delle versioni successive (fino a Java 18).
+
+\subsubsection{Swift}
+Swift è un linguaggio di programmazione ad alto livello, compilato, sviluppato da Apple e dalla comunità \textit{open-source}.\\
+Inizialmente rilasciato nel 2014, il suo scopo è rimpiazzare il precedente linguaggio di Apple Objective-C, ormai obsoleto visto che è rimasto largamente invariato dagli anni '80 ed è quindi manchevole di funzionalità moderne.\\
+Swift lavora con i \textit{framework} Cocoa e Cocoa Touch, e un aspetto chiave del suo \textit{design} è l'interoperabilità con una grossa parte del codice esistente in Objective-C (che, naturalmente, permea l'ecosistema Apple) sfruttando la \textit{runtime library} di Objective-C (che permette anche di far girare C e C++).\\
+E' stato costruito con il \textit{framework} di compilazione LLVM ed è stato incluso in Xcode dalla sesta versione, rilasciata nel 2014.
 
 \subsubsection{Azure Spatial Anchors}
 Azure Spatial Anchors è un servizio di Microsoft mirato a fornire strumenti per sviluppare applicazioni in realtà aumentata su dispositivi iOS o Android predisposti per, rispettivamente, ARKit e ARCore, oppure su Microsoft HoloLens.\\
-Permette di riconoscere spazi tridimensionali all'interno dei quali posizionare punti di interesse, chiamati Spatial Anchors, che possono essere salvati in cloud e poi recuperati, e possono essere messi in relazione a oggetti reali (come macchinari in un contesto industriale) o virtuali.
+Permette di riconoscere spazi tridimensionali all'interno dei quali posizionare punti di interesse, chiamati Spatial Anchors, che possono essere salvati in \textit{cloud} e poi recuperati, e possono essere messi in relazione a oggetti reali (come macchinari in un contesto industriale) o virtuali.
 
 \subsubsection{ARCore}
-ARCore, conosciuto anche come Google Play Services per AR, è un software development kit prodotto da Google per permettere lo sviluppo di applicazioni in realtà aumentata.\\
+ARCore, conosciuto anche come Google Play Services per AR, è un \textit{software development kit} (generalmente abbreviato in SDK) prodotto da Google per permettere lo sviluppo di applicazioni in realtà aumentata.\\
 Si serve di tre componenti principali:
 \begin{itemize}
     \item \textbf{6DOF:} il dispositivo sfrutta una piattaforma inerziale a sei assi per comprendere e tracciare la propria posizione relativa allo spazio;
     \item \textbf{Environmental understanding:} permette riconoscere dimensioni e locazione delle superfici lisce;
     \item \textbf{Light estimation:} permette al telefono di stimare le condizioni di luce dell'ambiente.
 \end{itemize}
-asa si appoggia proprio ad ARCore per implementare le proprie funzionalità di AR su Android.
+\asa{} si appoggia proprio ad ARCore per implementare le proprie funzionalità di realtà aumentata su Android.
 
-\todo
-\textcolor{todoOrange}{ar flutter plugin, sceneform?}
-
-
+\subsubsection{ARKit}
+ARKit è la controparte Apple di ARCore, ovvero è un \textit{software development kit} che permette lo sviluppo di applicazioni in realtà aumentata su dispositivi Apple.\\
+Combina i dati del dispositivo di tracciamento spaziale (come la piattaforma inerziale a sei assi) con un \textit{processing} avanzato della scena ripresa per fornire un'esperienza in realtà aumentata convincente.\\
+Indubbiamente migliore di ARCore, produce risultati più fluidi (inteso come effettiva fluidità percepita guardando la scena attraverso il dispositivo), meglio implementati con le tecnologie esistenti e risparmia al programmatore molti oneri (come la gestione delle sessioni) occupandosene direttamente in modo autonomo.
 %**************************************************************
 \subsection{Strumenti organizzativi}
 
 \subsubsection{Slack}
 Slack è una piattaforma di comunicazione istantanea di proprietà di Salesforce e sviluppata da Slack Technologies per Windows, Linux, macOS, Android e iOS.\\
-Permette di comunicare tramite messaggi, chiamate vocali e video, e di inviare media e files nelle chat private o nei canali. Quest'ultimi fungono da aggregatori e permettono di suddividere tematicamente la comunicazione.\\
-\E{} inoltre possibile suddividere a un livello ancora più alto tramite i \textit{workspaces}, che aggregano al proprio interno utenti, canali e applicazioni: sono proprio quest'ultime che mostrano con maggiore chiarezza l'orientamento \textit{corporate} di Slack, infatti fornisce integrazione nativa con i maggiori software gestionali e organizzativi (come ad esempio Jira, Zoom, Drive, Outlook, etc).
+Permette di comunicare tramite messaggi, chiamate vocali e video, e di inviare \textit{media} e \textit{files} nelle \textit{chat} private o nei canali. Quest'ultimi fungono da aggregatori e permettono di suddividere tematicamente la comunicazione.\\
+E' inoltre possibile suddividere a un livello ancora più alto tramite i \textit{workspaces}, che aggregano al proprio interno utenti, canali e applicazioni: sono proprio quest'ultime che mostrano con maggiore chiarezza l'orientamento aziendale di Slack, che infatti fornisce integrazione nativa con i maggiori software gestionali e organizzativi (come ad esempio Jira, Zoom, Drive, Outlook, etc).
 
 \subsubsection{Github}
-GitHub è il più grande servizio di hosting di codice sorgente al mondo, abitualmente usato per sviluppare progetti open source, e fornisce vari servizi: version control di Git distribuito e access control, bug tracking, issue tracking, richieste di modifiche software, task management, integrazione continua e wiki per ogni progetto.\\ 
-Permette inoltre, tramite forking, pull request e commenti, il miglioramento collaborativo del software, ad esempio risolvendo bug, aggiungendo funzionalità o migliorando quelle presenti.
+GitHub è il più grande servizio di \textit{hosting} di codice sorgente al mondo, abitualmente usato per sviluppare progetti \textit{open-source}, e fornisce vari servizi: controllo di versione tramite Git distribuito e \textit{access control}, \textit{bug tracking}, \textit{issue tracking}, richieste di modifiche \textit{software}, \textit{task management}, integrazione continua e \textit{wiki} per ogni progetto.\\ 
+Permette inoltre, tramite \textit{forking}, \textit{pull request} e commenti, il miglioramento collaborativo del \textit{software}, ad esempio risolvendo errori, aggiungendo funzionalità o migliorando quelle presenti.
+
+\subsubsection{Jira}
+Jira è un \textit{software} proprietario sviluppato da Atlassian che si occupa di fornire una piattaforma potente e funzionale di \textit{bug} e \textit{issue tracking}, presentando il tutto tramite interfacce grafiche chiare e complete. Favorisce inoltre la pianificazione e la collaborazione all'interno dei \textit{team} utilizzando, oltre alle \textit{issues}, anche \textit{tasks} e \textit{user stories}.\\
+Fornisce inoltre \textit{template} già pronti per implementare i più noti \textit{framework} di lavoro come Scrum e Kanban.\\
+Jira mira inoltre a ottimizzare il flusso di lavoro e favorire un miglioramento continuo fornendo visualizzazioni espressive di metriche per tenere traccia dei tempi di sviluppo e scoprire colli di bottiglia.
 
