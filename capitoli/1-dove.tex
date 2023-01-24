@@ -27,7 +27,7 @@ L'azienda adotta un sistema di lavoro agile (come accennato sopra sfruttando Jir
 
 \subsection{Innovazione}
 E' immediatamente evidente guardando le tecnologie impiegate che Datasoil pone particolare attenzione sul tema dell'innovazione: lato \textit{backend} troviamo servizi \aws{} impiegati per decentralizzare la gestione del \textit{server} (ad esempio S3), e ovviamente il già citato \asa{}.\\
-Lato \textit{frontend} vediamo l'impiego di linguaggi di programmazione e \textit{framework}\footnote{Collezione di codice che fornisce funzionalità generiche che possono essere sovrascritte, specializzandole, per adattarle agli scopi voluti. Sono simili alle librerie se visti come astrazioni riutilizzabili di codice incluso in API (\textit{Application Programming Interface}) ben definite, tuttavia ciò che le differenzia è che il controllo di esecuzione non è dettato dal chiamante, ma dal \textit{framework} stesso. E' proprio questa inversione di controllo la caratteristica principale dei \textit{framework}.} recenti come Dart e Flutter che, va sottolineato, non sono stati scelti solo per rincorrere il nuovo a tutti i costi: sono infatti tecnologie sviluppate da Google che stanno prendendo sempre più piede ed è quindi probabile che affiancheranno se non addirittura soppianteranno concorrenti più radicati come React Native.
+Lato \textit{frontend} vediamo l'impiego di linguaggi di programmazione e \textit{framework}\footnote{Collezione di codice che fornisce funzionalità generiche che possono essere sovrascritte, specializzandole, per adattarle agli scopi voluti. Sono simili alle librerie se visti come astrazioni riutilizzabili di codice incluso in APIs (\textit{Application Programming Interfaces}) ben definite, tuttavia ciò che le differenzia è che il controllo di esecuzione non è dettato dal chiamante, ma dal \textit{framework} stesso. E' proprio questa inversione di controllo la caratteristica principale dei \textit{framework}.} recenti come Dart e Flutter che, va sottolineato, non sono stati scelti solo per rincorrere il nuovo a tutti i costi: sono infatti tecnologie sviluppate da Google che stanno prendendo sempre più piede ed è quindi probabile che affiancheranno se non addirittura soppianteranno concorrenti più radicati come React Native.
 
 
 %************************************************************************************************************
@@ -65,7 +65,7 @@ Rilasciato a maggio 2017, le applicazioni in Flutter sono scritte in Dart e sfru
 \begin{itemize}
     \item \textbf{Dart platform:} Flutter gira all'interno della Dart Virtual Machine, che si serve di un \textit{execution engine just-in-time};
     \item \textbf{Flutter engine:} scritto primariamente in C++, fornisce supporto a basso livello per il \textit{rendering} e implementa accessibilità, \textit{file} e \textit{network input/output}, supporto nativo per i \textit{plugin} e molto altro;
-    \item \textbf{Foundation library:} scritta in Dart, fornisce classi e funzioni di base che vengono usate per costruire gli applcativi in Flutter, come ad esempio le API (\textit{Application Programming Interface}, permettono a due o più componenti \textit{software} di comunicare) per la comunicazione con l'\textit{engine};
+    \item \textbf{Foundation library:} scritta in Dart, fornisce classi e funzioni di base che vengono usate per costruire gli applcativi in Flutter, come ad esempio le APIs (\textit{Application Programming Interfaces}, permettono a due o più componenti \textit{software} di comunicare) per la comunicazione con l'\textit{engine};
     \item \textbf{Design-specific widgets:} Flutter contiene due famiglie di \textit{widget} che si conformano a delle specifiche scuole di \textit{design}: "Material" per Google e "Cupertino" per Apple;
     \item \textbf{Flutter DevTools:} famiglia di strumenti generici che vengono sfruttati per lo sviluppo di \textit{software} in Flutter.
 \end{itemize}
@@ -94,7 +94,7 @@ Azure Spatial Anchors è un servizio di Microsoft mirato a fornire strumenti per
 Permette di riconoscere spazi tridimensionali all'interno dei quali posizionare punti di interesse, chiamati Spatial Anchors, che possono essere salvati in \textit{cloud} e poi recuperati, e possono essere messi in relazione a oggetti reali (come macchinari in un contesto industriale) o virtuali.
 
 \subsubsection{ARCore}
-ARCore, conosciuto anche come Google Play Services per AR, è un \textit{software development kit} (generalmente abbreviato in SDK) prodotto da Google per permettere lo sviluppo di applicazioni in realtà aumentata.\\
+ARCore, conosciuto anche come Google Play Services per AR, è un \sdk{} (generalmente abbreviato in SDK) prodotto da Google per permettere lo sviluppo di applicazioni in realtà aumentata.\\
 Si serve di tre componenti principali:
 \begin{itemize}
     \item \textbf{6DOF:} il dispositivo sfrutta una piattaforma inerziale a sei assi per comprendere e tracciare la propria posizione relativa allo spazio;
@@ -104,7 +104,7 @@ Si serve di tre componenti principali:
 \asa{} si appoggia proprio ad ARCore per implementare le proprie funzionalità di realtà aumentata su Android.
 
 \subsubsection{ARKit}
-ARKit è la controparte Apple di ARCore, ovvero è un \textit{software development kit} che permette lo sviluppo di applicazioni in realtà aumentata su dispositivi Apple.\\
+ARKit è la controparte Apple di ARCore, ovvero è un \sdk{} che permette lo sviluppo di applicazioni in realtà aumentata su dispositivi Apple.\\
 Combina i dati del dispositivo di tracciamento spaziale (come la piattaforma inerziale a sei assi) con un \textit{processing} avanzato della scena ripresa per fornire un'esperienza in realtà aumentata convincente.\\
 Indubbiamente migliore di ARCore, produce risultati più fluidi (inteso come effettiva fluidità percepita guardando la scena attraverso il dispositivo), meglio implementati con le tecnologie esistenti e risparmia al programmatore molti oneri (come la gestione delle sessioni) occupandosene direttamente in modo autonomo.
 %**************************************************************
