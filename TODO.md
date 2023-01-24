@@ -31,3 +31,4 @@ Solo la prima lettera è in caps, quindi:
 - [ ] § strumenti: fonte wikipedia in tiny keep or trash?
 - [ ] § requisiti: allineare larghezza tabelle a header
 - [ ] § requisiti: todo rappresentazione 3d ticket/asset
+- [ ] definizione termini come footnote?
