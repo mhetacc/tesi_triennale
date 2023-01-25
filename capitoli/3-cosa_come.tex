@@ -13,6 +13,123 @@ Le sezioni riguardanti tecnologie e \textit{framework} saranno necessarie anche 
 
 \subsection{Studio delle tecnologie}
 \subsubsection{Flutter}
+E' impossibile parlare di Flutter senza prima discutere del linguaggio su cui si basa: Dart.\\
+Faremo quindi un'introduzione quanto più sintetica possibile sulle sue caratteristiche più proprietarie, tralasciando invece le similitudini a linguaggi popolari che possono facilmente essere intuite dal lettore.\\
+Dart è un linguaggio compilato fortemente tipizzato con sintassi simile a C, e adotta molte funzionalità tipiche dei linguaggi moderni: considera infatti ogni variabile un oggetto e implementa la \textit{null safety}, obbligando il programmatore a esplicitare con sintassi specifiche la presenza o meno del valore \textit{null}.
+
+\begin{lstlisting}[language=dart, firstnumber=1,caption={Dart \textit{null safety}}]
+    //dichiarazione di variabili
+    String variabileNotNullable = '';  //non puo' mai essere null
+    String? variabileNullable = null;  //puo' anche essere null
+
+    //utilizzo esplicito di variabile nullable
+    fun (variableNullable);   //compile error
+    fun (?variableNullable);  //esplicito che puo' essere nulla
+
+    //utilizzo esplicito di variabile not nullable
+    if (value != null)
+        fun (!value);   //dico al compilatore che sono certo value non sia null
+\end{lstlisting} 
+
+Permette inoltre l'interpolazione di stringhe:
+\begin{lstlisting}[language=dart, firstnumber=1,caption={Dart \textit{null safety}}]
+    //sfrutto il simbolo $
+    'number = $variableName';              //inserisco in stringa direttamente una variabile
+    'expressionResult = ${expression}';    //inserisco in stringa direttamente un'espressione
+\end{lstlisting}
+
+Dart tratta in maniera particolare le funzioni, che sono oggetti, hanno un tipo (\textit{Function}), possono avere parametri posizioni o nominali, obbligatori od opzionali: 
+\begin{lstlisting}[language=dart, firstnumber=1,caption={Dart \textit{null safety}}]
+    //parametri obbligatori posizionali
+    void fun (int a, int b);  //non possono essere nulli, non essendo 'int? a'
+
+    //possono essere anteceduti da parametri posizionali opzionali
+    void fun (int a, int b, [String opz1 = '', String opz2 = '']){}
+    void fun (int a, int b, [String? opz1nullable, String? opz2nullable]){}
+
+    //oppure possono essere anteceduti da parametri nominali opzionali
+    void fun (int a, int b, {String opz1 = '', String opz2 = ''}){}
+    void fun (int a, int b, {String? opz1nullable, String? opz2nullable}){}
+
+    //non possono essere anteceduti da entrambi
+    void fun (int a, int b, [String opz1 = ''], {String opz2 = ''}){} //compile error
+
+    //tutti i costruttori in Dart hanno solo parametri nominali
+    //di default i parametri nominali sono opzionali
+    //possono pero' essere resi obbligatori con la keyword 'required'
+    void fun ({required String obb1, required String? obb2, String opz1 = ''}){}
+\end{lstlisting}
+
+Esistono le funzioni anonime (largamente sfruttate nei metodi \textit{build} di Flutter), che possono essere ovviamente passate come argomento ad altre funzioni, essendo oggetti:
+\begin{lstlisting}[language=dart, firstnumber=1,caption={Dart \textit{null safety}}]
+    //prima sintassi
+    (){
+        //corpo della funzione anonima
+    } 
+
+    //seconda sintassi
+    () => return_expression
+
+    //assegnamento di funzione anonima ad una variabile
+    //ritorna una stringa con un messaggio portato in upper case
+    var upperfy = (msg) => '${msg.toUpperCase()}';
+
+    //passaggio di funzione come parametro
+    fun (firstValue, () => secondValue);
+\end{lstlisting}
+
+Abbiamo delle espressioni condizionali specifiche del linguaggio dalla grande espressività e che quindi vengono largamente usate:
+\begin{lstlisting}[language=dart, firstnumber=1,caption={Dart \textit{null safety}}]
+    //primo tipo di condizione, detta ternaria
+    condizione ? expr1 : expr2;
+
+    //equivale a (in pseudocodice):
+    if (condizione == true) return expr1
+    else                    return expr2
+
+    //vediamo un esempio
+    int? a;               //a==null di default
+    a = a==null ? 1 : 0;  //ad 'a' viene assegnato il valore 1 siccome a==null
+
+
+    //################################
+    //secondo tipo di condizione peculiare:
+    expr1 ?? expr2;
+
+    //equivale a (in pseudocodice):
+    if (expr1 != null) return expr1
+    else               return expr2
+
+    //vediamo un esempio
+    int? a;      //a==null di default
+    a = a ?? 1;  //ad 'a' viene assegnato il valore 1 siccome a==null
+\end{lstlisting}
+
+I caratteri ? e ! sono, come si evince dalle espressioni ternarie e dalla \textit{null safety}, di cruciale importanza in Dart. A questo proposito vediamo ancora qualche esempio del loro utilizzo:
+\begin{lstlisting}[language=dart, firstnumber=1,caption={Dart \textit{null safety}}]
+    list[1]     //accede al secondo elemento della lista
+
+    list.?[1]
+    //equivale a (in pseudocodice):
+    if (list[1] != null)    return list[1]
+    else                    return null
+
+    //##############################
+
+    foo?.bar 
+    //equivale a (in pseudocodice):
+    if (foo.bar != null)    return foo.bar
+    else                    return null
+
+    //##############################
+
+    foo!.bar
+    //equivale a (in pseudocodice):
+    if (foo.bar != null)    return foo.bar
+    else                    throw (runtimeException)
+\end{lstlisting}
+
+
 \subsubsection{Realtà aumentata}
 \subsubsection{Ancoraggi in realtà aumentata}
 \subsubsection{Azure Spatial Anchors}
