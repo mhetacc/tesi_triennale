@@ -1,6 +1,6 @@
 # docs
 <p align="center">
-    <img src="immagini/ds.png" alt="DataSoil logo" width="220">
+    <img src="immagini/ds_logo.png" alt="DataSoil logo" width="220">
 </p>
 
 [![Build Latex documents](https://github.com/Bug-s-Bunny-Team/docs/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/Bug-s-Bunny-Team/docs/actions/workflows/build.yml)

@@ -15,10 +15,16 @@
 
 \chapter*{Sommario}
 
-Il presente documento è il resoconto della mia attività di tirocinio, della durata di circa trecentoventi ore, presso l'azienda Datasoil S.r.l.\\
-L'obiettivo principale è stato la progettazione e l'implementazione di un'applicazione multipiattaforma legata al mondo del wellness/fitness a supporto della piattaforma di analisi dati realizzata per un prodotto spinoff dell'azienda. Il tutto con un focus sull'usabilità e l'engagement/gamification.\\
-Il prodotto è stato sviluppato utilizzando Dart come linguaggio di programmazione e Flutter come framework. In questo modo è stato possibile scrivere un'unica applicazione che possa funzionare sia su dispositivi Android, sia su dispositivi iOS.
-
+Il presente documento è il resoconto della mia attività di tirocinio, della durata di circa trecento ore, presso l'azienda Datasoil S.r.l.\\
+La maggioranza dei programmi oggi distribuiti sono applicazioni mobile, il cui mercato è diviso tra due sistemi operativi concorrenti e incompatibili: iOS e Android. Questo dualismo si traduce nella necessità di sviluppare ogni applicativo due volte, il che ha favorito la nascita di framework come Flutter: esso permette di scrivere applicazioni frontend in Dart, che traduce poi autonomamente nelle rispettive versioni native (condivide quindi l’ethos di Java “Write Once, Run Anywhere”). \\
+Una tecnologia ancora poco esplorata in campo mobile è quella della realtà aumentata, nonostante le “Big Five”, ovvero Google (Alphabet), Amazon, Facebook (Meta), Apple e Microsoft, investano tutte nel campo dell’augmented reality (AR) e alcune (Meta e Microsoft) producano anche hardware specifico (Quest e HoloLens rispettivamente). L’integrazione di queste tecnologie è però limitata a SDK e framework già consolidati, come Unity.\\ 
+Questa tesi studia le possibilità di integrare una vista AR in un’applicazione di auditing aziendale (preesistente) sviluppata in Flutter, tramite i “method channels” che consentono di innestare codice nativo (come Swift o Java) in Dart. \\
+A seguito di uno studio delle (poche) tecnologie esistenti, mi sono concentrato sul comprendere il funzionamento del plugin scelto e del pacchetto di API di cui esso si serve (Sceneform) per poi integrare al suo interno le Azure Spatial Anchors di Microsoft, necessarie ad agganciarsi alle componenti geospaziali già presenti nell’applicazione sulla quale ho svolto il lavoro di tesi. \\
+Il risultato ottenuto è soddisfacente, soprattutto considerando l’estrema scarsità documentale associata a questo ecosistema tecnologico.
+\iffalse
+L'obiettivo principale è stato lo studio delle tecnologie necessarie a implementare in un'applicazione multi piattaforma, sviluppata in Flutter, una vista in realtà aumentata atta alla visualizzazione e gestione di ticket ancorati a spazi e asset.\\
+Il prodotto è stato sviluppato utilizzando Dart (linguaggio) e Flutter (framework) per la componente visuale e multi piattaforma, mentre è stato necessario utilizzare sia Kotlin che Java per implementare le componenti native in Android e Swift per iOS.
+\fi
 %\vfill
 %
 %\selectlanguage{english}

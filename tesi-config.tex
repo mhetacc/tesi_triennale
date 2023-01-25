@@ -34,13 +34,13 @@
                oneside,                 % impagina per fronte-retro 
                openright,               % inizio capitoli a destra
                english,                 
-               italian,                 
+               italian,               
                ]{book}    
 
 %**************************************************************
 % Importazione package
 %************************************************************** 
-
+\usepackage[table]{xcolor}                % colore tabelle
 \PassOptionsToPackage{dvipsnames}{xcolor} % colori PDF/A
 
 \usepackage{colorprofiles}
@@ -100,8 +100,7 @@
 \usepackage{tabularx}                   % tabelle di larghezza prefissata                                    
 \usepackage{longtable}                  % tabelle su più pagine                                        
 \usepackage{ltxtable}                   % tabelle su più pagine e adattabili in larghezza
-\usepackage{xcolor}                     % colore tabelle
-\usepackage{color, colortbl}
+
 
 \usepackage[toc, acronym]{glossaries}   % glossario
                                         % per includerlo nel documento bisogna:
@@ -128,19 +127,19 @@
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash}m{#1}}
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash}m{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash}m{#1}}
-\newcommand{\aCapo}{ ~ \vspace{0.25cm} \\} %magari fare renewcommand di paragraph 
+
 
 \pagestyle{fancy}
 \fancyhead[R]{Tesi di Laurea}
 \fancyhead[L]{
-    \includegraphics[width=0.8cm]{immagini/ds_logo.png}
+    \includegraphics[width=0.8cm]{immagini/logo-unipd} %logo devono essere uguali
 }
 \fancyfoot[C]{\thepage}
 
 \fancypagestyle{plain}{
     \fancyhead[R]{Tesi di Laurea}
     \fancyhead[L]{
-        \includegraphics[width=0.8cm]{immagini/ds_logo.png}
+        \includegraphics[width=0.8cm]{immagini/logo-unipd} %logo devono essere uguali
     }
     \fancyfoot[C]{\thepage}
 }
@@ -160,8 +159,8 @@
 %**************************************************************
 
 % Autore
-\newcommand{\myName}{Giacomo Sassaro}                                    
-\newcommand{\myTitle}{Sviluppo di un'app multipiattaforma legata al mondo wellness con Flutter}
+\newcommand{\myName}{Bellò Marco}                                    
+\newcommand{\myTitle}{Gestione asset per gemello digitale immerso in realtà aumentata}
 
 % Tipo di tesi                   
 \newcommand{\myDegree}{Tesi di laurea}
@@ -179,16 +178,16 @@
 \newcommand{\profTitle}{Prof. }
 
 % Relatore
-\newcommand{\myProf}{Paolo Baldan}
+\newcommand{\myProf}{Tullio Vardanega}
 
 % Luogo
 \newcommand{\myLocation}{Padova}
 
 % Anno accademico
-\newcommand{\myAA}{2020-2021}
+\newcommand{\myAA}{2022-2023}
 
 % Data discussione
-\newcommand{\myTime}{Settembre 2021}
+\newcommand{\myTime}{Febbraio 2023}
 
 
                    % file con le impostazioni personali
@@ -324,6 +323,7 @@
 \definecolor{codepurple}{rgb}{0.82, 0.62, 0.91}
 \definecolor{codeblue}{rgb}{0, 0.5, 1}
 \definecolor{codeorange}{rgb}{1, 0.22, 0}
+
 
 % Define the codebox
 \lstdefinelanguage{dart}{
@@ -479,4 +479,8 @@ backgroundcolor=\color{background},
 %**************************************************************
 %cose mie
 \definecolor{red}{cmyk}{0,0.87,0.68,0.32}
+\definecolor{todoOrange}{rgb}{0.98, 0.3, 0.0}
+\definecolor{blond}{rgb}{0.98, 0.94, 0.75}
+\definecolor{RoyalBlue}{rgb}{0.0, 0.14, 0.4}
+\newlength{\freewidth}      %necessaria alle tabelle
 %\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}

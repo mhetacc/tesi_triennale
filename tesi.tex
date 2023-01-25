@@ -7,13 +7,11 @@
         %%                                          %%
         %%******************************************%%
 
-
 \input{tesi-config}
-  
+\input{custom_commands.tex}
+
 \begin{document}
-
-
-
+\pagecolor{blond}
 %**************************************************************
 % Materiale iniziale
 %**************************************************************
@@ -30,17 +28,26 @@
 % Materiale principale
 %**************************************************************
 \mainmatter
+\input{capitoli/1-dove}
+\input{capitoli/2-perche}
+\input{capitoli/3-cosa_come}
+\input{capitoli/4-valutazione_retrospettiva}
+
+\iffalse
 \input{capitoli/capitolo-1}             % Introduzione
 \input{capitoli/capitolo-2}             % Processi
 \input{capitoli/capitolo-3}             % Kick-Off
 \input{capitoli/capitolo-4}             % Concept Preview
 \input{capitoli/capitolo-5}             % Product Prototype
 \input{capitoli/capitolo-6}             % Product Design Freeze e SOP
-
+\input{capitoli/capitolo-A}
+\fi
 %**************************************************************
 % Materiale finale
 %**************************************************************
 \backmatter
-\printglossaries
+%\printglossaries
+\printglossary[type=\acronymtype, title=Acronimi e abbreviazioni, toctitle=Acronimi e abbreviazioni]
+\printglossary[type=main, title=Glossario, toctitle=Glossario]
 \input{inizio-fine/bibliografia}
 \end{document}
