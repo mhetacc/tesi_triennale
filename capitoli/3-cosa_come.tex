@@ -15,7 +15,7 @@ Le sezioni riguardanti tecnologie e \textit{framework} saranno necessarie anche 
 \subsubsection{Flutter}
 E' impossibile parlare di Flutter senza prima discutere del linguaggio su cui si basa: Dart.\\
 Faremo quindi un'introduzione quanto più sintetica possibile sulle sue caratteristiche più proprietarie, tralasciando invece le similitudini a linguaggi popolari che possono facilmente essere intuite dal lettore.\\
-Dart è un linguaggio compilato fortemente tipizzato con sintassi simile a C, e adotta molte funzionalità tipiche dei linguaggi moderni: considera infatti ogni variabile un oggetto e implementa la \textit{null safety}, obbligando il programmatore a esplicitare con sintassi specifiche la presenza o meno del valore \textit{null}.
+Dart è un linguaggio compilato fortemente tipizzato con sintassi simile a C, e adotta molte funzionalità tipiche dei linguaggi moderni: considera infatti ogni variabile un oggetto e implementa la \textit{null safety}, obbligando il programmatore a esplicitare con sintassi specifiche la presenza o meno del valore \verb+null+.
 
 \begin{lstlisting}[language=dart, firstnumber=1,caption={Dart \textit{null safety}}]
     //dichiarazione di variabili
@@ -38,7 +38,7 @@ Permette inoltre l'interpolazione di stringhe:
     'expressionResult = ${expression}';    //inserisco in stringa direttamente un'espressione
 \end{lstlisting}
 
-Dart tratta in maniera particolare le funzioni, che sono oggetti, hanno un tipo (\textit{Function}), possono avere parametri posizioni o nominali, obbligatori od opzionali: 
+Dart tratta in maniera particolare le funzioni, che sono oggetti, hanno un tipo (\verb+Function+), possono avere parametri posizioni o nominali, obbligatori od opzionali: 
 \begin{lstlisting}[language=dart, firstnumber=1,caption={Dart parametri funzioni}]
     //parametri obbligatori posizionali
     void fun (int a, int b);  //non possono essere nulli, non essendo 'int? a'
@@ -60,7 +60,7 @@ Dart tratta in maniera particolare le funzioni, che sono oggetti, hanno un tipo 
     void fun ({required String obb1, required String? obb2, String opz1 = ''}){}
 \end{lstlisting}
 
-Esistono le funzioni anonime (largamente sfruttate nei metodi \textit{build} di Flutter), che possono essere ovviamente passate come argomento ad altre funzioni, essendo oggetti:
+Esistono le funzioni anonime (largamente sfruttate nei metodi \verb+build+ di Flutter), che possono essere ovviamente passate come argomento ad altre funzioni, essendo oggetti:
 \begin{lstlisting}[language=dart, firstnumber=1,caption={Dart funzioni anonime}]
     //prima sintassi
     (){
@@ -129,6 +129,29 @@ I caratteri \verb+?+ e \verb+!+ sono, come si evince dalle espressioni ternarie 
     else                    throw (runtimeException)
 \end{lstlisting}
 
+Le applicazioni \textit{mobile} e \textit{web} spesso si trovano a eseguire istruzioni che richiedono l'attesa di risorse esterne (ottenere dati dalla rete o leggerli da un \textit{file}, oppure scrivere su un \textit{database}). Per evitare il completo blocco dell'esecuzione (disastroso per un applicativo \textit{consumer}) Dart implementa nativamente delle funzioni di programmazione asincrona, che permetto di svolgere operazioni anche mentre altre sono in attesa.\\
+Per fare ciò si serve di tre \textit{keyword}: \verb+async+, \verb+await+ e \verb+Future+:
+\begin{lstlisting}[language=dart, firstnumber=1,caption={Dart operatori '?' e '!'}]
+    Future<void> checkVersion () async {
+        var version = await lookUpVersion();
+    }
+
+    //un'espressione marcata con la keyword 'await' ritorna sempre Future<T>
+\end{lstlisting}
+
+Trattiamo infine le caratteristiche peculiari di Dart per quanto riguarda classi e metodi:
+\begin{itemize}
+    \item Esistono i costruttori costanti, marcati \verb+const+, che sono inizializzati a \textit{compile-time}. Tutti gli altri sono implicitamente dinamici (quindi \textit{run-time});
+    \item Posso creare costruttori nominati per implementare costruttori multipli tramite la sintassi:
+\begin{lstlisting}[language=dart]
+    ClassName.constructorName () :
+        firstField = firstValue,
+        secondField = secondValue;
+\end{lstlisting}
+    \item Ogni entità è una classe, ogni classe discende da \verb+Object+ (ad eccezione di \verb+Null+);
+    \item Per ogni classe viene creata un'interfaccia implicita che contiene tutti i membri di istanza della classe;
+    \item I metodi \textit{getter} e \textit{setter} di una classe vengono creati implicitamente per variabili non \verb+final+, ma possono essere definiti esplicitamente con le \textit{keyword} \verb+get+ e \verb+set+.
+\end{itemize}
 
 \subsubsection{Realtà aumentata}
 \subsubsection{Ancoraggi in realtà aumentata}
