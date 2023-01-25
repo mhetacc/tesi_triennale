@@ -32,14 +32,14 @@ Dart è un linguaggio compilato fortemente tipizzato con sintassi simile a C, e 
 \end{lstlisting} 
 
 Permette inoltre l'interpolazione di stringhe:
-\begin{lstlisting}[language=dart, firstnumber=1,caption={Dart \textit{null safety}}]
+\begin{lstlisting}[language=dart, firstnumber=1,caption={Dart interpolazone stringhe}]
     //sfrutto il simbolo $
     'number = $variableName';              //inserisco in stringa direttamente una variabile
     'expressionResult = ${expression}';    //inserisco in stringa direttamente un'espressione
 \end{lstlisting}
 
 Dart tratta in maniera particolare le funzioni, che sono oggetti, hanno un tipo (\textit{Function}), possono avere parametri posizioni o nominali, obbligatori od opzionali: 
-\begin{lstlisting}[language=dart, firstnumber=1,caption={Dart \textit{null safety}}]
+\begin{lstlisting}[language=dart, firstnumber=1,caption={Dart parametri funzioni}]
     //parametri obbligatori posizionali
     void fun (int a, int b);  //non possono essere nulli, non essendo 'int? a'
 
@@ -61,7 +61,7 @@ Dart tratta in maniera particolare le funzioni, che sono oggetti, hanno un tipo 
 \end{lstlisting}
 
 Esistono le funzioni anonime (largamente sfruttate nei metodi \textit{build} di Flutter), che possono essere ovviamente passate come argomento ad altre funzioni, essendo oggetti:
-\begin{lstlisting}[language=dart, firstnumber=1,caption={Dart \textit{null safety}}]
+\begin{lstlisting}[language=dart, firstnumber=1,caption={Dart funzioni anonime}]
     //prima sintassi
     (){
         //corpo della funzione anonima
@@ -79,7 +79,7 @@ Esistono le funzioni anonime (largamente sfruttate nei metodi \textit{build} di 
 \end{lstlisting}
 
 Abbiamo delle espressioni condizionali specifiche del linguaggio dalla grande espressività e che quindi vengono largamente usate:
-\begin{lstlisting}[language=dart, firstnumber=1,caption={Dart \textit{null safety}}]
+\begin{lstlisting}[language=dart, firstnumber=1,caption={Dart espressioni ternarie}]
     //primo tipo di condizione, detta ternaria
     condizione ? expr1 : expr2;
 
@@ -105,8 +105,8 @@ Abbiamo delle espressioni condizionali specifiche del linguaggio dalla grande es
     a = a ?? 1;  //ad 'a' viene assegnato il valore 1 siccome a==null
 \end{lstlisting}
 
-I caratteri ? e ! sono, come si evince dalle espressioni ternarie e dalla \textit{null safety}, di cruciale importanza in Dart. A questo proposito vediamo ancora qualche esempio del loro utilizzo:
-\begin{lstlisting}[language=dart, firstnumber=1,caption={Dart \textit{null safety}}]
+I caratteri \verb+?+ e \verb+!+ sono, come si evince dalle espressioni ternarie e dalla \textit{null safety}, di cruciale importanza in Dart, ed è quindi opportuno vedere ancora qualche esempio del loro utilizzo:
+\begin{lstlisting}[language=dart, firstnumber=1,caption={Dart operatori '?' e '!'}]
     list[1]     //accede al secondo elemento della lista
 
     list.?[1]
