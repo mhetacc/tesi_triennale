@@ -10,9 +10,8 @@
 \section{L'azienda}
 \subsection{Descrizione}
 Le informazioni a seguito sono state prese direttamente dall'azienda, tuttavia ritengono siano rappresentative della realtà considerando sia il progetto al quale ho partecipato, sia il resto dell'offerta \textit{software}.\\
-\textbf{Datasoil S.r.l.} è una \textit{startup} innovativa che si occupa di sviluppare applicativi dedicati alla gestione aziendale, altamente integrati con industria 4.0 e \textit{digital twin} (controparte digitale di un oggetto reale, ad esempio un macchinario di una linea produttiva): vengono impiegati \textit{machine learning} e analisi predittive per ottenere analitiche migliori rispetto alla concorrenza, con un occhio attento a innovazione, sicurezza e scalabilità, ottenute tramite prototipazione e \textit{Infrastrucutre as Code}, delegando quindi la gestione delle componenti \textit{server} a servizi terzi come \aws{} (ecosistema \textit{software} fornito da Amazon, che va da semplici piattaforme di \textit{cloud storage} fino a sistemi predittivi basati su \textit{machine learning}).\\
-Il loro obiettivo è manipolare ed elaborare dati di natura inerentemente caotica, ordinarli e presentarli all'utente finale tramite interfacce grafiche intuitive, promuovendo un'interazione efficace tra utilizzatore e mezzo. Prediligono un approccio ai problemi condiviso e modulare per far nascere soluzioni inedite da applicare a grandi progetti, forti di un \textit{know-how} che abbraccia esigenze verticali (vengono impiegate internamente molte tecnologie sia lato \textit{frontend} che lato \textit{backend}).\\
-Le piattaforme dedicate ad \textit{industry} 4.0, \textit{smart building} e \textit{smart city} poggiano su dei \textit{data silos} attualmente esistenti, garantendo un'interpretazione integrata e di alto livello delle informazioni aziendali fondendole con eventi provenienti dai diversi \textit{business level} creando \textit{insight} proattivi in tempo reale. I sistemi predittivi di Datasoil sono in grado di notificare la persona giusta al momento giusto anticipando la gestione delle criticità interfunzionali.\\
+\textbf{Datasoil S.r.l.} è una \textit{startup} innovativa che si occupa di sviluppare applicativi dedicati alla gestione aziendale, altamente integrati con industria 4.0 e \textit{digital twin} (controparte digitale di un oggetto reale, ad esempio un macchinario di una linea produttiva): vengono impiegati apprendimento automatico\footnote{Anche detto \textit{machine learning} in inglese è una branca dell'intelligenza artificiale che utilizza metodi statistici per migliorare la performance di un algoritmo nell'identificare pattern nei dati, nella quale in una macchina si predispone l'abilità di apprendere in maniera autonoma. {\tiny Fonte: \href{https://it.wikipedia.org/wiki/Apprendimento_automatico}{Wikipedia}}} e analisi predittive per ottenere analitiche migliori rispetto alla concorrenza, con un occhio attento a innovazione, sicurezza e scalabilità, ottenute tramite prototipazione e \textit{Infrastrucutre as Code}, delegando quindi la gestione delle componenti \textit{server} a servizi terzi come \aws{}\footnote{Ecosistema \textit{software} fornito da Amazon, che va da semplici piattaforme di \textit{cloud storage} fino a sistemi predittivi basati su \textit{machine learning}}.\\
+Il loro obiettivo è manipolare ed elaborare dati di natura inerentemente caotica, ordinarli e presentarli all'utente finale tramite interfacce grafiche intuitive, promuovendo un'interazione efficace tra utilizzatore e mezzo. Prediligono un approccio ai problemi condiviso e modulare per far nascere soluzioni inedite da applicare a grandi progetti, forti di competenze che abbracciano esigenze verticali (vengono impiegate internamente molte tecnologie sia lato \textit{frontend} che lato \textit{backend}\footnote{\textit{Fronted} e \textit{backend} denotano, rispettivamente, la parte visibile all'utente di un programma e con cui egli può interagire (tipicamente un'interfaccia utente) e la parte che permette l'effettivo funzionamento di queste interazioni. {\tiny Fonte: \href{https://it.wikipedia.org/wiki/Front-end_e_back-end}{Wikipedia}}}).\\
 Ho avuto modo di verificare molte di queste affermazioni direttamente tramite il progetto proposto, in quanto si tratta di un applicativo legato all'industria 4.0 che mappa \textit{asset} aziendali (come ad esempio macchinari) ad un gemello digitale, permettendo sia di localizzarli su una mappa tridimensionale sia, obiettivo dello stage, di visualizzarli in realtà aumentata.\\
 
 \subsection{Clientela}
@@ -21,12 +20,12 @@ Anche un altro prodotto dell'azienda, chiamato LifestyleSync, mira a fornire uno
 In generale la clientela è formata da aziende industriali \textit{asset intensive} (ovvero con molti macchinari), manifatturiere e petrolifere.\\
 
 \subsection{Processi Interni}
-L'azienda si serve di servizi noti e standardizzati per organizzare il lavoro e la comunicazione interna, ovvero Slack per la messaggistica, Meet per la comunicazione a distanza, Jira per gestire il tracciamento delle \textit{issue} e facilitare meccanismi agili di integrazione continua, e infine GitHub per quanto riguarda il controllo di versione.\\
+L'azienda si serve di servizi noti e standardizzati per organizzare il lavoro e la comunicazione interna, ovvero Slack per la messaggistica, Meet per la comunicazione a distanza, Jira per gestire il tracciamento delle \textit{issue} ("cose da fare" in ambito \textit{software}) e facilitare meccanismi agili di integrazione continua, e infine GitHub per quanto riguarda il controllo di versione.\\
 Durante il progetto di stage che, per sua natura, è altamente sperimentale e ha quindi richiesto un approccio \textit{"trial and error"} ci si è limitati a usare una piccola Kanban Board di Jira per pianificare, per quanto possibile, il lavoro da svolgere.\\
 L'azienda adotta un sistema di lavoro agile (come accennato sopra sfruttando Jira per applicare \textit{continuous delivery}) e fornisce anche ad associazioni esterne \textit{tutoring} riguardo a queste tematiche. 
 
 \subsection{Innovazione}
-E' immediatamente evidente guardando le tecnologie impiegate che Datasoil pone particolare attenzione sul tema dell'innovazione: lato \textit{backend} troviamo servizi \aws{} impiegati per decentralizzare la gestione del \textit{server} (ad esempio S3), e ovviamente il già citato \asa{}, mentre lato \textit{frontend}\footnote{Collezione di codice che fornisce funzionalità generiche che possono essere sovrascritte, specializzandole, per adattarle agli scopi voluti. Sono simili alle librerie se visti come astrazioni riutilizzabili di codice incluso in APIs (\textit{Application Programming Interfaces}) ben definite, tuttavia ciò che le differenzia è che il controllo di esecuzione non è dettato dal chiamante, ma dal \textit{framework} stesso. E' proprio questa inversione di controllo la caratteristica principale dei \textit{framework}.} vediamo l'impiego di linguaggi di programmazione e \textit{framework} recenti come Dart e Flutter.\\
+E' immediatamente evidente guardando le tecnologie impiegate che Datasoil pone particolare attenzione sul tema dell'innovazione: lato \textit{backend} troviamo servizi \aws{} impiegati per decentralizzare la gestione del \textit{server} (ad esempio S3), e ovviamente il già citato \asa{}, mentre lato \textit{frontend}\footnote{Collezione di codice che fornisce funzionalità generiche che possono essere sovrascritte, specializzandole, per adattarle agli scopi voluti. Sono simili alle librerie se visti come astrazioni riutilizzabili di codice incluso in APIs (\textit{Application Programming Interfaces}, permettono a due o più componenti \textit{software} di comunicare) ben definite, tuttavia ciò che le differenzia è che il controllo di esecuzione non è dettato dal chiamante, ma dal \textit{framework} stesso. E' proprio questa inversione di controllo la caratteristica principale dei \textit{framework}.} vediamo l'impiego di linguaggi di programmazione e \textit{framework} recenti come Dart e Flutter.\\
 E' bene sottolineare, però, che gli strumenti scelti non sono stati selezionati solo per rincorrere un ideale di avanguardia: hanno infatti tutti alle spalle delle grosse corporazioni (Amazon nel caso di \aws{}, Microsoft nel caso di \asa{} e Google nel caso di Dart e Flutter) che garantiscono loro un certo grado di stabilità e sicurezza.\\
 L'attenzione all'innovazione mostrata da Datasoil si riflette anche negli \textit{stage} proposti, a volte direttamente, a volte indirettamente: se si tratta di un progetto sperimentale vero e proprio esso risulta innovativo per sua stessa natura, tuttavia anche nel caso in cui l'obiettivo sia limitato a sviluppare funzioni in maniera più "meccanica", porta comunque lo studente ad avere a che fare con gli strumenti moderni che vengono impiegati giornalmente in azienda.\\
 Gli \textit{stage} vengono integrati nel contesto aziendale nella duplice modalità appena descritta: a volte sono funzionali alla sperimentazione di nuove soluzioni, altre volte sono più inquadrati in una \textit{pipeline} produttiva (ad esempio potrebbero trattare lo sviluppo di alcune pagine di un'applicazione \textit{mobile}). Anche nel primo caso però se ciò che è stato prodotto risulta interessante per dei possibili clienti viene portato avanti e integrato dopo la fine dello \textit{stage} collegato.
@@ -34,9 +33,33 @@ Gli \textit{stage} vengono integrati nel contesto aziendale nella duplice modali
 %************************************************************************************************************
 \section{Tecnologie e Strumenti}
 \label{sec:tecnologie-e-strumenti}
-Di seguito vengono riportate le tecnologie e gli strumenti utilizzati durante il corso dello stage, divisi in due macrocategorie: di sviluppo (quindi legati strettamente alla produzione di \textit{software}) e organizzativi (più interessati alla gestione del codice prodotto e la comunicazione interna).
+Di seguito vengono riportate le tecnologie e gli strumenti utilizzati durante il corso dello stage, divisi in due macrocategorie: di sviluppo (quindi legati strettamente alla produzione di \textit{software}) e organizzativi (più interessati alla gestione del codice prodotto e la comunicazione interna).\\
 
 \subsection{Tecnologie e Strumenti di sviluppo}
+\subsubsection{Visione d'insieme}
+Presentiamo ora le tecnologie e gli strumenti di sviluppo in relazione l'uno con l'altro, con descrizione minimale. Per approfondire i singoli elementi si rimanda alle sezioni immediatamente successive.\\
+\vsc{} è un \textit{editor} per codice sorgente che permette grande estensibilità tramite \textit{plugin} appositi che, per il progetto, ho configurato in modo tale da aggiungerci la compatibilità con il \textit{framework} utilizzato per lo sviluppo \textit{mobile}, ovvero Flutter, che si appoggia sul linguaggio Dart. Quest'ultimo è un linguaggio orientato agli oggetti e fortemente tipizzato che nasce per la creazione di interfacce grafiche \textit{frontend mobile}. Integrando Flutter in \vsc{} si ottengono vari vantaggi, come ad esempio la possibilità di gestire eventuali emulatori o dispositivi Android con facilità.\\
+Essendo lo scopo del progetto l'integrazione di \asa{} (tecnologia per gestire ancoraggi in realtà aumentata) in un'applicazione Flutter, è stato necessario studiare anche gli \sdk{} sui quali si appoggia il servizio di Microsoft, ovvero ARCore (lato Android) e ARKit (lato iOS). \asa{} implementa tali funzionalità in linguaggi nativi, ovvero Java per Android e Swift per iOS, il che ha portato la necessità a utilizzare due \ide{}(abbreviato in IDE) ulteriori a \vsc{}: Xcode e Android Studio.\\
+Xcode è obbligatorio per programmare in Swift, mentre Android Studio da un grosso aiuto al programmatore quando lo usa per sviluppare applicazioni Android in Java o Kotlin (linguaggio che si è dovuto utilizzare per \aplug{}, ovvero il \textit{framework} ultimamente selezionato che tratteremo nel terzo capitolo di questo documento).\\
+\textbf{Strumenti di sviluppo e rispettivi linguaggi:}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[height=3cm]{ides}
+    \caption{Linguaggi e \ide{}s}
+\end{figure}\aCapo{}
+\textbf{Tecnologie realtà aumentata, linguaggi e sistemi operativi:}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[height=3.5cm]{tecASA}
+    \caption{\asa{} e linguaggi rispettivi per sistema operativo}
+\end{figure}\aCapo{}
+\textbf{\textit{Framework} scelto e sua relazione con tecnologie e linguaggi:}\\
+In questo caso il \textit{framework} ha le componenti native scritte in Kotlin che è compatibile nativamente con Java e funge quindi da contenitore (\textit{"wrapper"}) per quest'ultimo.\\
+\begin{figure}[ht]
+    \centering
+    \includegraphics[height=4.5cm]{aplug_linguaggi}
+    \caption{\textit{Framework} (\aplug) selezionato e relazione con Flutter e \asa{}}
+\end{figure}
 
 \subsubsection{Visual Studio Code}
 \vsc{} è un \textit{editor} per codice sorgente, sviluppato da Microsoft servendosi del \textit{framework} Electron, disponibile per Windows, Linux e macOS. Le sue funzionalità comprendo supporto per \textit{debugging}, \textit{syntax highlighting}, \textit{intelligent code completion}, \textit{code refactoring}, e integrazione con Git. \\
@@ -50,9 +73,9 @@ Il 7 maggio 2019 Kotlin rimpiazzò Java come linguaggio consigliato per Android,
 Personalmente ho cercato nonostante tutto di programmare il più possibile su \vsc{} preferendolo quindi ad \astudio{} in virtù della sua maggiore leggerezza e delle sue più ampie possibilità di personalizzazione.
 
 \subsubsection{Xcode}
-Xcode è l'\textit{Integrated Development Environment} per macOS, utilizzato obbligatoriamente per sviluppare \textit{software} per macOS, iOS, iPadOS, watchOS e tvOS.\\
+Xcode è l'\ide{} per macOS, utilizzato obbligatoriamente per sviluppare \textit{software} per macOS, iOS, iPadOS, watchOS e tvOS.\\
 Supporta codice sorgente i seguenti linguaggi: C, C++, Objective-C, Objective-C++, Java, AppleScript, Python, Ruby, ResEdit (Rez), e Swift (quest'ultimo è per noi di particolare interesse).\\
-In generale è un \textit{Integrated Development Environment} molto impopolare e viene percepita con grande frustrazione la sua obbligatorietà per lo sviluppo all'interno dell'ecosistema Apple. Personalmente mi sento allineato alla negativa opinione generale, complice soprattutto la scarsa responsività del programma.
+In generale è un \ide{} molto impopolare e viene percepita con grande frustrazione la sua obbligatorietà per lo sviluppo all'interno dell'ecosistema Apple. Personalmente mi sento allineato alla negativa opinione generale, complice soprattutto la scarsa responsività del programma.
 
 
 \subsubsection{Dart}
@@ -66,7 +89,7 @@ Rilasciato a maggio 2017, le applicazioni in Flutter sono scritte in Dart e sfru
 \begin{itemize}
     \item \textbf{Dart platform:} Flutter gira all'interno della Dart Virtual Machine, che si serve di un \textit{execution engine just-in-time};
     \item \textbf{Flutter engine:} scritto primariamente in C++, fornisce supporto a basso livello per il \textit{rendering} e implementa accessibilità, \textit{file} e \textit{network input/output}, supporto nativo per i \textit{plugin} e molto altro;
-    \item \textbf{Foundation library:} scritta in Dart, fornisce classi e funzioni di base che vengono usate per costruire gli applcativi in Flutter, come ad esempio le APIs (\textit{Application Programming Interfaces}, permettono a due o più componenti \textit{software} di comunicare) per la comunicazione con l'\textit{engine};
+    \item \textbf{Foundation library:} scritta in Dart, fornisce classi e funzioni di base che vengono usate per costruire gli applcativi in Flutter, come ad esempio le \textit{Application Programming Interfaces} per la comunicazione con l'\textit{engine};
     \item \textbf{Design-specific widgets:} Flutter contiene due famiglie di \textit{widget} che si conformano a delle specifiche scuole di \textit{design}: "Material" per Google e "Cupertino" per Apple;
     \item \textbf{Flutter DevTools:} famiglia di strumenti generici che vengono sfruttati per lo sviluppo di \textit{software} in Flutter.
 \end{itemize}
@@ -110,6 +133,10 @@ Combina i dati del dispositivo di tracciamento spaziale (come la piattaforma ine
 Indubbiamente migliore di ARCore, produce risultati più fluidi (inteso come effettiva fluidità percepita guardando la scena attraverso il dispositivo), meglio implementati con le tecnologie esistenti e risparmia al programmatore molti oneri (come la gestione delle sessioni) occupandosene direttamente in modo autonomo.
 %**************************************************************
 \subsection{Strumenti organizzativi}
+\subsubsection{Visione d'insieme}
+Presentiamo ora gli strumenti organizzativi in relazione tra loro e con quelli di sviluppo, assieme a descrizione minimale. Per approfondire i singoli elementi si rimanda alle sezioni immediatamente successive.\\
+Per quanto riguarda la comunicazione diretta interna all'azienda, che sia condividere documenti, frammenti di codice o domande di vario tipo, lo strumento scelto è Slack (piattaforma di messaggistica orientata alle aziende).\\
+Tutto il codice per tutte le tecnologie affrontate (applicazione MobileSYN, esempi ufficiali \asa{}, \textit{framework} selezionato) è contenuto in GitHub, che fornisce sia \textit{hosting} che controllo di versione. Infine per organizzare quanto possibile i lavori si è scelto di utilizzare Jira (\textit{software} proprietario di \textit{issue tracking}), che è anche integrato in Slack.
 
 \subsubsection{Slack}
 Slack è una piattaforma di comunicazione istantanea di proprietà di Salesforce e sviluppata da Slack Technologies per Windows, Linux, macOS, Android e iOS.\\
