@@ -14,6 +14,10 @@ Solo la prima lettera è in caps, quindi:
     \item \textbf{Second Element:} phrase;
     \item Last element.
 ```
+### Titoli
+Capitolo: all caps
+Sezioni: solo prima lettera caps
+
 ### Possibili cambi 
 - Sezione 1.1.x : accorpare tutto in un'unico paragarafo?
 
