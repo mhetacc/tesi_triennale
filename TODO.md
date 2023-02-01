@@ -31,7 +31,6 @@ Sezioni: solo prima lettera caps
 - [ ] controllare glossari con overleaf
 - [ ] MVP = model view presenter?
 - [ ] glossary entries descritpions
-- [ ] § strumenti: fonte wikipedia in tiny keep or trash?
 - [ ] § requisiti: allineare larghezza tabelle a header
 - [ ] § requisiti: todo rappresentazione 3d ticket/asset
-- [ ] definizione termini come footnote?
+- [ ] controllare i vari labels
