@@ -10,7 +10,7 @@
 \section{Pianificazione del lavoro}
 In questa sezione verranno presentati i passaggi effettuati durante lo \textit{stage} per raggiungere un grado di comprensione sufficiente a produrre i risultati voluti. Partendo da uno studio delle tecnologie e dei concetti di base necessari ad avere un'idea del contesto in cui muoversi, passando quindi all'analisi dei \textit{framework} disponibili per realizzare gli obiettivi fissati, ed infine stilando una vera e propria lista di requisiti desiderabili.\\
 Le sezioni riguardanti tecnologie e \textit{framework} saranno necessarie anche al lettore per comprendere appieno le scelte progettuali e di codifica effettuate.
-
+\
 \subsection{Studio delle tecnologie}
 \subsubsection{Flutter}
 E' impossibile parlare di Flutter senza prima discutere del linguaggio su cui si basa: Dart.\\
@@ -131,7 +131,7 @@ I caratteri \verb+?+ e \verb+!+ sono, come si evince dalle espressioni ternarie 
 
 Le applicazioni \textit{mobile} e \textit{web} spesso si trovano a eseguire istruzioni che richiedono l'attesa di risorse esterne (ottenere dati dalla rete o leggerli da un \textit{file}, oppure scrivere su un \textit{database}). Per evitare il completo blocco dell'esecuzione (disastroso per un applicativo \textit{consumer}) Dart implementa nativamente delle funzioni di programmazione asincrona, che permetto di svolgere operazioni anche mentre altre sono in attesa.\\
 Per fare ciò si serve di tre \textit{keyword}: \verb+async+, \verb+await+ e \verb+Future+:
-\begin{lstlisting}[language=dart, firstnumber=1,caption={Dart operatori '?' e '!'}]
+\begin{lstlisting}[language=dart, firstnumber=1,caption={Dart programmazione asincrona}]
     Future<void> checkVersion () async {
         var version = await lookUpVersion();
     }
