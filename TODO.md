@@ -40,3 +40,5 @@ Sezioni: solo prima lettera caps
 - [ ] § requisiti: allineare larghezza tabelle a header
 - [ ] § requisiti: todo rappresentazione 3d ticket/asset
 - [ ] controllare i vari labels
+- [ ] plugin / plug-in ?? controllare se sono tutti uguali
+- [ ] open source / open-source ?? controllare se sono tutti uguali
