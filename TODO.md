@@ -24,6 +24,12 @@ Sezioni: solo prima lettera caps
 ### Custom Keybindings 
 - alt + shift + Q : auto italic
 
+### Miscellanous
+```tex
+    %indentazione footnote
+    \hspace*{5.37mm}
+```
+
 ## TODO list
 - [ ] README.md preso da bug's bunny
 - [ ] tesi-config.tex : riga 34 : twoside 
