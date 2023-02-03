@@ -10,7 +10,7 @@
 \section{Pianificazione del lavoro}
 In questa sezione verranno presentati i passaggi effettuati durante lo \textit{stage} per raggiungere un grado di comprensione sufficiente a produrre i risultati voluti. Partendo da uno studio delle tecnologie e dei concetti di base necessari ad avere un'idea del contesto in cui muoversi, passando quindi all'analisi dei \textit{framework} disponibili per realizzare gli obiettivi fissati, ed infine stilando una vera e propria lista di requisiti desiderabili.\\
 Le sezioni riguardanti tecnologie e \textit{framework} saranno necessarie anche al lettore per comprendere appieno le scelte progettuali e di codifica effettuate.
-\
+
 \subsection{Studio delle tecnologie}
 \subsubsection{Flutter}
 E' impossibile parlare di Flutter senza prima discutere del linguaggio su cui si basa: Dart.\\
@@ -159,36 +159,38 @@ Trattiamo infine le caratteristiche peculiari di Dart per quanto riguarda classi
 \subsubsection{Gemello Digitale}
 
 \subsection{Framework realtà aumentata per Flutter}
-Essendo lo scopo di questo stage, e quindi il caso di studio di questa tesi, l'implementazione di una vista in realtà aumentata (nello specifico sfruttando asa) in un'applicazione preesistente sviluppata in Flutter, una grossa parte del lavoro svolto si è incentrato sullo studio dei framework e/o plug-in disponibili.\\
-Sfortunatamente, complici la giovinezza di Flutter e la scarsa diffusione di tecnologie AR, le opzioni disponibili sono alquanto ridotte:
+Essendo lo scopo di questo stage, e quindi il caso di studio di questa tesi, l'implementazione di una vista in realtà aumentata (nello specifico sfruttando \asa{}) in un'applicazione preesistente sviluppata in Flutter, una grossa parte del lavoro svolto si è incentrato sullo studio dei \textit{framework} e/o \textit{plug-in} disponibili.\\
+Sfortunatamente, complici la giovinezza di Flutter e la scarsa diffusione di tecnologie per la realtà aumentata, le opzioni disponibili sono alquanto ridotte:
 \begin{itemize}
-    \item \textit{ar\_flutter\_plugin}: \href{https://pub.dev/packages/ar_flutter_plugin}{plugin} che punta a implementare le componenti AR in modalità cross-platform, quindi adattandosi autonomamente ad Android e iOS (sfruttando tuttavia le Cloud Anchor di Google). Nasce partendo da due plugin più specializzati: 
+    \item \aplug{}: \textit{plugin}\footnote{Fonte: \url{https://pub.dev/packages/ar_flutter_plugin}} che punta a implementare le componenti in realtà aumentata in modalità \textit{cross-platform}, quindi adattandosi autonomamente ad Android e iOS (sfruttando tuttavia le Cloud Anchor di Google). Nasce partendo da due plugin più specializzati: 
     \begin{itemize}
-        \item \textit{arcore\_flutter\_plugin} (\href{https://github.com/giandifra/arcore_flutter_plugin}{Android});
-        \item \textit{arkit\_flutter\_plugin} (\href{https://github.com/olexale/arkit_flutter_plugin}{iOS});
+        \item arcore\_flutter\_plugin per Android\footnote{Fonte: \url{https://github.com/giandifra/arcore_flutter_plugin}};
+        \item arkit\_flutter\_plugin per iOS\footnote{Fonte: \url{https://github.com/olexale/arkit_flutter_plugin}};
     \end{itemize}
-    \item \textit{ARwayKit}: framework che mira a fornire un'integrazione semplificata, e in parte già completata, di una componente AR (ottenuta tramite asa) in Flutter tramite vista in Unity.
+    \item ARwayKit: \textit{framework} che mira a fornire un'integrazione semplificata, e in parte già completata, di una componente in realtà aumentata (ottenuta tramite \asa{}) in Flutter tramite vista in Unity.
 \end{itemize}
-{\footnotesize Al momento della stesura di questo testo non è più possibile accedere liberamente alla \href{https://app.gitbook.com/s/-MCtct_TY9f3e8PrcV9T/arwaykit-with-flutter/quickstart-in-flutter}{documentazione} relativa ad ARwayKit, tuttavia è ancora reperibile un \href{https://medium.com/arway/building-ar-navigation-apps-with-flutter-and-arwaykit-280b69401cd9}{articolo} su \textit{medium.com} che ricalca la guida introduttiva precedentemente fornita dal sito ufficiale dell'azienda (è anche possibile trovarne una \href{https://web.archive.org/web/20220525060655/https://docs.arway.app/arwaykit-with-flutter/quickstart-in-flutter}{versione nella Wayback Machine}).}
+E' necessario notificare che al momento della stesura di questo testo non è più possibile accedere liberamente alla documentazione relativa ad ARwayKit\footnote{Fonte: \url{https://app.gitbook.com/s/-MCtct_TY9f3e8PrcV9T/arwaykit-with-flutter/quickstart-in-flutter}}, tuttavia è ancora reperibile un articolo sul sito Medium che ricalca la guida introduttiva precedentemente fornita dal sito ufficiale dell'azienda\footnote{Fonte: \url{https://medium.com/arway/building-ar-navigation-apps-with-flutter-and-arwaykit-280b69401cd9}}. 
+E' anche possibile trovarne una versione nella Wayback Machine\footnote{Fonte: \url{https://web.archive.org/web/20220525060655/https://docs.arway.app/arwaykit-with-flutter/quickstart-in-flutter}}.
 
 \subsubsection{ARWayKit}
-ARwayKit è un framework formato da un insieme di componenti che si pone l'obiettivo di fornire un'esperienza AR persistente, e lo persegue fornendo una SDK Unity, un'applicazione di Mapping e un insieme di API REST, che implementa le componenti AR in Flutter sfruttando \href{https://pub.dev/packages/flutter_unity_widget}{flutter\_unity\_widget}.\\
-E' cross-platform, implementa le Anchor tramite asa e funziona in ambienti "gps-denied", ovvero dove i dati di posizone del gps non vengono utilizzati per muoversi all'interno dell'ambiente virtuale (oppure ambienti con protocolli di privacy elevati), il che lo rende apparentemente perfetto per il caso d'uso specifico di questa tesi, tuttavia presenta delle criticità: in primo luogo obbliga l'uso di Unity (sfruttando la sua caratteristica peculiare di poter essere importato come fosse una libreria) per sviluppare la vista AR, il che comporta non solo dover imparare il linguaggio ma dover anche configurare ulteriori componenti (come ad esempio \textit{Unity Hub}) che poi devono essere adottati assieme a quelli già in uso, appesantendo quindi il processo di codifica.\\
+ARwayKit è un \textit{framework} formato da un insieme di componenti che si pone l'obiettivo di fornire un'esperienza in realtà aumentata persistente, e lo persegue fornendo una \sdk{} Unity, un'applicazione di mappatura e un insieme di \api{}s REST\footnote{Conosciute anche come RESTful API, sono delle \api{}s che si conformano allo stile architetturare e alle norme per sistemi distributi chiamato \textit{representational state transfer} largamente utilizzato nella comunicazione \textit{web}.}, che implementa le componenti in realtà aumentata in Flutter sfruttando il \textit{plugin} flutter\_unity\_widget\footnote{Fonte: \url{https://pub.dev/packages/flutter_unity_widget}}.\\
+E' multipiattaforma, implementa gli ancoraggi tramite \asa{} e funziona in ambienti \textit{"GPS-denied"}, ovvero dove i dati di posizone del \textit{global positioning system}\footnote{Sistema di satelitti in grado di fornire ad un ricevitore le sue coordinate geografiche.} non vengono utilizzati per muoversi all'interno dell'ambiente virtuale (oppure ambienti con protocolli di \textit{privacy} elevati), il che lo rende apparentemente perfetto per il caso d'uso specifico di questa tesi, tuttavia presenta delle criticità: in primo luogo obbliga l'uso di Unity (sfruttando la sua caratteristica peculiare di poter essere importato come fosse una libreria) per sviluppare la vista in realtà aumentata, il che comporta non solo dover imparare il linguaggio ma dover anche configurare ulteriori componenti (come ad esempio Unity Hub) che poi devono essere adottati assieme a quelli già in uso, appesantendo quindi il processo di codifica.\\
 In secondo luogo troviamo invece il problema maggiore: la vista verrebbe realizzata nativamente in Unity, ovvero si tratta di una componente Unity separata rispetto all'applicazione che la lancia.
 Questo renderebbe complesso se non impossibile usare dentro essa delle funzionalità Flutter: ad esempio, un bottone a schermo sarebbe un pulsante Unity, non Flutter, obbligando quindi poi a costruire una mappatura tra i due linguaggi per ogni funzionalità visualizzata.\\ 
-Una vista così costruita non solo è scomoda da programmare, ma anche difficile da manutenere.\\
+Una vista così costruita non solo è scomoda da programmare, ma anche difficile da manutenere.
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[height=5cm]{ARwayKit_samplegif_screenshot}
-    \caption{Immagine esempio di utilizzo AR con ARwayKit}
+    \caption[Realtà aumentata con ARwayKit]{Immagine esempio di utilizzo realtà aumentata con ARwayKit\footnotemark}
 \end{figure}
+\footnotetext{Fonte: \url{https://medium.com/arway/building-ar-navigation-apps-with-flutter-and-arwaykit-280b69401cd9}}
 
 \subsubsection{ar\_flutter\_plugin}
-\aplug{} è un plugin open source collaborativo estremamente giovane (il primo commit sulla repository pubblica risale al 6 febbraio 2021) che si pone l'obiettivo di implementare componenti in realtà aumentata in Flutter.\\
-Per raggiungere lo scopo si serve della libreria archiviata \href{https://developers.google.com/sceneform/develop}{Sceneform}, che si occupa di "renderizzare scene 3D realistiche in applicazioni AR o meno, senza dover imparare OpenGL".\\
-L'architettura di \aplug{} è composta da due parti: una API cross-platform unificata che fornisce un'interfaccia alle applicazioni tramite il plugin e le implementazioni specifiche per le piattaforme Android (in Kotlin) e iOS (in Swift) costruite su ARCore e ARKit rispettivamente, così da garantire accesso continuativo nel tempo a funzionalità aggiornate.\\
-\aplug{} espone dei widget e delle classi 
+\aplug{} è un \textit{plugin open-source} collaborativo estremamente giovane (il primo \textit{commit} sulla \textit{repository} pubblica risale al 6 febbraio 2021) che si pone l'obiettivo di implementare componenti in realtà aumentata in Flutter.\\
+Per raggiungere lo scopo si serve della libreria archiviata Sceneform\footnote{Fonte: \url{https://developers.google.com/sceneform/develop}}, che si occupa di "renderizzare scene tridimensionali realistiche in applicazioni in realtà aumentata o meno, senza dover imparare OpenGL".\\
+L'architettura di \aplug{} è composta da due componenti: una \api{} multipiattaforma unificata che fornisce un'interfaccia alle applicazioni tramite il \textit{plugin} e le implementazioni specifiche per le piattaforme Android (in Kotlin) e iOS (in Swift) costruite su ARCore e ARKit rispettivamente, così da garantire accesso continuativo nel tempo a funzionalità aggiornate.\\
+\aplug{} espone dei \textit{widget} e delle classi 
 \todo{}
 
 \subsubsection{Confronto}
@@ -230,37 +232,37 @@ dove:
     \toprule
     \endhead
 
-    R1F1 & Il plugin-in deve rappresentare asset tramite Anchor AR\\
-    R1F2 & Il plugin-in deve rappresentare ticket tramite Anchor AR\\
-    R1F3 & Il plug-in deve integrare le Anchor tramite asa\\
-    R1F3.1 & Permettere aggiunta di asa\\%C
-    R1F3.2 & Permettere recupero e visualizzazione di asa\\%R
-    R2F3.3 & Permettere modifica di asa\\%U
-    R1F3.4 & Permettere eliminazione di asa\\%D
+    R1F1 & Il \textit{plugin} deve rappresentare \textit{asset} tramite ancoraggio in realtà aumentata\\
+    R1F2 & Il \textit{plugin} deve rappresentare \textit{ticket} tramite ancoraggio in realtà aumentata\\
+    R1F3 & Il \textit{plugin} deve integrare gli ancoraggi tramite \asa{}\\
+    R1F3.1 & Permettere aggiunta di \asa\\%C
+    R1F3.2 & Permettere recupero e visualizzazione di \asa\\%R
+    R2F3.3 & Permettere modifica di \asa\\%U
+    R1F3.4 & Permettere eliminazione di \asa\\%D
     %API BACKEND
-    R1F4 & Comunicare con Syn API\\
-    R1F4.1 & Ricevere asset con Anchor associata\\
-    R1F4.2 & Aggiungere asset con Anchor associata\\
-    R2F4.3 & Ricevere ticket con Anchor associata\\
-    R2F4.4 & Aggiungere ticket con Anchor associata\\
+    R1F4 & Comunicare con le \api{}s di Syn\\
+    R1F4.1 & Ricevere \textit{asset} con ancoraggio associato\\
+    R1F4.2 & Aggiungere \textit{asset} con ancoraggio associato\\
+    R2F4.3 & Ricevere \textit{ticket} con ancoraggio associato\\
+    R2F4.4 & Aggiungere \textit{ticket} con ancoraggio associato\\
     %UI FLUTTER
-    R1F5 & Utente deve poter vedere quali asset hanno anchor associata\\
-    R2F6 & Utente deve poter vedere quali ticket hanno anchor associata\\
-    R1F7 & Utente deve poter raggiungere l'anchor in vista AR dalla schermata dell'asset\\
-    R1F8 & On-Tap su una anchor deve aprire una bottom sheet contestuale\\
-    R1F8.1 & Bottom sheet deve presentare identificatore per asset o ticket associato alla anchor\\
-    R1F8.2 & Bottom sheet associato a un asset mostra ultimi tre ticket aperti\\
-    R1F8.3 & Bottom sheet deve fornire Call-To-Action per eliminare l'anchor\\
-    R1F8.4 & Bottom sheet deve fornire Call-To-Action per raggiungere pagina di dettaglio\\
-    R1F9 & Le informazioni contestuali di un ticket includono data e ora di creazione\\
+    R1F5 & Utente deve poter vedere quali \textit{asset} hanno ancoraggio associato\\
+    R2F6 & Utente deve poter vedere quali \textit{ticket} hanno ancoraggio associato\\
+    R1F7 & Utente deve poter raggiungere l'ancoraggio in vista in realtà aumentata dalla schermata dell'\textit{asset}\\
+    R1F8 & \textit{On-Tap} su una ancoraggio deve aprire una \textit{bottom sheet} contestuale\\
+    R1F8.1 & \textit{Bottom sheet} deve presentare identificatore per \textit{asset} o \textit{ticket} associato alla ancoraggio\\
+    R1F8.2 & \textit{Bottom sheet} associato a un \textit{asset} mostra ultimi tre \textit{ticket} aperti\\
+    R1F8.3 & \textit{Bottom sheet} deve fornire \textit{Call-To-Action} per eliminare l'ancoraggio\\
+    R1F8.4 & \textit{Bottom sheet} deve fornire \textit{Call-To-Action} per raggiungere pagina di dettaglio\\
+    R1F9 & Le informazioni contestuali di un \textit{ticket} includono data e ora di creazione\\
     %UI AR
-    R1F10 & Anchor hanno rappresentazione visiva contestuale\\ 
-    R1F10.1 & Asset vengono rappresentati come \todo\\
-    R1F10.2 & Ticket vengono rappresentati come \todo\\
-    R1F11 & On-Tap sullo spazio permette di creare una Anchor in posizione\\
-    R1F11.1 & Anchor posizionata nello spazio può essere salvata\\
-    R1F11.2 & Anchor posizionata nello spazio può essere eliminata\\
-    R1F12 & Il salvataggio di un'Anchor è disponibile solo quando è sicuro vada a buon fine\\
+    R1F10 & Gli ancoraggi hanno rappresentazione visiva contestuale\\ 
+    R1F10.1 & Gli \textit{asset} vengono rappresentati come \todo\\
+    R1F10.2 & I \textit{ticket} vengono rappresentati come \todo\\
+    R1F11 & \textit{On-Tap} sullo spazio permette di creare una ancoraggio in posizione\\
+    R1F11.1 & Ancoraggio posizionato nello spazio può essere salvato\\
+    R1F11.2 & Ancoraggio posizionato nello spazio può essere eliminato\\
+    R1F12 & Il salvataggio di un'ancoraggio è disponibile solo quando è sicuro vada a buon fine\\
     R1F12.1 & Viene mostrato a schermo un feedback riguardo il livello di sicurezza raggiunto\\
     \bottomrule
     \rowcolor{white} 
@@ -285,13 +287,13 @@ dove:
     \toprule
     \endhead
 
-    R1V1 & Framework scelto funziona su Android\\
-    R2V2 & Framework scelto funziona su iOS\\
-    R1V3 & Framework scelto si integra con API Syn\\
-    R1V3.1 & Framework ottiene con Anchor associata i dati degli asset\\
-    R1V3.2 & Framework ottiene con Anchor associata i dati dei ticket\\
-    R1V4 & Il framework scelto utilizza asa\\
-    R1V5 & La vista AR deve essere sviluppata in Flutter\\
+    R1V1 & \textit{Framework} scelto funziona su Android\\
+    R2V2 & \textit{Framework} scelto funziona su iOS\\
+    R1V3 & \textit{Framework} scelto si integra con le \api{}s di Syn\\
+    R1V3.1 & \textit{Framework} ottiene con ancoraggio associato i dati degli \textit{asset}\\
+    R1V3.2 & \textit{Framework} ottiene con ancoraggio associato i dati dei \textit{ticket}\\
+    R1V4 & Il \textit{framework} scelto utilizza asa\\
+    R1V5 & La vista in realtà aumentata deve essere sviluppata in Flutter\\
     \bottomrule
     \rowcolor{white} 
     \caption{Tabella dei requisiti di vincolo}
