@@ -9,39 +9,45 @@
 \section{Strategia aziendale}
 
 L'azienda si rapporta con gli \textit{stage} in un'ottica produttiva: si tratta spesso di attività che si innestano in lavori già in atto o che sarebbero comunque stati eseguiti, a volte più meccanici, a volte più sperimentali (come nel mio caso che si è legato fortemente al concetto d'innovazione per la natura stessa del progetto trattato) e permettono inoltre di effettuare un primo \textit{screening} per eventuali assunzioni di \textit{junior} o stagisti.\\
-Per avvalorare le tesi appena esposte prendiamo ad esempio gli \textit{stage} proposti durante lo stage-it 2022: il primo è quello che ultimamente è stato assegnato a me, il secondo comporta lo sviluppo di funzionalità di monitoraggio e inserimento di \textit{asset} e spazi aziendali geografici indoor, \textit{ticketing} e gestione eventi in tempo reale per i moduli della piattaforma SYN (prodotto interno di Datasoil). Il terzo stage prevede, sempre per SYN, lo sviluppo di un servizio per l'amministrazione della piattaforma permettendo la creazione, modifica e supervisione dei diversi \textit{tenant} legati ai diversi clienti, garantendo isolamento e correttezza delle informazioni.\\
+Per avvalorare le tesi appena esposte prendiamo ad esempio gli \textit{stage} proposti durante lo stage-it 2022: il primo è quello che ultimamente è stato assegnato a me, il secondo comporta lo sviluppo di funzionalità di monitoraggio e inserimento di \textit{asset} e spazi aziendali interni, \textit{ticketing} e gestione eventi in tempo reale per i moduli della piattaforma SYN (prodotto interno di Datasoil). Il terzo \textit{stage} prevede, sempre per SYN, lo sviluppo di un servizio per l'amministrazione della piattaforma permettendo la creazione, modifica e supervisione dei diversi \textit{tenant} legati ai diversi clienti, garantendo isolamento e correttezza delle informazioni.\\
 \begin{figure}[H]
     \centering
-    \includegraphics[height=7cm]{screen_syn_plant1_meteo}
-    \caption{\textit{Screenshot} portale SYN di infografica allerte meteo per stabilimento "Plant 1" }
+    \includegraphics[width=\textwidth]{screen_syn_plant1_meteo}
+    \caption[Allerte meteo in SYN]{\textit{Screenshot} portale SYN di infografica allerte meteo per stabilimento "Plant 1".\footnotemark}
 \end{figure}
-Lo \textit{stage} a me proposto è stato inquadrato in una strategia che prevede l'espansione di funzionalità per applicativi esistenti nell'ottica di fornire valore aggiunto ai clienti attuali e futuri: precedentemente a questo progetto non era presente alcuna componente in realtà aumentata in MobileSYN, mentre la strategia futura è un continuo miglioramento di ciò che è stato aggiunto. Infatti non sono state sufficienti otto settimane per ottenere un risultato professionalmente soddisfacente, e Datasoil nel futuro si occuperà di limare l'interfaccia grafica (anche osservando sul campo le abitudini d'uso della stessa da parte degli operatori) e migliorare pulizia ed efficienza del codice prodotto.\\
+\footnotetext{Fonte: \url{https://synmgr.com}}
+Lo \textit{stage} a me proposto è stato inquadrato in una strategia che prevede l'espansione di funzionalità per applicativi esistenti nell'ottica di fornire valore aggiunto ai clienti attuali e futuri: precedentemente a questo progetto non era presente alcuna componente in realtà aumentata in MobileSYN, mentre la strategia futura è un continuo miglioramento di ciò che è stato aggiunto. Infatti non sono state sufficienti otto settimane per ottenere un risultato professionalmente soddisfacente, e Datasoil nel futuro si occuperà di limare l'interfaccia grafica (anche osservando sul campo le abitudini d'uso della stessa da parte degli operatori) e migliorare pulizia ed efficienza del codice prodotto.
 \begin{figure}[H]
     \centering
     %\includegraphics[height=5cm]{screen_mobilesyn}
     \includegraphics[width=.3\textwidth]{screen_mobilesyn_tickets}\hfill
     \includegraphics[width=.3\textwidth]{screen_mobilesyn_tasks}\hfill
     \includegraphics[width=.3\textwidth]{screen_mobilesyn_assets}
-    \caption{\textit{Screenshot} di SYN fieldOps (internamente chiamata MobileSYN) delle schermate "Tickets", "Tasks" e "Assets" per lo stabilimento "Plant 1"}
+    \caption{\textit{Screenshot} di SYN fieldOps (internamente chiamata MobileSYN) delle schermate "\textit{Tickets}", "\textit{Tasks}" e "\textit{Assets}" per lo stabilimento "Plant 1"}
 \end{figure}
 L'azienda si è attivamente impiegata a supportare il mio \textit{stage} con tutta una serie di attività: sono stato direttamente ospitato in ufficio e ho avuto accesso a risorse aziendali (\textit{account} \aws{} per accedere a MobileSYN) e credenziali \asa{}, inoltre sia il \textit{junior} che il \textit{senior developer} di Datasoil che si occupano del lato \textit{frontend} mi hanno attivamente affiancato durante lo sviluppo nella fase di codifica. Ho inoltre ricevuto supporto nella fase di analisi dei requisiti e in altri piccoli problemi relativi alla configurazione dei dispositivi e dei programmi necessari ad affrontare lo \textit{stage}.
 
 \section{Descrizione e temi}
-Il progetto proposto prevede l'implementazione di una vista in realtà aumentata\footnote{Schermata che mostra il \textit{feed} della fotocamera e permette di interagirci come fosse uno spazio 3D renderizzato} per l'applicazione di ticketing e monitoraggio aziendale "\textbf{MobileSYN}".\\
-Questo applicativo permette di creare un gemello digitale di un asset aziendale e posizionarlo all'interno di uno spazio virtuale tridimensionale, così da rendere visivamente più chiaro quali macchinari di un dato stabilimento industriale abbiano necessità di manutenzione (mediante apertura di ticket appositi).\\
-Un ticket è semplicemente una notifica relativa ad un asset (perdita d'olio per un macchinario, carta esaurita per una stampante, etc) ma può anche essere libero da questo vincolo e trovarsi, in autonomia, posizionato nello spazio (ad esempio per segnalare una crepa su un muro).\\
+Il progetto proposto prevede l'implementazione di una vista in realtà aumentata\footnote{Schermata che mostra il \textit{feed} della fotocamera e permette di interagirci come fosse uno spazio 3D renderizzato} per l'applicazione di \textit{ticketing} e monitoraggio aziendale "MobileSYN".\\
+Questo applicativo permette di creare un gemello digitale di un \textit{asset} aziendale e posizionarlo all'interno di uno spazio virtuale tridimensionale, così da rendere visivamente più chiaro quali macchinari di un dato stabilimento industriale abbiano necessità di manutenzione (mediante apertura di \textit{ticket} appositi).\\
+Un \textit{ticket} è semplicemente una notifica relativa a un \textit{asset} (perdita d'olio per una pompa idraulica, carta esaurita per una stampante, etc) ma può anche essere libero da questo vincolo e trovarsi, in autonomia, posizionato nello spazio (ad esempio per segnalare una crepa su un muro).
 \begin{figure}[H]
     \centering
-    \includegraphics[height=5cm]{plant_asset_screenshot}
-    \caption{\textit{Asset} "Compressor Intake" in stabilimento "Plant 1"}
+    \begin{minipage}{.5\textwidth}
+      \centering
+      \includegraphics[width=.7\linewidth]{plant_asset_screenshot}
+      \captionof{figure}{\textit{Asset}}
+      \label{fig:test1}
+    \end{minipage}%
+    \begin{minipage}{.5\textwidth}
+      \centering
+      \includegraphics[width=.7\linewidth]{asset_card}
+      \captionof{figure}{\textit{Card} e \textit{anchor}}
+    \end{minipage}
+    \caption{Nella prima figura vediamo l'\textit{asset} "\textit{Compressor Intake}" in stabilimento "Plant 1", mentre nella seconda una \textit{card} (in primo piano) relativa a una \textit{anchor} (in secondo piano) in vista in realtà aumentata}
 \end{figure}
-Tutte le funzionalità in realtà aumentata dovranno necessariamente appoggiarsi al servizio di \asa{} perchè i gemelli digitali già presenti nel sistema sfruttano proprio questa tecnologia per la localizzazione spaziale e, vista la natura multipiattaforma dell'applicazione, dovranno essere implementate sia in Android che in iOS.
-Dalla vista dovrà essere possibile interagire con gli \textit{asset} e i \textit{ticket}, provocando l'apparizione di una \textit{card} all' \textit{on-tap} dell'\textit{anchor}\footnote{Traducibile in italiano con il termine "angoraggio" è un punto di interesse in uno spazio tridimensionale, ovvero un punto che possiede delle coordinate \textit{(x,y,z)}, al quale possono essere collegati \textit{asset}, \textit{ticket} o altri ancoraggi.}, ovvero mostrando a schermo tramite una piccola finestra in sovraimpressione i vari ticket relativi all'\textit{asset} dopo che questo viene toccato, permettendo anche la visione del dettaglio o la rimozione dello stesso.\\
-\begin{figure}[H]
-    \centering
-    \includegraphics[height=5cm]{asset_card}
-    \caption{\textit{Card} (in primo piano) relativa a una \textit{anchor} (in secondo piano) in vista in realtà aumentata}
-\end{figure}
+Tutte le funzionalità in realtà aumentata dovranno necessariamente appoggiarsi al servizio di \asa{} perché i gemelli digitali già presenti nel sistema sfruttano proprio questa tecnologia per la localizzazione spaziale e, vista la natura multipiattaforma dell'applicazione, dovranno essere implementate sia in Android che in iOS.\\
+Dalla vista dovrà essere possibile interagire con gli \textit{asset} e i \textit{ticket}, provocando l'apparizione di una \textit{card} all' \textit{on-tap} dell'\textit{anchor}\footnote{Traducibile in italiano con il termine "ancoraggio" è un punto di interesse in uno spazio tridimensionale, ovvero un punto che possiede delle coordinate \textit{(x,y,z)}, al quale possono essere collegati \textit{asset}, \textit{ticket} o altri ancoraggi.}, ovvero mostrando a schermo tramite una piccola finestra in sovrimpressione i vari \textit{ticket} relativi all'\textit{asset} dopo che questo viene toccato, permettendo anche la visione del dettaglio o la rimozione dello stesso.\\
 Per portare a termine gli obiettivi prefissati sarà necessario studiare dei \textit{framework}, dei \textit{plugin} o dei \sdk{} che permettono l'integrazione del codice nativo di \asa{} (che sarà Java per Android e Swift per iOS) con il \textit{framework} Flutter e il linguaggio su cui si poggia, ovvero Dart. 
 
 \section{Obiettivi}
@@ -70,30 +76,34 @@ Come precedentemente accennato, i vincoli in questo progetto sono due:
     \item Utilizzare Flutter come \textit{framework} sul quale implementare le componenti in realtà aumentata;
     \item La tecnologia scelta per gestire gli ancoraggi in realtà aumentata deve essere \asa{}.
 \end{itemize}
+Entrambi i vincoli nascono dal fatto che tutto il lavoro di \textit{stage} va svolto su un'applicazione preesistente, MobileSYN, che è sviluppata in Flutter e già implementa la localizzazione geografica degli \textit{asset} tramite \asa{}. Di conseguenza per visualizzare gli \textit{asset} in realtà aumentata bisogna interfacciarsi con gli ancoraggi di Azure e il tutto va chiaramente implementato nel \textit{framework} sul quale l'applicazione è svilppata.\\
 Eccezion fatta per queste specifiche tecnologiche il resto è stato lasciato a mia discrezione personale, sebbene siano stati consigliati degli strumenti di sviluppo (\vsc{} e \astudio{} come \ide{}). \\
 Vincoli non tecnologici ma organizzativi sono da identificarsi nell'uso di Slack e GitHub: il primo usato per la comunicazione interna con i membri di dell'azienda, il secondo invece è il \textit{repository}\footnote{Spesso abbreviato con \textit{"repo"} è un generico archivio di codice sorgente e pacchetti \textit{software}. Spesso contiene anche \textit{metadata} e guide per la configurazione, uso ed estensione del codice che contiene. In genere un \textit{repo} ha una qualche forma di controllo di versione integrato.} dove si trova il codice sorgente di MobileSYN.
 
 \section{Motivazione scelta}
-I motivi che mi hanno spinto ad accettare questo stage rispetto ad altri sono molteplici, ma i principali sono quattro: toccare con mano attività legate al \textit{frontend}, vivere in prima persona l'ambiente di lavoro del mio ambito di studi, avere la possibilità di sviluppare in ambito \textit{mobile} e una personale curiosità nei confronti delle tecnologie trattate, ovvero la realtà aumentata.\\
-Elaboro ora con più completezza i quattro punti di cui sopra: per quanto riguarda il \textit{frontend}, è un ambito o comunque sia una branca del mondo dello sviluppo \textit{software} che guardavo con interesse in quanto raramente ho avuto occasione di occuparmene durante il corso di studui. Infatti nella maggioranza dei progetti e degli \textit{assignment} trattati mi sono sempre occupato del lato \textit{backend}, infatti il cambio di approccio si è dimostrato difficoltoso, costringendomi a ragionare e a vedere il codice in maniera diversa. Flutter inoltre ha reso il tutto ancora più arduo siccome mischia aspetti di interfaccia grafica con logiche di controllo.
+I motivi che mi hanno spinto ad accettare questo stage rispetto ad altri sono molteplici, ma i principali sono quattro: toccare con mano attività legate al \textit{frontend}, vivere in prima persona l'ambiente di lavoro del mio ambito di studi, avere la possibilità di sviluppare in ambito \textit{mobile} e una personale curiosità nei confronti delle tecnologie trattate, ovvero la realtà aumentata.
+\begin{wrapfigure}{l}{0.7\textwidth}
+    \centering
+    \includegraphics[width=0.7\textwidth]{frontbackend}
+    \caption[Confronto \textit{backend} e \textit{frontend}]{Confronto \textit{backend} e \textit{frontend}.\footnotemark}
+\end{wrapfigure}
+\footnotetext{Fonte: \url{https://dharmanikheem.medium.com/front-end-vs-back-end-what-is-the-difference-9a83a65ee74f}}
+Elaboro ora con più completezza i quattro punti di cui sopra: per quanto riguarda il \textit{frontend}, è un ambito o comunque sia una branca del mondo dello sviluppo \textit{software} che guardavo con interesse in quanto raramente ho avuto occasione di occuparmene durante il corso di studi. Infatti nella maggioranza dei progetti e degli \textit{assignment} trattati mi sono sempre occupato del lato \textit{backend}, e il cambio di approccio si è dimostrato difficoltoso, costringendomi a ragionare e a vedere il codice in maniera diversa. Flutter inoltre ha reso il tutto ancora più arduo siccome mischia aspetti di interfaccia grafica con logiche di controllo.\\
+Vivere uno \textit{stage} a contatto con degli sviluppatori di grado \textit{senior} e lavorare in un ambiente con un certo grado di controllo era per me molto importante: da una parte per garantirmi di assorbire conoscenze da personale esperto, dall'altra per assicurarmi di mantenere un \textit{focus} quanto più alto possibile durante il corso del progetto. Era inoltre fondamentale avere un'idea più chiara di come sia il mondo del lavoro in ambito \textit{software}, per capire se il mio desiderio di, in futuro, mettermi in proprio valga la pena essere perseguito o meno.
 \begin{figure}[H]
     \centering
-    \includegraphics[height=6cm]{frontbackend}
-    \caption{Confronto \textit{backend} e \textit{frontend}. Fonte: \href{https://dharmanikheem.medium.com/front-end-vs-back-end-what-is-the-difference-9a83a65ee74f}{Medium}}
+    \includegraphics[width=\textwidth]{infografica_survey_dev_22}
+    \caption[Equilibrio vita-lavoro]{Infografica che evidenzia quanto sia fondamentale l'equilibrio vita-lavoro.\footnotemark}
 \end{figure}
-Vivere uno stage a contatto con degli sviluppatori di grado \textit{senior} e lavorare in un ambiente con un certo grado di controllo era per me molto importante: da una parte per garantirmi di assorbire conoscenze da personale esperto, dall'altra per assicurarmi di mantenere un \textit{focus} quanto più alto possibile durante il corso del progetto. Era inoltre fondamentale avere un'idea più chiara di come sia il mondo del lavoro in ambito \textit{software}, per capire se il mio desiderio di, in futuro, valga la pena essere perseguito o meno.
+\footnotetext{Fonte: \url{https://www.bitboss.it/developers-hub/the-state-of-development-in-italy/2022}}
+Il terzo punto nasce da una considerazione: il mondo dello sviluppo \textit{mobile} è quello più ampio e in continua crescita. Ormai i \textit{computer} sono sempre più rari e vengono generalmente acquistati da persone ad alto livello di specializzazione, mentre il pubblico generalista preferisce usare gli \textit{smartphone}. E' quindi saggio a mio avviso sviluppare delle competenze in questo ambito perché saranno sicuramente molto spendibili.
 \begin{figure}[H]
     \centering
-    \includegraphics[height=5cm]{infografica_survey_dev_22}
-    \caption{Infografica che evidenzia quanto sia fondamentale l'equilibrio vita-lavoro. Fonte: \href{https://www.bitboss.it/developers-hub/the-state-of-development-in-italy/2022}{bitboss}}
+    \includegraphics[width=\linewidth]{market_share_mobile}
+    \caption[\textit{Market share} \textit{desktop} e \textit{mobile}]{Infografica utilizzo applicazioni \textit{mobile} rispetto a \textit{desktop} e \textit{tablet}.\footnotemark}
 \end{figure}
-Il terzo punto nasce da una considerazione: il mondo dello sviluppo \textit{mobile} è quello più ampio e in continua crescita. Ormai i \textit{computer} sono sempre più rari e vengno generalmente acquistati da persone ad alto livello di specializzazione, mentre il pubblico generalista preferisce acquistare \textit{smartphone} e \textit{tablet}. E' quindi saggio a mio avviso sviluppare delle competenze in questo ambito perchè saranno sicuramente molto spendibili.
-\begin{figure}[H]
-    \centering
-    \includegraphics[height=7cm]{market_share_mobile}
-    \caption{Infografica utilizzo applicazioni \textit{mobile} rispetto a \textit{desktop} e \textit{tablet}. Fonte: \href{https://gs.statcounter.com/platform-market-share/desktop-mobile-tablet}{statcounter}}
-\end{figure}
-Infine, il quarto e ultimo motivo che mi ha spinto a scegliere questo \textit{stage} rispetto ad altri riguarda la tecnologia affrontata: trovo affascinante l'impiego della realtà aumentata perchè è molto poco comune e, probabilmente, diventerà man mano più diffusa con il passare degli anni. Inoltre tra quelle disponibili ho trovato intelligente da parte di Datasoil scegliere proprio quella di Microsoft che, forte di disponibilità economiche fuori misura, difficilmente abbandonerà un progetto sul quale ha già investito così largamente.\\
+\footnotetext{Fonte: \url{https://gs.statcounter.com/platform-market-share/desktop-mobile-tablet}}
+Infine, il quarto e ultimo motivo che mi ha spinto a scegliere questo \textit{stage} rispetto ad altri riguarda la tecnologia affrontata: trovo affascinante l'impiego della realtà aumentata perché è molto poco comune e, probabilmente, diventerà man mano più diffusa con il passare degli anni. Inoltre tra quelle disponibili ho trovato intelligente da parte di Datasoil scegliere proprio quella di Microsoft visto che, forte di disponibilità economiche fuori misura, difficilmente abbandonerà un progetto sul quale ha già investito così largamente.
 \begin{figure}[H]
     \centering
     \begin{minipage}{.5\textwidth}
@@ -107,18 +117,18 @@ Infine, il quarto e ultimo motivo che mi ha spinto a scegliere questo \textit{st
       \includegraphics[width=1\linewidth]{nintendoAR}
       \captionof{figure}{Nintendo 3DS realtà aumentata}
     \end{minipage}
-    \caption{Ikea sperimenta con la realtà aumentata per vendere mobilia, Nintendo per scopi ludici. Fonti: \href{https://www.ikea.com/au/en/customer-service/mobile-apps/say-hej-to-ikea-place-pub1f8af050}{Ikea}, \href{https://vrscout.com/news/nintendo-president-says-company-exploring-ar/}{VRScout}}
+    \caption[Ikea e Nintendo usano realtà aumentata]{Ikea sperimenta con la realtà aumentata per vendere mobilia, Nintendo per scopi ludici.\footnotemark}
 \end{figure}
+\footnotetext{Fonte Ikea: \url{https://www.ikea.com/au/en/customer-service/mobile-apps/say-hej-to-ikea-place-pub1f8af050}\\
+\hspace*{5.37mm}Fonte Nintendo: \url{https://vrscout.com/news/nintendo-president-says-company-exploring-ar/}}
 
-Naturalmente oltre a tutto ciò sono ho avuto un'impressione umana molto positiva durante la riunione di primo contatto avuta con Andrea Ongaro (che poi è diventato il mio tutor aziendale) e Pietro Decaro (amministratore delegato di Datasoil), che mi ha incentivato ad accettare questo specifico progetto.\\
-\aCapo{}
-
+Naturalmente oltre a tutto ciò sono ho avuto un'impressione umana molto positiva durante la riunione di primo contatto avuta con Andrea Ongaro (che poi è diventato il mio \textit{tutor} aziendale) e Pietro Decaro (amministratore delegato di Datasoil), il che mi ha incentivato ad accettare questo specifico progetto.\\
 Schematizzo quindi gli obiettivi che voglio perseguire tramite l'esperienza di \textit{stage}:
 \begin{itemize}
     \item Acquisire competenze di programmazione \textit{frontend}:
         \begin{itemize}
             \item Utilizzare linguaggi specifici (ad esempio Dart);
-            \item Sviluppare componenti grafiche per applicazioni mobile;
+            \item Sviluppare componenti grafiche per applicazioni \textit{mobile};
             \item Sviluppare familiarità con strumenti comunemente usati (ad esempio \vsc);
         \end{itemize}
     \item Osservare direttamente il lavoro in azienda \textit{software}:
@@ -130,7 +140,7 @@ Schematizzo quindi gli obiettivi che voglio perseguire tramite l'esperienza di \
     \item Acquisire competenze di sviluppo \textit{mobile}:
         \begin{itemize}
             \item Sviluppare familiarità con strumenti comunemente usati (ad esempio emulatori);
-            \item Sviluppare componenti applicazione mobile;
+            \item Sviluppare componenti applicazione \textit{mobile};
             \item Utilizzare \textit{framework} specifici (ad esempio Flutter);
         \end{itemize}
     \item Acquisire competenze di realtà aumentata:
