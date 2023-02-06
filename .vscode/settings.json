@@ -13,5 +13,15 @@
             },
             "cursorLeft"
         ],
+        "insertCode":[
+            {
+                "command": "type",
+                "args": {
+                    "text": "\\verb++"
+                }
+            },
+            "cursorsLeft",
+            "cursorLeft"
+        ]
     }
 }
