@@ -23,6 +23,7 @@ Sezioni: solo prima lettera caps
 
 ### Custom Keybindings 
 - alt + shift + Q : auto italic
+- alt + shift + W : auto code font
 
 ### Miscellanous
 ```tex
