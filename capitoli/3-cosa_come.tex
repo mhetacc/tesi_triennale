@@ -32,6 +32,7 @@ Dart è un linguaggio compilato fortemente tipizzato con sintassi simile a C, e 
 \end{lstlisting} 
 
 Permette inoltre l'interpolazione di stringhe:
+
 \begin{lstlisting}[language=dart, firstnumber=1,caption={Dart interpolazone stringhe}]
     //sfrutto il simbolo $
     'number = $variableName';              //inserisco in stringa direttamente una variabile
@@ -39,6 +40,7 @@ Permette inoltre l'interpolazione di stringhe:
 \end{lstlisting}
 
 Dart tratta in maniera particolare le funzioni, che sono oggetti, hanno un tipo (\verb+Function+), possono avere parametri posizioni o nominali, obbligatori od opzionali: 
+
 \begin{lstlisting}[language=dart, firstnumber=1,caption={Dart parametri funzioni}]
     //parametri obbligatori posizionali
     void fun (int a, int b);  //non possono essere nulli, non essendo 'int? a'
@@ -61,6 +63,7 @@ Dart tratta in maniera particolare le funzioni, che sono oggetti, hanno un tipo 
 \end{lstlisting}
 
 Esistono le funzioni anonime (largamente sfruttate nei metodi \verb+build+ di Flutter), che possono essere ovviamente passate come argomento ad altre funzioni, essendo oggetti:
+
 \begin{lstlisting}[language=dart, firstnumber=1,caption={Dart funzioni anonime}]
     //prima sintassi
     (){
@@ -79,6 +82,7 @@ Esistono le funzioni anonime (largamente sfruttate nei metodi \verb+build+ di Fl
 \end{lstlisting}
 
 Abbiamo delle espressioni condizionali specifiche del linguaggio dalla grande espressività e che quindi vengono largamente usate:
+
 \begin{lstlisting}[language=dart, firstnumber=1,caption={Dart espressioni ternarie}]
     //primo tipo di condizione, detta ternaria
     condizione ? expr1 : expr2;
@@ -106,6 +110,7 @@ Abbiamo delle espressioni condizionali specifiche del linguaggio dalla grande es
 \end{lstlisting}
 
 I caratteri \verb+?+ e \verb+!+ sono, come si evince dalle espressioni ternarie e dalla \textit{null safety}, di cruciale importanza in Dart, ed è quindi opportuno vedere ancora qualche esempio del loro utilizzo:
+
 \begin{lstlisting}[language=dart, firstnumber=1,caption={Dart operatori '?' e '!'}]
     list[1]     //accede al secondo elemento della lista
 
@@ -131,6 +136,7 @@ I caratteri \verb+?+ e \verb+!+ sono, come si evince dalle espressioni ternarie 
 
 Le applicazioni \textit{mobile} e \textit{web} spesso si trovano a eseguire istruzioni che richiedono l'attesa di risorse esterne (ottenere dati dalla rete o leggerli da un \textit{file}, oppure scrivere su un \textit{database}). Per evitare il completo blocco dell'esecuzione (disastroso per un applicativo \textit{consumer}) Dart implementa nativamente delle funzioni di programmazione asincrona, che permetto di svolgere operazioni anche mentre altre sono in attesa.\\
 Per fare ciò si serve di tre \textit{keyword}: \verb+async+, \verb+await+ e \verb+Future+:
+
 \begin{lstlisting}[language=dart, firstnumber=1,caption={Dart programmazione asincrona}]
     Future<void> checkVersion () async {
         var version = await lookUpVersion();
@@ -140,6 +146,7 @@ Per fare ciò si serve di tre \textit{keyword}: \verb+async+, \verb+await+ e \ve
 \end{lstlisting}
 
 Trattiamo infine le caratteristiche peculiari di Dart per quanto riguarda classi e metodi:
+
 \begin{itemize}
     \item Esistono i costruttori costanti, marcati \verb+const+, che sono inizializzati a \textit{compile-time}. Tutti gli altri sono implicitamente dinamici (quindi \textit{run-time});
     \item Posso creare costruttori nominati per implementare costruttori multipli tramite la sintassi:
@@ -154,14 +161,17 @@ Trattiamo infine le caratteristiche peculiari di Dart per quanto riguarda classi
 \end{itemize}
 
 Mostriamo ora alcuni componenti di Flutter necessari al proseguimento della lettura, partendo dai \textit{widget}: riprendono l'idea di React di costruire tutta l'interfaccia grafica tramite uno \textit{stack} di \textit{widget}, che definiscono il proprio aspetto basandosi sulla configurazione e lo stato attuali. Quando lo stato di un \textit{widget} cambia, esso riscrive la propria descrizione (insieme di istruzioni e valori che lo determinano) e il \textit{framework} valuta le differenze tra questa e la descrizione precedente per apportare le modifiche necessarie al suo \textit{render tree} e quindi, ultimamente, modificarne l'aspetto e finalizzare il cambio di stato.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Flutter_trees}
     \caption[I tre alberi di Flutter]{Flutter usa tre alberi logici come rappresentazione delle proprie strutture: uno per i \textit{widget}, uno per gli \textit{element} e infine quello di \textit{render}.\footnotemark}
     \label{fig:flutter-trees}
 \end{figure}
+
 \footnotetext{Fonte: \url{https://docs.flutter.dev/resources/architectural-overview}}
 L'albero di \textit{render} è una delle tre strutture logiche che Flutter usa per descrivere i propri oggetti e le proprie interfacce grafiche: il \textit{widget tree} rappresenta gli elementi di un \textit{widget} come uno \textit{stack} di \textit{widget}, messi in relazione con il loro elemento padre e i loro elementi figli. Nel caso del \textit{widget tree} rappresentato in figura \ref{fig:flutter-trees} esso rappresenta un \verb+Containter+ che contiene un \verb+ColoredBox+ che a sua volta contiene una \verb+Row+ e via dicendo. I \textit{widget} sono per definizione immutabili, quindi una modifica richiede necessariamente una distruzione e successiva ricreazione del \textit{widget} interessato.
+
 \begin{lstlisting}[language=dart, caption={Codice rilevante per la parte grafica dell'\textit{app} di esempio di Flutter}]
     Widget build(BuildContext context) {
         return Scaffold(
@@ -192,18 +202,20 @@ L'albero di \textit{render} è una delle tre strutture logiche che Flutter usa p
 \end{lstlisting}
 
 Il codice precedente produce il seguente risultato (e il seguente \textit{widget tree}):
+
 \begin{figure}[H]
     \centering
     \includegraphics[height=8cm]{app_esempio_render_tree.png}\hspace{15mm}
     \includegraphics[height=8cm]{flutter_app_default.jpg}
     \caption[\textit{Widget tree} app esempio]{Il \textit{widget tree} dell'applicazione di esempio di Flutter e il suo risultato su Android}
 \end{figure}
+
 Per quanto riguarda le dimensioni delle varie componenti Flutter ragiona come segue: i padri passano ai figli (dall'altro verso il basso del \textit{widget tree}) dei \textit{"constraints"}, ovvero le dimensioni massime oltre le quali non possono cresce di dimensione, e i figli passano quindi ai padri (dal basso verso l'alto del \textit{widget tree}) le proprie dimensioni.\\
 Il \textit{widget tree} è quello più importante da tenere a mente, e che più direttamente si interfaccia con il codice scritto dal programmatore. Torniamo però alla figura \ref{fig:flutter-trees} per parlare brevemente degli altri due alberi: l'\textit{element tree} rappresenta gli elementi che, a differenza dei \textit{widget}, sono mutabili e vengono definiti come "un'istanza di un \textit{Widget} in una particolare posizione dell'albero". Gli elementi sono responsabili di aggiornare l'interfaccia utente e fungono da ponte tra \verb+Widget+ e \verb+Render Object+.\\
 Il \textit{render tree} rappresenta i \verb+Render Object+ e viene interpellato dal \textit{framework} per disegnare i componenti dell'interfaccia grafica. Una singola istanza di \verb+Render Object+ contiene tutte le informazioni riguardanti dimensioni, colori e logiche di \textit{layout} di un \verb+Widget+.\\
 Abbiamo accennato che i \textit{widget} quando chiamano stato richiamano il proprio metodo \verb+build+ che provoca quindi una ricostruzione del \textit{widget} stesso. Questi \textit{widget} si chiamano \textit{"stateful}, e sono in diretta contrapposizone con quelli incapaci di modificarsi durante l'esecuzione, chiamati \textit{"stateless"}. 
 
-\begin{lstlisting}[language=dart, caption={Creazione \textit{stateless widget}}]
+\begin{lstlisting}[language=dart, label={lst:stateful_widget}, caption={Creazione \textit{stateless widget}}]
 class MyApp extends StatelessWidget {
   //stateless widget che fa da radice per l'applicazione
   const MyApp({super.key});
@@ -243,12 +255,74 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {}
 }
 \end{lstlisting}
-Si nota immediatamente che l'uso degli \textit{stateful widget} provoca la scrittura di codice ridondante, ed è per questo motivo che sono stati introdotti 
+
+Si nota immediatamente che l'uso degli \textit{stateful widget} provoca la scrittura di codice ridondante e si è quindi deciso di arginare questo problema, aumentando al contempo la condivisione di codice tra i \textit{widget}, introducendo i Flutter Hooks (ispirati dagli \textit{hooks} di React).
+Vediamo quindi la riscrittura del codice mostrato in estratto \ref{lst:stateful_widget} opportunamente modificato usando un \verb+HookWidget+:
+
+\begin{lstlisting}[language=dart, caption={Creazione \textit{hook widget}}]
+class MyApp extends StatelessWidget {
+  //stateless widget che fa da radice per l'applicazione
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    );
+  }
+}
+
+class MyHomePage extends HookWidget {
+  //basta questa classe per fare tutti gli step
+  //necessari al cambio di stato
+
+  const MyHomePage({super.key, required this.title});
+  final String title;
+
+  Widget  build (BuildContext context){
+    //_counter viene inizializzato a zero e reso
+    //l'hook per il cambio di stato, quindi quando
+    //il suo valore cambia viene provocato un rebuild
+    final _counter = useState(0)
+
+    return Scaffold(
+      appBar: AppBar(),
+      body: Center(),
+      floatingActionButton: FloatingActionButton(
+        //qui il valore di _counter cambia
+        //provocando una rebuild
+        onPressed: () => _counter.value++,
+      )
+    )
+  }
+}
+\end{lstlisting}
 
 \subsubsection{Realtà aumentata}
-\subsubsection{Ancoraggi in realtà aumentata}
-\subsubsection{Azure Spatial Anchors}
-\subsubsection{Gemello Digitale}
+Uno dei punti centrali di questa tesi è la realtà aumentata e gli ancoraggi che è possibile posizionare all'interno di uno spazio tridimensionale, ed è quindi intelligente presentare preventivamente l'argomento e i concetti chiave.\\
+La realtà aumentata consiste nel prendere lo spazio tridimensionale reale e trasporlo, tramite tecniche di mappatura, in formato digitale per poi poterci effettuare delle manipolazioni tramite \textit{software}. Ad esempio è possibile, nell'applicazione di Ikea, inquadrare il proprio salotto e posizionarci dei modelli poligonali\footnote{Detti anche \textit{asset} poligonali, prendono questo nome perché nel mondo della modellazione digitale tridimensionale le entità sono composte da triangoli adiacenti tra loro (poligoni appunto) che costruiscono una figura volumetrica. Questo perché il triangolo è la più semplice forma bidimensionale esistente, e quindi la meno esosa da calcolare.} della mobilia venduta dal colosso svedese.\\
+
+\todo{} inserire pic ikea\\
+
+Sebbene sia possibile immaginare lo spazio virtuale come un cubo vuoto all'interno del quale posizionare \textit{asset}, vengono applicate delle semplificazioni logiche per una questione di complessità ed efficienza di calcolo: lo spazio viene processato come una serie di piani bidimensionali sovrapposti a diverse altezze (una sorta di \textit{stack} di battaglie navali) e gli ancoraggi si legano quindi a una coppia di coordinate \textit{(x,y)} relativa al piano più la coordinata \textit{(z)} del piano stesso. Esistono inoltre piani orizzontali e verticali (non a caso alcune delle funzioni chiave di ARCore e ARKit servono a identificare gli spazi lisci).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{planes3D_temp}
+  \caption[Piani in realtà aumentata]{caption \todo}
+\end{figure}
+
+Nella maggior parte dei casi è bene legare a un ancoraggio multiple entità diverse, questo perchè la \textit{pose} degli oggetti (ovvero rotazione verticale e orizzontale) è legata a quella della \textit{anchor} associata. Di conseguenza se vogliamo rappresentare in una stanza un insieme realistico di mobili (o meglio, di modelli poligonali e quindi gemelli digitali di mobili), se li leghiamo a un ancoraggio centrale rispetto alla stanza tutti gli elementi avranno sempre una posizione relativa corretta tra di loro. Se invece ogni elemento ha la sua \textit{anchor} potremmo vedere rotazioni errate oppure potrebbero spostarsi anche di qualche metro rispetto alla loro posizione originale.\\
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{anchors_temp}
+  \caption[Ancoraggi singoli per multipli elementi]{caption \todo}
+\end{figure}
+
+
+
+\subsubsection{Azure ToolKit}
 
 \subsection{Framework realtà aumentata per Flutter}
 Essendo lo scopo di questo stage, e quindi il caso di studio di questa tesi, l'implementazione di una vista in realtà aumentata (nello specifico sfruttando \asa{}) in un'applicazione preesistente sviluppata in Flutter, una grossa parte del lavoro svolto si è incentrato sullo studio dei \textit{framework} e/o \textit{plug-in} disponibili.\\
