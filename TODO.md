@@ -25,7 +25,7 @@ Sezioni: solo prima lettera caps
 - alt + shift + Q : auto italic
 - alt + shift + W : auto code font
 
-### Miscellanous
+### Miscellaneous
 ```tex
     %indentazione footnote
     \hspace*{5.37mm}
