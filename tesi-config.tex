@@ -40,7 +40,9 @@
 %**************************************************************
 % Importazione package
 %************************************************************** 
-\usepackage[table]{xcolor}                % colore tabelle
+
+\usepackage[table]{xcolor}                       % colore tabelle
+
 \PassOptionsToPackage{dvipsnames}{xcolor} % colori PDF/A
 
 \usepackage{colorprofiles}
@@ -254,6 +256,40 @@
 
 
 %**************************************************************
+% Definizione colori
+%**************************************************************
+
+\definecolor{red}{cmyk}{0,0.87,0.68,0.32}
+
+\definecolor{todoOrange}{rgb}{0.98, 0.3, 0.0}
+\definecolor{blond}{rgb}{0.98, 0.94, 0.75}
+\definecolor{RoyalBlue}{rgb}{0.0, 0.14, 0.4}
+\definecolor{green}{rgb}{0.0, 0.56, 0.0}
+\definecolor{orange}{rgb}{1.0, 0.27, 0.0}
+\definecolor{black}{rgb}{0.06, 0.05, 0.03}
+
+\colorlet{punct}{red!60!black}
+\definecolor{background}{HTML}{EEEEEE}
+\definecolor{delim}{RGB}{20,105,176}
+\colorlet{numb}{magenta!60!black}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.82, 0.62, 0.91}
+\definecolor{codeblue}{rgb}{0, 0.5, 1}
+\definecolor{codeorange}{rgb}{1, 0.22, 0}
+
+% per XML
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{gray}{rgb}{0.4,0.4,0.4}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+\definecolor{lightblue}{rgb}{0.0,0.0,0.9}
+\definecolor{cyan}{rgb}{0.0,0.6,0.6}
+\definecolor{darkred}{rgb}{0.6,0.0,0.0}
+\definecolor{LinkBlue}{rgb}{0.01, 0.28, 1.0}
+\definecolor{ultramarine}{rgb}{0.07, 0.04, 0.56}
+%**************************************************************
 % Impostazioni di hyperref
 %**************************************************************
 \hypersetup{
@@ -278,7 +314,7 @@
     pdfhighlight=/O,
     %nesting=true,
     %frenchlinks,
-    urlcolor=webbrown,
+    urlcolor=LinkBlue,
     linkcolor=RoyalBlue,
     citecolor=webgreen,
     %pagecolor=RoyalBlue,
@@ -290,6 +326,7 @@
     %pdfcreator={pdfLaTeX},
     %pdfproducer={LaTeX}
 }
+\urlstyle{same}
 
 %**************************************************************
 % Impostazioni di itemize
@@ -310,7 +347,7 @@
     keywordstyle=\color{RoyalBlue}, %\bfseries,
     basicstyle=\small\ttfamily,
     %identifierstyle=\color{NavyBlue},
-    commentstyle=\color{Green}\ttfamily,
+    commentstyle=\color{green}\ttfamily,
     stringstyle=\rmfamily,
     numbers=none, %left,%
     numberstyle=\scriptsize, %\tiny
@@ -321,16 +358,18 @@
     frameround=ftff,
     frame=single
 } 
-\colorlet{punct}{red!60!black}
-\definecolor{background}{HTML}{EEEEEE}
-\definecolor{delim}{RGB}{20,105,176}
-\colorlet{numb}{magenta!60!black}
-\definecolor{codegreen}{rgb}{0,0.6,0}
-\definecolor{codegray}{rgb}{0.5,0.5,0.5}
-\definecolor{codepurple}{rgb}{0.82, 0.62, 0.91}
-\definecolor{codeblue}{rgb}{0, 0.5, 1}
-\definecolor{codeorange}{rgb}{1, 0.22, 0}
 
+\lstdefinelanguage{XML}
+{
+  morestring=[s][\color{mauve}]{"}{"},
+  morestring=[s][\color{black}]{>}{<},
+  morecomment=[s]{<?}{?>},
+  morecomment=[s][\color{dkgreen}]{<!--}{-->},
+  stringstyle=\color{black},
+  identifierstyle=\color{lightblue},
+  keywordstyle=\color{red},
+  morekeywords={xmlns,xsi,noNamespaceSchemaLocation,type,id,x,y,source,target,version,tool,transRef,roleRef,objective,eventually}% list your attributes here
+}
 
 % Define the codebox
 \lstdefinelanguage{dart}{
@@ -485,14 +524,7 @@ backgroundcolor=\color{background},
 \newcommand{\classdesc}[2]{\item[\textbf{#1:}] #2}
 %**************************************************************
 %cose mie
-\definecolor{red}{cmyk}{0,0.87,0.68,0.32}
 
-\definecolor{todoOrange}{rgb}{0.98, 0.3, 0.0}
-\definecolor{blond}{rgb}{0.98, 0.94, 0.75}
-\definecolor{RoyalBlue}{rgb}{0.0, 0.14, 0.4}
-\definecolor{green}{rgb}{0.0, 0.56, 0.0}
-\definecolor{orange}{rgb}{1.0, 0.27, 0.0}
-\definecolor{black}{rgb}{0.06, 0.05, 0.03}
 \newlength{\freewidth}      %necessaria alle tabelle
 %\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
