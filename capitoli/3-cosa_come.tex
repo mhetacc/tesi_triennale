@@ -7,14 +7,13 @@
 \label{cap:realizzazione}
 %**************************************************************
 
-\section{Pianificazione del lavoro}
-In questa sezione verranno presentati i passaggi effettuati durante lo \textit{stage} per raggiungere un grado di comprensione sufficiente a produrre i risultati voluti. Partendo da uno studio delle tecnologie e dei concetti di base necessari ad avere un'idea del contesto in cui muoversi, passando quindi all'analisi dei \textit{framework} disponibili per realizzare gli obiettivi fissati, ed infine stilando una vera e propria lista di requisiti desiderabili.\\
-Le sezioni riguardanti tecnologie e \textit{framework} saranno necessarie anche al lettore per comprendere appieno le scelte progettuali e di codifica effettuate.
 
-\subsection{Studio delle tecnologie}
-\subsubsection{Flutter}
+
+\section{Studio delle tecnologie}
+\subsection{Flutter}
 E' impossibile parlare di Flutter senza prima discutere del linguaggio su cui si basa: Dart.\\
-Faremo quindi un'introduzione quanto più sintetica possibile sulle sue caratteristiche più proprietarie, tralasciando invece le similitudini a linguaggi popolari che possono facilmente essere intuite dal lettore.\\
+Faremo quindi un'introduzione quanto più sintetica possibile sulle sue caratteristiche più proprietarie, tralasciando invece le similitudini a linguaggi popolari che possono facilmente essere intuite dal lettore.
+\subsubsection{Dart}
 Dart è un linguaggio compilato fortemente tipizzato con sintassi simile a C, e adotta molte funzionalità tipiche dei linguaggi moderni: considera infatti ogni variabile un oggetto e implementa la \textit{null safety}, obbligando il programmatore a esplicitare con sintassi specifiche la presenza o meno del valore \verb+null+.
 
 \begin{lstlisting}[language=dart, firstnumber=1,caption={Dart \textit{null safety}}]
@@ -160,6 +159,7 @@ Trattiamo infine le caratteristiche peculiari di Dart per quanto riguarda classi
     \item I metodi \textit{getter} e \textit{setter} di una classe vengono creati implicitamente per variabili non \verb+final+, ma possono essere definiti esplicitamente con le \textit{keyword} \verb+get+ e \verb+set+.
 \end{itemize}
 
+\subsubsection{Widget}
 Mostriamo ora alcuni componenti di Flutter necessari al proseguimento della lettura, partendo dai \textit{widget}: riprendono l'idea di React di costruire tutta l'interfaccia grafica tramite uno \textit{stack} di \textit{widget}, che definiscono il proprio aspetto basandosi sulla configurazione e lo stato attuali. Quando lo stato di un \textit{widget} cambia, esso riscrive la propria descrizione (insieme di istruzioni e valori che lo determinano) e il \textit{framework} valuta le differenze tra questa e la descrizione precedente per apportare le modifiche necessarie al suo \textit{render tree} e quindi, ultimamente, modificarne l'aspetto e finalizzare il cambio di stato.
 
 \begin{figure}[H]
@@ -298,7 +298,9 @@ class MyHomePage extends HookWidget {
 }
 \end{lstlisting}
 
-\subsubsection{Realtà aumentata}
+\subsubsection{Method Channels}
+
+\subsection{Realtà aumentata}
 Uno dei punti centrali di questa tesi è la realtà aumentata e gli ancoraggi che è possibile posizionare all'interno di uno spazio tridimensionale, ed è quindi intelligente presentare preventivamente l'argomento e i concetti chiave.\\
 La realtà aumentata consiste nel prendere lo spazio tridimensionale reale e trasporlo, tramite tecniche di mappatura, in formato digitale per poi poterci effettuare delle manipolazioni tramite \textit{software}. Ad esempio è possibile, nell'applicazione di Ikea, inquadrare il proprio salotto e posizionarci dei modelli poligonali\footnote{Detti anche \textit{asset} poligonali, prendono questo nome perché nel mondo della modellazione digitale tridimensionale le entità sono composte da triangoli adiacenti tra loro (poligoni appunto) che costruiscono una figura volumetrica. Questo perché il triangolo è la più semplice forma bidimensionale esistente, e quindi la meno esosa da calcolare.} della mobilia venduta dal colosso svedese.\\
 
@@ -320,7 +322,7 @@ Nella maggior parte dei casi è bene legare a un ancoraggio multiple entità div
   \caption[Ancoraggi singoli per multipli elementi]{caption \todo}
 \end{figure}
 
-\subsubsection{Azure ToolKit}
+\subsection{Azure ToolKit}
 Azure è l'ombrello sotto al quale vivono tutti i servizi \textit{cloud} di Microsoft esterni al pacchetto Office 365, e comprendono \textit{database} relazionali con scalabilità automatica (Azure SQL o Azure Cosmos DB), macchine virtuali remote (Virtual Machines e Azure Virtual Desktop) fino a funzionalità estremamente avanzate come Azure Kubernetes Service che fornisce un sistema automatizzato per rilasciare, scalare e gestire grandi applicativi \textit{sofware} (ad esempio per i \textit{data center}), oppure Azure Quantum che mette a disposizioni soluzioni per scrivere e far girare \textit{software} su \textit{hardware} quantistico.\\
 Come si può notare la \textit{suite} Azure è indirizzata a utenti altamente specializzati e ancora più spesso a organizzazioni vere e proprie.
 
@@ -445,7 +447,7 @@ Vediamo quindi di schematizzare e mettere a confronto pregi e difetti delle due 
 
 E' stato infine scelto \aplug{} rispetto ad ARwayKit per evitare di interfacciarsi con Unity e per la necessità di avere la vista in realtà aumentata implementata direttamente in Flutter.
 
-\subsection{Analisi dei requisiti}
+\section{Analisi dei requisiti}
 Di seguito sono riportati i requisti individuati nel piano di lavoro proposto e a seguito di opportuni confronti con il tutor aziendale. Essi sono catalogati secondo la dicitura:
 \begin{center}
     \textbf{R[Obbligatorietà][Tipologia][Codice]}
@@ -466,7 +468,7 @@ dove:
     \item \textbf{Codice}: identifica univocamente un requisito all'interno della sua tipologia (ovvero possono esistere due requisiti con lo stesso codice a patto che siano uno funzionale e uno di vincolo). Per i requisti subordinati si usa il "punto" come divisorio (\textit{ReqPadre, ReqPadre.Figlio1})
 \end{itemize}
 
-\subsubsection{Requisiti funzionali}
+\subsection{Requisiti funzionali}
 {
     \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
     \renewcommand{\arraystretch}{1.5}
@@ -507,8 +509,6 @@ dove:
     R1F9 & Le informazioni contestuali di un \textit{ticket} includono data e ora di creazione\\
     %UI AR
     R1F10 & Gli ancoraggi hanno rappresentazione visiva contestuale\\ 
-    R1F10.1 & Gli \textit{asset} vengono rappresentati come \todo\\
-    R1F10.2 & I \textit{ticket} vengono rappresentati come \todo\\
     R1F11 & \textit{On-Tap} sullo spazio permette di creare una ancoraggio in posizione\\
     R1F11.1 & Ancoraggio posizionato nello spazio può essere salvato\\
     R1F11.2 & Ancoraggio posizionato nello spazio può essere eliminato\\
@@ -521,7 +521,7 @@ dove:
     \end{longtable}
 }
 
-\subsubsection{Requisiti di vincolo}
+\subsection{Requisiti di vincolo}
 {
     \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
     \renewcommand{\arraystretch}{1.5}
@@ -551,7 +551,7 @@ dove:
     \end{longtable}
 }
 
-\subsubsection{Riepilogo requisiti}
+\subsection{Riepilogo requisiti}
 Sono stati individuati un totale di 36 requisiti, 29 funzionali e 7 di vincolo, di seguito schematizzati:
 {
     \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
@@ -601,11 +601,63 @@ Sono stati individuati un totale di 36 requisiti, 29 funzionali e 7 di vincolo, 
     \end{longtable}
 }
 
-\subsection{Attività di supporto}
-\subsubsection{Interazione aziendale}
-\subsubsection{Processi di verifica e validazione}
+
 %************************************************************************************************************
+
+\section{Pianificazione}
+La natura estremamente sperimentale di questo progetto ha reso vano ogni tentativo di pianificare accuratamente il lavoro (complici anche le problematiche che vedremo nella sezione \ref{sec:difficolta_incontrate}).\\
+Per questo motivo, una volta scelto il \textit{framework} per l'implementazione di \asa{} in Flutter l'approccio scelto è stato di \textit{trial-and-error}, e ha impegnato una buona parte del tempo di stage sia mio che dei membri di Datasoil responsabili del \textit{frontend}.\\
+E' stata comunque fatta, di settimana in settimana, una scaletta degli obiettivi da raggiungere per il lunedì successivo, tuttavia si è riusciti a seguirla solo fintanto che comprendeva lo studio delle tecnologie e la creazione di brevi \textit{proof of concept} (ad esempio costruire un'applicazione in Dart e poi tradurre i suoi \textit{stateful widget} in \textit{hook widget}).\\
+Riporto quindi la programmazione settimanale che, siccome questo documento è scritto al termine dei lavori, è in parte anche un rendicontazione:
+
+\begin{itemize}
+  \item \textbf{Settimana 1:} 
+      \begin{itemize}
+          \item Installazione e configurazione del \textit{framework} Flutter e della \sdk{} per Android 
+          \item Configurazione emulatore Android (scelto Pixel 6 API 33) e 
+          \textit{developers options} sul mio telefono personale;
+          \item Configurazione \vsc{} e \astudio;
+          \item Sviluppo di applicazione d'esempio con Flutter che sfrutta gli \textit{stateful widgets};
+      \end{itemize} 
+  \item \textbf{Settimana 2:} 
+      \begin{itemize}
+          \item Studio degli \textit{hook widgets};
+          \item Traduzione degli \textit{stateful widgets} dell'applicazione d'esempio in \textit{hook widgets};
+          \item Sviluppo applicazione d'esempio con gli \textit{hook widgets};
+      \end{itemize}
+  \item \textbf{Settimana 3:} 
+      \begin{itemize}
+          \item Studio delle \asa;
+          \item Creazione risorse necessarie nel portale di Azure;
+          \item Sviluppo applicazione di esempio per \asa{};
+      \end{itemize}
+  \item \textbf{Settimana 4:} Studio dei metodi per implementare le asa in Flutter:
+      \begin{itemize}
+          \item Studio dei \textit{method channels};
+          \item Studio di ARwayKit e valutazione del suo approccio tramite Unity;
+          \item Studio di \aplug;
+      \end{itemize}
+  \item \textbf{Settimana 5:} 
+      \begin{itemize}
+          \item Adattamento dell'esempio \aplug{} per integrarci le \asa{};
+          \item Lettura dei \textit{logs} per filtrarne gli \textit{output};
+      \end{itemize}
+  \item \textbf{Settimana 6:} 
+      \begin{itemize}
+        \item Utilizzo diretto di ARCore in Flutter per capirne il flusso;
+        \item Integrazione \asa{} in Flutter;
+      \end{itemize}
+  \item \textbf{Settimana 7:} Integrazione componenti realtà aumentata in MobileSYN lato Android;
+  \item \textbf{Settimana 8:} Integrazione componenti realtà aumentata in MobileSYN lato iOS;
+\end{itemize}
+
+I processi di verifica e validazione non hanno potuto fare affidamento su sistemi consolidati, in quanto tutto il lavoro è stato genuinamente sperimentale, e quindi ci si è affidati al \textit{testing} "sul campo", ovvero provando direttamente l'applicazione (a un certo punto usando direttamente la versione in produzione) per valutare il progresso dei lavori e scoprire la presenza o meno di errori.\\
+Di grande aiuto sono stati i \textit{logs} delle varie applicazioni provate (da MobileSYN, all'applicazione di esempio di \aplug{} fino a quella di \asa{}) che hanno, in parte, sopperito alle gravi mancanze documentali delle tecnologie trattate.
+
+%************************************************************************************************************
+
 \section{Difficoltà incontrate}
+\label{sec:difficolta_incontrate}
 \subsection{Problemi documentali}
 \subsection{Problemi tecnologici}
 
