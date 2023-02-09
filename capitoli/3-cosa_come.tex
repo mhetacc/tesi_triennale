@@ -1298,11 +1298,11 @@ L'unico requisito rimasto insoddisfatto è il seguente:
 
     \bottomrule
     \rowcolor{white} 
-    \caption{Requisiti soddisfatti dal codice.}
+    \caption{Requisiti non soddisfatti}
     \end{longtable}
 }
 
-Portando quindi la copertura totale dei requisit ad un livello più che soddisfacente.
+Portando quindi la copertura totale dei requisit ad un livello più che soddisfacente.\\
 Vediamo quindi una sintesi, in tabella singola, dei requisti soddisfatti e dove vederne la dimostrazione (figure o frammenti di codice).
 
 {
@@ -1312,35 +1312,35 @@ Vediamo quindi una sintesi, in tabella singola, dei requisti soddisfatti e dove 
     \setlength{\aboverulesep}{0pt}
     \setlength{\belowrulesep}{0pt}
     \rowcolors{2}{red!10}{white}
-    \begin{longtable}{C{.15\freewidth} C{1\freewidth}} 
+    \begin{longtable}{C{.3\freewidth} C{.4\freewidth}} 
        \toprule
     \rowcolor{red}
-    \textcolor{white}{\textbf{Codice}}&
-    \textcolor{white}{\textbf{Descrizione}}\\
+    \textcolor{white}{\textbf{Codice requisito}}&
+    \textcolor{white}{\textbf{Dove trovarne il soddisfacimento}}\\
     \toprule
     \endhead
 
-    R1V1 &\\
-    R2V2 &\\
-    R1V3 &\\
-    R1V3.1 &\\
-    R1V3.2 &\\
-    R1V4 &\\
-    R1V5 &\\
+    R1V1 &\ref{lst:arplug_manager}, \ref{lst:android_channels}, \ref{lst:ios_channels}, \ref{lst:asa_android_call}, \ref{lst:asa_manager_delete}\\
+    R2V2 &\ref{lst:arplug_manager}, \ref{lst:android_channels}, \ref{lst:ios_channels}, \ref{lst:asa_android_call}, \ref{lst:asa_manager_delete}\\
+    R1V3 &\ref{lst:mobilesyn_asset_provider}, \ref{lst:mobilesyn_ticket_provider}, \ref{lst:mobilesyn_asset_ticket_provider}, \ref{lst:mobilesyn_managers}, \ref{lst:mobilesyn_onARViewCreated}\\
+    R1V3.1 &\ref{lst:mobilesyn_asset_provider}, \ref{lst:mobilesyn_ticket_provider}, \ref{lst:mobilesyn_asset_ticket_provider}, \ref{lst:mobilesyn_managers}, \ref{lst:mobilesyn_onARViewCreated}\\
+    R1V3.2 &\ref{lst:mobilesyn_asset_provider}, \ref{lst:mobilesyn_ticket_provider}, \ref{lst:mobilesyn_asset_ticket_provider}, \ref{lst:mobilesyn_managers}, \ref{lst:mobilesyn_onARViewCreated}\\
+    R1V4 &\ref{lst:arplug_manager}, \ref{lst:android_channels}, \ref{lst:ios_channels}, \ref{lst:asa_android_call}, \ref{lst:asa_manager_delete}\\
+    R1V5 &\ref{lst:ar_view}\\
 
     R1F1 & \ref{fig:place_asset}\\
-    R1F2 & \\
-    R1F3 &\\
-    R1F3.1 &\\%C
-    R1F3.2 &\\%R
-    R2F3.3 &\\%U
-    R1F3.4 &\\%D
+    R1F2 & \ref{fig:ticket_ar}\\
+    R1F3 &\ref{lst:arplug_manager}, \ref{lst:android_channels}, \ref{lst:ios_channels}, \ref{lst:asa_android_call}, \ref{lst:asa_manager_delete}\\
+    R1F3.1 &\ref{lst:arplug_manager}, \ref{lst:android_channels}, \ref{lst:ios_channels}, \ref{lst:asa_android_call}, \ref{lst:asa_manager_delete}\\%C
+    R1F3.2 &\ref{lst:arplug_manager}, \ref{lst:android_channels}, \ref{lst:ios_channels}, \ref{lst:asa_android_call}, \ref{lst:asa_manager_delete}\\%R
+    R2F3.3 &\ref{lst:arplug_manager}, \ref{lst:android_channels}, \ref{lst:ios_channels}, \ref{lst:asa_android_call}, \ref{lst:asa_manager_delete}\\%U
+    R1F3.4 &\ref{lst:arplug_manager}, \ref{lst:android_channels}, \ref{lst:ios_channels}, \ref{lst:asa_android_call}, \ref{lst:asa_manager_delete}\\%D
     %API BACKEND
-    R1F4 & \\
-    R1F4.1 &\\
-    R1F4.2 &\\
-    R2F4.3 &\\
-    R2F4.4 &\\
+    R1F4 &\ref{lst:mobilesyn_asset_provider}, \ref{lst:mobilesyn_ticket_provider}, \ref{lst:mobilesyn_asset_ticket_provider}, \ref{lst:mobilesyn_managers}, \ref{lst:mobilesyn_onARViewCreated} \\
+    R1F4.1 &\ref{lst:mobilesyn_asset_provider}, \ref{lst:mobilesyn_ticket_provider}, \ref{lst:mobilesyn_asset_ticket_provider}, \ref{lst:mobilesyn_managers}, \ref{lst:mobilesyn_onARViewCreated}\\
+    R1F4.2 &\ref{lst:mobilesyn_asset_provider}, \ref{lst:mobilesyn_ticket_provider}, \ref{lst:mobilesyn_asset_ticket_provider}, \ref{lst:mobilesyn_managers}, \ref{lst:mobilesyn_onARViewCreated}\\
+    R2F4.3 &\ref{lst:mobilesyn_asset_provider}, \ref{lst:mobilesyn_ticket_provider}, \ref{lst:mobilesyn_asset_ticket_provider}, \ref{lst:mobilesyn_managers}, \ref{lst:mobilesyn_onARViewCreated}\\
+    R2F4.4 &\ref{lst:mobilesyn_asset_provider}, \ref{lst:mobilesyn_ticket_provider}, \ref{lst:mobilesyn_asset_ticket_provider}, \ref{lst:mobilesyn_managers}, \ref{lst:mobilesyn_onARViewCreated}\\
     %UI FLUTTER
     R1F5 & \ref{fig:asset_list}\\
     R2F6 & Non soddisfatto \\
@@ -1350,10 +1350,10 @@ Vediamo quindi una sintesi, in tabella singola, dei requisti soddisfatti e dove 
     R1F8.2 & \ref{fig:asset_list}\\
     R1F8.3 &\ref{fig:asset_list}\\
     R1F8.4 & \ref{fig:asset_list}\\
-    R1F9 & \\
+    R1F9 & \ref{fig:ticket_ar}\\
     %UI AR
-    R1F10 &\\ 
-    R1F11 \ref{fig:place_asset}& \\
+    R1F10 &\ref{fig:ticket_ar}\\ 
+    R1F11 &\ref{fig:place_asset} \\
     R1F11.1 & \ref{fig:place_asset}\\
     R1F11.2 & \ref{fig:place_asset}\\
     R1F12 & \ref{fig:place_asset}\\
@@ -1361,7 +1361,7 @@ Vediamo quindi una sintesi, in tabella singola, dei requisti soddisfatti e dove 
     
     \bottomrule
     \rowcolor{white} 
-    \caption{Tabella dei requisiti di vincolo}
+    \caption[Tabella requisiti-chi li soddisfa]{Tabella che mette in relazione i requisiti e dove si vede il loro soddisfacimento.}
     \end{longtable}
 }
 
