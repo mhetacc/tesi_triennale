@@ -299,6 +299,95 @@ class MyHomePage extends HookWidget {
 \end{lstlisting}
 
 \subsubsection{Method Channels}
+I \textit{method channel} nascono per uno scopo: utilizzare codice nativo tramite Flutter, ad esempio chiamare \api{} \textit{platform-specific} come Kotlin o Java per Android, Swift per iOS o C++ su Windows.\\
+Flutter non usa queste funzionalità tramite generazione di codice e preferisce un approccio basato sullo scambio di messaggi. Vediamo quindi un esempio di utilizzo per ottenere, tramite Java, il valore di carica della batteria di un dispositivo Android.\\
+Per prima cosa è necessario agire sull'Android \textit{manifest} inserendo il nome dell'applicazione di Flutter (in questo caso \verb+batterylevel+). L'applicazione si può creare con il comando \verb+flutter create nome_applicazione+.
+
+\begin{lstlisting}[language=XML, firstnumber=1,caption={Android \textit{manifest}}]
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  package="com.example.batterylevel">
+\end{lstlisting}
+
+A questo punto si vanno a costruire gli "agganci" per il \textit{method channel} in codice nativo, in questo caso quindi nell'attività principale di Java:
+
+\begin{lstlisting}[language=Java, firstnumber=1,caption={Java \textit{main activity}}]
+  public class MainActivity extends FlutterActivity {
+    //"samples.flutter.dev/battery" e' il nome del method channel
+    //come definito in main.dart
+    private static final String CHANNEL = "samples.flutter.dev/battery";
+
+    @Override
+    public void configureFlutterEngine(@NonNull FlutterEngine flutterEngine) {
+        super.configureFlutterEngine(flutterEngine);
+        new MethodChannel(flutterEngine.getDartExecutor().getBinaryMessenger(), CHANNEL)
+                .setMethodCallHandler(
+                        (call, result) -> {
+                            //Questo e' il metodo invocato nel main
+                            //sfruttiamo la stringa 'getBatteryLevel' per invocarlo
+                            if (call.method.equals("getBatteryLevel")) {
+                                //il metodo vero e proprio in Java
+                                int batteryLevel = getBatteryLevel();
+
+                                if (batteryLevel != -1) {
+                                    result.success(batteryLevel);
+                                } else {
+                                    result.error("UNAVAILABLE", "Battery level not available.", null);
+                                }
+                            } else {
+                                result.notImplemented();
+                            }
+                        }
+
+                );
+    }
+
+    private int getBatteryLevel() {
+      //metodo che ritorna il valore di batteria del dispositivo
+    }
+
+\end{lstlisting}
+
+Infine ci occupiamo di lanciare il messaggio da Flutter invocando il metodo:
+
+\begin{lstlisting}[language=dart, firstnumber=1,caption={Dart \textit{main}}]
+  class MyHomePage extends HookWidget {
+  const MyHomePage({super.key});
+  //creo e definisco il method channel
+  static const platform = MethodChannel('samples.flutter.dev/battery');
+
+  @override
+  Widget build(BuildContext context) {
+    var batteryLevel = useState('Unknown battery level.');
+
+    return Material(
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            ElevatedButton(
+              onPressed: () async {
+                try {
+                  //qui avviene l'effettiva invocazione del method channel
+                  //che provoca una chiamata in Java
+                  final int result =
+                      await platform.invokeMethod('getBatteryLevel');
+                  batteryLevel.value = 'Battery level at $result % .';
+                } on PlatformException catch (e) {
+                  batteryLevel.value =
+                      "Failed to get battery level: '${e.message}'.";
+                }
+              },
+              child: const Text('Get Battery Level'),
+            ),
+            Text(batteryLevel.value),
+          ],
+        ),
+      ),
+    );
+  }
+}
+\end{lstlisting}
+
 
 \subsection{Realtà aumentata}
 Uno dei punti centrali di questa tesi è la realtà aumentata e gli ancoraggi che è possibile posizionare all'interno di uno spazio tridimensionale, ed è quindi intelligente presentare preventivamente l'argomento e i concetti chiave.\\
@@ -476,7 +565,7 @@ dove:
     \setlength{\aboverulesep}{0pt}
     \setlength{\belowrulesep}{0pt}
     \rowcolors{2}{red!10}{white}
-    \begin{longtable}{C{.15\freewidth} | C{1\freewidth}}
+    \begin{longtable}{C{.15\freewidth} C{1\freewidth}}
        \toprule
     \rowcolor{red}
     \textcolor{white}{\textbf{Codice}}&
@@ -502,7 +591,7 @@ dove:
     R2F6 & Utente deve poter vedere quali \textit{ticket} hanno ancoraggio associato\\
     R1F7 & Utente deve poter raggiungere l'ancoraggio in vista in realtà aumentata dalla schermata dell'\textit{asset}\\
     R1F8 & \textit{On-Tap} su una ancoraggio deve aprire una \textit{bottom sheet} contestuale\\
-    R1F8.1 & \textit{Bottom sheet} deve presentare identificatore per \textit{asset} o \textit{ticket} associato alla ancoraggio\\
+    R1F8.1 & \textit{Bottom sheet} deve presentare identificatore per \textit{asset} o \textit{ticket} associato all'ancoraggio\\
     R1F8.2 & \textit{Bottom sheet} associato a un \textit{asset} mostra ultimi tre \textit{ticket} aperti\\
     R1F8.3 & \textit{Bottom sheet} deve fornire \textit{Call-To-Action} per eliminare l'ancoraggio\\
     R1F8.4 & \textit{Bottom sheet} deve fornire \textit{Call-To-Action} per raggiungere pagina di dettaglio\\
@@ -542,7 +631,7 @@ dove:
     R1V3 & \textit{Framework} scelto si integra con le \api{}s di Syn\\
     R1V3.1 & \textit{Framework} ottiene con ancoraggio associato i dati degli \textit{asset}\\
     R1V3.2 & \textit{Framework} ottiene con ancoraggio associato i dati dei \textit{ticket}\\
-    R1V4 & Il \textit{framework} scelto utilizza asa\\
+    R1V4 & Il \textit{framework} scelto utilizza \asa\\
     R1V5 & La vista in realtà aumentata deve essere sviluppata in Flutter\\
     \bottomrule
     \rowcolor{white} 
@@ -605,6 +694,7 @@ Sono stati individuati un totale di 36 requisiti, 29 funzionali e 7 di vincolo, 
 %************************************************************************************************************
 
 \section{Pianificazione}
+\label{sec:pianificazione}
 La natura estremamente sperimentale di questo progetto ha reso vano ogni tentativo di pianificare accuratamente il lavoro (complici anche le problematiche che vedremo nella sezione \ref{sec:difficolta_incontrate}).\\
 Per questo motivo, una volta scelto il \textit{framework} per l'implementazione di \asa{} in Flutter l'approccio scelto è stato di \textit{trial-and-error}, e ha impegnato una buona parte del tempo di stage sia mio che dei membri di Datasoil responsabili del \textit{frontend}.\\
 E' stata comunque fatta, di settimana in settimana, una scaletta degli obiettivi da raggiungere per il lunedì successivo, tuttavia si è riusciti a seguirla solo fintanto che comprendeva lo studio delle tecnologie e la creazione di brevi \textit{proof of concept} (ad esempio costruire un'applicazione in Dart e poi tradurre i suoi \textit{stateful widget} in \textit{hook widget}).\\
@@ -658,8 +748,31 @@ Di grande aiuto sono stati i \textit{logs} delle varie applicazioni provate (da 
 
 \section{Difficoltà incontrate}
 \label{sec:difficolta_incontrate}
-\subsection{Problemi documentali}
-\subsection{Problemi tecnologici}
+Le prime difficoltà incontrate a livello personale sono state di tipo tecnologico: mi sono trovato per la prima volta a dover programmare con linguaggi orientati al \textit{frontend}, dovendo quindi cambiare almeno in parte il mio \textit{modus operandi} nella progettazione e scrittura di codice. A questo si è aggiunta la necessità di gestire altri tre linguaggi per le implementazioni native, ovvero Java e Kotlin per il lato Android e Swift per la parte iOS e, a complicare le cose, tutti questi linguaggi dovevano essere messi in comunicazione diretta con Flutter (e nel caso di Java e Kotlin anche tra di loro).\\ 
+Una buona parte dello \textit{stage} è quindi stata investita nel comprendere e nel gestire la grande diversità di linguaggi diversi.\\
+In linea più generale invece le due problematiche che hanno più di tutte complicato i lavori (sia per me che per Datasoil stessa) sono stati la mancanza di documentazione adeguata e di supporto da parte della comunità degli sviluppatori.\\
+Microsoft non fornisce un supporto documentale adeguato per quanto riguarda \asa{}, mostrando il meno possibile della struttura interna (ad esempio come viene rappresentato un ancoraggio) e fornendo solo \api{} per effettuare operazioni ad alto livello (come il salvataggio in \textit{cloud} di un'\textit{anchor}), inoltre la ricerca della documentazione è macchinosa e richiede tempo considerevole per produrre i risultati sperati.\\
+L'altro problema risiede nella difficoltà estrema di trovare supporto di terze parti (ad esempio in siti come \url{https://stackoverflow.com}), come possono dimostrare i seguenti screenshot:
+
+\begin{figure}[H]
+  \centering
+  %\includegraphics[height=5cm]{screen_mobilesyn}
+  \includegraphics[width=.5\textwidth]{asa_google_search}\hfill
+  \includegraphics[width=.5\textwidth]{flutter_google_search}\\
+  \includegraphics[width=1\textwidth]{asa_flutter_google_search}
+  \caption[Ricerca esatta Flutter e ASA 23 novembre]{Al 23 novembre 2022, una ricerca esatta di "flutter" mostra 87.5 milioni di risultati rilevanti, di "azure spatial anchors" 41 milioni mentre la combinazione delle due, solo 17}
+\end{figure}
+
+E a oggi (8 febbraio 2023 al momento della scrittura) la situazione non è migliorata:
+
+\begin{figure}[H]
+  \centering
+  %\includegraphics[height=5cm]{screen_mobilesyn}
+  \includegraphics[width=.8\textwidth]{asa_flutter_search_today}
+  \caption[Ricerca esatta Flutter e ASA 8 febbraio]{Solo 14 risultati rilevanti, alcuni in lingua giapponese, mostrano quando sia difficile trovare informazioni sull'argomento.}
+\end{figure}
+
+Questa situazione si è tradotta nella dover risolvere tutti i problemi incontrati senza poter fare affidamento su alcun aiuto esterno e ha quindi esacerbato ulteriormente l'approccio \textit{trial-and-error} di cui si è parlato nella sezione \ref{sec:pianificazione}.
 
 %************************************************************************************************************
 
