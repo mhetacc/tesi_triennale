@@ -43,3 +43,4 @@ Sezioni: solo prima lettera caps
 - [ ] controllare i vari labels
 - [ ] plugin / plug-in ?? controllare se sono tutti uguali
 - [ ] open source / open-source ?? controllare se sono tutti uguali
+- [ ] eliminare i label non usati
