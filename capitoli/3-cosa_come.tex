@@ -17,131 +17,131 @@ Faremo quindi un'introduzione quanto più sintetica possibile sulle sue caratter
 Dart è un linguaggio compilato fortemente tipizzato con sintassi simile a C, e adotta molte funzionalità tipiche dei linguaggi moderni: considera infatti ogni variabile un oggetto e implementa la \textit{null safety}, obbligando il programmatore a esplicitare con sintassi specifiche la presenza o meno del valore \verb+null+.
 
 \begin{lstlisting}[language=dart, firstnumber=1,caption={Dart \textit{null safety}}]
-    //dichiarazione di variabili
-    String variabileNotNullable = '';  //non puo' mai essere null
-    String? variabileNullable = null;  //puo' anche essere null
+//dichiarazione di variabili
+String variabileNotNullable = '';  //non puo' mai essere null
+String? variabileNullable = null;  //puo' anche essere null
 
-    //utilizzo esplicito di variabile nullable
-    fun (variableNullable);   //compile error
-    fun (?variableNullable);  //esplicito che puo' essere nulla
+//utilizzo esplicito di variabile nullable
+fun (variableNullable);   //compile error
+fun (?variableNullable);  //esplicito che puo' essere nulla
 
-    //utilizzo esplicito di variabile not nullable
-    if (value != null)
-        fun (!value);   //dico al compilatore che sono certo value non sia null
+//utilizzo esplicito di variabile not nullable
+if (value != null)
+    fun (!value);   //dico al compilatore che sono certo value non sia null
 \end{lstlisting} 
 
 Permette inoltre l'interpolazione di stringhe:
 
 \begin{lstlisting}[language=dart, firstnumber=1,caption={Dart interpolazone stringhe}]
-    //sfrutto il simbolo $
-    'number = $variableName';              //inserisco in stringa direttamente una variabile
-    'expressionResult = ${expression}';    //inserisco in stringa direttamente un'espressione
+//sfrutto il simbolo $
+'number = $variableName';              //inserisco in stringa direttamente una variabile
+'expressionResult = ${expression}';    //inserisco in stringa direttamente un'espressione
 \end{lstlisting}
 
 Dart tratta in maniera particolare le funzioni, che sono oggetti, hanno un tipo (\verb+Function+), possono avere parametri posizioni o nominali, obbligatori od opzionali: 
 
 \begin{lstlisting}[language=dart, firstnumber=1,caption={Dart parametri funzioni}]
-    //parametri obbligatori posizionali
-    void fun (int a, int b);  //non possono essere nulli, non essendo 'int? a'
+//parametri obbligatori posizionali
+void fun (int a, int b);  //non possono essere nulli, non essendo 'int? a'
 
-    //possono essere anteceduti da parametri posizionali opzionali
-    void fun (int a, int b, [String opz1 = '', String opz2 = '']){}
-    void fun (int a, int b, [String? opz1nullable, String? opz2nullable]){}
+//possono essere anteceduti da parametri posizionali opzionali
+void fun (int a, int b, [String opz1 = '', String opz2 = '']){}
+void fun (int a, int b, [String? opz1nullable, String? opz2nullable]){}
 
-    //oppure possono essere anteceduti da parametri nominali opzionali
-    void fun (int a, int b, {String opz1 = '', String opz2 = ''}){}
-    void fun (int a, int b, {String? opz1nullable, String? opz2nullable}){}
+//oppure possono essere anteceduti da parametri nominali opzionali
+void fun (int a, int b, {String opz1 = '', String opz2 = ''}){}
+void fun (int a, int b, {String? opz1nullable, String? opz2nullable}){}
 
-    //non possono essere anteceduti da entrambi
-    void fun (int a, int b, [String opz1 = ''], {String opz2 = ''}){} //compile error
+//non possono essere anteceduti da entrambi
+void fun (int a, int b, [String opz1 = ''], {String opz2 = ''}){} //compile error
 
-    //tutti i costruttori in Dart hanno solo parametri nominali
-    //di default i parametri nominali sono opzionali
-    //possono pero' essere resi obbligatori con la keyword 'required'
-    void fun ({required String obb1, required String? obb2, String opz1 = ''}){}
+//tutti i costruttori in Dart hanno solo parametri nominali
+//di default i parametri nominali sono opzionali
+//possono pero' essere resi obbligatori con la keyword 'required'
+void fun ({required String obb1, required String? obb2, String opz1 = ''}){}
 \end{lstlisting}
 
 Esistono le funzioni anonime (largamente sfruttate nei metodi \verb+build+ di Flutter), che possono essere ovviamente passate come argomento ad altre funzioni, essendo oggetti:
 
 \begin{lstlisting}[language=dart, firstnumber=1,caption={Dart funzioni anonime}]
-    //prima sintassi
-    (){
-        //corpo della funzione anonima
-    } 
+//prima sintassi
+(){
+    //corpo della funzione anonima
+} 
 
-    //seconda sintassi
-    () => return_expression
+//seconda sintassi
+() => return_expression
 
-    //assegnamento di funzione anonima ad una variabile
-    //ritorna una stringa con un messaggio portato in upper case
-    var upperfy = (msg) => '${msg.toUpperCase()}';
+//assegnamento di funzione anonima ad una variabile
+//ritorna una stringa con un messaggio portato in upper case
+var upperfy = (msg) => '${msg.toUpperCase()}';
 
-    //passaggio di funzione come parametro
-    fun (firstValue, () => secondValue);
+//passaggio di funzione come parametro
+fun (firstValue, () => secondValue);
 \end{lstlisting}
 
 Abbiamo delle espressioni condizionali specifiche del linguaggio dalla grande espressività e che quindi vengono largamente usate:
 
 \begin{lstlisting}[language=dart, firstnumber=1,caption={Dart espressioni ternarie}]
-    //primo tipo di condizione, detta ternaria
-    condizione ? expr1 : expr2;
+//primo tipo di condizione, detta ternaria
+condizione ? expr1 : expr2;
 
-    //equivale a (in pseudocodice):
-    if (condizione == true) return expr1
-    else                    return expr2
+//equivale a (in pseudocodice):
+if (condizione == true) return expr1
+else                    return expr2
 
-    //vediamo un esempio
-    int? a;               //a==null di default
-    a = a==null ? 1 : 0;  //ad 'a' viene assegnato il valore 1 siccome a==null
+//vediamo un esempio
+int? a;               //a==null di default
+a = a==null ? 1 : 0;  //ad 'a' viene assegnato il valore 1 siccome a==null
 
 
-    //################################
-    //secondo tipo di condizione peculiare:
-    expr1 ?? expr2;
+//################################
+//secondo tipo di condizione peculiare:
+expr1 ?? expr2;
 
-    //equivale a (in pseudocodice):
-    if (expr1 != null) return expr1
-    else               return expr2
+//equivale a (in pseudocodice):
+if (expr1 != null) return expr1
+else               return expr2
 
-    //vediamo un esempio
-    int? a;      //a==null di default
-    a = a ?? 1;  //ad 'a' viene assegnato il valore 1 siccome a==null
+//vediamo un esempio
+int? a;      //a==null di default
+a = a ?? 1;  //ad 'a' viene assegnato il valore 1 siccome a==null
 \end{lstlisting}
 
 I caratteri \verb+?+ e \verb+!+ sono, come si evince dalle espressioni ternarie e dalla \textit{null safety}, di cruciale importanza in Dart, ed è quindi opportuno vedere ancora qualche esempio del loro utilizzo:
 
 \begin{lstlisting}[language=dart, firstnumber=1,caption={Dart operatori '?' e '!'}]
-    list[1]     //accede al secondo elemento della lista
+list[1]     //accede al secondo elemento della lista
 
-    list.?[1]
-    //equivale a (in pseudocodice):
-    if (list[1] != null)    return list[1]
-    else                    return null
+list.?[1]
+//equivale a (in pseudocodice):
+if (list[1] != null)    return list[1]
+else                    return null
 
-    //##############################
+//##############################
 
-    foo?.bar 
-    //equivale a (in pseudocodice):
-    if (foo.bar != null)    return foo.bar
-    else                    return null
+foo?.bar 
+//equivale a (in pseudocodice):
+if (foo.bar != null)    return foo.bar
+else                    return null
 
-    //##############################
+//##############################
 
-    foo!.bar
-    //equivale a (in pseudocodice):
-    if (foo.bar != null)    return foo.bar
-    else                    throw (runtimeException)
+foo!.bar
+//equivale a (in pseudocodice):
+if (foo.bar != null)    return foo.bar
+else                    throw (runtimeException)
 \end{lstlisting}
 
 Le applicazioni \textit{mobile} e \textit{web} spesso si trovano a eseguire istruzioni che richiedono l'attesa di risorse esterne (ottenere dati dalla rete o leggerli da un \textit{file}, oppure scrivere su un \textit{database}). Per evitare il completo blocco dell'esecuzione (disastroso per un applicativo \textit{consumer}) Dart implementa nativamente delle funzioni di programmazione asincrona, che permetto di svolgere operazioni anche mentre altre sono in attesa.\\
 Per fare ciò si serve di tre \textit{keyword}: \verb+async+, \verb+await+ e \verb+Future+:
 
 \begin{lstlisting}[language=dart, firstnumber=1,caption={Dart programmazione asincrona}]
-    Future<void> checkVersion () async {
-        var version = await lookUpVersion();
-    }
+Future<void> checkVersion () async {
+    var version = await lookUpVersion();
+}
 
-    //un'espressione marcata con la keyword 'await' ritorna sempre Future<T>
+//un'espressione marcata con la keyword 'await' ritorna sempre Future<T>
 \end{lstlisting}
 
 Trattiamo infine le caratteristiche peculiari di Dart per quanto riguarda classi e metodi:
@@ -150,9 +150,9 @@ Trattiamo infine le caratteristiche peculiari di Dart per quanto riguarda classi
     \item Esistono i costruttori costanti, marcati \verb+const+, che sono inizializzati a \textit{compile-time}. Tutti gli altri sono implicitamente dinamici (quindi \textit{run-time});
     \item Posso creare costruttori nominati per implementare costruttori multipli tramite la sintassi:
 \begin{lstlisting}[language=dart]
-    ClassName.constructorName () :
-        firstField = firstValue,
-        secondField = secondValue;
+ClassName.constructorName () :
+    firstField = firstValue,
+    secondField = secondValue;
 \end{lstlisting}
     \item Ogni entità è una classe, ogni classe discende da \verb+Object+ (ad eccezione di \verb+Null+);
     \item Per ogni classe viene creata un'interfaccia implicita che contiene tutti i membri di istanza della classe;
@@ -173,32 +173,32 @@ Mostriamo ora alcuni componenti di Flutter necessari al proseguimento della lett
 L'albero di \textit{render} è una delle tre strutture logiche che Flutter usa per descrivere i propri oggetti e le proprie interfacce grafiche: il \textit{widget tree} rappresenta gli elementi di un \textit{widget} come uno \textit{stack} di \textit{widget}, messi in relazione con il loro elemento padre e i loro elementi figli. Nel caso del \textit{widget tree} rappresentato in figura \ref{fig:flutter-trees} esso rappresenta un \verb+Containter+ che contiene un \verb+ColoredBox+ che a sua volta contiene una \verb+Row+ e via dicendo. I \textit{widget} sono per definizione immutabili, quindi una modifica richiede necessariamente una distruzione e successiva ricreazione del \textit{widget} interessato.
 
 \begin{lstlisting}[language=dart, caption={Codice rilevante per la parte grafica dell'\textit{app} di esempio di Flutter}]
-    Widget build(BuildContext context) {
-        return Scaffold(
-          appBar: AppBar(
-            title: Text(widget.title),
-          ),
-          body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                const Text(
-                  'You have pushed the button this many times:',
-                ),
-                Text(
-                  '$_counter',
-                  style: Theme.of(context).textTheme.headline4,
-                ),
-              ],
+Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text(
+              'You have pushed the button this many times:',
             ),
-          ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: _incrementCounter,
-            tooltip: 'Increment',
-            child: const Icon(Icons.add),
-          ), // This trailing comma makes auto-formatting nicer for build methods.
-        );
-    }
+            Text(
+              '$_counter',
+              style: Theme.of(context).textTheme.headline4,
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
+      ), 
+    );
+}
 \end{lstlisting}
 
 Il codice precedente produce il seguente risultato (e il seguente \textit{widget tree}):
@@ -311,49 +311,46 @@ Per prima cosa è necessario agire sull'Android \textit{manifest} inserendo il n
 A questo punto si vanno a costruire gli "agganci" per il \textit{method channel} in codice nativo, in questo caso quindi nell'attività principale di Java:
 
 \begin{lstlisting}[language=Java, firstnumber=1,caption={Java \textit{main activity}}]
-  public class MainActivity extends FlutterActivity {
-    //"samples.flutter.dev/battery" e' il nome del method channel
-    //come definito in main.dart
-    private static final String CHANNEL = "samples.flutter.dev/battery";
+public class MainActivity extends FlutterActivity {
+  //"samples.flutter.dev/battery" e' il nome del method channel
+  //come definito in main.dart
+  private static final String CHANNEL = "samples.flutter.dev/battery";
 
-    @Override
-    public void configureFlutterEngine(@NonNull FlutterEngine flutterEngine) {
-        super.configureFlutterEngine(flutterEngine);
-        new MethodChannel(flutterEngine.getDartExecutor().getBinaryMessenger(), CHANNEL)
-                .setMethodCallHandler(
-                        (call, result) -> {
-                            //Questo e' il metodo invocato nel main
-                            //sfruttiamo la stringa 'getBatteryLevel' per invocarlo
-                            if (call.method.equals("getBatteryLevel")) {
-                                //il metodo vero e proprio in Java
-                                int batteryLevel = getBatteryLevel();
+  @Override
+  public void configureFlutterEngine(@NonNull FlutterEngine flutterEngine) {
+      super.configureFlutterEngine(flutterEngine);
+      new MethodChannel(flutterEngine.getDartExecutor().getBinaryMessenger(), CHANNEL)
+              .setMethodCallHandler(
+                      (call, result) -> {
+                          //Questo e' il metodo invocato nel main
+                          //sfruttiamo la stringa 'getBatteryLevel' per invocarlo
+                          if (call.method.equals("getBatteryLevel")) {
+                              //il metodo vero e proprio in Java
+                              int batteryLevel = getBatteryLevel();
+                              if (batteryLevel != -1) {
+                                  result.success(batteryLevel);
+                              } else {
+                                  result.error("UNAVAILABLE", "Battery level not available.", null);
+                              }
+                          } else {
+                              result.notImplemented();
+                          }
+                      }
+              );
+  }
 
-                                if (batteryLevel != -1) {
-                                    result.success(batteryLevel);
-                                } else {
-                                    result.error("UNAVAILABLE", "Battery level not available.", null);
-                                }
-                            } else {
-                                result.notImplemented();
-                            }
-                        }
-
-                );
-    }
-
-    private int getBatteryLevel() {
-      //metodo che ritorna il valore di batteria del dispositivo
-    }
-
+  private int getBatteryLevel() {
+    //metodo che ritorna il valore di batteria del dispositivo
+  }
 \end{lstlisting}
 
 Infine ci occupiamo di lanciare il messaggio da Flutter invocando il metodo:
 
 \begin{lstlisting}[language=dart, firstnumber=1,caption={Dart \textit{main}}]
-  class MyHomePage extends HookWidget {
-  const MyHomePage({super.key});
-  //creo e definisco il method channel
-  static const platform = MethodChannel('samples.flutter.dev/battery');
+class MyHomePage extends HookWidget {
+const MyHomePage({super.key});
+//creo e definisco il method channel
+static const platform = MethodChannel('samples.flutter.dev/battery');
 
   @override
   Widget build(BuildContext context) {
@@ -1201,33 +1198,32 @@ Grazie al codice appena visto possiamo notare che l'applicazione comunica con le
 Vediamo infine una piccola parte del codice che si occupa di creare l'effettiva interfaccia utente della vista in realtà aumentata:
 
 \begin{lstlisting}[language=dart, label={lst:ar_view}, firstnumber=1,caption={Frammento di codice per vista in realtà aumenta in Dart}]
-  /// Android-specific implementation of [PlatformARView]
-  class AndroidARView implements PlatformARView {
-    late BuildContext? _context;
-    late ARViewCreatedCallback? _arViewCreatedCallback;
+/// Android-specific implementation of [PlatformARView]
+class AndroidARView implements PlatformARView {
+  late BuildContext? _context;
+  late ARViewCreatedCallback? _arViewCreatedCallback;
   
-    @override
-    void onPlatformViewCreated(int id) {
-      print("Android platform view created!");
-      createManagers(id, _context, _arViewCreatedCallback);
-    }
-  
-    @override
-    Widget build(
-        {BuildContext? context,
-        ARViewCreatedCallback? arViewCreatedCallback,
-        String? apiKey,
-        String? apiId,
-        List<Map<String, dynamic>>? assets,
-        List<Map<String, dynamic>>? tickets}) {
-
-        \\altro codice
-        }
-\\altro codice
+  @override
+  void onPlatformViewCreated(int id) {
+    print("Android platform view created!");
+    createManagers(id, _context, _arViewCreatedCallback);
   }
+  
+  @override
+  Widget build(
+      {BuildContext? context,
+      ARViewCreatedCallback? arViewCreatedCallback,
+      String? apiKey,
+      String? apiId,
+      List<Map<String, dynamic>>? assets,
+      List<Map<String, dynamic>>? tickets}) {
+      \\altro codice
+      }
+  \\altro codice
+}
 
 
-  /// iOS-specific implementation of [PlatformARView]
+/// iOS-specific implementation of [PlatformARView]
 class IosARView implements PlatformARView {
   BuildContext? _context;
   ARViewCreatedCallback? _arViewCreatedCallback;
@@ -1246,10 +1242,9 @@ class IosARView implements PlatformARView {
       String? apiId,
       List<Map<String, dynamic>>? assets,
       List<Map<String, dynamic>>? tickets}) {
-        
       \\altro codice
       }
-      \\altro codice
+  \\altro codice
 }
 \end{lstlisting}
 
