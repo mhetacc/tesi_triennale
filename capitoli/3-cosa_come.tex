@@ -537,6 +537,7 @@ Vediamo quindi di schematizzare e mettere a confronto pregi e difetti delle due 
 E' stato infine scelto \aplug{} rispetto ad ARwayKit per evitare di interfacciarsi con Unity e per la necessità di avere la vista in realtà aumentata implementata direttamente in Flutter.
 
 \section{Analisi dei requisiti}
+\label{sec:analisi_requisiti}
 Di seguito sono riportati i requisti individuati nel piano di lavoro proposto e a seguito di opportuni confronti con il tutor aziendale. Essi sono catalogati secondo la dicitura:
 \begin{center}
     \textbf{R[Obbligatorietà][Tipologia][Codice]}
@@ -589,10 +590,10 @@ dove:
     %UI FLUTTER
     R1F5 & Utente deve poter vedere quali \textit{asset} hanno ancoraggio associato\\
     R2F6 & Utente deve poter vedere quali \textit{ticket} hanno ancoraggio associato\\
-    R1F7 & Utente deve poter raggiungere l'ancoraggio in vista in realtà aumentata dalla schermata dell'\textit{asset}\\
+    R1F7 & Utente deve poter raggiungere la vista in realtà aumentata dalla schermata degli \textit{asset}\\
     R1F8 & \textit{On-Tap} su una ancoraggio deve aprire una \textit{bottom sheet} contestuale\\
     R1F8.1 & \textit{Bottom sheet} deve presentare identificatore per \textit{asset} o \textit{ticket} associato all'ancoraggio\\
-    R1F8.2 & \textit{Bottom sheet} associato a un \textit{asset} mostra ultimi tre \textit{ticket} aperti\\
+    R1F8.2 & \textit{Bottom sheet} associato a un \textit{asset} mostra \textit{ticket} aperti se presenti\\
     R1F8.3 & \textit{Bottom sheet} deve fornire \textit{Call-To-Action} per eliminare l'ancoraggio\\
     R1F8.4 & \textit{Bottom sheet} deve fornire \textit{Call-To-Action} per raggiungere pagina di dettaglio\\
     R1F9 & Le informazioni contestuali di un \textit{ticket} includono data e ora di creazione\\
@@ -606,7 +607,6 @@ dove:
     \bottomrule
     \rowcolor{white} 
     \caption{Tabella dei requisiti funzionali}
-    \label{tab:requisiti-funzionali}
     \end{longtable}
 }
 
@@ -636,7 +636,6 @@ dove:
     \bottomrule
     \rowcolor{white} 
     \caption{Tabella dei requisiti di vincolo}
-    \label{tab:requisiti-di-vincolo}
     \end{longtable}
 }
 
@@ -777,6 +776,592 @@ Questa situazione si è tradotta nella dover risolvere tutti i problemi incontra
 %************************************************************************************************************
 
 \section{Risultati raggiunti}
+In quest'ultima sezione vediamo il risultato finale del lavoro di stage, partendo col mettere in relazione i requisiti individuati nella sezione \ref{sec:analisi_requisiti} con le \textit{screenshot} di MobileSYN, per poi mostrare tramite frammenti di codice l'implementazione specifica delle funzionalità in realtà aumentata in Android e iOS.\\
+Le seguenti immagini mostrano il progresso in vista in realtà aumentata che porta a creare un ancoraggio relativo all'\textit{asset} "IT-TESTP-ELight0324" (privo di eventi o \textit{ticket} correlati), per poi caricarlo in \textit{cloud} e, successivamente a chiusura e riapertura dell'applicazione, ritrovarlo in posizione (si noti che è leggermente arretrato).\\
+Inoltre nella prima immagine, viene anche mostrato il livello di progressione di \textit{scan} dell'ambiente, necessario a caricare correttamente un ancoraggio.
+
+\begin{figure}[H]
+  \centering
+  %\includegraphics[height=5cm]{screen_mobilesyn}
+  \includegraphics[width=.3\textwidth]{place_asset_scanLevel}\hfill
+  \includegraphics[width=.3\textwidth]{place_asset}\hfill
+  \includegraphics[width=.3\textwidth]{retrieve_asset}\hfill
+
+  \caption[Creazione, caricamento e recupero di \textit{asset}]{In ordine: \textit{asset} viene posizionato e viene mostrato il livello di \textit{scan} dell'ambiente  viene caricato e, previa chiusura e riapertura della vista, viene recuperato dal \textit{cloud} (si ).}
+  \label{fig:place_asset}
+\end{figure}
+
+{
+    \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
+    \renewcommand{\arraystretch}{1.5}
+    \centering
+    \setlength{\aboverulesep}{0pt}
+    \setlength{\belowrulesep}{0pt}
+    \rowcolors{2}{red!10}{white}
+    \begin{longtable}{C{.15\freewidth} C{1\freewidth}}
+       \toprule
+    \rowcolor{red}
+    \textcolor{white}{\textbf{Codice}}&
+    \textcolor{white}{\textbf{Descrizione}}\\
+    \toprule
+    \endhead
+
+    R1F1 & Il \textit{plugin} deve rappresentare \textit{asset} tramite ancoraggio in realtà aumentata\\
+    R1F11 & \textit{On-Tap} sullo spazio permette di creare una ancoraggio in posizione\\
+    R1F11.1 & Ancoraggio posizionato nello spazio può essere salvato\\
+    R1F11.2 & Ancoraggio posizionato nello spazio può essere eliminato\\
+    R1F12 & Il salvataggio di un ancoraggio è disponibile solo quando è sicuro vada a buon fine\\
+    R1F12.1 & Viene mostrato a schermo un feedback riguardo il livello di sicurezza raggiunto\\
+
+    \bottomrule
+    \rowcolor{white} 
+    \caption{Requisiti soddisfatti in figura \ref{fig:place_asset}}
+    \end{longtable}
+}
+
+Effettuando un \textit{On-Tap} su un ancoraggio appare una \textit{bottom sheet} che mostra l'identificatore dell'\textit{asset} e, se ci sono, gli eventi e i \textit{ticket} aperti a lui associati. Permette inoltre di raggiungere i dettagli dell'\textit{asset} o di rimuoverlo.\\
+Poi, nella lista degli \textit{asset} disponibili, quelli già collegati a un ancoraggio in realtà aumentata presentano un piccolo marcatore con dicitura "AR", permettendo di raggiungere la vista con il bottone a forma di cubo in altro a destra. E' grigio perché l'uso richiederebbe di essere fisicamente presenti in "Plant 1" e di selezionare inoltre stabilimento, piano e stanza.
+
+\begin{figure}[H]
+  \centering
+  %\includegraphics[height=5cm]{screen_mobilesyn}
+  \includegraphics[width=.3\textwidth]{asset_card_onTap}\hfill
+  \includegraphics[width=.3\textwidth]{remove_asset}\hfill
+  \includegraphics[width=.3\textwidth]{asset_list}
+  \caption[\textit{Bottom sheet asset} per eliminazione e lista \textit{asset}]{\textit{Bottom sheet} per l'\textit{asset} "IT-TESTP-ELight0324" e successiva eliminazione tramite bottone con dicitura \textit{"Remove Asset"}. L'ultima immagine mostra invece la lista degli \textit{asset} presenti con il bottone per raggiungere la vista in realtà aumentata.}
+  \label{fig:asset_list}
+\end{figure}
+
+{
+    \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
+    \renewcommand{\arraystretch}{1.5}
+    \centering
+    \setlength{\aboverulesep}{0pt}
+    \setlength{\belowrulesep}{0pt}
+    \rowcolors{2}{red!10}{white}
+    \begin{longtable}{C{.15\freewidth} C{1\freewidth}}
+       \toprule
+    \rowcolor{red}
+    \textcolor{white}{\textbf{Codice}}&
+    \textcolor{white}{\textbf{Descrizione}}\\
+    \toprule
+    \endhead
+
+    R1F5 & Utente deve poter vedere quali \textit{asset} hanno ancoraggio associato\\
+    R1F7 & Utente deve poter raggiungere la vista in realtà aumentata dalla schermata degli \textit{asset}\\
+    R1F8 & \textit{On-Tap} su una ancoraggio deve aprire una \textit{bottom sheet} contestuale\\
+    R1F8.1 & \textit{Bottom sheet} deve presentare identificatore per \textit{asset} o \textit{ticket} associato all'ancoraggio\\
+    R1F8.2 & \textit{Bottom sheet} associato a un \textit{asset} mostra \textit{ticket} aperti se presenti\\
+    R1F8.3 & \textit{Bottom sheet} deve fornire \textit{Call-To-Action} per eliminare l'ancoraggio\\
+    R1F8.4 & \textit{Bottom sheet} deve fornire \textit{Call-To-Action} per raggiungere pagina di dettaglio\\
+    
+
+    \bottomrule
+    \rowcolor{white} 
+    \caption{Requisiti soddisfatti in figura \ref{fig:asset_list}}
+    \end{longtable}
+}
+
+Per quanto riguarda i \textit{ticket} invece l'approccio scelto è quello di permettere, al completamento della compilazione di un \textit{ticket}, di far apparire una finestra che permette di posizionarlo in realtà aumentata. In questo caso si può notare la finestra di stato aggiornata per quanto riguarda la notifica del livello di \textit{scan} per il caricamento dell'ancoraggio.\\
+Mostriamo inoltre che i \textit{ticket} aperti di un \textit{asset} mettono in chiaro data e ora di apertura.
+
+\begin{figure}[H]
+  \centering
+  %\includegraphics[height=5cm]{screen_mobilesyn}
+  \includegraphics[width=.3\textwidth]{ticket_ar1}\hfill
+  \includegraphics[width=.3\textwidth]{ticket_ar2}\hfill
+  \includegraphics[width=.3\textwidth]{asset_with_ticket}
+  \caption[Caricamento \textit{ticket} realtà aumentata e \textit{ticket} su \textit{asset}]{Una volta compilato il \textit{ticket} appare una finestra in sovrimpressione che permette di posizionarlo in realtà aumentata. Inoltre i \textit{ticket} di un \textit{asset} mostrano data e ora di apertura.}
+  \label{fig:ticket_ar}
+\end{figure}
+
+{
+    \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
+    \renewcommand{\arraystretch}{1.5}
+    \centering
+    \setlength{\aboverulesep}{0pt}
+    \setlength{\belowrulesep}{0pt}
+    \rowcolors{2}{red!10}{white}
+    \begin{longtable}{C{.15\freewidth} C{1\freewidth}}
+       \toprule
+    \rowcolor{red}
+    \textcolor{white}{\textbf{Codice}}&
+    \textcolor{white}{\textbf{Descrizione}}\\
+    \toprule
+    \endhead
+
+    R1F2 & Il \textit{plugin} deve rappresentare \textit{ticket} tramite ancoraggio in realtà aumentata\\
+    R1F9 & Le informazioni contestuali di un \textit{ticket} includono data e ora di creazione\\
+    R1F10 & Gli ancoraggi hanno rappresentazione visiva contestuale\\ 
+  
+    \bottomrule
+    \rowcolor{white} 
+    \caption{Requisiti soddisfatti in figura \ref{fig:ticket_ar}}
+    \end{longtable}
+}
+
+\subsection{Componenti multipiattaforma}
+Vediamo ora alcuni frammenti di codice che si pongo lo scopo di dare un'idea di massima di come, nel pratico, sono stati implementati i componenti in realtà aumentata. Partiamo quindi dalla parte in Dart, cioè quella comune. Il codice mostrato dovrà essere estremamente parziale, pena la creazione di un documento di diverse centinaia di pagine.\\
+Il tutto è gestito con due \textit{repository} parallele: "mobilesyn" (che contiene il sorgente dell'applicazione vera e propria) e un \textit{fork} di "\aplug{}" alla quale sono state apportate le modifiche necessarie per interfacciarsi con SYN e le \asa{}. Partiamo dalla prima.\\
+Vediamo un esempio di \textit{asset provider:}
+
+\begin{lstlisting}[language=dart, label={lst:mobilesyn_asset_provider},firstnumber=1,caption={mobilesyn \textit{asset provider}}]
+Future<void> fetchAssets(BusinessFunction? bf, GeoContainer? geoc) async {
+  debugPrint("FETCH-ASSETS");
+  state = const AsyncValue.loading();
+  try {
+    final response = await read(synApiProvider).fetchAssets(
+        count: 200, skip: 0, functionId: bf?.id, geocId: geoc?.id);
+    state = AsyncValue.data(response);
+  } catch (e) {
+    debugPrint(e.toString());
+    state = const AsyncValue.error('error_assets');
+  }
+}
+\end{lstlisting} 
+
+E di \textit{ticket provider}:
+
+\begin{lstlisting}[language=dart, label={lst:mobilesyn_ticket_provider}, firstnumber=1,caption={mobilesyn \textit{ticket provider}}]
+Future<void> fetchTickets(String flowId, bool closed) async {
+  debugPrint("FETCH-TICKETS");
+  state = const AsyncValue.loading();
+  try {
+    var tpl = read(ticketsfiltersProvider).template;
+    var since = read(ticketsfiltersProvider).since;
+    var till = read(ticketsfiltersProvider).till;
+    var geoc = read(selectedGeocP);
+    final tickets = await read(synApiProvider).fetchTickets(
+        skip: 0,
+        count: 100,
+        flowId: flowId,
+        closed: closed,
+        tplId: tpl?.id,
+        since: closed ? since : null,
+        till: closed ? till : null,
+        geocId: geoc?.id);
+    final List<TicketAssetInfo> temp =
+        tickets.map((t) => t.asset).whereType<TicketAssetInfo>().toList();
+    final strings = temp.map((e) => e.toJson()).toList().toSet().toList();
+    final List<TicketAssetInfo> assets =
+        strings.map((e) => TicketAssetInfo.fromJson(e)).toList();
+    final FeatureList featured = FeatureList.fromTicketList(tickets);
+    state = AsyncValue.data(TicketStateModel(
+        tickets: tickets, assets: assets, featured: featured));
+  } catch (e) {
+    debugPrint(e.toString());
+    state = const AsyncValue.error('error_asset_tickets');
+  }
+}
+\end{lstlisting} 
+
+Notiamo, per entrambi, l'uso di un \verb+Future+. Nella pagina che si occupa di mostrare i dettagli di un \textit{asset} abbiamo una funzione specifica per ottenere i \textit{ticket} ad esso associati:
+
+\begin{lstlisting}[language=dart, label={lst:mobilesyn_asset_ticket_provider}, firstnumber=1,caption={mobilesyn \textit{asset ticket provider}}]
+Future<void> fetchAssetTickets() async {
+  debugPrint('FETCH ASSET TICKETS - ${asset.cod}');
+  try {
+    loadingTickets.value = true;
+    errorTickets.value = false;
+    final response = await ref
+        .read(synApiProvider)
+        .fetchTickets(skip: 0, count: 3, assetId: asset.id!);
+    loadingTickets.value = false;
+    errorTickets.value = false;
+    tickets.value = response;
+  } catch (e) {
+    debugPrint(e.toString());
+    loadingTickets.value = false;
+    errorTickets.value = true;
+    tickets.value = [];
+  }
+}
+\end{lstlisting} 
+
+
+
+Per quanto riguarda invece i \textit{manager} delle componenti in realtà aumenta essi vengono presi da \aplug{}:
+
+\begin{lstlisting}[language=dart, label={lst:mobilesyn_managers}, firstnumber=1,caption={mobilesyn \textit{managers}}]
+import 'package:ar_flutter_plugin/managers/ar_anchor_manager.dart';
+import 'package:ar_flutter_plugin/managers/ar_session_manager.dart';
+
+class ManagementArView extends HookConsumerWidget {
+  const ManagementArView({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final arSessionManager = useState<ARSessionManager?>(null);
+    final arAnchorManager = useState<ARAnchorManager?>(null);
+\end{lstlisting} 
+
+E sono state costruite diverse funzioni di utilità, ad esempio il seguente codice viene chiamato alla creazione della vista:
+
+\begin{lstlisting}[language=dart, label={lst:mobilesyn_onARViewCreated}, firstnumber=1,caption={mobilesyn \textit{on ar view created}}]
+void onARViewCreated(
+  ARSessionManager _arSessionManager, ARAnchorManager _arAnchorManager) {
+arSessionManager.value = _arSessionManager;
+arAnchorManager.value = _arAnchorManager;
+arAnchorManager.value!.onAssetTap = onAssetTap;
+arAnchorManager.value!.onTicketTap = onTicketTap;
+arViewInitialized.value = true;
+}
+\end{lstlisting} 
+
+{
+    \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
+    \renewcommand{\arraystretch}{1.5}
+    \centering
+    \setlength{\aboverulesep}{0pt}
+    \setlength{\belowrulesep}{0pt}
+    \rowcolors{2}{red!10}{white}
+    \begin{longtable}{C{.15\freewidth} C{1\freewidth}}
+       \toprule
+    \rowcolor{red}
+    \textcolor{white}{\textbf{Codice}}&
+    \textcolor{white}{\textbf{Descrizione}}\\
+    \toprule
+    \endhead
+
+    R1V3 & \textit{Framework} scelto si integra con le \api{}s di Syn\\
+    R1V3.1 & \textit{Framework} ottiene con ancoraggio associato i dati degli \textit{asset}\\
+    R1V3.2 & \textit{Framework} ottiene con ancoraggio associato i dati dei \textit{ticket}\\ 
+    R1F4 & Comunicare con le \api{}s di Syn\\
+    R1F4.1 & Ricevere \textit{asset} con ancoraggio associato\\
+    R1F4.2 & Aggiungere \textit{asset} con ancoraggio associato\\
+    R2F4.3 & Ricevere \textit{ticket} con ancoraggio associato\\
+    R2F4.4 & Aggiungere \textit{ticket} con ancoraggio associato\\
+  
+    \bottomrule
+    \rowcolor{white} 
+    \caption{Requisiti soddisfatti nei frammenti: \ref{lst:mobilesyn_asset_provider}, \ref{lst:mobilesyn_ticket_provider}, \ref{lst:mobilesyn_asset_ticket_provider}, \ref{lst:mobilesyn_managers}, \ref{lst:mobilesyn_onARViewCreated}.}
+    \end{longtable}
+}
+
+Passiamo quindi a vedere alcuni frammenti di codice proprio dei \textit{manager} di \aplug{}.
+Nel \textit{manager} per gli ancoraggi vediamo i metodi per creazione ed eliminazione di \textit{anchor} localmente e per \textit{upload} ed eliminazione di \textit{anchor} in \textit{cloud} (si noti che tutti i metodi usano i \textit{method channels}): 
+
+\begin{lstlisting}[language=dart, label={lst:arplug_manager}, firstnumber=1,caption={\aplug{} \textit{create, delete, ulpoad, delete cloud anchor} tramite \textit{method channel}}]
+Future<void> createAnchor(
+    {required Matrix4 transformation,
+    required Map<String, dynamic> info}) async {
+  return await _channel.invokeMethod<void>('createAnchor', {
+    "transformation": MatrixConverter().toJson(transformation),
+    "info": info
+  });
+}
+
+/// Remove given anchor and all its children from the AR Scene
+Future<void> deleteAnchor({required String anchorId}) async {
+  return await _channel.invokeMethod<void>('deleteAnchor', {'id': anchorId});
+}
+
+/// Upload the latest added Anchor to the ASA Cloud
+Future<String?> uploadAnchor() async {
+  try {
+    return await _channel.invokeMethod<String?>('uploadAnchor');
+  } on PlatformException catch (_) {
+    return null;
+  }
+}
+
+/// Delete the given anchor from the ASA Cloud and the AR Scene
+Future<bool?> deleteCloudAnchor({required String anchorId}) async {
+  try {
+    return await _channel
+        .invokeMethod<bool?>('deleteCloudAnchor', {'id': anchorId});
+  } on PlatformException catch (_) {
+    return null;
+  }
+}
+\end{lstlisting} 
+
+Queste chiamate in Android sono implementati tramite chiamate Java innestate in Kotlin:
+
+\begin{lstlisting}[language=dart, label={lst:android_channels}, firstnumber=1,caption={Android chiamate dei \textit{method channel} per effettuare \textit{create, delete, ulpoad, delete cloud anchor} tramite \textit{method channel}}]
+private val onAnchorMethodCall =
+MethodChannel.MethodCallHandler { call, result ->
+    when (call.method) {
+        "createAnchor" -> {
+            val dictInfo = call.argument("info") as HashMap<String, Any>?
+            val transform = call.argument("transformation") as ArrayList<Double>?
+            createAnchor(transform!!, AnchorInfo(dictInfo!!))
+            result.success(null)
+        }
+        "uploadAnchor" -> {
+            uploadAnchor(result)
+        }
+        "deleteAnchor" -> {
+            val infoId = call.argument("id") as String?
+            deleteAnchor(infoId!!)
+            result.success(null)
+        }
+        "deleteCloudAnchor" -> {
+            val infoId = call.argument("id") as String?
+            deleteCloudAnchor(infoId!!, result)
+        }
+        else -> {
+            Log.d(TAG, call.method + "not supported on anchorManager")
+        }
+    }
+}
+\end{lstlisting}
+
+Mentre per quanto riguarda iOS sono implementate in Swift:
+
+\begin{lstlisting}[language=dart, label={lst:ios_channels}, firstnumber=1,caption={iOS chiamate dei \textit{method channel} per effettuare \textit{create, delete, ulpoad, delete cloud anchor}}]
+func onAnchorMethodCalled(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
+  let arguments = call.arguments as? [String: Any]
+  NSLog("IosARView: onAnchorMethodCalled \(call.method)")
+  switch call.method {
+      case "createAnchor":
+          let dictInfo = arguments?["info"] as! [String: Any]
+          let transform = arguments?["transformation"] as! [NSNumber]
+          createAnchor(transform: transform, info: AnchorInfo(val: dictInfo))
+          result(nil)
+      case "uploadAnchor":
+          uploadAnchor(result: result)
+      case "deleteAnchor":
+          let infoId = arguments!["id"] as! String
+          deleteAnchor(infoId: infoId)
+          result(nil)
+      case "deleteCloudAnchor":
+          let infoId = arguments!["id"] as! String
+          deleteCloudAnchor(infoId: infoId, result: result)
+      default:
+          result(FlutterMethodNotImplemented)
+  }
+}
+\end{lstlisting}
+
+Vediamo un piccolo esempio di come vengono implementate, in Android, le \asa{}. Non porteremo in questo caso l'esempio speculare di iOS in quanto poco interessante: come si vede dai frammenti di codice precedenti le differenze sono più tecniche che macroscopiche.\\
+Vediamo l'eliminazione di un ancoraggio salvato in \textit{cloud}, riprendendo il codice in \ref{lst:android_ar_view} guardiamo il flusso che provoca la chiamata \verb+"deleteCloudAnchor"+:
+
+\begin{lstlisting}[language=dart, label={lst:asa_android_call}, firstnumber=1,caption={Eliminazione \textit{cloud anchor} lato Android, chiamata}]
+private fun deleteCloudAnchor(infoId: String, result: MethodChannel.Result) {
+  Log.d(TAG, "removeCloudAnchor $infoId")
+  val visual = anchorVisuals[infoId]
+  if (visual?.cloudAnchor != null) {
+      azureSpatialAnchorsManager!!.deleteAnchorAsync(visual.cloudAnchor!!)
+
+  //la funzione prosegue ma non ci interessa per questa dimostrazione
+\end{lstlisting}
+
+Vediamo che è stato chiamato in causa il \textit{manager} per le \asa{}, seguiamo quindi il flusso:
+
+\begin{lstlisting}[language=dart, label={lst:asa_manager_delete}, firstnumber=1,caption={Eliminazione \textit{cloud anchor} lato Android, chiamata}]
+internal class AzureSpatialAnchorsManager(arCoreSession: Session?, apiKey: String, apiId: String) {
+  private val executorService: ExecutorService = Executors.newFixedThreadPool(2)
+  var isRunning = false
+  private val spatialAnchorsSession: CloudSpatialAnchorSession
+  // Set this string to the account ID provided for the Azure Spatial Anchors account resource.
+  private val SpatialAnchorsAccountId = apiId
+
+  // Set this string to the account key provided for the Azure Spatial Anchors account resource.
+  private val SpatialAnchorsAccountKey = apiKey
+
+  //ora viene chiamata l'effettiva eliminazione
+  fun deleteAnchorAsync(anchor: CloudSpatialAnchor?): CompletableFuture<*> {
+        return toEmptyCompletableFuture(spatialAnchorsSession.deleteAnchorAsync(anchor))
+  }
+\end{lstlisting}
+
+Grazie al codice appena visto possiamo notare che l'applicazione comunica con le \api{} di SYN per ottenere \textit{ticket} e \textit{asset}, che ottiene gli ancoraggi e che questi ancoraggi sono gestiti tramite \asa{}. Inoltre abbiamo visto che tutto questo è stato implementato sia in Android che in iOS e che la vista è scritta in Flutter.
+
+{
+    \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
+    \renewcommand{\arraystretch}{1.5}
+    \centering
+    \setlength{\aboverulesep}{0pt}
+    \setlength{\belowrulesep}{0pt}
+    \rowcolors{2}{red!10}{white}
+    \begin{longtable}{C{.15\freewidth} C{1\freewidth}}
+       \toprule
+    \rowcolor{red}
+    \textcolor{white}{\textbf{Codice}}&
+    \textcolor{white}{\textbf{Descrizione}}\\
+    \toprule
+    \endhead
+
+    R1V1 & \textit{Framework} scelto funziona su Android\\
+    R2V2 & \textit{Framework} scelto funziona su iOS\\
+    R1V4 & Il \textit{framework} scelto utilizza \asa\\
+    R1F3 & Il \textit{plugin} deve integrare gli ancoraggi tramite \asa{}\\
+    R1F3.1 & Permettere aggiunta di \asa\\%C
+    R1F3.2 & Permettere recupero e visualizzazione di \asa\\%R
+    R2F3.3 & Permettere modifica di \asa\\%U
+    R1F3.4 & Permettere eliminazione di \asa\\%D
+  
+    \bottomrule
+    \rowcolor{white} 
+    \caption{Requisiti soddisfatti nei frammenti: \ref{lst:arplug_manager}, \ref{lst:android_channels}, \ref{lst:ios_channels}, \ref{lst:asa_android_call}, \ref{lst:asa_manager_delete}.}
+    \end{longtable}
+}
+
+Vediamo infine una piccola parte del codice che si occupa di creare l'effettiva interfaccia utente della vista in realtà aumentata:
+
+\begin{lstlisting}[language=dart, label={lst:ar_view}, firstnumber=1,caption={Frammento di codice per vista in realtà aumenta in Dart}]
+  /// Android-specific implementation of [PlatformARView]
+  class AndroidARView implements PlatformARView {
+    late BuildContext? _context;
+    late ARViewCreatedCallback? _arViewCreatedCallback;
+  
+    @override
+    void onPlatformViewCreated(int id) {
+      print("Android platform view created!");
+      createManagers(id, _context, _arViewCreatedCallback);
+    }
+  
+    @override
+    Widget build(
+        {BuildContext? context,
+        ARViewCreatedCallback? arViewCreatedCallback,
+        String? apiKey,
+        String? apiId,
+        List<Map<String, dynamic>>? assets,
+        List<Map<String, dynamic>>? tickets}) {
+
+        \\altro codice
+        }
+\\altro codice
+  }
+
+
+  /// iOS-specific implementation of [PlatformARView]
+class IosARView implements PlatformARView {
+  BuildContext? _context;
+  ARViewCreatedCallback? _arViewCreatedCallback;
+
+  @override
+  void onPlatformViewCreated(int id) {
+    print("iOS platform view created!");
+    createManagers(id, _context, _arViewCreatedCallback);
+  }
+
+  @override
+  Widget build(
+      {BuildContext? context,
+      ARViewCreatedCallback? arViewCreatedCallback,
+      String? apiKey,
+      String? apiId,
+      List<Map<String, dynamic>>? assets,
+      List<Map<String, dynamic>>? tickets}) {
+        
+      \\altro codice
+      }
+      \\altro codice
+}
+\end{lstlisting}
+
+{
+    \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
+    \renewcommand{\arraystretch}{1.5}
+    \centering
+    \setlength{\aboverulesep}{0pt}
+    \setlength{\belowrulesep}{0pt}
+    \rowcolors{2}{red!10}{white}
+    \begin{longtable}{C{.15\freewidth} C{1\freewidth}}
+       \toprule
+    \rowcolor{red}
+    \textcolor{white}{\textbf{Codice}}&
+    \textcolor{white}{\textbf{Descrizione}}\\
+    \toprule
+    \endhead
+
+    R1V5 & La vista in realtà aumentata deve essere sviluppata in Flutter\\
+  
+    \bottomrule
+    \rowcolor{white} 
+    \caption{Requisiti soddisfatti nel frammento: \ref{lst:ar_view}}
+    \end{longtable}
+}
+
+
 \subsection{Copertura requisiti}
-\subsection{Implementazione Android}
-\subsection{Implementazione iOS}
+L'unico requisito rimasto insoddisfatto è il seguente:
+{
+    \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
+    \renewcommand{\arraystretch}{1.5}
+    \centering
+    \setlength{\aboverulesep}{0pt}
+    \setlength{\belowrulesep}{0pt}
+    \rowcolors{2}{red!10}{white}
+    \begin{longtable}{C{.15\freewidth} C{1\freewidth}} 
+       \toprule
+    \rowcolor{red}
+    \textcolor{white}{\textbf{Codice}}&
+    \textcolor{white}{\textbf{Descrizione}}\\
+    \toprule
+    \endhead
+
+    R2F6 & Utente deve poter vedere quali \textit{ticket} hanno ancoraggio associato\\
+
+    \bottomrule
+    \rowcolor{white} 
+    \caption{Requisiti soddisfatti dal codice.}
+    \end{longtable}
+}
+
+Portando quindi la copertura totale dei requisit ad un livello più che soddisfacente.
+Vediamo quindi una sintesi, in tabella singola, dei requisti soddisfatti e dove vederne la dimostrazione (figure o frammenti di codice).
+
+{
+    \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
+    \renewcommand{\arraystretch}{1.5}
+    \centering
+    \setlength{\aboverulesep}{0pt}
+    \setlength{\belowrulesep}{0pt}
+    \rowcolors{2}{red!10}{white}
+    \begin{longtable}{C{.15\freewidth} C{1\freewidth}} 
+       \toprule
+    \rowcolor{red}
+    \textcolor{white}{\textbf{Codice}}&
+    \textcolor{white}{\textbf{Descrizione}}\\
+    \toprule
+    \endhead
+
+    R1V1 &\\
+    R2V2 &\\
+    R1V3 &\\
+    R1V3.1 &\\
+    R1V3.2 &\\
+    R1V4 &\\
+    R1V5 &\\
+
+    R1F1 & \ref{fig:place_asset}\\
+    R1F2 & \\
+    R1F3 &\\
+    R1F3.1 &\\%C
+    R1F3.2 &\\%R
+    R2F3.3 &\\%U
+    R1F3.4 &\\%D
+    %API BACKEND
+    R1F4 & \\
+    R1F4.1 &\\
+    R1F4.2 &\\
+    R2F4.3 &\\
+    R2F4.4 &\\
+    %UI FLUTTER
+    R1F5 & \ref{fig:asset_list}\\
+    R2F6 & Non soddisfatto \\
+    R1F7 & \ref{fig:asset_list}\\
+    R1F8 & \ref{fig:asset_list}\\
+    R1F8.1 & \ref{fig:asset_list}\\
+    R1F8.2 & \ref{fig:asset_list}\\
+    R1F8.3 &\ref{fig:asset_list}\\
+    R1F8.4 & \ref{fig:asset_list}\\
+    R1F9 & \\
+    %UI AR
+    R1F10 &\\ 
+    R1F11 \ref{fig:place_asset}& \\
+    R1F11.1 & \ref{fig:place_asset}\\
+    R1F11.2 & \ref{fig:place_asset}\\
+    R1F12 & \ref{fig:place_asset}\\
+    R1F12.1 & \ref{fig:place_asset}\\
+    
+    \bottomrule
+    \rowcolor{white} 
+    \caption{Tabella dei requisiti di vincolo}
+    \end{longtable}
+}
+
