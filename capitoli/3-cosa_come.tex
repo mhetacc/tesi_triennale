@@ -10,6 +10,8 @@
 
 
 \section{Studio delle tecnologie}
+In questa sezione presento le tecnologie principali utilizzate durante il progetto, cercando di essere quanto più chiaro e sintetico possibile. Questo allo scopo di agevolare la comprensione delle parti finali del capitolo.
+
 \subsection{Flutter}
 E' impossibile parlare di Flutter senza prima discutere del linguaggio su cui si basa: Dart.\\
 Faremo quindi un'introduzione quanto più sintetica possibile sulle sue caratteristiche più proprietarie, tralasciando invece le similitudini a linguaggi popolari che possono facilmente essere intuite dal lettore.
@@ -27,22 +29,24 @@ fun (?variableNullable);  //esplicito che puo' essere nulla
 
 //utilizzo esplicito di variabile not nullable
 if (value != null)
-    fun (!value);   //dico al compilatore che sono certo value non sia null
+    fun (!value);   //dico al compilatore che sono certo value != null
 \end{lstlisting} 
 
 Permette inoltre l'interpolazione di stringhe:
 
 \begin{lstlisting}[language=dart, firstnumber=1,caption={Dart interpolazone stringhe}]
 //sfrutto il simbolo $
-'number = $variableName';              //inserisco in stringa direttamente una variabile
-'expressionResult = ${expression}';    //inserisco in stringa direttamente un'espressione
+'number = $variableName';              //inserisco in stringa 
+                                       //direttamente una variabile
+'expressionResult = ${expression}';    //inserisco in stringa
+                                       //direttamente un'espressione
 \end{lstlisting}
 
 Dart tratta in maniera particolare le funzioni, che sono oggetti, hanno un tipo (\verb+Function+), possono avere parametri posizioni o nominali, obbligatori od opzionali: 
 
 \begin{lstlisting}[language=dart, firstnumber=1,caption={Dart parametri funzioni}]
 //parametri obbligatori posizionali
-void fun (int a, int b);  //non possono essere nulli, non essendo 'int? a'
+void fun (int a, int b);  //non possono essere nulli
 
 //possono essere anteceduti da parametri posizionali opzionali
 void fun (int a, int b, [String opz1 = '', String opz2 = '']){}
@@ -53,12 +57,15 @@ void fun (int a, int b, {String opz1 = '', String opz2 = ''}){}
 void fun (int a, int b, {String? opz1nullable, String? opz2nullable}){}
 
 //non possono essere anteceduti da entrambi
-void fun (int a, int b, [String opz1 = ''], {String opz2 = ''}){} //compile error
+//il seguente codice non compila:
+void fun (int a, int b, [String opz1 = ''], {String opz2 = ''}){} 
 
 //tutti i costruttori in Dart hanno solo parametri nominali
 //di default i parametri nominali sono opzionali
 //possono pero' essere resi obbligatori con la keyword 'required'
-void fun ({required String obb1, required String? obb2, String opz1 = ''}){}
+void fun ({required String obb1, 
+           required String? obb2, 
+           String opz1 = ''}){}
 \end{lstlisting}
 
 Esistono le funzioni anonime (largamente sfruttate nei metodi \verb+build+ di Flutter), che possono essere ovviamente passate come argomento ad altre funzioni, essendo oggetti:
@@ -92,7 +99,8 @@ else                    return expr2
 
 //vediamo un esempio
 int? a;               //a==null di default
-a = a==null ? 1 : 0;  //ad 'a' viene assegnato il valore 1 siccome a==null
+a = a==null ? 1 : 0;  //ad 'a' viene assegnato il valore 1 
+                      //siccome a==null
 
 
 //################################
@@ -108,7 +116,7 @@ int? a;      //a==null di default
 a = a ?? 1;  //ad 'a' viene assegnato il valore 1 siccome a==null
 \end{lstlisting}
 
-I caratteri \verb+?+ e \verb+!+ sono, come si evince dalle espressioni ternarie e dalla \textit{null safety}, di cruciale importanza in Dart, ed è quindi opportuno vedere ancora qualche esempio del loro utilizzo:
+I caratteri \verb+?+ e \verb+!+ sono, come si evince dalle espressioni ternarie e dalla \textit{null safety}, di cruciale importanza in Dart, ed è quindi opportuno vederne ancora qualche esempio:
 
 \begin{lstlisting}[language=dart, firstnumber=1,caption={Dart operatori '?' e '!'}]
 list[1]     //accede al secondo elemento della lista
@@ -170,7 +178,9 @@ Mostriamo ora alcuni componenti di Flutter necessari al proseguimento della lett
 \end{figure}
 \footnotetext{Fonte: \url{https://docs.flutter.dev/resources/architectural-overview}}
 
-L'albero di \textit{render} è una delle tre strutture logiche che Flutter usa per descrivere i propri oggetti e le proprie interfacce grafiche: il \textit{widget tree} rappresenta gli elementi di un \textit{widget} come uno \textit{stack} di \textit{widget}, messi in relazione con il loro elemento padre e i loro elementi figli. Nel caso del \textit{widget tree} rappresentato in figura \ref{fig:flutter-trees} esso rappresenta un \verb+Containter+ che contiene un \verb+ColoredBox+ che a sua volta contiene una \verb+Row+ e via dicendo. I \textit{widget} sono per definizione immutabili, quindi una modifica richiede necessariamente una distruzione e successiva ricreazione del \textit{widget} interessato.
+L'albero di \textit{render} è una delle tre strutture logiche che Flutter usa per descrivere i propri oggetti e le proprie interfacce grafiche: \textit{widget tree}, \textit{element tree} e \textit{render tree}. \\
+Il \textit{widget tree} rappresenta gli elementi di un \textit{widget} come uno \textit{stack} di \textit{widget}, messi in relazione con il loro elemento padre e i loro elementi figli. Quello mostrato in figura \ref{fig:flutter-trees}, ad esempio, rappresenta un \verb+Containter+ che contiene un \verb+ColoredBox+ che a sua volta contiene una \verb+Row+ e via dicendo. I \textit{widget} sono per definizione immutabili, quindi una modifica richiede necessariamente una distruzione e successiva ricreazione del \textit{widget} interessato.\\
+Vediamo un esempio più specifico di \textit{widget tree}:
 
 \begin{lstlisting}[language=dart, caption={Codice rilevante per la parte grafica dell'\textit{app} di esempio di Flutter}]
 Widget build(BuildContext context) {
@@ -210,10 +220,12 @@ Il codice precedente produce il seguente risultato (e il seguente \textit{widget
     \caption[\textit{Widget tree} app esempio]{Il \textit{widget tree} dell'applicazione di esempio di Flutter e il suo risultato su Android}
 \end{figure}
 
-Per quanto riguarda le dimensioni delle varie componenti Flutter ragiona come segue: i padri passano ai figli (dall'altro verso il basso del \textit{widget tree}) dei \textit{"constraints"}, ovvero le dimensioni massime oltre le quali non possono cresce di dimensione, e i figli passano quindi ai padri (dal basso verso l'alto del \textit{widget tree}) le proprie dimensioni.\\
-Il \textit{widget tree} è quello più importante da tenere a mente, e che più direttamente si interfaccia con il codice scritto dal programmatore. Torniamo però alla figura \ref{fig:flutter-trees} per parlare brevemente degli altri due alberi: l'\textit{element tree} rappresenta gli elementi che, a differenza dei \textit{widget}, sono mutabili e vengono definiti come "un'istanza di un \textit{Widget} in una particolare posizione dell'albero". Gli elementi sono responsabili di aggiornare l'interfaccia utente e fungono da ponte tra \verb+Widget+ e \verb+Render Object+.\\
+Per quanto riguarda le dimensioni delle varie componenti, Flutter ragiona come segue: i padri passano ai figli (dall'altro verso il basso nel \textit{widget tree}) dei \textit{"constraints"}, ovvero le dimensioni massime oltre le quali non possono cresce, e i figli passano quindi ai padri (dal basso verso l'alto nel \textit{widget tree}) le proprie dimensioni.\\
+Il \textit{widget tree} è quello più importante da tenere a mente, e che più direttamente si interfaccia con il codice scritto dal programmatore. \\
+Torniamo però alla figura \ref{fig:flutter-trees} per parlare brevemente degli altri due alberi: l'\textit{element tree} rappresenta gli elementi che, a differenza dei \textit{widget}, sono mutabili e vengono definiti come "un'istanza di un \textit{widget} in una particolare posizione dell'albero". Gli elementi sono responsabili di aggiornare l'interfaccia utente e fungono da ponte tra \verb+Widget+ e \verb+Render Object+.\\
 Il \textit{render tree} rappresenta i \verb+Render Object+ e viene interpellato dal \textit{framework} per disegnare i componenti dell'interfaccia grafica. Una singola istanza di \verb+Render Object+ contiene tutte le informazioni riguardanti dimensioni, colori e logiche di \textit{layout} di un \verb+Widget+.\\
-Abbiamo accennato che i \textit{widget} quando chiamano stato richiamano il proprio metodo \verb+build+ che provoca quindi una ricostruzione del \textit{widget} stesso. Questi \textit{widget} si chiamano \textit{"stateful}, e sono in diretta contrapposizione con quelli incapaci di modificarsi durante l'esecuzione, chiamati \textit{"stateless"}. 
+Abbiamo accennato che i \textit{widget} quando cambiano stato richiamano il proprio metodo \verb+build+ che provoca quindi una ricostruzione del \textit{widget} stesso. Questi \textit{widget} si chiamano "\textit{stateful}", e sono in diretta contrapposizione con quelli incapaci di modificarsi durante l'esecuzione, chiamati "\textit{stateless}". \\
+Vediamo un esempio di \textit{stateful widget}:
 
 \begin{lstlisting}[language=dart, label={lst:stateful_widget}, caption={Creazione \textit{stateless widget}}]
 class MyApp extends StatelessWidget {
@@ -245,7 +257,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void _incrementCounter() {
     //quando viene chiamata questa funzione viene
     //richiamato il metodo build, di fatto cambiando lo stato 
-    //del widget e provocando un render dell'applicazione
+    //del widget e provocando un re-render dell'applicazione
     setState(() {
       _counter++;
     });
@@ -256,8 +268,8 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 \end{lstlisting}
 
-Si nota immediatamente che l'uso degli \textit{stateful widget} provoca la scrittura di codice ridondante e si è quindi deciso di arginare questo problema, aumentando al contempo la condivisione di codice tra i \textit{widget}, introducendo i Flutter Hooks (ispirati dagli \textit{hooks} di React).
-Vediamo quindi la riscrittura del codice mostrato in estratto \ref{lst:stateful_widget} opportunamente modificato usando un \verb+HookWidget+:
+Si nota immediatamente che l'uso degli \textit{stateful widget} provoca scrittura di codice ridondante e si è quindi deciso di arginare questo problema, aumentando al contempo la condivisione di codice tra i \textit{widget}, introducendo i Flutter Hooks (ispirati dagli \textit{hooks} di React).
+Vediamo quindi la riscrittura del codice mostrato nel frammento \ref{lst:stateful_widget} opportunamente modificato usando un \verb+HookWidget+:
 
 \begin{lstlisting}[language=dart, caption={Creazione \textit{hook widget}}]
 class MyApp extends StatelessWidget {
@@ -299,9 +311,9 @@ class MyHomePage extends HookWidget {
 \end{lstlisting}
 
 \subsubsection{Method Channels}
-I \textit{method channel} nascono per uno scopo: utilizzare codice nativo tramite Flutter, ad esempio chiamare \api{} \textit{platform-specific} come Kotlin o Java per Android, Swift per iOS o C++ su Windows.\\
-Flutter non usa queste funzionalità tramite generazione di codice e preferisce un approccio basato sullo scambio di messaggi. Vediamo quindi un esempio di utilizzo per ottenere, tramite Java, il valore di carica della batteria di un dispositivo Android.\\
-Per prima cosa è necessario agire sull'Android \textit{manifest} inserendo il nome dell'applicazione di Flutter (in questo caso \verb+batterylevel+). L'applicazione si può creare con il comando \verb+flutter create nome_applicazione+.
+I \textit{method channel} nascono per uno scopo: utilizzare codice nativo tramite Flutter, ad esempio per chiamare \api{} \textit{platform-specific} in Kotlin o Java per Android, in Swift per iOS o in C++ per Windows.\\
+Flutter non usa queste funzionalità tramite generazione di codice e preferisce un approccio basato sullo scambio di messaggi. Vediamone quindi un esempio per ottenere, tramite Java, il valore di carica della batteria di un dispositivo Android.\\
+Per prima cosa è necessario agire sull'Android \textit{manifest} inserendo il nome dell'applicazione di Flutter, in questo caso \verb+batterylevel+ (l'applicazione si può creare con il comando: \verb+flutter create nome_applicazione+).
 
 \begin{lstlisting}[language=XML, firstnumber=1,caption={Android \textit{manifest}}]
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
@@ -319,18 +331,20 @@ public class MainActivity extends FlutterActivity {
   @Override
   public void configureFlutterEngine(@NonNull FlutterEngine flutterEngine) {
       super.configureFlutterEngine(flutterEngine);
-      new MethodChannel(flutterEngine.getDartExecutor().getBinaryMessenger(), CHANNEL)
+      new MethodChannel(flutterEngine.getDartExecutor()
+                                     .getBinaryMessenger(), CHANNEL)
               .setMethodCallHandler(
                       (call, result) -> {
                           //Questo e' il metodo invocato nel main
-                          //sfruttiamo la stringa 'getBatteryLevel' per invocarlo
+                          //sfruttiamo "getBatteryLevel" per invocarlo
                           if (call.method.equals("getBatteryLevel")) {
                               //il metodo vero e proprio in Java
                               int batteryLevel = getBatteryLevel();
                               if (batteryLevel != -1) {
                                   result.success(batteryLevel);
                               } else {
-                                  result.error("UNAVAILABLE", "Battery level not available.", null);
+                                  result.error("UNAVAILABLE", 
+                                  "Battery level not available.", null);
                               }
                           } else {
                               result.notImplemented();
@@ -364,8 +378,8 @@ static const platform = MethodChannel('samples.flutter.dev/battery');
             ElevatedButton(
               onPressed: () async {
                 try {
-                  //qui avviene l'effettiva invocazione del method channel
-                  //che provoca una chiamata in Java
+                  //qui avviene l'effettiva invocazione del
+                  // method channel che provoca una chiamata in Java
                   final int result =
                       await platform.invokeMethod('getBatteryLevel');
                   batteryLevel.value = 'Battery level at $result % .';
@@ -385,10 +399,8 @@ static const platform = MethodChannel('samples.flutter.dev/battery');
 }
 \end{lstlisting}
 
-
 \subsection{Realtà aumentata}
-Uno dei punti centrali di questa tesi è la realtà aumentata e gli ancoraggi che è possibile posizionare all'interno di uno spazio tridimensionale, ed è quindi intelligente presentare preventivamente l'argomento e i concetti chiave.\\
-La realtà aumentata consiste nel prendere lo spazio tridimensionale reale e trasporlo, tramite tecniche di mappatura, in formato digitale per poi poterci effettuare delle manipolazioni tramite \textit{software}. Ad esempio è possibile, nell'applicazione di Ikea, inquadrare il proprio salotto e posizionarci dei modelli poligonali\footnote{Detti anche \textit{asset} poligonali, prendono questo nome perché nel mondo della modellazione digitale tridimensionale le entità sono composte da triangoli adiacenti tra loro (poligoni appunto) che costruiscono una figura volumetrica. Questo perché il triangolo è la più semplice forma bidimensionale esistente, e quindi la meno esosa da calcolare.} della mobilia venduta dal colosso svedese.\\
+La realtà aumentata consiste nel prendere lo spazio tridimensionale reale e trasporlo, tramite tecniche di mappatura, in formato digitale per poi poterci effettuare delle manipolazioni tramite \textit{software}. Ad esempio è possibile, nell'applicazione di Ikea, inquadrare il proprio salotto e posizionarci dei modelli poligonali\footnote{Detti anche \textit{asset} poligonali, prendono questo nome perché nel mondo della modellazione digitale tridimensionale le entità sono composte da triangoli adiacenti tra loro (poligoni appunto) che costruiscono una figura volumetrica. Questo perché il triangolo è la più semplice forma bidimensionale esistente, e quindi la meno esosa da calcolare.} che rappresentano la mobilia venduta dal colosso svedese.\\
 
 \begin{figure}[H]
   \centering
@@ -398,7 +410,7 @@ La realtà aumentata consiste nel prendere lo spazio tridimensionale reale e tra
 \end{figure}
 
 
-Sebbene sia possibile immaginare lo spazio virtuale come un cubo vuoto all'interno del quale posizionare \textit{asset}, vengono applicate delle semplificazioni logiche per una questione di complessità ed efficienza di calcolo: lo spazio viene processato come una serie di piani bidimensionali sovrapposti a diverse altezze (una sorta di \textit{stack} di battaglie navali) e gli ancoraggi si legano quindi a una coppia di coordinate \textit{(x,y)} relativa al piano più la coordinata \textit{(z)} del piano stesso. Esistono inoltre piani orizzontali e verticali (non a caso alcune delle funzioni chiave di ARCore e ARKit servono a identificare gli spazi lisci).
+Sebbene sia possibile immaginare lo spazio virtuale come un cubo vuoto all'interno del quale posizionare \textit{asset}, vengono applicate delle semplificazioni logiche per una questione di complessità ed efficienza di calcolo: lo spazio viene processato come una serie di piani bidimensionali sovrapposti a diverse altezze (una sorta di \textit{stack} di battaglie navali) e gli ancoraggi si legano quindi a una coppia di coordinate \textit{(x,y)} relativa al piano più la coordinata \textit{(z)} del piano stesso. I piani vengono divisi in verticali e orizzontali.
 
 \begin{figure}[H]
   \centering
@@ -406,17 +418,17 @@ Sebbene sia possibile immaginare lo spazio virtuale come un cubo vuoto all'inter
   \caption[Piani in realtà aumentata]{In realtà aumentata vengono identificati due tipologie di piano: orizzontale e verticale. Possono essere usati sia singolarmente (prima e seconda figura) che assieme (ultima figura).}
 \end{figure}
 
-Nella maggior parte dei casi è bene legare a un ancoraggio multiple entità diverse, questo perché la \textit{pose} degli oggetti (ovvero rotazione verticale e orizzontale) è legata a quella della \textit{anchor} associata. Di conseguenza se vogliamo rappresentare in una stanza un insieme realistico di mobili (o meglio, di modelli poligonali e quindi gemelli digitali di mobili), se li leghiamo a un ancoraggio centrale rispetto alla stanza tutti gli elementi avranno sempre una posizione relativa corretta tra di loro. Se invece ogni elemento ha la sua \textit{anchor} potremmo vedere rotazioni errate oppure potrebbero spostarsi anche di qualche metro rispetto alla loro posizione originale.
+Nella maggior parte dei casi è bene che oggetti multipli siano legati a un ancoraggio singolo, questo perché la \textit{pose} degli oggetti (ovvero rotazione verticale e orizzontale) è legata a quella della \textit{anchor} associata. Di conseguenza se vogliamo rappresentare in una stanza un insieme realistico di mobili (o meglio, di modelli poligonali e quindi gemelli digitali di mobili), e li leghiamo a un ancoraggio centrale rispetto alla stanza tutti gli elementi avranno sempre una posizione relativa corretta tra loro. Se invece ogni elemento ha la sua \textit{anchor} potremmo vedere rotazioni errate oppure potrebbero spostarsi anche di qualche metro rispetto alla loro posizione originale (entrambi questi scenari vanno intesi in relazione con gli altri ancoraggi e quindi con gli altri oggetti).
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{ancoraggi_multipiano}
-  \caption[Ancoraggi singoli per multipli elementi]{A un ancoraggio (in viola) possono essere collegati molteplici elementi (rispettivamente i cubi rossi e i cilindri gialli), e gli ancoraggi possono essere nello stesso spazio ma su due piani diversi.}
+  \caption[Ancoraggi singoli per multipli elementi]{A un ancoraggio (in viola) possono essere collegati molteplici elementi (rispettivamente i cubi rossi per l'ancoraggio in alto e i cilindri gialli per quello in basso), e gli ancoraggi possono essere nello stesso spazio ma su due piani diversi.}
 \end{figure}
 
 \subsection{Azure ToolKit}
-Azure è l'ombrello sotto al quale vivono tutti i servizi \textit{cloud} di Microsoft esterni al pacchetto Office 365, e comprendono \textit{database} relazionali con scalabilità automatica (Azure SQL o Azure Cosmos DB), macchine virtuali remote (Virtual Machines e Azure Virtual Desktop) fino a funzionalità estremamente avanzate come Azure Kubernetes Service che fornisce un sistema automatizzato per rilasciare, scalare e gestire grandi applicativi \textit{sofware} (ad esempio per i \textit{data center}), oppure Azure Quantum che mette a disposizioni soluzioni per scrivere e far girare \textit{software} su \textit{hardware} quantistico.\\
-Come si può notare la \textit{suite} Azure è indirizzata a utenti altamente specializzati e ancora più spesso a organizzazioni vere e proprie.
+Azure è l'ombrello sotto al quale vivono tutti i servizi \textit{cloud} di Microsoft esterni al pacchetto Office 365, e comprendono \textit{database} relazionali con scalabilità automatica (Azure SQL o Azure Cosmos DB), macchine virtuali remote (Virtual Machines e Azure Virtual Desktop), ma anche funzionalità estremamente avanzate come Azure Kubernetes Service che fornisce un sistema automatizzato per rilasciare, scalare e gestire grandi applicativi \textit{sofware} (ad esempio per i \textit{data center}), oppure Azure Quantum che mette a disposizioni soluzioni per scrivere e provare \textit{software} su \textit{hardware} quantistico.\\
+Si nota quindi che la \textit{suite} Azure è indirizzata a utenti altamente specializzati e ancora più spesso a organizzazioni vere e proprie.
 
 \begin{figure}[H]
   \centering
@@ -437,7 +449,7 @@ Le \asa{} forniscono tre \sdk{}s, uno per Microsoft HoloLens, uno per iOS appogg
 
 \subsection{Framework realtà aumentata per Flutter}
 Essendo lo scopo di questo stage, e quindi il caso di studio di questa tesi, l'implementazione di una vista in realtà aumentata (nello specifico sfruttando \asa{}) in un'applicazione preesistente sviluppata in Flutter, una grossa parte del lavoro svolto si è incentrato sullo studio dei \textit{framework} e/o \textit{plugin} disponibili.\\
-Sfortunatamente, complici la giovinezza di Flutter e la scarsa diffusione di tecnologie per la realtà aumentata, le opzioni disponibili sono alquanto ridotte:
+Sfortunatamente, complici la giovinezza di Flutter e la scarsa diffusione di tecnologie per la realtà aumentata, le opzioni sono alquanto ridotte:
 
 \begin{itemize}
     \item \aplug{}: \textit{plugin}\footnote{Fonte: \url{https://pub.dev/packages/ar_flutter_plugin}} che punta a implementare le componenti in realtà aumentata in modalità \textit{cross-platform}, quindi adattandosi autonomamente ad Android e iOS (sfruttando tuttavia le Cloud Anchor di Google). Nasce partendo da due \textit{plugin} più specializzati: 
@@ -452,8 +464,8 @@ E' necessario notificare che al momento della stesura di questo testo non è pi�
 E' anche possibile trovarne una versione nella Wayback Machine\footnote{Fonte: \url{https://web.archive.org/web/20220525060655/https://docs.arway.app/arwaykit-with-flutter/quickstart-in-flutter}}.
 
 \subsubsection{ARWayKit}
-ARwayKit è un \textit{framework} formato da un insieme di componenti che si pone l'obiettivo di fornire un'esperienza in realtà aumentata persistente, e lo persegue fornendo una \sdk{} Unity, un'applicazione di mappatura e un insieme di \api{} REST\footnote{Conosciute anche come RESTful API, sono delle \api{} che si conformano allo stile architetturale e alle norme per sistemi distribuiti chiamato \textit{representational state transfer} largamente utilizzato nella comunicazione \textit{web}.}, che implementa le componenti in realtà aumentata in Flutter sfruttando il \textit{plugin} flutter\_unity\_widget\footnote{Fonte: \url{https://pub.dev/packages/flutter_unity_widget}}.\\
-E' multipiattaforma, implementa gli ancoraggi tramite \asa{} e funziona in ambienti \textit{"GPS-denied"}, ovvero dove i dati di posizione del \textit{global positioning system}\footnote{Sistema di satelliti in grado di fornire a un ricevitore le sue coordinate geografiche.} non vengono utilizzati per muoversi all'interno dell'ambiente virtuale (oppure ambienti con protocolli di \textit{privacy} elevati), il che lo rende apparentemente perfetto per il caso d'uso specifico di questa tesi. 
+ARwayKit è un \textit{framework} formato da un insieme di componenti che si pone l'obiettivo di fornire un'esperienza in realtà aumentata persistente, e lo persegue fornendo un \sdk{} Unity, un'applicazione di mappatura e un insieme di \api{} REST\footnote{Conosciute anche come RESTful API, sono delle \api{} che si conformano allo stile architetturale e alle norme per sistemi distribuiti chiamato \textit{representational state transfer} largamente utilizzato nella comunicazione \textit{web}.}, che implementano le componenti in realtà aumentata in Flutter sfruttando il \textit{plugin} flutter\_unity\_widget\footnote{Fonte: \url{https://pub.dev/packages/flutter_unity_widget}}.\\
+E' multipiattaforma, implementa gli ancoraggi tramite \asa{} e funziona in ambienti \textit{"GPS-denied"}, ovvero dove i dati di posizione del \textit{global positioning system}\footnote{Sistema di satelliti in grado di fornire a un ricevitore le sue coordinate geografiche.} non vengono utilizzati per muoversi all'interno dell'ambiente virtuale (oppure ambienti con protocolli di \textit{privacy} elevati). Le caratteristiche appena descritte renderebbero ARwayKit apparentemente perfetto per il caso d'uso specifico di questa tesi. 
 
 \begin{figure}[H]
   \centering
@@ -478,8 +490,9 @@ Per raggiungere lo scopo si serve della libreria archiviata Sceneform\footnote{F
 \end{figure}
 \footnotetext{Fonte: \url{https://lars.carius.io/blog/ar_flutter_plugin.html}}
 
-L'architettura di \aplug{} è composta da due componenti: una \api{} multipiattaforma unificata che fornisce un'interfaccia alle applicazioni tramite il \textit{plugin} e le implementazioni specifiche per le piattaforme Android (in Kotlin) e iOS (in Swift) costruite su ARCore e ARKit rispettivamente, così da garantire accesso continuativo nel tempo a funzionalità aggiornate.\\
-\aplug{} espone dei \textit{widget} che possono essere inclusi nel \textit{widget tree} (fig. \ref{fig:flutter-trees}) dell'applicazione cliente e delle classi \textit{manager} per gestire funzionalità e logiche di controllo del \textit{plugin} e delle componenti in realtà aumentata: il \textit{session manager} gestisce le configurazioni di tracciamento (ad esempio se gestire piani orizzontali, verticali o entrambi), opzioni di \textit{debugging} (come la visualizzazione dei piani) e le \textit{callbacks} per gli \textit{hit-test}\footnote{Immaginando un vettore che parte dall'ottica del dispositivo e tocca una superficie, possiamo considerare quel contatto un \textit{"hit"}. Con \textit{hit-testing} si intende valutare la capacità di tracciare correttamente lo spazio inteso come distanza tra i punti dello stesso e il dispositivo.} e i \textit{gesture events}\footnote{Azioni che il sistema deve fare quando vengono effettuati degli \textit{input} tramite \textit{touch screen} del dispositivo}.\\
+L'architettura di \aplug{} è composta da due componenti: delle \api{} multipiattaforma unificate che forniscono un'interfaccia alle applicazioni tramite il \textit{plugin} e le implementazioni specifiche per le piattaforme Android (in Kotlin) e iOS (in Swift) costruite su ARCore e ARKit rispettivamente, così da garantire accesso continuativo nel tempo a funzionalità aggiornate.\\
+\aplug{} espone dei \textit{widget} che possono essere inclusi nel \textit{widget tree} dell'applicazione cliente e delle classi \textit{manager} per gestire funzionalità e logiche di controllo del \textit{plugin} e delle componenti in realtà aumentata: \textit{session manager}, \textit{object manager}, \textit{anchor manager} e \textit{location manager}.\\ 
+Il \textit{session manager} gestisce le configurazioni di tracciamento (ad esempio se usare piani orizzontali, verticali o entrambi), opzioni di \textit{debugging} (come la visualizzazione dei piani) e le \textit{callbacks} per gli \textit{hit-test}\footnote{Immaginando un vettore che parte dall'ottica del dispositivo e tocca una superficie, possiamo considerare quel contatto un \textit{"hit"}. Con \textit{hit-testing} si intende valutare la capacità di tracciare correttamente lo spazio inteso come distanza tra i punti dello stesso e il dispositivo.} e i \textit{gesture events}\footnote{Azioni che il sistema deve fare quando vengono effettuati degli \textit{input} tramite \textit{touch screen} del dispositivo}.\\
 
 \begin{figure}[H]
   \centering
@@ -488,10 +501,10 @@ L'architettura di \aplug{} è composta da due componenti: una \api{} multipiatta
 \end{figure}
 \footnotetext{Fonte: \url{https://lars.carius.io/blog/ar_flutter_plugin.html}}
 
-L'\textit{object manager} gestisce i nodi in realtà aumentata del \textit{plugin} che servono ad astrarre rispetto alle funzionalità native delle varie piattaforme (ARCore e ARKit ad esempio) e permettono di aggiungere, modificare o rimuovere nodi basandosi su formati GLTF2 o GLB che possono essere caricati a \textit{runtime} da un \textit{file system} o dalla rete.\\
-L'\textit{anchor manager} contiene funzioni per caricare e ottenere ancoraggi da servizi \textit{cloud} servendosi della \api{} Google Coud Anchor. Gli ambienti virtuali registrati localmente possono essere salvati in rete e comparati con quelli già in \textit{storage} persistente per scaricare ancoraggi e oggetti precedentemente posizionati nella scena.\\
+L'\textit{object manager} gestisce i nodi (le entità) in realtà aumentata del \textit{plugin} che servono ad astrarre rispetto alle funzionalità native delle varie piattaforme (ARCore e ARKit ad esempio) e permettono di aggiungere, modificare o rimuovere nodi basandosi su formati GLTF2 o GLB che possono essere caricati a \textit{runtime} da un \textit{file system} o dalla rete.\\
+L'\textit{anchor manager} contiene funzioni per caricare e ottenere ancoraggi da servizi \textit{cloud} servendosi delle \api{} fornite da Google Coud Anchor. Gli ambienti virtuali registrati localmente possono essere salvati in rete e comparati con quelli già in \textit{storage} persistente per scaricare ancoraggi e oggetti precedentemente posizionati nella scena.\\
 Infine il \textit{location manager} si occupa di fornire le coordinate del \textit{global positioning system}  per permettere un'interrogazione efficiente degli ancoraggi basati su posizione geografica.\\
-Il \textit{plugin} ha un'architettura largamente \textit{clout-agnostic}, ovvero che non si interessa dell'implementazione specifica per i servizi di salvataggio persistente, il che gli permette di usare facilmente gestori di contenuti esterni.
+Il \textit{plugin} ha un'architettura largamente \textit{clout-agnostic}, cioè non si interessa dell'implementazione specifica per i servizi di salvataggio persistente, il che gli permette di usare facilmente gestori di contenuti esterni.
 
 \subsubsection{Confronto}
 Vediamo quindi di schematizzare e mettere a confronto pregi e difetti delle due soluzioni trovate.\aCapo{}
@@ -555,7 +568,7 @@ Vediamo quindi di schematizzare e mettere a confronto pregi e difetti delle due 
   \end{longtable}
 }
 
-E' stato infine scelto \aplug{} rispetto ad ARwayKit per evitare di interfacciarsi con Unity e per la necessità di avere la vista in realtà aumentata implementata direttamente in Flutter.
+E' stato infine scelto \aplug{} rispetto ad ARwayKit per evitare di interfacciarsi con Unity, per la necessità di avere la vista in realtà aumentata implementata direttamente in Flutter e per il grande vantaggio che comporta il suo essere \textit{open-source}.
 
 \section{Analisi dei requisiti}
 \label{sec:analisi_requisiti}
@@ -587,7 +600,7 @@ dove:
     \setlength{\aboverulesep}{0pt}
     \setlength{\belowrulesep}{0pt}
     \rowcolors{2}{red!10}{white}
-    \begin{longtable}{C{.15\freewidth} C{1\freewidth}}
+    \begin{longtable}{C{.15\freewidth} C{.965\freewidth}}
        \toprule
     \rowcolor{red}
     \textcolor{white}{\textbf{Codice}}&
@@ -639,7 +652,7 @@ dove:
     \setlength{\aboverulesep}{0pt}
     \setlength{\belowrulesep}{0pt}
     \rowcolors{2}{red!10}{white}
-    \begin{longtable}{C{.15\freewidth} C{1\freewidth}} 
+    \begin{longtable}{C{.15\freewidth} C{.965\freewidth}} 
        \toprule
     \rowcolor{red}
     \textcolor{white}{\textbf{Codice}}&
@@ -723,7 +736,7 @@ Riporto quindi la programmazione settimanale che, siccome questo documento è sc
 \begin{itemize}
   \item \textbf{Settimana 1:} 
       \begin{itemize}
-          \item Installazione e configurazione del \textit{framework} Flutter e della \sdk{} per Android 
+          \item Installazione e configurazione del \textit{framework} Flutter e del \sdk{} per Android 
           \item Configurazione emulatore Android (scelto Pixel 6 API 33) e 
           \textit{developers options} sul mio telefono personale;
           \item Configurazione \vsc{} e \astudio;
@@ -761,14 +774,14 @@ Riporto quindi la programmazione settimanale che, siccome questo documento è sc
   \item \textbf{Settimana 8:} Integrazione componenti realtà aumentata in MobileSYN lato iOS;
 \end{itemize}
 
-I processi di verifica e validazione non hanno potuto fare affidamento su sistemi consolidati, in quanto tutto il lavoro è stato genuinamente sperimentale, e quindi ci si è affidati al \textit{testing} "sul campo", ovvero provando direttamente l'applicazione (a un certo punto usando direttamente la versione in produzione) per valutare il progresso dei lavori e scoprire la presenza o meno di errori.\\
+I processi di verifica e validazione non hanno potuto fare affidamento su sistemi consolidati, in quanto tutto il lavoro è stato genuinamente sperimentale, e quindi ci si è affidati al \textit{testing} "sul campo", ovvero provando direttamente l'applicazione (a un certo punto usando la versione in produzione) per valutare il progresso dei lavori e scoprire la presenza o meno di errori.\\
 Di grande aiuto sono stati i \textit{logs} delle varie applicazioni provate (da MobileSYN, all'applicazione di esempio di \aplug{} fino a quella di \asa{}) che hanno, in parte, sopperito alle gravi mancanze documentali delle tecnologie trattate.
 
 %************************************************************************************************************
 
 \section{Difficoltà incontrate}
 \label{sec:difficolta_incontrate}
-Le prime difficoltà incontrate a livello personale sono state di tipo tecnologico: mi sono trovato per la prima volta a dover programmare con linguaggi orientati al \textit{frontend}, dovendo quindi cambiare almeno in parte il mio \textit{modus operandi} nella progettazione e scrittura di codice. A questo si è aggiunta la necessità di gestire altri tre linguaggi per le implementazioni native, ovvero Java e Kotlin per il lato Android e Swift per la parte iOS e, a complicare le cose, tutti questi linguaggi dovevano essere messi in comunicazione diretta con Flutter (e nel caso di Java e Kotlin anche tra di loro).\\ 
+Le prime difficoltà incontrate a livello personale sono state di tipo tecnologico: non mi ero mai trovato a programmare con linguaggi orientati al \textit{frontend}, e ho dovuto quindi cambiare almeno in parte il mio \textit{modus operandi} nella progettazione e scrittura di codice. A questo si è aggiunta la necessità di gestire altri tre linguaggi per le implementazioni native, ovvero Java e Kotlin per il lato Android e Swift per la parte iOS e, a complicare le cose, tutti questi linguaggi dovevano essere messi in comunicazione diretta con Flutter (e nel caso di Java e Kotlin anche tra di loro).\\ 
 Una buona parte dello \textit{stage} è quindi stata investita nel comprendere e nel gestire la grande diversità di linguaggi diversi.
 
 \begin{figure}[H]
@@ -781,8 +794,8 @@ Una buona parte dello \textit{stage} è quindi stata investita nel comprendere e
 \label{fig:search1}
 \end{figure}
 
-In linea più generale invece le due problematiche che hanno più di tutte complicato i lavori (sia per me che per Datasoil stessa) sono stati la mancanza di documentazione adeguata e di supporto da parte della comunità degli sviluppatori.\\
-Microsoft non fornisce un supporto documentale adeguato per quanto riguarda \asa{}, mostrando il meno possibile della struttura interna (ad esempio come viene rappresentato un ancoraggio) e fornendo solo \api{} per effettuare operazioni ad alto livello (come il salvataggio in \textit{cloud} di un'\textit{anchor}), inoltre la ricerca della documentazione è macchinosa e richiede tempo considerevole per produrre i risultati sperati.\\
+In linea più generale invece le due problematiche che hanno più di tutte complicato i lavori (sia per me che per Datasoil stessa) sono stati la mancanza di documentazione adeguata e la mancanza di supporto da parte della comunità degli sviluppatori.\\
+Microsoft non fornisce un \textit{set} documentale adeguato per quanto riguarda \asa{}, mostrando il meno possibile della struttura interna (ad esempio come viene rappresentato un ancoraggio) e fornendo solo \api{} per effettuare operazioni ad alto livello (come il salvataggio in \textit{cloud} di un'\textit{anchor}), inoltre la ricerca della documentazione è macchinosa.\\
 L'altro problema risiede nella difficoltà estrema di trovare supporto di terze parti (ad esempio in siti come \url{https://stackoverflow.com}), come viene mostrato nelle figure \ref{fig:search1} e \ref{fig:search2}.
 
 \begin{figure}[H]
@@ -809,7 +822,7 @@ Inoltre nella prima immagine, viene anche mostrato il livello di progressione di
   \includegraphics[width=.3\textwidth]{place_asset}\hfill
   \includegraphics[width=.3\textwidth]{retrieve_asset}\hfill
 
-  \caption[Creazione, caricamento e recupero di \textit{asset}]{In ordine: \textit{asset} viene posizionato e viene mostrato il livello di \textit{scan} dell'ambiente  viene caricato e, previa chiusura e riapertura della vista, viene recuperato dal \textit{cloud}.}
+  \caption[Creazione, caricamento e recupero di \textit{asset}]{In ordine: \textit{asset} viene posizionato e viene mostrato il livello di \textit{scan} dell'ambiente, viene caricato e, previa chiusura e riapertura della vista, viene recuperato dal \textit{cloud}.}
   \label{fig:place_asset}
 \end{figure}
 
@@ -820,7 +833,7 @@ Inoltre nella prima immagine, viene anche mostrato il livello di progressione di
     \setlength{\aboverulesep}{0pt}
     \setlength{\belowrulesep}{0pt}
     \rowcolors{2}{red!10}{white}
-    \begin{longtable}{C{.15\freewidth} C{1\freewidth}}
+    \begin{longtable}{C{.15\freewidth} C{.965\freewidth}}
        \toprule
     \rowcolor{red}
     \textcolor{white}{\textbf{Codice}}&
@@ -861,7 +874,7 @@ Poi, nella lista degli \textit{asset} disponibili, quelli già collegati a un an
     \setlength{\aboverulesep}{0pt}
     \setlength{\belowrulesep}{0pt}
     \rowcolors{2}{red!10}{white}
-    \begin{longtable}{C{.15\freewidth} C{1\freewidth}}
+    \begin{longtable}{C{.15\freewidth} C{.965\freewidth}}
        \toprule
     \rowcolor{red}
     \textcolor{white}{\textbf{Codice}}&
@@ -884,7 +897,7 @@ Poi, nella lista degli \textit{asset} disponibili, quelli già collegati a un an
     \end{longtable}
 }
 
-Per quanto riguarda i \textit{ticket} invece l'approccio scelto è quello di permettere, al completamento della compilazione di un \textit{ticket}, di far apparire una finestra che permette di posizionarlo in realtà aumentata. In questo caso si può notare la finestra di stato aggiornata per quanto riguarda la notifica del livello di \textit{scan} per il caricamento dell'ancoraggio.\\
+Per quanto riguarda i \textit{ticket} invece l'approccio scelto è quello di far apparire, al completamento della compilazione di un \textit{ticket}, una finestra che permette di posizionarlo in realtà aumentata. In questo caso si può notare la \textit{card} di stato aggiornata per quanto riguarda la notifica del livello di \textit{scan} per il caricamento dell'ancoraggio.\\
 Mostriamo inoltre che i \textit{ticket} aperti di un \textit{asset} mettono in chiaro data e ora di apertura.
 
 \begin{figure}[H]
@@ -904,7 +917,7 @@ Mostriamo inoltre che i \textit{ticket} aperti di un \textit{asset} mettono in c
     \setlength{\aboverulesep}{0pt}
     \setlength{\belowrulesep}{0pt}
     \rowcolors{2}{red!10}{white}
-    \begin{longtable}{C{.15\freewidth} C{1\freewidth}}
+    \begin{longtable}{C{.15\freewidth} C{.965\freewidth}}
        \toprule
     \rowcolor{red}
     \textcolor{white}{\textbf{Codice}}&
@@ -922,13 +935,14 @@ Mostriamo inoltre che i \textit{ticket} aperti di un \textit{asset} mettono in c
     \end{longtable}
 }
 
-\subsection{Componenti multipiattaforma}
-Vediamo ora alcuni frammenti di codice che si pongo lo scopo di dare un'idea di massima di come, nel pratico, sono stati implementati i componenti in realtà aumentata. Partiamo quindi dalla parte in Dart, cioè quella comune. Il codice mostrato dovrà essere estremamente parziale, pena la creazione di un documento di diverse centinaia di pagine.\\
+\subsection{Implementazione}
+Vediamo ora alcuni frammenti di codice che cercano di dare un'idea di massima di come, nel pratico, sono stati implementati i componenti in realtà aumentata. Partiamo quindi dalla parte in Dart, cioè quella comune. Il codice mostrato dovrà essere estremamente parziale, pena la creazione di un documento di diverse centinaia di pagine.\\
 Il tutto è gestito con due \textit{repository} parallele: "mobilesyn" (che contiene il sorgente dell'applicazione vera e propria) e un \textit{fork} di "\aplug{}" alla quale sono state apportate le modifiche necessarie per interfacciarsi con SYN e le \asa{}. Partiamo dalla prima.\\
 Vediamo un esempio di \textit{asset provider:}
 
 \begin{lstlisting}[language=dart, label={lst:mobilesyn_asset_provider},firstnumber=1,caption={mobilesyn \textit{asset provider}}]
-Future<void> fetchAssets(BusinessFunction? bf, GeoContainer? geoc) async {
+Future<void> fetchAssets(BusinessFunction? bf, GeoContainer? geoc) async 
+  {
   debugPrint("FETCH-ASSETS");
   state = const AsyncValue.loading();
   try {
@@ -963,8 +977,10 @@ Future<void> fetchTickets(String flowId, bool closed) async {
         till: closed ? till : null,
         geocId: geoc?.id);
     final List<TicketAssetInfo> temp =
-        tickets.map((t) => t.asset).whereType<TicketAssetInfo>().toList();
-    final strings = temp.map((e) => e.toJson()).toList().toSet().toList();
+        tickets.map((t) => t.asset).whereType<TicketAssetInfo>()
+                                   .toList();
+    final strings = temp.map((e) => e.toJson()).toList().toSet()
+                                     .toList();
     final List<TicketAssetInfo> assets =
         strings.map((e) => TicketAssetInfo.fromJson(e)).toList();
     final FeatureList featured = FeatureList.fromTicketList(tickets);
@@ -1037,7 +1053,7 @@ arViewInitialized.value = true;
     \setlength{\aboverulesep}{0pt}
     \setlength{\belowrulesep}{0pt}
     \rowcolors{2}{red!10}{white}
-    \begin{longtable}{C{.15\freewidth} C{1\freewidth}}
+    \begin{longtable}{C{.15\freewidth} C{.965\freewidth}}
        \toprule
     \rowcolor{red}
     \textcolor{white}{\textbf{Codice}}&
@@ -1060,8 +1076,8 @@ arViewInitialized.value = true;
     \end{longtable}
 }
 
-Passiamo quindi a vedere alcuni frammenti di codice proprio dei \textit{manager} di \aplug{}.
-Nel \textit{manager} per gli ancoraggi vediamo i metodi per creazione ed eliminazione di \textit{anchor} localmente e per \textit{upload} ed eliminazione di \textit{anchor} in \textit{cloud} (si noti che tutti i metodi usano i \textit{method channels}): 
+Passiamo quindi a vedere alcuni frammenti dei \textit{manager} di \aplug{}.
+Nel \textit{manager} per gli ancoraggi vediamo i metodi per creazione ed eliminazione di \textit{anchor} localmente e per \textit{upload} ed eliminazione di ancoraggi in \textit{cloud} (si noti che tutti i metodi usano i \textit{method channels}): 
 
 \begin{lstlisting}[language=dart, label={lst:arplug_manager}, firstnumber=1,caption={\aplug{} \textit{create, delete, ulpoad, delete cloud anchor} tramite \textit{method channel}}]
 Future<void> createAnchor(
@@ -1075,7 +1091,8 @@ Future<void> createAnchor(
 
 /// Remove given anchor and all its children from the AR Scene
 Future<void> deleteAnchor({required String anchorId}) async {
-  return await _channel.invokeMethod<void>('deleteAnchor', {'id': anchorId});
+  return await _channel.invokeMethod<void>('deleteAnchor',
+                                          {'id': anchorId});
 }
 
 /// Upload the latest added Anchor to the ASA Cloud
@@ -1105,8 +1122,10 @@ private val onAnchorMethodCall =
 MethodChannel.MethodCallHandler { call, result ->
     when (call.method) {
         "createAnchor" -> {
-            val dictInfo = call.argument("info") as HashMap<String, Any>?
-            val transform = call.argument("transformation") as ArrayList<Double>?
+            val dictInfo = call.argument("info") as HashMap<String,
+                                                            Any>?
+            val transform = call.argument("transformation") 
+                                 as ArrayList<Double>?
             createAnchor(transform!!, AnchorInfo(dictInfo!!))
             result.success(null)
         }
@@ -1132,14 +1151,16 @@ MethodChannel.MethodCallHandler { call, result ->
 Mentre per quanto riguarda iOS sono implementate in Swift:
 
 \begin{lstlisting}[language=swift, label={lst:ios_channels}, firstnumber=1,caption={iOS chiamate dei \textit{method channel} per effettuare \textit{create, delete, ulpoad, delete cloud anchor}}]
-func onAnchorMethodCalled(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
+func onAnchorMethodCalled(_ call: FlutterMethodCall, _ result: 
+                                      @escaping FlutterResult) {
   let arguments = call.arguments as? [String: Any]
   NSLog("IosARView: onAnchorMethodCalled \(call.method)")
   switch call.method {
       case "createAnchor":
           let dictInfo = arguments?["info"] as! [String: Any]
           let transform = arguments?["transformation"] as! [NSNumber]
-          createAnchor(transform: transform, info: AnchorInfo(val: dictInfo))
+          createAnchor(transform: transform, info: 
+                                             AnchorInfo(val: dictInfo))
           result(nil)
       case "uploadAnchor":
           uploadAnchor(result: result)
@@ -1157,14 +1178,16 @@ func onAnchorMethodCalled(_ call: FlutterMethodCall, _ result: @escaping Flutter
 \end{lstlisting}
 
 Vediamo un piccolo esempio di come vengono implementate, in Android, le \asa{}. Non porteremo in questo caso l'esempio speculare di iOS in quanto poco interessante: come si vede dai frammenti di codice precedenti le differenze sono più tecniche che macroscopiche.\\
-Vediamo l'eliminazione di un ancoraggio salvato in \textit{cloud}, riprendendo il codice in \ref{lst:android_ar_view} guardiamo il flusso che provoca la chiamata \verb+"deleteCloudAnchor"+:
+Vediamo l'eliminazione di un ancoraggio salvato in \textit{cloud}, riprendendo il codice in \ref{lst:android_channels} guardiamo il flusso che provoca la chiamata \verb+"deleteCloudAnchor"+:
 
 \begin{lstlisting}[language=dart, label={lst:asa_android_call}, firstnumber=1,caption={Eliminazione \textit{cloud anchor} lato Android, chiamata}]
-private fun deleteCloudAnchor(infoId: String, result: MethodChannel.Result) {
+private fun deleteCloudAnchor(infoId: String,
+                              result: MethodChannel.Result) {
   Log.d(TAG, "removeCloudAnchor $infoId")
   val visual = anchorVisuals[infoId]
   if (visual?.cloudAnchor != null) {
-      azureSpatialAnchorsManager!!.deleteAnchorAsync(visual.cloudAnchor!!)
+      azureSpatialAnchorsManager!!.
+      deleteAnchorAsync(visual.cloudAnchor!!)
 
   //la funzione prosegue ma non ci interessa per questa dimostrazione
 \end{lstlisting}
@@ -1172,23 +1195,29 @@ private fun deleteCloudAnchor(infoId: String, result: MethodChannel.Result) {
 Vediamo che è stato chiamato in causa il \textit{manager} per le \asa{}, seguiamo quindi il flusso:
 
 \begin{lstlisting}[language=dart, label={lst:asa_manager_delete}, firstnumber=1,caption={Eliminazione \textit{cloud anchor} lato Android, chiamata}]
-internal class AzureSpatialAnchorsManager(arCoreSession: Session?, apiKey: String, apiId: String) {
-  private val executorService: ExecutorService = Executors.newFixedThreadPool(2)
+internal class AzureSpatialAnchorsManager(arCoreSession: Session?, 
+                                          apiKey: String, apiId: String) {
+  private val executorService: ExecutorService = Executors.
+                                                 newFixedThreadPool(2)
   var isRunning = false
   private val spatialAnchorsSession: CloudSpatialAnchorSession
-  // Set this string to the account ID provided for the Azure Spatial Anchors account resource.
+  // Set this string to the account ID provided 
+  //for the Azure Spatial Anchors account resource.
   private val SpatialAnchorsAccountId = apiId
 
-  // Set this string to the account key provided for the Azure Spatial Anchors account resource.
+  // Set this string to the account key provided 
+  //for the Azure Spatial Anchors account resource.
   private val SpatialAnchorsAccountKey = apiKey
 
   //ora viene chiamata l'effettiva eliminazione
-  fun deleteAnchorAsync(anchor: CloudSpatialAnchor?): CompletableFuture<*> {
-        return toEmptyCompletableFuture(spatialAnchorsSession.deleteAnchorAsync(anchor))
+  fun deleteAnchorAsync(anchor: CloudSpatialAnchor?): 
+                                CompletableFuture<*> {
+        return toEmptyCompletableFuture(spatialAnchorsSession.
+                                        deleteAnchorAsync(anchor))
   }
 \end{lstlisting}
 
-Grazie al codice appena visto possiamo notare che l'applicazione comunica con le \api{} di SYN per ottenere \textit{ticket} e \textit{asset}, che ottiene gli ancoraggi e che questi ancoraggi sono gestiti tramite \asa{}. Inoltre abbiamo visto che tutto questo è stato implementato sia in Android che in iOS e che la vista è scritta in Flutter.
+Grazie al codice appena visto possiamo notare che l'applicazione comunica con le \api{} di SYN per ottenere \textit{ticket} e \textit{asset}, e che ottiene gli ancoraggi e che questi ancoraggi sono gestiti tramite \asa{}. Inoltre abbiamo visto che tutto questo è stato implementato sia in Android che in iOS e che la vista è scritta in Flutter.
 
 {
     \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
@@ -1197,7 +1226,7 @@ Grazie al codice appena visto possiamo notare che l'applicazione comunica con le
     \setlength{\aboverulesep}{0pt}
     \setlength{\belowrulesep}{0pt}
     \rowcolors{2}{red!10}{white}
-    \begin{longtable}{C{.15\freewidth} C{1\freewidth}}
+    \begin{longtable}{C{.15\freewidth} C{.965\freewidth}}
        \toprule
     \rowcolor{red}
     \textcolor{white}{\textbf{Codice}}&
@@ -1280,7 +1309,7 @@ class IosARView implements PlatformARView {
     \setlength{\aboverulesep}{0pt}
     \setlength{\belowrulesep}{0pt}
     \rowcolors{2}{red!10}{white}
-    \begin{longtable}{C{.15\freewidth} C{1\freewidth}}
+    \begin{longtable}{C{.15\freewidth} C{.965\freewidth}}
        \toprule
     \rowcolor{red}
     \textcolor{white}{\textbf{Codice}}&
@@ -1306,7 +1335,7 @@ L'unico requisito rimasto insoddisfatto è il seguente:
     \setlength{\aboverulesep}{0pt}
     \setlength{\belowrulesep}{0pt}
     \rowcolors{2}{red!10}{white}
-    \begin{longtable}{C{.15\freewidth} C{1\freewidth}} 
+    \begin{longtable}{C{.15\freewidth} C{.965\freewidth}} 
        \toprule
     \rowcolor{red}
     \textcolor{white}{\textbf{Codice}}&
