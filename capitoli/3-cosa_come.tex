@@ -681,7 +681,7 @@ internal class AzureSpatialAnchorsManager(arCoreSession: Session?,
   }
 \end{lstlisting}
 
-Grazie al codice appena visto possiamo notare che l'applicazione comunica con le \api{} di SYN per ottenere \textit{ticket} e \textit{asset}, e che ottiene gli ancoraggi e che questi ancoraggi sono gestiti tramite \asa{}. Inoltre abbiamo visto che tutto questo è stato implementato sia in Android che in iOS e che la vista è scritta in Flutter.
+Grazie al codice appena visto possiamo notare che l'applicazione comunica con le \api{} di SYN per ottenere \textit{ticket} e \textit{asset}, e che ottiene gli ancoraggi e che questi ancoraggi sono gestiti tramite \asa{}. Inoltre abbiamo visto che tutto questo è stato implementato sia in Android che in iOS.
 
 {
     \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
@@ -789,10 +789,191 @@ class IosARView implements PlatformARView {
     \end{longtable}
 }
 
-\section{Verifica e validazione}
+\section{Verifica}
+Non è stato implementato nessun sistema di verifica standardizzato, quindi mi è impossibile mostrare tabelle di \textit{test} di unità, integrazione, sistema o accettazione e, di conseguenza, è anche impossibile effettuare delle verifiche calcolabili come \textit{test} di \textit{code coverage}.\\
+E' tuttavia possibile verificare la copertura dei requisti tramite il codice e le \textit{screnshot} dell'applicazione proposte.\\
+Nei frammenti \ref{lst:mobilesyn_asset_provider}, \ref{lst:mobilesyn_ticket_provider}, \ref{lst:mobilesyn_asset_ticket_provider} si vedono i \textit{provider} di MobileSYN che servono a comunicare con le \api{} di Syn, e ottengono quindi i dati relativi a \textit{ticket} e \textit{asset}.
+Nei frammenti \ref{lst:mobilesyn_managers}, \ref{lst:mobilesyn_onARViewCreated} invece viene mostrato che MobileSYN ottiene i \textit{manager} per la realtà aumentata da \aplug{}.
+
+{
+    \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
+    \renewcommand{\arraystretch}{1.5}
+    \centering
+    \setlength{\aboverulesep}{0pt}
+    \setlength{\belowrulesep}{0pt}
+    \rowcolors{2}{red!10}{white}
+    \begin{longtable}{C{.15\freewidth} C{.965\freewidth}}
+       \toprule
+    \rowcolor{red}
+    \textcolor{white}{\textbf{Codice}}&
+    \textcolor{white}{\textbf{Descrizione}}\\
+    \toprule
+    \endhead
+
+    R1V3 & \textit{Framework} scelto si integra con le \api{} di Syn\\
+    R1V3.1 & \textit{Framework} ottiene con ancoraggio associato i dati degli \textit{asset}\\
+    R1V3.2 & \textit{Framework} ottiene con ancoraggio associato i dati dei \textit{ticket}\\ 
+    R1F4 & Comunicare con le \api{} di Syn\\
+    R1F4.1 & Ricevere \textit{asset} con ancoraggio associato\\
+    R1F4.2 & Aggiungere \textit{asset} con ancoraggio associato\\
+    R2F4.3 & Ricevere \textit{ticket} con ancoraggio associato\\
+    R2F4.4 & Aggiungere \textit{ticket} con ancoraggio associato\\
+  
+    \bottomrule
+    \rowcolor{white} 
+    \caption{Requisiti soddisfatti nei frammenti: \ref{lst:mobilesyn_asset_provider}, \ref{lst:mobilesyn_ticket_provider}, \ref{lst:mobilesyn_asset_ticket_provider}, \ref{lst:mobilesyn_managers}, \ref{lst:mobilesyn_onARViewCreated}.}
+    \end{longtable}
+}
+
+Nei frammenti \ref{lst:arplug_manager}, \ref{lst:android_channels}, \ref{lst:ios_channels} vengono mostrati i \textit{method channel} per lanciare le chiamate per agire sugli ancoraggi al codice nativo che, come viene mostrato nei frammenti \ref{lst:asa_android_call} e \ref{lst:asa_manager_delete}, implementa le \textit{anchor} tramite \asa{}.
+
+{
+    \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
+    \renewcommand{\arraystretch}{1.5}
+    \centering
+    \setlength{\aboverulesep}{0pt}
+    \setlength{\belowrulesep}{0pt}
+    \rowcolors{2}{red!10}{white}
+    \begin{longtable}{C{.15\freewidth} C{.965\freewidth}}
+       \toprule
+    \rowcolor{red}
+    \textcolor{white}{\textbf{Codice}}&
+    \textcolor{white}{\textbf{Descrizione}}\\
+    \toprule
+    \endhead
+
+    R1V1 & \textit{Framework} scelto funziona su Android\\
+    R2V2 & \textit{Framework} scelto funziona su iOS\\
+    R1V4 & Il \textit{framework} scelto utilizza \asa\\
+    R1F3 & Il \textit{plugin} deve integrare gli ancoraggi tramite \asa{}\\
+    R1F3.1 & Permettere aggiunta di \asa\\%C
+    R1F3.2 & Permettere recupero e visualizzazione di \asa\\%R
+    R2F3.3 & Permettere modifica di \asa\\%U
+    R1F3.4 & Permettere eliminazione di \asa\\%D
+  
+    \bottomrule
+    \rowcolor{white} 
+    \caption{Requisiti soddisfatti nei frammenti: \ref{lst:arplug_manager}, \ref{lst:android_channels}, \ref{lst:ios_channels}, \ref{lst:asa_android_call}, \ref{lst:asa_manager_delete}.}
+    \end{longtable}
+}
+
+Il frammento di codice \ref{lst:ar_view} mostra che le viste in realtà aumenta per Android ad iOS sono implementate in Flutter. 
+
+{
+    \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
+    \renewcommand{\arraystretch}{1.5}
+    \centering
+    \setlength{\aboverulesep}{0pt}
+    \setlength{\belowrulesep}{0pt}
+    \rowcolors{2}{red!10}{white}
+    \begin{longtable}{C{.15\freewidth} C{.965\freewidth}}
+       \toprule
+    \rowcolor{red}
+    \textcolor{white}{\textbf{Codice}}&
+    \textcolor{white}{\textbf{Descrizione}}\\
+    \toprule
+    \endhead
+
+    R1V5 & La vista in realtà aumentata deve essere sviluppata in Flutter\\
+  
+    \bottomrule
+    \rowcolor{white} 
+    \caption{Requisiti soddisfatti nel frammento: \ref{lst:ar_view}}
+    \end{longtable}
+}
+
+L'immagine \ref{fig:place_asset} mostra tre \textit{screenshot} dell'applicazione dove un ancoraggio viene creato, salvato in cloud quando si sono ottenuti abbastanza dati spaziali e poi viene recuperato alla riapertura dell'applicazione.
+
+{
+    \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
+    \renewcommand{\arraystretch}{1.5}
+    \centering
+    \setlength{\aboverulesep}{0pt}
+    \setlength{\belowrulesep}{0pt}
+    \rowcolors{2}{red!10}{white}
+    \begin{longtable}{C{.15\freewidth} C{.965\freewidth}}
+       \toprule
+    \rowcolor{red}
+    \textcolor{white}{\textbf{Codice}}&
+    \textcolor{white}{\textbf{Descrizione}}\\
+    \toprule
+    \endhead
+
+    R1F1 & Il \textit{plugin} deve rappresentare \textit{asset} tramite ancoraggio in realtà aumentata\\
+    R1F11 & \textit{On-Tap} sullo spazio permette di creare una ancoraggio in posizione\\
+    R1F11.1 & Ancoraggio posizionato nello spazio può essere salvato\\
+    R1F11.2 & Ancoraggio posizionato nello spazio può essere eliminato\\
+    R1F12 & Il salvataggio di un ancoraggio è disponibile solo quando è sicuro vada a buon fine\\
+    R1F12.1 & Viene mostrato a schermo un feedback riguardo il livello di sicurezza raggiunto\\
+
+    \bottomrule
+    \rowcolor{white} 
+    \caption{Requisiti soddisfatti in figura \ref{fig:place_asset}}
+    \end{longtable}
+}
+
+L'immagine \ref{fig:asset_list} mostra che effettuando un \textit{on-tap} su un ancoraggio vengono mostrate le corrette informazioni contestuali e viene permesso di raggiungere i dettagli dell'\textit{asset} o di elimanare l'\textit{anchor}. Inoltre si vede che nella lista degli \textit{asset} quelli che hanno già un ancoraggio posizionato in realtà aumentata lo comunicano con un'icona con dicitura "AR" e che è presente il bottone per raggiungere la vista in \textit{augmented reality}.
+
+{
+    \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
+    \renewcommand{\arraystretch}{1.5}
+    \centering
+    \setlength{\aboverulesep}{0pt}
+    \setlength{\belowrulesep}{0pt}
+    \rowcolors{2}{red!10}{white}
+    \begin{longtable}{C{.15\freewidth} C{.965\freewidth}}
+       \toprule
+    \rowcolor{red}
+    \textcolor{white}{\textbf{Codice}}&
+    \textcolor{white}{\textbf{Descrizione}}\\
+    \toprule
+    \endhead
+
+    R1F5 & Utente deve poter vedere quali \textit{asset} hanno ancoraggio associato\\
+    R1F7 & Utente deve poter raggiungere la vista in realtà aumentata dalla schermata degli \textit{asset}\\
+    R1F8 & \textit{On-Tap} su una ancoraggio deve aprire una \textit{bottom sheet} contestuale\\
+    R1F8.1 & \textit{Bottom sheet} deve presentare identificatore per \textit{asset} o \textit{ticket} associato all'ancoraggio\\
+    R1F8.2 & \textit{Bottom sheet} associato a un \textit{asset} mostra \textit{ticket} aperti se presenti\\
+    R1F8.3 & \textit{Bottom sheet} deve fornire \textit{Call-To-Action} per eliminare l'ancoraggio\\
+    R1F8.4 & \textit{Bottom sheet} deve fornire \textit{Call-To-Action} per raggiungere pagina di dettaglio\\
+    
+
+    \bottomrule
+    \rowcolor{white} 
+    \caption{Requisiti soddisfatti in figura \ref{fig:asset_list}}
+    \end{longtable}
+}
+
+L'immagine \ref{fig:ticket_ar} mostra che è possibile posizionare un \textit{ticket} in realtà aumentata e che i \textit{ticket} relativi ad un \textit{anchor} mostrano data e ora di apertura.
+
+{
+    \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
+    \renewcommand{\arraystretch}{1.5}
+    \centering
+    \setlength{\aboverulesep}{0pt}
+    \setlength{\belowrulesep}{0pt}
+    \rowcolors{2}{red!10}{white}
+    \begin{longtable}{C{.15\freewidth} C{.965\freewidth}}
+       \toprule
+    \rowcolor{red}
+    \textcolor{white}{\textbf{Codice}}&
+    \textcolor{white}{\textbf{Descrizione}}\\
+    \toprule
+    \endhead
+
+    R1F2 & Il \textit{plugin} deve rappresentare \textit{ticket} tramite ancoraggio in realtà aumentata\\
+    R1F9 & Le informazioni contestuali di un \textit{ticket} includono data e ora di creazione\\
+    R1F10 & Gli ancoraggi hanno rappresentazione visiva contestuale\\ 
+  
+    \bottomrule
+    \rowcolor{white} 
+    \caption{Requisiti soddisfatti in figura \ref{fig:ticket_ar}}
+    \end{longtable}
+}
 
 \section{Copertura requisti}
 L'unico requisito rimasto insoddisfatto è il seguente:
+
 {
     \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
     \renewcommand{\arraystretch}{1.5}
