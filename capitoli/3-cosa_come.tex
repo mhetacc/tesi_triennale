@@ -73,12 +73,12 @@ Sfortunatamente, complici la giovinezza di Flutter e la scarsa diffusione di tec
     \item ARwayKit: \textit{framework} che mira a fornire un'integrazione semplificata, e in parte già completata, di una componente in realtà aumentata (ottenuta tramite \asa{}) in Flutter tramite vista in Unity.
 \end{itemize}
 
-E' necessario notificare che al momento della stesura di questo testo non è più possibile accedere liberamente alla documentazione relativa ad ARwayKit\footnote{Fonte: \url{https://app.gitbook.com/s/-MCtct_TY9f3e8PrcV9T/arwaykit-with-flutter/quickstart-in-flutter}}, tuttavia è ancora reperibile un articolo sul sito Medium che ricalca la guida introduttiva precedentemente fornita dal sito ufficiale dell'azienda\footnote{Fonte: \url{https://medium.com/arway/building-ar-navigation-apps-with-flutter-and-arwaykit-280b69401cd9}}. 
-E' anche possibile trovarne una versione nella Wayback Machine\footnote{Fonte: \url{https://web.archive.org/web/20220525060655/https://docs.arway.app/arwaykit-with-flutter/quickstart-in-flutter}}.
+\e necessario notificare che al momento della stesura di questo testo non è più possibile accedere liberamente alla documentazione relativa ad ARwayKit\footnote{Fonte: \url{https://app.gitbook.com/s/-MCtct_TY9f3e8PrcV9T/arwaykit-with-flutter/quickstart-in-flutter}}, tuttavia è ancora reperibile un articolo sul sito Medium che ricalca la guida introduttiva precedentemente fornita dal sito ufficiale dell'azienda\footnote{Fonte: \url{https://medium.com/arway/building-ar-navigation-apps-with-flutter-and-arwaykit-280b69401cd9}}. 
+\e anche possibile trovarne una versione nella Wayback Machine\footnote{Fonte: \url{https://web.archive.org/web/20220525060655/https://docs.arway.app/arwaykit-with-flutter/quickstart-in-flutter}}.
 
 \subsubsection{ARWayKit}
 ARwayKit è un \textit{framework} formato da un insieme di componenti che si pone l'obiettivo di fornire un'esperienza in realtà aumentata persistente, e lo persegue fornendo un \sdk{} Unity, un'applicazione di mappatura e un insieme di \api{} REST\footnote{Conosciute anche come RESTful API, sono delle \api{} che si conformano allo stile architetturale e alle norme per sistemi distribuiti chiamato \textit{representational state transfer} largamente utilizzato nella comunicazione \textit{web}.}, che implementano le componenti in realtà aumentata in Flutter sfruttando il \textit{plugin} flutter\_unity\_widget\footnote{Fonte: \url{https://pub.dev/packages/flutter_unity_widget}}.\\
-E' multipiattaforma, implementa gli ancoraggi tramite \asa{} e funziona in ambienti \textit{"GPS-denied"}, ovvero dove i dati di posizione del \textit{global positioning system}\footnote{Sistema di satelliti in grado di fornire a un ricevitore le sue coordinate geografiche.} non vengono utilizzati per muoversi all'interno dell'ambiente virtuale (oppure ambienti con protocolli di \textit{privacy} elevati). Le caratteristiche appena descritte renderebbero ARwayKit apparentemente perfetto per il caso d'uso specifico di questa tesi. 
+\e multipiattaforma, implementa gli ancoraggi tramite \asa{} e funziona in ambienti \textit{"GPS-denied"}, ovvero dove i dati di posizione del \textit{global positioning system}\footnote{Sistema di satelliti in grado di fornire a un ricevitore le sue coordinate geografiche.} non vengono utilizzati per muoversi all'interno dell'ambiente virtuale (oppure ambienti con protocolli di \textit{privacy} elevati). Le caratteristiche appena descritte renderebbero ARwayKit apparentemente perfetto per il caso d'uso specifico di questa tesi. 
 
 \begin{figure}[H]
   \centering
@@ -126,7 +126,7 @@ Vediamo quindi di schematizzare e mettere a confronto pregi e difetti delle due 
 \begin{itemize}
   \item Implementa nativamente le \asa{};
   \item Funziona in ambienti \textit{GPS-denied};
-  \item E' pensato per uso aziendale.
+  \item \e pensato per uso aziendale.
 \end{itemize}
 
 \textbf{Difetti ARwayKit:}
@@ -134,15 +134,15 @@ Vediamo quindi di schematizzare e mettere a confronto pregi e difetti delle due 
   \item La vista e le componenti in realtà aumentata non sono implementate in Flutter;
   \item Richiede l'uso di Unity che, essendo un motore per videogiochi, ha funzionalità in più (e in meno) non necessarie (e necessarie) rispetto a un uso aziendale;
   \item Ha una documentazione difficile da reperire e di dubbia completezza;
-  \item E' codice propietario, quindi non c'è modo di visionare il sorgente.
+  \item \e codice propietario, quindi non c'è modo di visionare il sorgente.
 \end{itemize}
 
 \textbf{Pregi \aplug{}:}
 \begin{itemize}
   \item La vista e le componenti in realtà aumentata sono implementate in Flutter;
   \item Ha un documentazione discreta;
-  \item E' \textit{open-source}, quindi al bisogno è possibile visionare il codice sorgente;
-  \item E' pensato per uso aziendale;
+  \item \e \textit{open-source}, quindi al bisogno è possibile visionare il codice sorgente;
+  \item \e pensato per uso aziendale;
   \item La struttura logica, divisa nei vari \textit{manager}, è modulare e chiara da comprendere, il che dovrebbe facilitarne modifica ed estensione;
   \item Promette di essere \textit{cloud-agnostic}, quindi favorisce l'uso di gestorie sterni come ad esempio \asa{} 
 \end{itemize}
@@ -181,7 +181,7 @@ Vediamo quindi di schematizzare e mettere a confronto pregi e difetti delle due 
   \end{longtable}
 }
 
-E' stato infine scelto \aplug{} rispetto ad ARwayKit per evitare di interfacciarsi con Unity, per la necessità di avere la vista in realtà aumentata implementata direttamente in Flutter e per il grande vantaggio che comporta il suo essere \textit{open-source}.
+\e stato infine scelto \aplug{} rispetto ad ARwayKit per evitare di interfacciarsi con Unity, per la necessità di avere la vista in realtà aumentata implementata direttamente in Flutter e per il grande vantaggio che comporta il suo essere \textit{open-source}.
 
 \section{Difficoltà incontrate}
 \label{sec:difficolta_incontrate}
@@ -705,7 +705,7 @@ class IosARView implements PlatformARView {
 
 \section{Verifica}
 Non è stato implementato nessun sistema di verifica standardizzato, quindi mi è impossibile mostrare tabelle di \textit{test} di unità, integrazione, sistema o accettazione e, di conseguenza, è anche impossibile effettuare delle verifiche calcolabili come \textit{test} di \textit{code coverage}.\\
-E' tuttavia possibile verificare la copertura dei requisti tramite il codice e le \textit{screnshot} dell'applicazione proposte.\\
+\e tuttavia possibile verificare la copertura dei requisti tramite il codice e le \textit{screnshot} dell'applicazione proposte.\\
 Nei frammenti \ref{lst:mobilesyn_asset_provider}, \ref{lst:mobilesyn_ticket_provider}, \ref{lst:mobilesyn_asset_ticket_provider} si vedono i \textit{provider} di MobileSYN che servono a comunicare con le \api{} di Syn, e ottengono quindi i dati relativi a \textit{ticket} e \textit{asset}.
 Nei frammenti \ref{lst:mobilesyn_managers}, \ref{lst:mobilesyn_onARViewCreated} invece viene mostrato che MobileSYN ottiene i \textit{manager} per la realtà aumentata da \aplug{}.
 
@@ -991,7 +991,7 @@ Inoltre nella prima immagine, viene anche mostrato il livello di progressione di
 \end{figure}
 
 Effettuando un \textit{On-Tap} su un ancoraggio appare una \textit{bottom sheet} che mostra l'identificatore dell'\textit{asset} e, se ci sono, gli eventi e i \textit{ticket} aperti a lui associati. Permette inoltre di raggiungere i dettagli dell'\textit{asset} o di rimuoverlo.\\
-Poi, nella lista degli \textit{asset} disponibili, quelli già collegati a un ancoraggio in realtà aumentata presentano un piccolo marcatore con dicitura "AR", permettendo di raggiungere la vista con il bottone a forma di cubo in altro a destra. E' grigio perché l'uso richiederebbe di essere fisicamente presenti in "Plant 1" e di selezionare inoltre stabilimento, piano e stanza.
+Poi, nella lista degli \textit{asset} disponibili, quelli già collegati a un ancoraggio in realtà aumentata presentano un piccolo marcatore con dicitura "AR", permettendo di raggiungere la vista con il bottone a forma di cubo in altro a destra. \e grigio perché l'uso richiederebbe di essere fisicamente presenti in "Plant 1" e di selezionare inoltre stabilimento, piano e stanza.
 
 \begin{figure}[H]
   \centering
