@@ -62,6 +62,12 @@
 
 \usepackage[english, italian]{babel}    % per scrivere in italiano e in inglese;
                                         % l'ultima lingua (l'italiano) risulta predefinita
+\usepackage[toc,page]{appendix}         % per appendici
+
+\addto\captionsitalian{%                % avere appendici in italiano
+   \renewcommand{\appendixtocname}{Appendici}%
+   \renewcommand{\appendixpagename}{Appendici}%
+}
 
 \usepackage{bookmark}                   % segnalibri
 
@@ -128,6 +134,8 @@
                                         % 3. compilare ancora tesi.tex.
                                         
 \usepackage{float}                      % for float option[H]
+
+
 
 %**************************************************************
 % Header con logo 
