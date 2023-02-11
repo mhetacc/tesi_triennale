@@ -80,6 +80,61 @@ Entrambi i vincoli nascono dal fatto che tutto il lavoro di \textit{stage} va sv
 Eccezion fatta per queste specifiche tecnologiche il resto è stato lasciato a mia discrezione personale, sebbene siano stati consigliati degli strumenti di sviluppo (\vsc{} e \astudio{} come \ide{}). \\
 Vincoli non tecnologici ma organizzativi sono da identificarsi nell'uso di Slack e GitHub: il primo usato per la comunicazione interna con i membri di dell'azienda, il secondo invece è il \textit{repository}\footnote{Spesso abbreviato con \textit{"repo"} è un generico archivio di codice sorgente e pacchetti \textit{software}. Spesso contiene anche \textit{metadata} e guide per la configurazione, uso ed estensione del codice che contiene. In genere un \textit{repo} ha una qualche forma di controllo di versione integrato.} dove si trova il codice sorgente di MobileSYN.
 
+
+\section{Pianificazione}
+\label{sec:pianificazione}
+La natura estremamente sperimentale di questo progetto ha reso vano ogni tentativo di pianificare accuratamente il lavoro (complici anche le problematiche che vedremo nella sezione \ref{sec:difficolta_incontrate}).\\
+Per questo motivo, una volta scelto il \textit{framework} per l'implementazione di \asa{} in Flutter l'approccio scelto è stato di \textit{trial-and-error}, e ha impegnato una buona parte del tempo di stage sia mio che dei membri di Datasoil responsabili del \textit{frontend}.\\
+E' stata comunque fatta, di settimana in settimana, una scaletta degli obiettivi da raggiungere per il lunedì successivo, tuttavia sono riuscito a seguirla solo fintanto che comprendeva lo studio delle tecnologie e la creazione di brevi \textit{proof of concept} (ad esempio costruire un'applicazione in Dart e poi tradurre i suoi \textit{stateful widget} in \textit{hook widget}).\\
+Riporto quindi la programmazione settimanale che, siccome questo documento è scritto al termine dei lavori, è in parte anche un rendicontazione:
+
+\begin{itemize}
+  \item \textbf{Settimana 1:} 
+      \begin{itemize}
+          \item Installazione e configurazione del \textit{framework} Flutter e del \sdk{} per Android 
+          \item Configurazione emulatore Android (scelto Pixel 6 API 33) e 
+          \textit{developers options} sul mio telefono personale;
+          \item Configurazione \vsc{} e \astudio;
+          \item Sviluppo di applicazione d'esempio con Flutter che sfrutta gli \textit{stateful widgets};
+      \end{itemize} 
+  \item \textbf{Settimana 2:} 
+      \begin{itemize}
+          \item Studio degli \textit{hook widgets};
+          \item Traduzione degli \textit{stateful widgets} dell'applicazione d'esempio in \textit{hook widgets};
+          \item Sviluppo applicazione d'esempio con gli \textit{hook widgets};
+      \end{itemize}
+  \item \textbf{Settimana 3:} 
+      \begin{itemize}
+          \item Studio delle \asa;
+          \item Creazione risorse necessarie nel portale di Azure;
+          \item Sviluppo applicazione di esempio per \asa{};
+      \end{itemize}
+  \item \textbf{Settimana 4:} Studio dei metodi per implementare le \asa{} in Flutter:
+      \begin{itemize}
+          \item Studio dei \textit{method channels};
+          \item Studio di ARwayKit e valutazione del suo approccio tramite Unity;
+          \item Studio di \aplug;
+      \end{itemize}
+  \item \textbf{Settimana 5:} 
+      \begin{itemize}
+          \item Adattamento dell'esempio \aplug{} per integrarci le \asa{};
+          \item Lettura dei \textit{logs} per filtrarne gli \textit{output};
+      \end{itemize}
+  \item \textbf{Settimana 6:} 
+      \begin{itemize}
+        \item Utilizzo diretto di ARCore in Flutter per capirne il flusso;
+        \item Integrazione \asa{} in Flutter;
+      \end{itemize}
+  \item \textbf{Settimana 7:} Integrazione componenti realtà aumentata in MobileSYN lato Android;
+  \item \textbf{Settimana 8:} Integrazione componenti realtà aumentata in MobileSYN lato iOS;
+\end{itemize}
+
+I processi di verifica e validazione non hanno potuto fare affidamento su sistemi consolidati, in quanto tutto il lavoro è stato genuinamente sperimentale, e quindi ci siamo affidati al \textit{testing} "sul campo", ovvero provando direttamente l'applicazione (a un certo punto usando la versione in produzione) per valutare il progresso dei lavori e scoprire la presenza o meno di errori.\\
+Di grande aiuto sono stati i \textit{logs} delle varie applicazioni provate (da MobileSYN, all'applicazione di esempio di \aplug{} fino a quella di \asa{}) che hanno, in parte, sopperito alle gravi mancanze documentali delle tecnologie trattate.
+
+%************************************************************************************************************
+
+
 \section{Motivazione scelta}
 I motivi che mi hanno spinto ad accettare questo stage rispetto ad altri sono molteplici, ma i principali sono quattro: toccare con mano attività legate al \textit{frontend}, vivere in prima persona l'ambiente di lavoro del mio ambito di studi, avere la possibilità di sviluppare in ambito \textit{mobile} e una personale curiosità nei confronti delle tecnologie trattate, ovvero la realtà aumentata.
 \begin{wrapfigure}{l}{0.7\textwidth}
