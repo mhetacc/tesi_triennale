@@ -183,6 +183,37 @@ Vediamo quindi di schematizzare e mettere a confronto pregi e difetti delle due 
 
 E' stato infine scelto \aplug{} rispetto ad ARwayKit per evitare di interfacciarsi con Unity, per la necessità di avere la vista in realtà aumentata implementata direttamente in Flutter e per il grande vantaggio che comporta il suo essere \textit{open-source}.
 
+\section{Difficoltà incontrate}
+\label{sec:difficolta_incontrate}
+Le prime difficoltà incontrate a livello personale sono state di tipo tecnologico: non mi ero mai trovato a programmare con linguaggi orientati al \textit{frontend}, e ho dovuto quindi cambiare almeno in parte il mio \textit{modus operandi} nella progettazione e scrittura di codice. A questo si è aggiunta la necessità di gestire altri tre linguaggi per le implementazioni native, ovvero Java e Kotlin per il lato Android e Swift per la parte iOS e, a complicare le cose, tutti questi linguaggi dovevano essere messi in comunicazione diretta con Flutter (e nel caso di Java e Kotlin anche tra di loro).\\ 
+Una buona parte dello \textit{stage} è quindi stata investita nel comprendere e nel gestire la grande diversità di linguaggi diversi.
+
+\begin{figure}[H]
+  \centering
+  %\includegraphics[height=5cm]{screen_mobilesyn}
+  \includegraphics[width=.5\textwidth]{asa_google_search}\hfill
+  \includegraphics[width=.5\textwidth]{flutter_google_search}\\
+  \includegraphics[width=1\textwidth]{asa_flutter_google_search}
+  \caption[Ricerca esatta Flutter e ASA 23 novembre]{Al 23 novembre 2022, una ricerca esatta di "flutter" mostra 87.5 milioni di risultati rilevanti, di "azure spatial anchors" 41 milioni mentre la combinazione delle due, solo 17}
+\label{fig:search1}
+\end{figure}
+
+In linea più generale invece le due problematiche che hanno più di tutte complicato i lavori (sia per me che per Datasoil stessa) sono stati la mancanza di documentazione adeguata e la mancanza di supporto da parte della comunità degli sviluppatori.\\
+Microsoft non fornisce un \textit{set} documentale adeguato per quanto riguarda \asa{}, mostrando il meno possibile della struttura interna (ad esempio come viene rappresentato un ancoraggio) e fornendo solo \api{} per effettuare operazioni ad alto livello (come il salvataggio in \textit{cloud} di un'\textit{anchor}), inoltre la ricerca della documentazione è macchinosa.\\
+L'altro problema risiede nella difficoltà estrema di trovare supporto di terze parti (ad esempio in siti come \url{https://stackoverflow.com}), come viene mostrato nelle figure \ref{fig:search1} e \ref{fig:search2}.
+
+\begin{figure}[H]
+  \centering
+  %\includegraphics[height=5cm]{screen_mobilesyn}
+  \includegraphics[width=.8\textwidth]{asa_flutter_search_today}
+  \caption[Ricerca esatta Flutter e ASA 8 febbraio]{All'otto febbraio 2023 non si notano miglioramenti: solo 14 risultati rilevanti, alcuni in lingua giapponese, mostrano quando sia difficile trovare informazioni sull'argomento.}
+  \label{fig:search2}
+\end{figure}
+
+Questa situazione ha significato dover risolvere tutti i problemi incontrati senza poter fare affidamento su alcun aiuto esterno e ha quindi esacerbato ulteriormente l'approccio \textit{trial-and-error} di cui si è parlato nella sezione \ref{sec:pianificazione}.
+
+%************************************************************************************************************
+
 \section{Analisi dei requisiti}
 \label{sec:analisi_requisiti}
 Di seguito sono riportati i requisti individuati nel piano di lavoro proposto e a seguito di opportuni confronti con il \textit{tutor} aziendale. Essi sono catalogati secondo la dicitura:
@@ -339,217 +370,10 @@ Sono stati individuati un totale di 36 requisiti, 29 funzionali e 7 di vincolo, 
 
 %************************************************************************************************************
 
-\section{Pianificazione}
-\label{sec:pianificazione}
-La natura estremamente sperimentale di questo progetto ha reso vano ogni tentativo di pianificare accuratamente il lavoro (complici anche le problematiche che vedremo nella sezione \ref{sec:difficolta_incontrate}).\\
-Per questo motivo, una volta scelto il \textit{framework} per l'implementazione di \asa{} in Flutter l'approccio scelto è stato di \textit{trial-and-error}, e ha impegnato una buona parte del tempo di stage sia mio che dei membri di Datasoil responsabili del \textit{frontend}.\\
-E' stata comunque fatta, di settimana in settimana, una scaletta degli obiettivi da raggiungere per il lunedì successivo, tuttavia si è riusciti a seguirla solo fintanto che comprendeva lo studio delle tecnologie e la creazione di brevi \textit{proof of concept} (ad esempio costruire un'applicazione in Dart e poi tradurre i suoi \textit{stateful widget} in \textit{hook widget}).\\
-Riporto quindi la programmazione settimanale che, siccome questo documento è scritto al termine dei lavori, è in parte anche un rendicontazione:
+\section{Progettazione}
 
-\begin{itemize}
-  \item \textbf{Settimana 1:} 
-      \begin{itemize}
-          \item Installazione e configurazione del \textit{framework} Flutter e del \sdk{} per Android 
-          \item Configurazione emulatore Android (scelto Pixel 6 API 33) e 
-          \textit{developers options} sul mio telefono personale;
-          \item Configurazione \vsc{} e \astudio;
-          \item Sviluppo di applicazione d'esempio con Flutter che sfrutta gli \textit{stateful widgets};
-      \end{itemize} 
-  \item \textbf{Settimana 2:} 
-      \begin{itemize}
-          \item Studio degli \textit{hook widgets};
-          \item Traduzione degli \textit{stateful widgets} dell'applicazione d'esempio in \textit{hook widgets};
-          \item Sviluppo applicazione d'esempio con gli \textit{hook widgets};
-      \end{itemize}
-  \item \textbf{Settimana 3:} 
-      \begin{itemize}
-          \item Studio delle \asa;
-          \item Creazione risorse necessarie nel portale di Azure;
-          \item Sviluppo applicazione di esempio per \asa{};
-      \end{itemize}
-  \item \textbf{Settimana 4:} Studio dei metodi per implementare le \asa{} in Flutter:
-      \begin{itemize}
-          \item Studio dei \textit{method channels};
-          \item Studio di ARwayKit e valutazione del suo approccio tramite Unity;
-          \item Studio di \aplug;
-      \end{itemize}
-  \item \textbf{Settimana 5:} 
-      \begin{itemize}
-          \item Adattamento dell'esempio \aplug{} per integrarci le \asa{};
-          \item Lettura dei \textit{logs} per filtrarne gli \textit{output};
-      \end{itemize}
-  \item \textbf{Settimana 6:} 
-      \begin{itemize}
-        \item Utilizzo diretto di ARCore in Flutter per capirne il flusso;
-        \item Integrazione \asa{} in Flutter;
-      \end{itemize}
-  \item \textbf{Settimana 7:} Integrazione componenti realtà aumentata in MobileSYN lato Android;
-  \item \textbf{Settimana 8:} Integrazione componenti realtà aumentata in MobileSYN lato iOS;
-\end{itemize}
-
-I processi di verifica e validazione non hanno potuto fare affidamento su sistemi consolidati, in quanto tutto il lavoro è stato genuinamente sperimentale, e quindi ci si è affidati al \textit{testing} "sul campo", ovvero provando direttamente l'applicazione (a un certo punto usando la versione in produzione) per valutare il progresso dei lavori e scoprire la presenza o meno di errori.\\
-Di grande aiuto sono stati i \textit{logs} delle varie applicazioni provate (da MobileSYN, all'applicazione di esempio di \aplug{} fino a quella di \asa{}) che hanno, in parte, sopperito alle gravi mancanze documentali delle tecnologie trattate.
-
-%************************************************************************************************************
-
-\section{Difficoltà incontrate}
-\label{sec:difficolta_incontrate}
-Le prime difficoltà incontrate a livello personale sono state di tipo tecnologico: non mi ero mai trovato a programmare con linguaggi orientati al \textit{frontend}, e ho dovuto quindi cambiare almeno in parte il mio \textit{modus operandi} nella progettazione e scrittura di codice. A questo si è aggiunta la necessità di gestire altri tre linguaggi per le implementazioni native, ovvero Java e Kotlin per il lato Android e Swift per la parte iOS e, a complicare le cose, tutti questi linguaggi dovevano essere messi in comunicazione diretta con Flutter (e nel caso di Java e Kotlin anche tra di loro).\\ 
-Una buona parte dello \textit{stage} è quindi stata investita nel comprendere e nel gestire la grande diversità di linguaggi diversi.
-
-\begin{figure}[H]
-  \centering
-  %\includegraphics[height=5cm]{screen_mobilesyn}
-  \includegraphics[width=.5\textwidth]{asa_google_search}\hfill
-  \includegraphics[width=.5\textwidth]{flutter_google_search}\\
-  \includegraphics[width=1\textwidth]{asa_flutter_google_search}
-  \caption[Ricerca esatta Flutter e ASA 23 novembre]{Al 23 novembre 2022, una ricerca esatta di "flutter" mostra 87.5 milioni di risultati rilevanti, di "azure spatial anchors" 41 milioni mentre la combinazione delle due, solo 17}
-\label{fig:search1}
-\end{figure}
-
-In linea più generale invece le due problematiche che hanno più di tutte complicato i lavori (sia per me che per Datasoil stessa) sono stati la mancanza di documentazione adeguata e la mancanza di supporto da parte della comunità degli sviluppatori.\\
-Microsoft non fornisce un \textit{set} documentale adeguato per quanto riguarda \asa{}, mostrando il meno possibile della struttura interna (ad esempio come viene rappresentato un ancoraggio) e fornendo solo \api{} per effettuare operazioni ad alto livello (come il salvataggio in \textit{cloud} di un'\textit{anchor}), inoltre la ricerca della documentazione è macchinosa.\\
-L'altro problema risiede nella difficoltà estrema di trovare supporto di terze parti (ad esempio in siti come \url{https://stackoverflow.com}), come viene mostrato nelle figure \ref{fig:search1} e \ref{fig:search2}.
-
-\begin{figure}[H]
-  \centering
-  %\includegraphics[height=5cm]{screen_mobilesyn}
-  \includegraphics[width=.8\textwidth]{asa_flutter_search_today}
-  \caption[Ricerca esatta Flutter e ASA 8 febbraio]{All'otto febbraio 2023 non si notano miglioramenti: solo 14 risultati rilevanti, alcuni in lingua giapponese, mostrano quando sia difficile trovare informazioni sull'argomento.}
-  \label{fig:search2}
-\end{figure}
-
-Questa situazione ha significato dover risolvere tutti i problemi incontrati senza poter fare affidamento su alcun aiuto esterno e ha quindi esacerbato ulteriormente l'approccio \textit{trial-and-error} di cui si è parlato nella sezione \ref{sec:pianificazione}.
-
-%************************************************************************************************************
-
-\section{Risultati raggiunti}
-In quest'ultima sezione vediamo il risultato finale del lavoro di stage, partendo col mettere in relazione i requisiti individuati nella sezione \ref{sec:analisi_requisiti} con le \textit{screenshot} di MobileSYN, per poi mostrare tramite frammenti di codice l'implementazione specifica delle funzionalità in realtà aumentata in Android e iOS.\\
-Le seguenti immagini mostrano il progresso in vista in realtà aumentata che porta a creare un ancoraggio relativo all'\textit{asset} "IT-TESTP-ELight0324" (privo di eventi o \textit{ticket} correlati), per poi caricarlo in \textit{cloud} e, successivamente a chiusura e riapertura dell'applicazione, ritrovarlo in posizione (si noti che è leggermente arretrato).\\
-Inoltre nella prima immagine, viene anche mostrato il livello di progressione di \textit{scan} dell'ambiente, necessario a caricare correttamente un ancoraggio.
-
-\begin{figure}[H]
-  \centering
-  %\includegraphics[height=5cm]{screen_mobilesyn}
-  \includegraphics[width=.3\textwidth]{place_asset_scanLevel}\hfill
-  \includegraphics[width=.3\textwidth]{place_asset}\hfill
-  \includegraphics[width=.3\textwidth]{retrieve_asset}\hfill
-
-  \caption[Creazione, caricamento e recupero di \textit{asset}]{In ordine: \textit{asset} viene posizionato e viene mostrato il livello di \textit{scan} dell'ambiente, viene caricato e, previa chiusura e riapertura della vista, viene recuperato dal \textit{cloud}.}
-  \label{fig:place_asset}
-\end{figure}
-
-{
-    \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
-    \renewcommand{\arraystretch}{1.5}
-    \centering
-    \setlength{\aboverulesep}{0pt}
-    \setlength{\belowrulesep}{0pt}
-    \rowcolors{2}{red!10}{white}
-    \begin{longtable}{C{.15\freewidth} C{.965\freewidth}}
-       \toprule
-    \rowcolor{red}
-    \textcolor{white}{\textbf{Codice}}&
-    \textcolor{white}{\textbf{Descrizione}}\\
-    \toprule
-    \endhead
-
-    R1F1 & Il \textit{plugin} deve rappresentare \textit{asset} tramite ancoraggio in realtà aumentata\\
-    R1F11 & \textit{On-Tap} sullo spazio permette di creare una ancoraggio in posizione\\
-    R1F11.1 & Ancoraggio posizionato nello spazio può essere salvato\\
-    R1F11.2 & Ancoraggio posizionato nello spazio può essere eliminato\\
-    R1F12 & Il salvataggio di un ancoraggio è disponibile solo quando è sicuro vada a buon fine\\
-    R1F12.1 & Viene mostrato a schermo un feedback riguardo il livello di sicurezza raggiunto\\
-
-    \bottomrule
-    \rowcolor{white} 
-    \caption{Requisiti soddisfatti in figura \ref{fig:place_asset}}
-    \end{longtable}
-}
-
-Effettuando un \textit{On-Tap} su un ancoraggio appare una \textit{bottom sheet} che mostra l'identificatore dell'\textit{asset} e, se ci sono, gli eventi e i \textit{ticket} aperti a lui associati. Permette inoltre di raggiungere i dettagli dell'\textit{asset} o di rimuoverlo.\\
-Poi, nella lista degli \textit{asset} disponibili, quelli già collegati a un ancoraggio in realtà aumentata presentano un piccolo marcatore con dicitura "AR", permettendo di raggiungere la vista con il bottone a forma di cubo in altro a destra. E' grigio perché l'uso richiederebbe di essere fisicamente presenti in "Plant 1" e di selezionare inoltre stabilimento, piano e stanza.
-
-\begin{figure}[H]
-  \centering
-  %\includegraphics[height=5cm]{screen_mobilesyn}
-  \includegraphics[width=.3\textwidth]{asset_card_onTap}\hfill
-  \includegraphics[width=.3\textwidth]{remove_asset}\hfill
-  \includegraphics[width=.3\textwidth]{asset_list}
-  \caption[\textit{Bottom sheet asset} per eliminazione e lista \textit{asset}]{\textit{Bottom sheet} per l'\textit{asset} "IT-TESTP-ELight0324" e successiva eliminazione tramite bottone con dicitura \textit{"Remove Asset"}. L'ultima immagine mostra invece la lista degli \textit{asset} presenti con il bottone per raggiungere la vista in realtà aumentata.}
-  \label{fig:asset_list}
-\end{figure}
-
-{
-    \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
-    \renewcommand{\arraystretch}{1.5}
-    \centering
-    \setlength{\aboverulesep}{0pt}
-    \setlength{\belowrulesep}{0pt}
-    \rowcolors{2}{red!10}{white}
-    \begin{longtable}{C{.15\freewidth} C{.965\freewidth}}
-       \toprule
-    \rowcolor{red}
-    \textcolor{white}{\textbf{Codice}}&
-    \textcolor{white}{\textbf{Descrizione}}\\
-    \toprule
-    \endhead
-
-    R1F5 & Utente deve poter vedere quali \textit{asset} hanno ancoraggio associato\\
-    R1F7 & Utente deve poter raggiungere la vista in realtà aumentata dalla schermata degli \textit{asset}\\
-    R1F8 & \textit{On-Tap} su una ancoraggio deve aprire una \textit{bottom sheet} contestuale\\
-    R1F8.1 & \textit{Bottom sheet} deve presentare identificatore per \textit{asset} o \textit{ticket} associato all'ancoraggio\\
-    R1F8.2 & \textit{Bottom sheet} associato a un \textit{asset} mostra \textit{ticket} aperti se presenti\\
-    R1F8.3 & \textit{Bottom sheet} deve fornire \textit{Call-To-Action} per eliminare l'ancoraggio\\
-    R1F8.4 & \textit{Bottom sheet} deve fornire \textit{Call-To-Action} per raggiungere pagina di dettaglio\\
-    
-
-    \bottomrule
-    \rowcolor{white} 
-    \caption{Requisiti soddisfatti in figura \ref{fig:asset_list}}
-    \end{longtable}
-}
-
-Per quanto riguarda i \textit{ticket} invece l'approccio scelto è quello di far apparire, al completamento della compilazione di un \textit{ticket}, una finestra che permette di posizionarlo in realtà aumentata. In questo caso si può notare la \textit{card} di stato aggiornata per quanto riguarda la notifica del livello di \textit{scan} per il caricamento dell'ancoraggio.\\
-Mostriamo inoltre che i \textit{ticket} aperti di un \textit{asset} mettono in chiaro data e ora di apertura.
-
-\begin{figure}[H]
-  \centering
-  %\includegraphics[height=5cm]{screen_mobilesyn}
-  \includegraphics[width=.3\textwidth]{ticket_ar1}\hfill
-  \includegraphics[width=.3\textwidth]{ticket_ar2}\hfill
-  \includegraphics[width=.3\textwidth]{asset_with_ticket}
-  \caption[Caricamento \textit{ticket} realtà aumentata e \textit{ticket} su \textit{asset}]{Una volta compilato il \textit{ticket} appare una finestra in sovrimpressione che permette di posizionarlo in realtà aumentata. Inoltre i \textit{ticket} di un \textit{asset} mostrano data e ora di apertura.}
-  \label{fig:ticket_ar}
-\end{figure}
-
-{
-    \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
-    \renewcommand{\arraystretch}{1.5}
-    \centering
-    \setlength{\aboverulesep}{0pt}
-    \setlength{\belowrulesep}{0pt}
-    \rowcolors{2}{red!10}{white}
-    \begin{longtable}{C{.15\freewidth} C{.965\freewidth}}
-       \toprule
-    \rowcolor{red}
-    \textcolor{white}{\textbf{Codice}}&
-    \textcolor{white}{\textbf{Descrizione}}\\
-    \toprule
-    \endhead
-
-    R1F2 & Il \textit{plugin} deve rappresentare \textit{ticket} tramite ancoraggio in realtà aumentata\\
-    R1F9 & Le informazioni contestuali di un \textit{ticket} includono data e ora di creazione\\
-    R1F10 & Gli ancoraggi hanno rappresentazione visiva contestuale\\ 
-  
-    \bottomrule
-    \rowcolor{white} 
-    \caption{Requisiti soddisfatti in figura \ref{fig:ticket_ar}}
-    \end{longtable}
-}
-
-\subsection{Implementazione}
-Vediamo ora alcuni frammenti di codice che cercano di dare un'idea di massima di come, nel pratico, sono stati implementati i componenti in realtà aumentata. Partiamo quindi dalla parte in Dart, cioè quella comune. Il codice mostrato dovrà essere estremamente parziale, pena la creazione di un documento di diverse centinaia di pagine.\\
+\section{Codifica}
+Vediamo alcuni frammenti di codice che cercano di dare un'idea di massima di come, nel pratico, sono stati implementati i componenti in realtà aumentata. Partiamo quindi dalla parte in Dart, cioè quella comune. Il codice mostrato dovrà essere estremamente parziale, pena la creazione di un documento di diverse centinaia di pagine.\\
 Il tutto è gestito con due \textit{repository} parallele: "mobilesyn" (che contiene il sorgente dell'applicazione vera e propria) e un \textit{fork} di "\aplug{}" alla quale sono state apportate le modifiche necessarie per interfacciarsi con SYN e le \asa{}. Partiamo dalla prima.\\
 Vediamo un esempio di \textit{asset provider:}
 
@@ -938,8 +762,9 @@ class IosARView implements PlatformARView {
     \end{longtable}
 }
 
+\section{Verifica e validazione}
 
-\subsection{Copertura requisiti}
+\section{Copertura requisti}
 L'unico requisito rimasto insoddisfatto è il seguente:
 {
     \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
@@ -1026,4 +851,131 @@ Vediamo quindi una sintesi, in tabella singola, dei requisti soddisfatti e dove 
     \caption[Tabella requisiti - chi li soddisfa]{Tabella che mette in relazione i requisiti e dove si vede il loro soddisfacimento.}
     \end{longtable}
 }
+
+\section{Risultati raggiunti}
+In quest'ultima sezione vediamo il risultato finale del lavoro di stage, partendo col mettere in relazione i requisiti individuati nella sezione \ref{sec:analisi_requisiti} con le \textit{screenshot} di MobileSYN.\\
+Le seguenti immagini mostrano il progresso in vista in realtà aumentata che porta a creare un ancoraggio relativo all'\textit{asset} "IT-TESTP-ELight0324" (privo di eventi o \textit{ticket} correlati), per poi caricarlo in \textit{cloud} e, successivamente a chiusura e riapertura dell'applicazione, ritrovarlo in posizione (si noti che è leggermente arretrato).\\
+Inoltre nella prima immagine, viene anche mostrato il livello di progressione di \textit{scan} dell'ambiente, necessario a caricare correttamente un ancoraggio.
+
+\begin{figure}[H]
+  \centering
+  %\includegraphics[height=5cm]{screen_mobilesyn}
+  \includegraphics[width=.3\textwidth]{place_asset_scanLevel}\hfill
+  \includegraphics[width=.3\textwidth]{place_asset}\hfill
+  \includegraphics[width=.3\textwidth]{retrieve_asset}\hfill
+
+  \caption[Creazione, caricamento e recupero di \textit{asset}]{In ordine: \textit{asset} viene posizionato e viene mostrato il livello di \textit{scan} dell'ambiente, viene caricato e, previa chiusura e riapertura della vista, viene recuperato dal \textit{cloud}.}
+  \label{fig:place_asset}
+\end{figure}
+
+{
+    \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
+    \renewcommand{\arraystretch}{1.5}
+    \centering
+    \setlength{\aboverulesep}{0pt}
+    \setlength{\belowrulesep}{0pt}
+    \rowcolors{2}{red!10}{white}
+    \begin{longtable}{C{.15\freewidth} C{.965\freewidth}}
+       \toprule
+    \rowcolor{red}
+    \textcolor{white}{\textbf{Codice}}&
+    \textcolor{white}{\textbf{Descrizione}}\\
+    \toprule
+    \endhead
+
+    R1F1 & Il \textit{plugin} deve rappresentare \textit{asset} tramite ancoraggio in realtà aumentata\\
+    R1F11 & \textit{On-Tap} sullo spazio permette di creare una ancoraggio in posizione\\
+    R1F11.1 & Ancoraggio posizionato nello spazio può essere salvato\\
+    R1F11.2 & Ancoraggio posizionato nello spazio può essere eliminato\\
+    R1F12 & Il salvataggio di un ancoraggio è disponibile solo quando è sicuro vada a buon fine\\
+    R1F12.1 & Viene mostrato a schermo un feedback riguardo il livello di sicurezza raggiunto\\
+
+    \bottomrule
+    \rowcolor{white} 
+    \caption{Requisiti soddisfatti in figura \ref{fig:place_asset}}
+    \end{longtable}
+}
+
+Effettuando un \textit{On-Tap} su un ancoraggio appare una \textit{bottom sheet} che mostra l'identificatore dell'\textit{asset} e, se ci sono, gli eventi e i \textit{ticket} aperti a lui associati. Permette inoltre di raggiungere i dettagli dell'\textit{asset} o di rimuoverlo.\\
+Poi, nella lista degli \textit{asset} disponibili, quelli già collegati a un ancoraggio in realtà aumentata presentano un piccolo marcatore con dicitura "AR", permettendo di raggiungere la vista con il bottone a forma di cubo in altro a destra. E' grigio perché l'uso richiederebbe di essere fisicamente presenti in "Plant 1" e di selezionare inoltre stabilimento, piano e stanza.
+
+\begin{figure}[H]
+  \centering
+  %\includegraphics[height=5cm]{screen_mobilesyn}
+  \includegraphics[width=.3\textwidth]{asset_card_onTap}\hfill
+  \includegraphics[width=.3\textwidth]{remove_asset}\hfill
+  \includegraphics[width=.3\textwidth]{asset_list}
+  \caption[\textit{Bottom sheet asset} per eliminazione e lista \textit{asset}]{\textit{Bottom sheet} per l'\textit{asset} "IT-TESTP-ELight0324" e successiva eliminazione tramite bottone con dicitura \textit{"Remove Asset"}. L'ultima immagine mostra invece la lista degli \textit{asset} presenti con il bottone per raggiungere la vista in realtà aumentata.}
+  \label{fig:asset_list}
+\end{figure}
+
+{
+    \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
+    \renewcommand{\arraystretch}{1.5}
+    \centering
+    \setlength{\aboverulesep}{0pt}
+    \setlength{\belowrulesep}{0pt}
+    \rowcolors{2}{red!10}{white}
+    \begin{longtable}{C{.15\freewidth} C{.965\freewidth}}
+       \toprule
+    \rowcolor{red}
+    \textcolor{white}{\textbf{Codice}}&
+    \textcolor{white}{\textbf{Descrizione}}\\
+    \toprule
+    \endhead
+
+    R1F5 & Utente deve poter vedere quali \textit{asset} hanno ancoraggio associato\\
+    R1F7 & Utente deve poter raggiungere la vista in realtà aumentata dalla schermata degli \textit{asset}\\
+    R1F8 & \textit{On-Tap} su una ancoraggio deve aprire una \textit{bottom sheet} contestuale\\
+    R1F8.1 & \textit{Bottom sheet} deve presentare identificatore per \textit{asset} o \textit{ticket} associato all'ancoraggio\\
+    R1F8.2 & \textit{Bottom sheet} associato a un \textit{asset} mostra \textit{ticket} aperti se presenti\\
+    R1F8.3 & \textit{Bottom sheet} deve fornire \textit{Call-To-Action} per eliminare l'ancoraggio\\
+    R1F8.4 & \textit{Bottom sheet} deve fornire \textit{Call-To-Action} per raggiungere pagina di dettaglio\\
+    
+
+    \bottomrule
+    \rowcolor{white} 
+    \caption{Requisiti soddisfatti in figura \ref{fig:asset_list}}
+    \end{longtable}
+}
+
+Per quanto riguarda i \textit{ticket} invece l'approccio scelto è quello di far apparire, al completamento della compilazione di un \textit{ticket}, una finestra che permette di posizionarlo in realtà aumentata. In questo caso si può notare la \textit{card} di stato aggiornata per quanto riguarda la notifica del livello di \textit{scan} per il caricamento dell'ancoraggio.\\
+Mostriamo inoltre che i \textit{ticket} aperti di un \textit{asset} mettono in chiaro data e ora di apertura.
+
+\begin{figure}[H]
+  \centering
+  %\includegraphics[height=5cm]{screen_mobilesyn}
+  \includegraphics[width=.3\textwidth]{ticket_ar1}\hfill
+  \includegraphics[width=.3\textwidth]{ticket_ar2}\hfill
+  \includegraphics[width=.3\textwidth]{asset_with_ticket}
+  \caption[Caricamento \textit{ticket} realtà aumentata e \textit{ticket} su \textit{asset}]{Una volta compilato il \textit{ticket} appare una finestra in sovrimpressione che permette di posizionarlo in realtà aumentata. Inoltre i \textit{ticket} di un \textit{asset} mostrano data e ora di apertura.}
+  \label{fig:ticket_ar}
+\end{figure}
+
+{
+    \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
+    \renewcommand{\arraystretch}{1.5}
+    \centering
+    \setlength{\aboverulesep}{0pt}
+    \setlength{\belowrulesep}{0pt}
+    \rowcolors{2}{red!10}{white}
+    \begin{longtable}{C{.15\freewidth} C{.965\freewidth}}
+       \toprule
+    \rowcolor{red}
+    \textcolor{white}{\textbf{Codice}}&
+    \textcolor{white}{\textbf{Descrizione}}\\
+    \toprule
+    \endhead
+
+    R1F2 & Il \textit{plugin} deve rappresentare \textit{ticket} tramite ancoraggio in realtà aumentata\\
+    R1F9 & Le informazioni contestuali di un \textit{ticket} includono data e ora di creazione\\
+    R1F10 & Gli ancoraggi hanno rappresentazione visiva contestuale\\ 
+  
+    \bottomrule
+    \rowcolor{white} 
+    \caption{Requisiti soddisfatti in figura \ref{fig:ticket_ar}}
+    \end{longtable}
+}
+
+
 
