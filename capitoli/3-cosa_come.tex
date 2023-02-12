@@ -38,7 +38,7 @@ Nella maggior parte dei casi è bene che oggetti multipli siano legati a un anco
 
 \subsection{Azure ToolKit}
 Azure è l'ombrello sotto al quale vivono tutti i servizi \textit{cloud} di Microsoft esterni al pacchetto Office 365, e comprendono \textit{database} relazionali con scalabilità automatica (Azure SQL o Azure Cosmos DB), macchine virtuali remote (Virtual Machines e Azure Virtual Desktop), ma anche funzionalità estremamente avanzate come Azure Kubernetes Service che fornisce un sistema automatizzato per rilasciare, scalare e gestire grandi applicativi \textit{sofware} (ad esempio per i \textit{data center}), oppure Azure Quantum che mette a disposizioni soluzioni per scrivere e provare \textit{software} su \textit{hardware} quantistico.\\
-Si nota quindi che la \textit{suite} Azure è indirizzata a utenti altamente specializzati e ancora più spesso a organizzazioni vere e proprie.
+La \textit{suite} Azure, quindi, è indirizzata a utenti altamente specializzati e ancora più spesso a organizzazioni vere e proprie.
 
 \begin{figure}[H]
   \centering
@@ -46,8 +46,8 @@ Si nota quindi che la \textit{suite} Azure è indirizzata a utenti altamente spe
   \caption[Azure Portal creazione risorse]{Tramite l'Azure Portal è possibile creare tutte le risorse di Azure, come \textit{server} Ubuntu o macchine virtuali.}
 \end{figure}
 
-Per gli scopi di questo progetto ci serviremo di due degli strumenti forniti: l'Azure Portal e le \asa{}.\\
-Il primo è semplicemente un portale online che serve a gestire, creare e monitorare tutte le risorse Azure legate a un \textit{account}, mentre le seconde sono il servizio di Microsoft per gestire ancoraggi geospaziali persistenti che possono anche essere utilizzati in un contesto di realtà aumentata.
+Per gli scopi di questo progetto uso due degli strumenti forniti: l'Azure Portal e le \asa{}.\\
+Il primo è un portale accessibile tramite \textit{browser} che serve a gestire, creare e monitorare tutte le risorse Azure legate a un \textit{account}, mentre le seconde sono il servizio di Microsoft per gestire ancoraggi geospaziali persistenti che possono anche essere utilizzati in un contesto di realtà aumentata.
 
 \begin{figure}[H]
   \centering
@@ -75,7 +75,7 @@ Sfortunatamente, complici la giovinezza di Flutter e la scarsa diffusione di tec
 
 \subsubsection{ARWayKit}
 ARwayKit è un \textit{framework} formato da un insieme di componenti che si pone l'obiettivo di fornire un'esperienza in realtà aumentata persistente, e lo persegue fornendo un \sdk{} Unity, un'applicazione di mappatura e un insieme di \api{} REST\footnote{Conosciute anche come RESTful API, sono delle \api{} che si conformano allo stile architetturale e alle norme per sistemi distribuiti chiamato \textit{representational state transfer} largamente utilizzato nella comunicazione \textit{web}.}, che implementano le componenti in realtà aumentata in Flutter sfruttando il \textit{plugin} flutter\_unity\_widget\footnote{Fonte: \url{https://pub.dev/packages/flutter_unity_widget}}.\\
-\e{} multipiattaforma, implementa gli ancoraggi tramite \asa{} e funziona in ambienti \textit{"GPS-denied"}, ovvero dove i dati di posizione del \textit{global positioning system}\footnote{Sistema di satelliti in grado di fornire a un ricevitore le sue coordinate geografiche.} non vengono utilizzati per muoversi all'interno dell'ambiente virtuale (oppure ambienti con protocolli di \textit{privacy} elevati). Le caratteristiche appena descritte renderebbero ARwayKit apparentemente perfetto per il caso d'uso specifico di questa tesi. 
+\e{} multipiattaforma, implementa gli ancoraggi tramite \asa{} e funziona in ambienti \textit{"GPS-denied"}, ovvero dove i dati di posizione del \textit{global positioning system}\footnote{Sistema di satelliti in grado di fornire a un ricevitore le sue coordinate geografiche.} non vengono utilizzati per muoversi all'interno dell'ambiente virtuale (ad esempio in ambienti con protocolli di \textit{privacy} elevati). Le caratteristiche appena descritte rendono ARwayKit apparentemente perfetto per il caso d'uso specifico di questa tesi. 
 
 \begin{figure}[H]
   \centering
@@ -84,8 +84,8 @@ ARwayKit è un \textit{framework} formato da un insieme di componenti che si pon
 \end{figure}
 \footnotetext{Fonte: \url{https://medium.com/arway/building-ar-navigation-apps-with-flutter-and-arwaykit-280b69401cd9}}
 
-Tuttavia, presenta delle criticità: in primo luogo obbliga l'uso di Unity (sfruttando la sua caratteristica peculiare di poter essere importato come fosse una libreria) per sviluppare la vista in realtà aumentata, il che comporta non solo dover imparare il linguaggio ma dover anche configurare ulteriori componenti (come ad esempio Unity Hub) che poi devono essere adottati assieme a quelli già in uso, appesantendo quindi il processo di codifica.\\
-In secondo luogo troviamo invece il problema maggiore: la vista verrebbe realizzata nativamente in Unity, ovvero si tratta di una componente Unity separata rispetto all'applicazione che la lancia.
+Tuttavia, non è esente da criticità: in primo luogo obbliga l'uso di Unity (sfruttando la sua caratteristica peculiare di poter essere importato come fosse una libreria) per sviluppare la vista in realtà aumentata, il che comporta non solo dover imparare il linguaggio ma dover anche configurare ulteriori componenti (come ad esempio Unity Hub) che poi devono essere adottati assieme a quelli già in uso, appesantendo quindi il processo di codifica.\\
+In secondo luogo si individua il problema maggiore: la vista verrebbe realizzata nativamente in Unity, ovvero si tratta di una componente Unity separata rispetto all'applicazione che la lancia.
 Questo renderebbe complesso se non impossibile usare dentro essa delle funzionalità Flutter: ad esempio, un bottone a schermo sarebbe un pulsante Unity, non Flutter, obbligando quindi poi a costruire una mappatura tra i due linguaggi per ogni funzionalità visualizzata.\\ 
 Una vista così costruita non solo è scomoda da programmare, ma anche difficile da manutenere.
 
@@ -112,12 +112,12 @@ Il \textit{session manager} gestisce le configurazioni di tracciamento (ad esemp
 \footnotetext{Fonte: \url{https://lars.carius.io/blog/ar_flutter_plugin.html}}
 
 L'\textit{object manager} gestisce i nodi (le entità) in realtà aumentata del \textit{plugin} che servono ad astrarre rispetto alle funzionalità native delle varie piattaforme (ARCore e ARKit ad esempio) e permettono di aggiungere, modificare o rimuovere nodi basandosi su formati GLTF2 o GLB che possono essere caricati a \textit{runtime} da un \textit{file system} o dalla rete.\\
-L'\textit{anchor manager} contiene funzioni per caricare e ottenere ancoraggi da servizi \textit{cloud} servendosi delle \api{} fornite da Google Coud Anchor. Gli ambienti virtuali registrati localmente possono essere salvati in rete e comparati con quelli già in \textit{storage} persistente per scaricare ancoraggi e oggetti precedentemente posizionati nella scena.\\
+L'\textit{anchor manager} contiene funzioni per caricare e ottenere ancoraggi da servizi \textit{cloud} servendosi delle \api{} fornite da Google Cloud Anchor. Gli ambienti virtuali registrati localmente possono essere salvati in rete e comparati con quelli già in \textit{storage} persistente per scaricare ancoraggi e oggetti precedentemente posizionati nella scena.\\
 Infine il \textit{location manager} si occupa di fornire le coordinate del \textit{global positioning system}  per permettere un'interrogazione efficiente degli ancoraggi basati su posizione geografica.\\
 Il \textit{plugin} ha un'architettura largamente \textit{clout-agnostic}, cioè non si interessa dell'implementazione specifica per i servizi di salvataggio persistente, il che gli permette di usare facilmente gestori di contenuti esterni.
 
 \subsubsection{Confronto}
-Vediamo quindi di schematizzare e mettere a confronto pregi e difetti delle due soluzioni trovate.\aCapo{}
+Schematizzo quindi pregi e difetti delle due soluzioni trovate per metterle a confronto.\aCapo{}
 
 \textbf{Pregi ARwayKit:}
 \begin{itemize}
@@ -131,7 +131,7 @@ Vediamo quindi di schematizzare e mettere a confronto pregi e difetti delle due 
   \item La vista e le componenti in realtà aumentata non sono implementate in Flutter;
   \item Richiede l'uso di Unity che, essendo un motore per videogiochi, ha funzionalità in più (e in meno) non necessarie (e necessarie) rispetto a un uso aziendale;
   \item Ha una documentazione difficile da reperire e di dubbia completezza;
-  \item \e{} codice propietario, quindi non c'è modo di visionare il sorgente.
+  \item \e{} codice proprietario, quindi non c'è modo di visionare il sorgente.
 \end{itemize}
 
 \textbf{Pregi \aplug{}:}
@@ -141,7 +141,7 @@ Vediamo quindi di schematizzare e mettere a confronto pregi e difetti delle due 
   \item \e{} \textit{open-source}, quindi al bisogno è possibile visionare il codice sorgente;
   \item \e{} pensato per uso aziendale;
   \item La struttura logica, divisa nei vari \textit{manager}, è modulare e chiara da comprendere, il che dovrebbe facilitarne modifica ed estensione;
-  \item Promette di essere \textit{cloud-agnostic}, quindi favorisce l'uso di gestorie sterni come ad esempio \asa{} 
+  \item Promette di essere \textit{cloud-agnostic}, quindi favorisce l'uso di gestori esterni come ad esempio \asa{} 
 \end{itemize}
 
 \textbf{Difetti \aplug{}:}
@@ -178,28 +178,28 @@ Vediamo quindi di schematizzare e mettere a confronto pregi e difetti delle due 
   \end{longtable}
 }
 
-\e{} stato infine scelto \aplug{} rispetto ad ARwayKit per evitare di interfacciarsi con Unity, per la necessità di avere la vista in realtà aumentata implementata direttamente in Flutter e per il grande vantaggio che comporta il suo essere \textit{open-source}.
+Ho infine scelto, in comune accordo con il \textit{tutor} aziendale, \aplug{} rispetto ad ARwayKit per evitare di interfacciarsi con Unity, per la necessità di avere la vista in realtà aumentata implementata direttamente in Flutter e per il grande vantaggio che comporta il suo essere \textit{open-source}.
 
 \section{Analisi dei requisiti}
 \label{sec:analisi_requisiti}
-Di seguito sono riportati i requisti individuati nel piano di lavoro proposto e a seguito di opportuni confronti con il \textit{tutor} aziendale. Essi sono catalogati secondo la dicitura:
+Di seguito riporto i requisti individuati nel piano di lavoro proposto (a seguito di opportuni confronti con il \textit{tutor} aziendale). Sono catalogati secondo la dicitura:
 \begin{center}
     \textbf{R[Obbligatorietà][Tipologia][Codice]}
 \end{center}
-dove:
+Dove:
 \begin{itemize}
     \item \textbf{Obbligatorietà}: specifica quanto un requisito sia vincolante per la riuscita del prodotto e può assumere i seguenti valori:
     \begin{itemize}
-        \item \textbf{1: } Requisito obbligatorio;
-        \item \textbf{2: } Requisito desiderabile ma non essenziale per il funzionamento;
-        \item \textbf{3: } Requisito opzionale.
+        \item \textbf{1: } requisito obbligatorio;
+        \item \textbf{2: } requisito desiderabile ma non essenziale per il funzionamento;
+        \item \textbf{3: } requisito opzionale;
     \end{itemize}
     \item \textbf{Tipologia}: specifica la tipologia del requisito e può assumere i seguenti valori:
     \begin{itemize}
         \item \textbf{F: }\textit{funzionale,} determina una funzionalità necessaria all'applicazione;
-        \item \textbf{V: }\textit{vincolo,} riguarda una caratteristica del prodotto decisa a monte.
+        \item \textbf{V: }\textit{vincolo,} riguarda una caratteristica del prodotto decisa a monte;
     \end{itemize}
-    \item \textbf{Codice}: identifica univocamente un requisito all'interno della sua tipologia (ovvero possono esistere due requisiti con lo stesso codice a patto che siano uno funzionale e uno di vincolo). Per i requisti subordinati si usa il "punto" come divisorio (\textit{ReqPadre, ReqPadre.Figlio1})
+    \item \textbf{Codice}: identifica univocamente un requisito all'interno della sua tipologia (ovvero possono esistere due requisiti con lo stesso codice a patto che siano uno funzionale e uno di vincolo). Per i requisti subordinati si usa il "punto" come divisorio (\textit{ReqPadre, ReqPadre.Figlio1}).
 \end{itemize}
 
 \subsection{Requisiti funzionali}
@@ -284,7 +284,7 @@ dove:
 }
 
 \subsection{Riepilogo requisiti}
-Sono stati individuati un totale di 36 requisiti, 29 funzionali e 7 di vincolo, di seguito schematizzati:
+Ho individuato un totale di 36 requisiti, 29 funzionali e 7 di vincolo, di seguito schematizzati:
 {
     \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
     \renewcommand{\arraystretch}{1.5}
@@ -305,7 +305,6 @@ Sono stati individuati un totale di 36 requisiti, 29 funzionali e 7 di vincolo, 
     \bottomrule
     \rowcolor{white} 
     \caption{Numero di requisiti per obbligatorietà}
-    \label{tab:requisiti-obbligatorieta}
     \end{longtable}
 }
 
@@ -329,7 +328,6 @@ Sono stati individuati un totale di 36 requisiti, 29 funzionali e 7 di vincolo, 
     \bottomrule
     \rowcolor{white} 
     \caption{Numero di requisiti per tipologia}
-    \label{tab:requisiti-tipolgia}
     \end{longtable}
 }
 
@@ -340,8 +338,8 @@ Sono stati individuati un totale di 36 requisiti, 29 funzionali e 7 di vincolo, 
 Tratterò la progettazione del sistema da due punti di vista: uno architetturale, che quindi pone l'accento su come il sistema sottostante svolga il lavoro di comunicazione con \asa{} e con le \api{} di Syn, e uno orientato invece all'aspetto grafico dell'applicazione, ovvero l'interfaccia utente.
 
 \subsection{Architettura}
-L'idea è di avere due sistemi comunicanti (gestiti con due diverse \textit{repository}): l'applicazione cliente MobileSYN che si interfaccia con Syn e il \textit{plugin} scelto che invece si occupa di gestire la parte in realtà aumentata e si interfaccia con \asa{}. \\
-Bisogna fare chiarezza su un punto: Syn ha già in sistema degli \textit{asset} geolocalizzati tramite \asa{}, cioè quindi gli \textit{asset} sono legati a un ancoraggio del servizio di Microsoft, però questo è indipendente dal fatto che è sempre con \asa{} che implementiamo le componenti in realtà aumentata (in sostanza non è obbligatorio lavorare in \textit{augmented reality} per sfruttare gli ancoraggi di Azure). \\
+L'idea è di avere due sistemi comunicanti (gestiti con due diverse \textit{repository}): l'applicazione cliente MobileSYN che si interfaccia con Syn e il \textit{plugin} scelto che invece si occupa di gestire la parte in realtà aumentata e si interfaccia con \asa{}.\\
+Bisogna fare chiarezza su un punto: Syn ha già in sistema degli \textit{asset} geolocalizzati tramite \asa{}, cioè quindi gli \textit{asset} sono legati a un ancoraggio del servizio di Microsoft, però questo è indipendente dal fatto che è sempre con \asa{} che implementiamo le componenti in realtà aumentata (in sostanza non è obbligatorio lavorare in \textit{augmented reality} per sfruttare gli ancoraggi di Azure).\\
 Avremo quindi, a livello logico, MobileSYN che otterrà \textit{ticket} e \textit{asset} da Syn e poi li invierà ad \aplug{} il quale si occuperà di mostrarli in realtà aumentata, fornendo anche la vista.
 
 \begin{figure}[H]
@@ -352,8 +350,8 @@ Avremo quindi, a livello logico, MobileSYN che otterrà \textit{ticket} e \texti
 \end{figure}
 
 \subsection{Interfaccia utente}
-Mostro dei \textit{mockup} che danno un'idea di massima di come l'interfaccia utente dovrebbe presentarsi. Dai requisiti l'utente deve poter posizionare ancoraggi, caricarli sul \textit{cloud} quando sono stati ottenuti sufficienti dati spaziali e, all'\textit{on-tap} su una \textit{anchor}, deve vedere una \textit{bottom sheet} che gli presenti informazioni riguardo all'\textit{asset} collegato (ad esempio i \textit{ticket} aperti) e che gli permetta di raggiungere i dettagli dell'\textit{asset} o di eliminare l'\textit{anchor}.\\
-Inoltre nella lista degli \textit{asset} devono essere presenti sia un'icona che identifichi quali hanno un ancoraggio associato posizionato in realtà aumentata e anche un bottone (in alto a destra in questo caso) che permetta di lanciare la vista.
+Mostro dei \textit{mockup} che danno un'idea di massima di come l'interfaccia utente dovrebbe presentarsi: dai requisiti, l'utente deve poter posizionare ancoraggi, caricarli sul \textit{cloud} quando sono stati ottenuti sufficienti dati spaziali e, all'\textit{on-tap} su una \textit{anchor}, deve vedere una \textit{bottom sheet} che gli presenti informazioni riguardo all'\textit{asset} collegato (ad esempio i \textit{ticket} aperti) e che gli permetta di raggiungere i dettagli dell'\textit{asset} o di eliminare l'\textit{anchor}.\\
+Inoltre nella lista degli \textit{asset} devono essere presenti sia un'icona che identifichi quali hanno un ancoraggio associato posizionato in realtà aumentata che un bottone (in alto a destra in questo caso) che permetta di lanciare la vista.
 
 \begin{figure}[H]
   \centering
@@ -366,7 +364,7 @@ Inoltre nella lista degli \textit{asset} devono essere presenti sia un'icona che
 \end{figure}
 
 \section{Codifica}
-Mostro alcuni frammenti di codice che cercano di dare un'idea di massima di come, nel pratico, sono stati implementati i componenti in realtà aumentata. Parto quindi dalla parte in Dart, cioè quella comune. Il codice mostrato dovrà essere estremamente parziale, pena la creazione di un documento di diverse centinaia di pagine.\\
+Mostro alcuni frammenti di codice che cercano di dare un'idea di massima di come, nel pratico, ho implementato i componenti in realtà aumentata. Il codice mostrato dovrà essere estremamente parziale, pena la creazione di un documento di diverse centinaia di pagine.\\
 Il tutto è gestito con due \textit{repository} parallele: "mobilesyn" (che contiene il sorgente dell'applicazione vera e propria) e un \textit{fork} di "\aplug{}" alla quale sono state apportate le modifiche necessarie per interfacciarsi con SYN e le \asa{}. Partiamo dalla prima.\\
 Vediamo un esempio di \textit{asset provider:}
 
@@ -461,7 +459,7 @@ class ManagementArView extends HookConsumerWidget {
     final arAnchorManager = useState<ARAnchorManager?>(null);
 \end{lstlisting} 
 
-E sono state costruite diverse funzioni di utilità, ad esempio il seguente codice viene chiamato alla creazione della vista:
+E sono presenti diverse funzioni di utilità, ad esempio il seguente codice viene chiamato alla creazione della vista:
 
 \begin{lstlisting}[language=dart, label={lst:mobilesyn_onARViewCreated}, firstnumber=1,caption={mobilesyn \textit{on ar view created}}]
 void onARViewCreated(
@@ -474,8 +472,8 @@ arViewInitialized.value = true;
 }
 \end{lstlisting} 
 
-Passiamo quindi a vedere alcuni frammenti dei \textit{manager} di \aplug{}.
-Nel \textit{manager} per gli ancoraggi vediamo i metodi per creazione ed eliminazione di \textit{anchor} localmente e per \textit{upload} ed eliminazione di ancoraggi in \textit{cloud} (si noti che tutti i metodi usano i \textit{method channels}): 
+Mostro ora alcuni frammenti dei \textit{manager} di \aplug{}.\\
+Riporto i metodi per creazione ed eliminazione di \textit{anchor} localmente e per \textit{upload} ed eliminazione di ancoraggi in \textit{cloud} presenti nel \textit{manager} per gli ancoraggi (si noti che tutti i metodi usano i \textit{method channels}): 
 
 \begin{lstlisting}[language=dart, label={lst:arplug_manager}, firstnumber=1,caption={\aplug{} \textit{create, delete, ulpoad, delete cloud anchor} tramite \textit{method channel}}]
 Future<void> createAnchor(
@@ -575,7 +573,7 @@ func onAnchorMethodCalled(_ call: FlutterMethodCall, _ result:
 }
 \end{lstlisting}
 
-Mostro ora un piccolo esempio di come vengono implementate, in Android, le \asa{}. Non porterò in questo caso l'esempio speculare di iOS in quanto poco interessante: come si vede dai frammenti di codice precedenti le differenze sono più tecniche che macroscopiche.\\
+Mostro ora un piccolo esempio di come ho implementato, in Android, le \asa{}. Non porterò in questo caso l'esempio speculare di iOS in quanto poco interessante: come si vede dai frammenti di codice precedenti le differenze sono più tecniche che macroscopiche.\\
 Vediamo l'eliminazione di un ancoraggio salvato in \textit{cloud}, riprendendo il codice in \ref{lst:android_channels} guardiamo il flusso che provoca la chiamata \verb+"deleteCloudAnchor"+:
 
 \begin{lstlisting}[language=dart, label={lst:asa_android_call}, firstnumber=1,caption={Eliminazione \textit{cloud anchor} lato Android, chiamata}]
@@ -590,7 +588,7 @@ private fun deleteCloudAnchor(infoId: String,
   //la funzione prosegue ma non ci interessa per questa dimostrazione
 \end{lstlisting}
 
-Notando che è stato chiamato in causa il \textit{manager} per le \asa{}, e seguendone quindi il flusso:
+\e{} stato chiamato in causa il \textit{manager} per le \asa{}, e seguendone il flusso:
 
 \begin{lstlisting}[language=dart, label={lst:asa_manager_delete}, firstnumber=1,caption={Eliminazione \textit{cloud anchor} lato Android, chiamata}]
 internal class AzureSpatialAnchorsManager(arCoreSession: Session?, 
@@ -615,7 +613,7 @@ internal class AzureSpatialAnchorsManager(arCoreSession: Session?,
   }
 \end{lstlisting}
 
-Il codice appena mostra che l'applicazione comunica con le \api{} di SYN per ottenere \textit{ticket} e \textit{asset}, e che ottiene gli ancoraggi e che questi ancoraggi sono gestiti tramite \asa{}. Tutto questo, inoltre, è stato implementato sia in Android che in iOS.\\
+Il codice di cui sopra mostra che l'applicazione comunica con le \api{} di SYN per ottenere \textit{ticket} e \textit{asset}, e che ottiene gli ancoraggi e che questi ancoraggi sono gestiti tramite \asa{}. Tutto questo, inoltre, è stato implementato sia in Android che in iOS.\\
 Mostro infine una piccola parte del codice che si occupa di creare l'effettiva interfaccia utente della vista in realtà aumentata:
 
 \begin{lstlisting}[language=dart, label={lst:ar_view}, firstnumber=1,caption={Frammento di codice per vista in realtà aumenta in Dart}]
@@ -705,7 +703,7 @@ Nei frammenti \ref{lst:mobilesyn_managers}, \ref{lst:mobilesyn_onARViewCreated} 
     \end{longtable}
 }
 
-Nei frammenti \ref{lst:arplug_manager}, \ref{lst:android_channels}, \ref{lst:ios_channels} vengono mostrati i \textit{method channel} per lanciare le chiamate per agire sugli ancoraggi in codice nativo che, come viene mostrato nei frammenti \ref{lst:asa_android_call} e \ref{lst:asa_manager_delete}, implementa le \textit{anchor} tramite \asa{}.
+Nei frammenti \ref{lst:arplug_manager}, \ref{lst:android_channels}, \ref{lst:ios_channels} si vedono i \textit{method channel} per lanciare le chiamate per agire sugli ancoraggi in codice nativo che, come viene mostrato nei frammenti \ref{lst:asa_android_call} e \ref{lst:asa_manager_delete}, implementa le \textit{anchor} tramite \asa{}.
 
 {
     \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
@@ -762,7 +760,7 @@ Il frammento di codice \ref{lst:ar_view} mostra che le viste in realtà aumenta 
     \end{longtable}
 }
 
-L'immagine \ref{fig:place_asset} mostra tre \textit{screenshot} dell'applicazione dove un ancoraggio viene creato, salvato in cloud quando si sono ottenuti abbastanza dati spaziali e poi viene recuperato alla riapertura dell'applicazione.
+L'immagine \ref{fig:place_asset} mostra tre \textit{screenshot} dell'applicazione dove un ancoraggio viene creato, salvato in \textit{cloud} quando si sono ottenuti abbastanza dati spaziali e poi viene recuperato alla riapertura dell'applicazione.
 
 {
     \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
@@ -969,7 +967,7 @@ Poi, nella lista degli \textit{asset} disponibili, quelli già collegati a un an
   \label{fig:asset_list}
 \end{figure}
 
-Per quanto riguarda i \textit{ticket} invece l'approccio scelto è quello di far apparire, al completamento della compilazione di un \textit{ticket}, una finestra che permette di posizionarlo in realtà aumentata. In questo caso si può notare la \textit{card} di stato aggiornata per quanto riguarda la notifica del livello di \textit{scan} per il caricamento dell'ancoraggio.\\
+Per quanto riguarda i \textit{ticket} invece l'approccio che ho scelto è quello di far apparire, al completamento della compilazione di un \textit{ticket}, una finestra che permette di posizionarlo in realtà aumentata. In questo caso si può notare la \textit{card} di stato aggiornata per quanto riguarda la notifica del livello di \textit{scan} per il caricamento dell'ancoraggio.\\
 Inoltre che i \textit{ticket} aperti di un \textit{asset} mettono in chiaro data e ora di apertura.
 
 \begin{figure}[H]
