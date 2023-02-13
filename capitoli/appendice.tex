@@ -299,7 +299,7 @@ class MyHomePage extends HookWidget {
 }
 \end{lstlisting}
 
-\section{Method channels}
+\section{Method Channels}
 I \textit{method channel} nascono per uno scopo: utilizzare codice nativo tramite Flutter, ad esempio per chiamare \api{} \textit{platform-specific} in Kotlin o Java per Android, in Swift per iOS o in C++ per Windows.\\
 Flutter non usa queste funzionalità tramite generazione di codice e preferisce un approccio basato sullo scambio di messaggi. Vediamone quindi un esempio per ottenere, tramite Java, il valore di carica della batteria di un dispositivo Android.\\
 Per prima cosa è necessario agire sull'Android \textit{manifest} inserendo il nome dell'applicazione di Flutter, in questo caso \verb+batterylevel+ (l'applicazione si può creare con il comando: \verb+flutter create nome_applicazione+).
