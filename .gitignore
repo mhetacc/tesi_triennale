@@ -493,3 +493,4 @@ cython_debug/
 *.bkp
 *.dtmp
 !docs/**/*.pdf
+.vscode/settings.json
