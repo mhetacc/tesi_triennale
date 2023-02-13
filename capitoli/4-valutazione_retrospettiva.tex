@@ -39,7 +39,70 @@ Questa situazione ha significato dover risolvere tutti i problemi incontrati sen
 %************************************************************************************************************
 
 \section{Soddisfacimento obiettivi}
-In questa sezione trarrò delle conclusioni più qualitative di quelle mostrate in sezione \ref{sec:copertura_requisiti}, concentrandomi sugli obiettivi che mi sono posto, e che il proponente si è posto, all'inizio dell'esperienza di \textit{stage}.
+\subsection{Valutazione proponente}
+Riprendendo quanto riportato in sezione \ref{sec:obiettivi} traggo un bilancio sul grado di soddisfacimento dell'azienda nei confronti dei risultati ottenuti nel corso dello \textit{stage}, che schematizzo di seguito (riportando obiettivo, se è stato soddisfatto e dove trovarne la prova).
+
+\aCapo{}
+\textbf{Obiettivi minimi:}
+
+{
+    \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
+    \renewcommand{\arraystretch}{1.5}
+    \centering
+    \setlength{\aboverulesep}{0pt}
+    \setlength{\belowrulesep}{0pt}
+    \rowcolors{2}{red!10}{white}
+    \begin{longtable}{C{.8\freewidth} C{.162\freewidth} C{.115\freewidth}}
+       \toprule
+    \rowcolor{red}
+    \textcolor{white}{\textbf{Obiettivo}}&
+    \textcolor{white}{\textbf{Soddisfatto}}&
+    \textcolor{white}{\textbf{Fonte}}\\
+    \toprule
+    \endhead
+    
+    Studio e comprensione del linguaggio di programmazione Dart e del \textit{framework} Flutter & \cellcolor{green!20}SI & \ref{ch:flutter}\\
+    Analisi strumenti Azure: Azure Console e \asa{}& \cellcolor{green!20}SI & \ref{subsec:azure}\\
+    Ricerca di \textit{framework} e \sdk{} per implementare le \asa{} in Flutter& \cellcolor{green!20}SI & \ref{subsec:framework_ar}\\
+    Eventuale studio di linguaggi necessari alle implementazioni native, come ad esempio Kotlin, Java, Unity o Swift & \cellcolor{green!20}SI & \ref{lst:android_channels}, \ref{lst:ios_channels}.\\
+    Completamento del \textit{framework} scelto nell'app Flutter esistente& \cellcolor{green!20}SI &\ref{lst:mobilesyn_managers}, \ref{lst:arplug_manager} \\
+    Completamento dello sviluppo dei componenti per rappresentare le \textit{anchor} nello spazio in realtà aumentata& \cellcolor{green!20}SI & \ref{lst:ar_view}\\
+    Completamento dello sviluppo delle \api{} per l'interazione utente con gli ancoraggi in realtà aumentata& \cellcolor{green!20}SI & \ref{lst:mobilesyn_asset_provider}, \ref{lst:mobilesyn_ticket_provider}, \ref{lst:mobilesyn_asset_ticket_provider}\\
+
+    \bottomrule
+    \rowcolor{white} 
+    \caption{Tabella dei requisiti funzionali}
+    \end{longtable}
+}
+
+\aCapo{}
+\textbf{Obiettivi massimi:}
+
+{
+    \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
+    \renewcommand{\arraystretch}{1.5}
+    \centering
+    \setlength{\aboverulesep}{0pt}
+    \setlength{\belowrulesep}{0pt}
+    \rowcolors{2}{red!10}{white}
+    \begin{longtable}{C{.8\freewidth} C{.15\freewidth} C{.15\freewidth}}
+       \toprule
+    \rowcolor{red}
+    \textcolor{white}{\textbf{Obiettivo}}&
+    \textcolor{white}{\textbf{Soddisfatto}}&
+    \textcolor{white}{\textbf{Fonte}}\\
+    \toprule
+    \endhead
+    
+    Sviluppo di componenti per mappare \textit{asset} aziendali ad \textit{anchor} & \cellcolor{green!20}SI & \ref{fig:place_asset}\\
+    Sviluppo di componenti grafici per la visualizzazione di metriche e informazioni di controllo& \cellcolor{red!20}NO & \\
+
+    \bottomrule
+    \rowcolor{white} 
+    \caption{Tabella dei requisiti funzionali}
+    \end{longtable}
+}
+Nel complesso gli obiettivi posti dal proponente sono stati raggiunti con un soddisfacente grado di completamento, rendendo quindi positiva la valutazione generale.
 
 \subsection{Valutazione personale}
 Riprendendo quanto detto in sezione \ref{sec:motivazione_scelta} traggo un bilancio sul mio grado di soddisfacimento personale rispetto allo \textit{stage} svolto.
@@ -90,68 +153,6 @@ Il terzo obiettivo è stato completamente soddisfatto: ho avuto modo di sviluppa
 
 Il quarto obiettivo è stato soddisfatto a un livello che ritengo soddisfacente: ho avuto modo di usare un sottoinsieme rilevante delle maggiori tecnologie per la realtà aumentata (ARCore, ARKit e \asa{}) e ne ho studiato la teoria sottostante. Sebbene abbia ancora qualche riserva sull'uso di queste risorse in ambito professionale, ritengo abbiano un grande potenziale.\\
 Nel complesso ritengo questa esperienza di \textit{stage} più che positiva e arricchente da un punto di vista sia tecnico che professionale.
-
-\subsection{Valutazione proponente}
-Riprendendo quanto riportato in sezione \ref{sec:obiettivi} traggo un bilancio sul grado di soddisfacimento dell'azienda nei confronti dei risultati ottenuti nel corso dello \textit{stage}.
-\aCapo{}
-\textbf{Obiettivi minimi:}
-
-\begin{itemize}
-  \item Studio e comprensione del linguaggio di programmazione Dart e del \textit{framework} Flutter;
-\end{itemize}
-
-Requisito soddisfatto, come si può notare dall'appendice \ref{ch:flutter}.
-
-\begin{itemize}
-  \item Analisi strumenti Azure: Azure Console e \asa{};
-\end{itemize}
-
-Requisito soddisfatto, come si può notare nella sezione \ref{subsec:azure}.
-
-\begin{itemize}
-  \item Ricerca di \textit{framework} e \sdk{} per implementare le \asa{} in Flutter;
-\end{itemize}
-
-Requisito soddisfatto, come si può notare nella sezione \ref{subsec:framework_ar}.
-
-\begin{itemize}
-  \item Eventuale studio di linguaggi necessari alle implementazioni native, come ad esempio Kotlin, Java, Unity o Swift;
-\end{itemize}
-
-Requisito soddisfatto, come si può notare nei frammenti \ref{lst:android_channels} e \ref{lst:ios_channels}.
-
-\begin{itemize}
-  \item Completamento del \textit{framework} scelto nell'app Flutter esistente;
-\end{itemize}
-
-Requisito soddisfatto, come si può notare nei frammenti \ref{lst:mobilesyn_managers} e \ref{lst:arplug_manager}.
-
-\begin{itemize}
-  \item Completamento dello sviluppo dei componenti per rappresentare le \textit{anchor} nello spazio in realtà aumentata;
-\end{itemize}
-
-Requisito soddisfatto, come si può notare nel frammento \ref{lst:ar_view}.
-
-\begin{itemize}
-  \item Completamento dello sviluppo delle \api{} per l'interazione utente con gli ancoraggi in realtà aumentata;
-\end{itemize}
-
-Requisito soddisfatto, come si può notare nei frammenti \ref{lst:mobilesyn_asset_provider}, \ref{lst:mobilesyn_ticket_provider} e \ref{lst:mobilesyn_asset_ticket_provider}.
-\aCapo{}
-\textbf{Obiettivi massimi:}
-
-\begin{itemize}
-  \item Sviluppo di componenti per mappare \textit{asset} aziendali ad \textit{anchor};
-\end{itemize}
-
-Requisito soddisfatto, come si può notare in figura \ref{fig:place_asset}.
-
-\begin{itemize}
-  \item Sviluppo di componenti grafici per la visualizzazione di metriche e informazioni di controllo.
-\end{itemize}
-
-Requisito non soddisfatto.\aCapo{}
-Nel complesso gli obiettivi posti dal proponente sono stati raggiunti con un soddisfacente grado di completamento, rendendo quindi positiva la valutazione generale.
 
 \section{Competenze}
 Durante questo stage ho acquisito o affinato un discreto insieme di competenze, a partire da linguaggi mai usati prima (Dart, Kotlin e Swift) per passare allo sviluppo nel \textit{framework} Flutter fino ad arrivare all'uso del \textit{sdk} \asa{}.\\
