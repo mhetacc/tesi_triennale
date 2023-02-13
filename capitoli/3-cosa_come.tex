@@ -7,10 +7,10 @@
 \label{cap:realizzazione}
 %**************************************************************
 
-\section{Studio delle tecnologie}
+\section{Studio delle Tecnologie}
 In questa sezione presento le tecnologie principali utilizzate durante il progetto, cercando di essere quanto più chiaro e sintetico possibile. Questo allo scopo di agevolare la comprensione delle parti finali del capitolo.
 
-\subsection{Realtà aumentata}
+\subsection{Realtà Aumentata}
 La realtà aumentata consiste nel prendere lo spazio tridimensionale reale e trasporlo, tramite tecniche di mappatura, in formato digitale per poi poterci effettuare delle manipolazioni tramite \textit{software}. Ad esempio è possibile, nell'applicazione di Ikea, inquadrare il proprio salotto e posizionarci dei modelli poligonali\footnote{Detti anche \textit{asset} poligonali, prendono questo nome perché nel mondo della modellazione digitale tridimensionale le entità sono composte da triangoli adiacenti tra loro (poligoni appunto) che costruiscono una figura volumetrica. Questo perché il triangolo è la più semplice forma bidimensionale esistente, e quindi la meno esosa da calcolare.} che rappresentano la mobilia venduta dal colosso svedese.\\
 
 \begin{figure}[H]
@@ -58,7 +58,7 @@ Il primo è un portale accessibile tramite \textit{browser} che serve a gestire,
 
 Le \asa{} forniscono tre \sdk{}s, uno per Microsoft HoloLens, uno per iOS appoggiandosi su ARKit e uno per Android basato su ARCore, possono collegarsi tra loro creando relazioni che formano dei veri e propri percorsi (funzionalità usata spesso nel contesto degli \textit{asset} aziendali, ad esempio in una stessa linea produttiva) e possono essere contenuti dentro un \textit{resource group} di Azure che funge da contenitore di risorse dentro al quale esse vengono create e gestite.
 
-\subsection{Framework realtà aumentata per Flutter}
+\subsection{Framework Realtà Aumentata per Flutter}
 \label{subsec:framework_ar}
 Essendo lo scopo di questo stage, e quindi il caso di studio di questa tesi, l'implementazione di una vista in realtà aumentata (nello specifico sfruttando \asa{}) in un'applicazione preesistente sviluppata in Flutter, una grossa parte del lavoro svolto si è incentrato sullo studio dei \textit{framework} e/o \textit{plugin} disponibili.\\
 Sfortunatamente, complici la giovinezza di Flutter e la scarsa diffusione di tecnologie per la realtà aumentata, le opzioni sono alquanto ridotte:
@@ -182,7 +182,7 @@ Schematizzo quindi pregi e difetti delle due soluzioni trovate per metterle a co
 
 Ho infine scelto, in comune accordo con il \textit{tutor} aziendale, \aplug{} rispetto ad ARwayKit per evitare di interfacciarsi con Unity, per la necessità di avere la vista in realtà aumentata implementata direttamente in Flutter e per il grande vantaggio che comporta il suo essere \textit{open-source}.
 
-\section{Analisi dei requisiti}
+\section{Analisi dei Requisiti}
 \label{sec:analisi_requisiti}
 Di seguito riporto i requisti individuati nel piano di lavoro proposto (a seguito di opportuni confronti con il \textit{tutor} aziendale). Sono catalogati secondo la dicitura:
 \begin{center}
@@ -204,7 +204,7 @@ Dove:
     \item \textbf{Codice}: identifica univocamente un requisito all'interno della sua tipologia (ovvero possono esistere due requisiti con lo stesso codice a patto che siano uno funzionale e uno di vincolo). Per i requisti subordinati si usa il "punto" come divisorio (\textit{ReqPadre, ReqPadre.Figlio1}).
 \end{itemize}
 
-\subsection{Requisiti funzionali}
+\subsection{Requisiti Funzionali}
 {
     \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
     \renewcommand{\arraystretch}{1.5}
@@ -256,7 +256,7 @@ Dove:
     \end{longtable}
 }
 
-\subsection{Requisiti di vincolo}
+\subsection{Requisiti di Vincolo}
 {
     \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
     \renewcommand{\arraystretch}{1.5}
@@ -285,7 +285,7 @@ Dove:
     \end{longtable}
 }
 
-\subsection{Riepilogo requisiti}
+\subsection{Riepilogo Requisiti}
 Ho individuato un totale di 36 requisiti, 29 funzionali e 7 di vincolo, di seguito schematizzati:
 {
     \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
@@ -351,7 +351,7 @@ Avremo quindi, a livello logico, MobileSYN che otterrà \textit{ticket} e \texti
   \caption[Architettura \textit{app}]{Rappresentazione dell'architettura dell'applicazione. MobileSYN fornisce \textit{ticket} e \textit{asset} a \aplug{} che di ritorno comunica con \asa{} per fornire all'applicazione cliente la vista in realtà aumentata.}
 \end{figure}
 
-\subsection{Interfaccia utente}
+\subsection{Interfaccia Utente}
 Mostro dei \textit{mockup} che danno un'idea di massima di come l'interfaccia utente dovrebbe presentarsi: dai requisiti, l'utente deve poter posizionare ancoraggi, caricarli sul \textit{cloud} quando sono stati ottenuti sufficienti dati spaziali e, all'\textit{on-tap} su una \textit{anchor}, deve vedere una \textit{bottom sheet} che gli presenti informazioni riguardo all'\textit{asset} collegato (ad esempio i \textit{ticket} aperti) e che gli permetta di raggiungere i dettagli dell'\textit{asset} o di eliminare l'\textit{anchor}.\\
 Inoltre nella lista degli \textit{asset} devono essere presenti sia un'icona che identifichi quali hanno un ancoraggio associato posizionato in realtà aumentata che un bottone (in alto a destra in questo caso) che permetta di lanciare la vista.
 
@@ -940,7 +940,7 @@ Mostro quindi una sintesi, in tabella singola, dei requisti soddisfatti e dove v
     \end{longtable}
 }
 
-\section{Risultati raggiunti}
+\section{Risultati Raggiunti}
 In quest'ultima sezione riporto il risultato finale del lavoro di stage tramite \textit{screenshot} di MobileSYN stessa.\\
 Le seguenti immagini mostrano il progresso in vista in realtà aumentata che porta a creare un ancoraggio relativo all'\textit{asset} "IT-TESTP-ELight0324" (privo di eventi o \textit{ticket} correlati), per poi caricarlo in \textit{cloud} e, successivamente a chiusura e riapertura dell'applicazione, ritrovarlo in posizione (si noti che è leggermente arretrato).\\
 Inoltre nella prima immagine, viene anche mostrato il livello di progressione di \textit{scan} dell'ambiente, necessario a caricare correttamente un ancoraggio.

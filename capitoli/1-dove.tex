@@ -7,7 +7,7 @@
 \label{cap:contesto-aziendale}
 %**************************************************************
 
-\section{L'azienda}
+\section{L'Azienda}
 \subsection{Descrizione}
 Le informazioni a seguito sono state prese direttamente dall'azienda, tuttavia ritengono siano rappresentative della realtà considerando sia il progetto al quale ho partecipato, sia il resto dell'offerta \textit{software}.\\
 \textbf{Datasoil S.r.l.} è una \textit{startup} che si occupa di sviluppare applicativi dedicati alla gestione aziendale, altamente integrati con industria 4.0 e \textit{digital twin} (controparte digitale di un oggetto reale, ad esempio un macchinario di una linea produttiva): vengono impiegati apprendimento automatico\footnote{Anche detto \textit{machine learning} in inglese è una branca dell'intelligenza artificiale che utilizza metodi statistici per migliorare la performance di un algoritmo nell'identificare pattern nei dati, nella quale in una macchina si predispone l'abilità di apprendere in maniera autonoma(fonte: \url{https://it.wikipedia.org/wiki/Apprendimento_automatico}).} e analisi predittive per ottenere analitiche migliori rispetto alla concorrenza, con un occhio attento a innovazione, sicurezza e scalabilità, ottenute anche delegando la gestione delle componenti \textit{server} a servizi terzi come \aws{}\footnote{Ecosistema \textit{software} fornito da Amazon, che va da semplici piattaforme di \textit{cloud storage} fino a sistemi predittivi basati su \textit{machine learning}}.
@@ -37,7 +37,7 @@ Si evince da quanto discusso nella sezione precedente che l'offerta di Datasoil 
 l'applicazione sulla quale ho svolto lo Stage (MobileSYN) si occupa di gestione e controllo per \textit{asset} aziendali, e un altro prodotto da loro sviluppato, chiamato LifestyleSync, fornisce strumenti di monitoraggio della salute dei dipendenti, con \textit{app} di supporto "LSCoach" che permette a un allenatore di preparare allenamenti personalizzati e verificarne il progresso.\\
 In sintesi Datasoil si focalizza su aziende industriali \textit{asset intensive} (ovvero con molti macchinari), manifatturiere e petrolifere, come ad esempio \href{https://www.stevanatogroup.com/it/}{Stevanato Group}.
 
-\subsection{Processi interni}
+\subsection{Processi Interni}
 L'azienda si serve di servizi noti e standardizzati per organizzare il lavoro e la comunicazione interna, ovvero Slack per la messaggistica, Meet per la comunicazione vocale a distanza, Jira per gestire il tracciamento delle \textit{issue} ("cose da fare" in ambito \textit{software}) e facilitare meccanismi agili di integrazione continua, e infine GitHub per quanto riguarda il controllo di versione.\\
 Durante il progetto di stage che, per sua natura, è altamente sperimentale e ha quindi richiesto un approccio \textit{"trial and error"} ci si è limitati a usare una piccola Kanban Board di Jira per pianificare, per quanto possibile, il lavoro da svolgere.\\
 L'azienda adotta un sistema di lavoro agile (come accennato sopra sfruttando Jira per applicare \textit{continuous delivery}) e fornisce anche ad associazioni esterne \textit{tutoring} riguardo a queste tematiche. 
@@ -49,12 +49,12 @@ L'azienda adotta un sistema di lavoro agile (come accennato sopra sfruttando Jir
 \footnotetext{Fonte: \url{https://www.atlassian.com/continuous-delivery}}
 
 %************************************************************************************************************
-\section{Tecnologie e strumenti}
+\section{Tecnologie e Strumenti}
 \label{sec:tecnologie-e-strumenti}
 Di seguito vengono riportate le tecnologie e gli strumenti utilizzati durante il corso dello stage, divisi in due macrocategorie: di sviluppo (quindi legati strettamente alla produzione di \textit{software}) e organizzativi (più interessati alla gestione del codice prodotto e la comunicazione interna).\\
 Verranno prima presentati singolarmente e in dettaglio, per poi mostrarne una visione d'insieme.
 
-\subsection{Tecnologie e strumenti di sviluppo}
+\subsection{Tecnologie e Strumenti di Sviluppo}
 \subsubsection{Visual Studio Code}
 \vsc{} è un \textit{editor} per codice sorgente, sviluppato da Microsoft servendosi del \textit{framework} Electron, disponibile per Windows, Linux e macOS. Le sue funzionalità comprendo supporto per \textit{debugging}, \textit{syntax highlighting}, \textit{intelligent code completion}, \textit{code refactoring}, e integrazione con Git. \\
 Gli utenti possono configurare tema, \textit{macro}, preferenze e installare estensioni che ne aumentano le funzionalità aggiungendo ad esempio il supporto ai maggiori linguaggi di programmazione attualmente presenti.\\
@@ -126,7 +126,7 @@ ARKit è la controparte Apple di ARCore, ovvero è un \sdk{} che permette lo svi
 Combina i dati del dispositivo di tracciamento spaziale (come la piattaforma inerziale a sei assi) con un \textit{processing} avanzato della scena ripresa per fornire un'esperienza in realtà aumentata convincente.\\
 Indubbiamente migliore di ARCore, produce risultati più fluidi (inteso come effettiva fluidità percepita guardando la scena attraverso il dispositivo), meglio implementati con le tecnologie esistenti e risparmia al programmatore molti oneri (come la gestione delle sessioni) occupandosene direttamente in modo autonomo.
 
-\subsubsection{Visione d'insieme}
+\subsubsection{Visione d'Insieme}
 \vsc{} è un \textit{editor} per codice sorgente che permette grande estensibilità tramite \textit{plugin} appositi che, per il progetto, ho configurato in modo tale da aggiungerci la compatibilità con il \textit{framework} utilizzato per lo sviluppo \textit{mobile}, ovvero Flutter, che si appoggia sul linguaggio Dart. Quest'ultimo è un linguaggio orientato agli oggetti e fortemente tipizzato che nasce per la creazione di interfacce grafiche \textit{frontend mobile}. Integrando Flutter in \vsc{} si ottengono vari vantaggi, come ad esempio la possibilità di gestire eventuali emulatori o dispositivi Android con facilità.\\
 Essendo lo scopo del progetto l'integrazione di \asa{} (tecnologia per gestire ancoraggi in realtà aumentata) in un'applicazione Flutter, è stato necessario studiare anche gli \sdk{} sui quali si appoggia il servizio di Microsoft, ovvero ARCore (lato Android) e ARKit (lato iOS). \asa{} implementa tali funzionalità in linguaggi nativi, ovvero Java per Android e Swift per iOS, il che ha portato la necessità a utilizzare due \ide{}(abbreviato in IDE) ulteriori a \vsc{}: Xcode e Android Studio.\\
 Xcode è obbligatorio per programmare in Swift, mentre Android Studio da un grosso aiuto al programmatore quando lo usa per sviluppare applicazioni Android in Java o Kotlin (linguaggio che si è dovuto utilizzare per \aplug{}, ovvero il \textit{framework} ultimamente selezionato che tratteremo nel terzo capitolo di questo documento).
@@ -155,7 +155,7 @@ Xcode è obbligatorio per programmare in Swift, mentre Android Studio da un gros
     \end{center}
 \end{figure}
 %**************************************************************
-\subsection{Strumenti organizzativi}
+\subsection{Strumenti Organizzativi}
 \subsubsection{Slack}
 Slack è una piattaforma di comunicazione istantanea di proprietà di Salesforce e sviluppata da Slack Technologies per Windows, Linux, macOS, Android e iOS.\\
 Permette di comunicare tramite messaggi, chiamate vocali e video, e di inviare \textit{media} e \textit{files} nelle \textit{chat} private o nei canali. Quest'ultimi fungono da aggregatori e permettono di suddividere tematicamente la comunicazione.\\
@@ -170,7 +170,7 @@ Jira è un \textit{software} proprietario sviluppato da Atlassian che si occupa 
 Fornisce inoltre \textit{template} già pronti per implementare i più noti \textit{framework} di lavoro come Scrum e Kanban.\\
 Jira mira inoltre a ottimizzare il flusso di lavoro e favorire un miglioramento continuo fornendo visualizzazioni espressive di metriche per tenere traccia dei tempi di sviluppo e scoprire colli di bottiglia.
 
-\subsubsection{Visione d'insieme}
+\subsubsection{Visione d'Insieme}
 Presentiamo ora gli strumenti organizzativi in relazione tra loro e con quelli di sviluppo, assieme a descrizione minimale. Per approfondire i singoli elementi si rimanda alle sezioni immediatamente successive.\\
 Per quanto riguarda la comunicazione diretta interna all'azienda, che sia condividere documenti, frammenti di codice o domande di vario tipo, lo strumento scelto è Slack (piattaforma di messaggistica orientata alle aziende).\\
 Tutto il codice per tutte le tecnologie affrontate (applicazione MobileSYN, esempi ufficiali \asa{}, \textit{framework} selezionato) è contenuto in GitHub, che fornisce sia \textit{hosting} che controllo di versione. Infine per organizzare quanto possibile i lavori si è scelto di utilizzare Jira (\textit{software} proprietario di \textit{issue tracking}), che è anche integrato in Slack.\\
@@ -181,7 +181,7 @@ Tutto il codice per tutte le tecnologie affrontate (applicazione MobileSYN, esem
 \end{figure}
 \footnotetext{Fonte: \url{https://github.com/Azure/azure-spatial-anchors-samples}}
 
-\section{Innovazione, stage e prodotti}
+\section{Innovazione, Stage e Prodotti}
 \e{} immediatamente evidente guardando le tecnologie impiegate che Datasoil pone particolare attenzione sul tema dell'innovazione: lato \textit{backend} troviamo servizi \aws{} impiegati per decentralizzare la gestione del \textit{server} (ad esempio S3), e ovviamente il già citato \asa{}, mentre lato \textit{frontend}\footnote{Collezione di codice che fornisce funzionalità generiche che possono essere sovrascritte, specializzandole, per adattarle agli scopi voluti. Sono simili alle librerie se visti come astrazioni riutilizzabili di codice incluso in APIs (\textit{Application Programming Interfaces}, permettono a due o più componenti \textit{software} di comunicare) ben definite, tuttavia ciò che le differenzia è che il controllo di esecuzione non è dettato dal chiamante, ma dal \textit{framework} stesso. \e{} proprio questa inversione di controllo la caratteristica principale dei \textit{framework}.} vediamo l'impiego di linguaggi di programmazione e \textit{framework} recenti come Dart e Flutter (usati per sviluppare tutt i prodotti in campo \textit{mobile}).\\
 \e{} bene sottolineare, però, che gli strumenti scelti non sono stati selezionati solo per rincorrere un ideale di avanguardia: hanno infatti tutti alle spalle delle grosse corporazioni (Amazon nel caso di \aws{}, Microsoft nel caso di \asa{} e Google nel caso di Dart e Flutter) che garantiscono loro un certo grado di stabilità e sicurezza.\\
 L'attenzione all'innovazione mostrata da Datasoil si riflette sia negli \textit{stage} proposti che nei prodotti e servizi direttamente offerti dall'azienda: ad esempio nell'uso di HoloLens per implementare funzioni di realtà aumentata oppure nelle sessioni di \textit{tutoring} per terzi (riguardo appunto queste tecnologie o pratiche di sviluppo agile) che i \textit{senior} svolgono a cadenza regolare.
