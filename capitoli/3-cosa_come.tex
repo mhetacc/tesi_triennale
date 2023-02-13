@@ -670,10 +670,11 @@ class IosARView implements PlatformARView {
 \end{lstlisting}
 
 \section{Verifica}
-Non è stato implementato nessun sistema di verifica standardizzato, quindi mi è impossibile mostrare tabelle di \textit{test} di unità, integrazione, sistema o accettazione e, di conseguenza, è anche impossibile effettuare delle verifiche calcolabili come \textit{test} di \textit{code coverage}.\\
-\e{} tuttavia possibile verificare la copertura dei requisti tramite il codice e le \textit{screnshot} dell'applicazione proposte.\\
-Nei frammenti \ref{lst:mobilesyn_asset_provider}, \ref{lst:mobilesyn_ticket_provider}, \ref{lst:mobilesyn_asset_ticket_provider} si vedono i \textit{provider} di MobileSYN che servono a comunicare con le \api{} di Syn, e ottengono quindi i dati relativi a \textit{ticket} e \textit{asset}.
-Nei frammenti \ref{lst:mobilesyn_managers}, \ref{lst:mobilesyn_onARViewCreated} invece viene mostrato che MobileSYN ottiene i \textit{manager} per la realtà aumentata da \aplug{}.
+\label{sec:copertura_requisiti}
+Non ho implementato nessun sistema di verifica standardizzato, quindi mi è impossibile mostrare tabelle di \textit{test} di unità, integrazione, sistema o accettazione e, di conseguenza, è anche impossibile effettuare delle verifiche calcolabili come \textit{test} di \textit{code coverage}.\\
+Posso tuttavia verificare la copertura dei requisti tramite il codice e le \textit{screnshot} dell'applicazione proposte.\\
+I frammenti \ref{lst:mobilesyn_asset_provider}, \ref{lst:mobilesyn_ticket_provider}, \ref{lst:mobilesyn_asset_ticket_provider} mostrano i \textit{provider} di MobileSYN che servono a comunicare con le \api{} di Syn, e ottengono quindi i dati relativi a \textit{ticket} e \textit{asset}.
+I frammenti \ref{lst:mobilesyn_managers}, \ref{lst:mobilesyn_onARViewCreated} mostrano che MobileSYN ottiene i \textit{manager} per la realtà aumentata da \aplug{}.
 
 {
     \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
@@ -705,7 +706,7 @@ Nei frammenti \ref{lst:mobilesyn_managers}, \ref{lst:mobilesyn_onARViewCreated} 
     \end{longtable}
 }
 
-Nei frammenti \ref{lst:arplug_manager}, \ref{lst:android_channels}, \ref{lst:ios_channels} si vedono i \textit{method channel} per lanciare le chiamate per agire sugli ancoraggi in codice nativo che, come viene mostrato nei frammenti \ref{lst:asa_android_call} e \ref{lst:asa_manager_delete}, implementa le \textit{anchor} tramite \asa{}.
+I frammenti \ref{lst:arplug_manager}, \ref{lst:android_channels}, \ref{lst:ios_channels} mostrano i \textit{method channel} per lanciare le chiamate per agire sugli ancoraggi in codice nativo nel quale, come viene mostrato dai frammenti \ref{lst:asa_android_call} e \ref{lst:asa_manager_delete}, ho implementato le \textit{anchor} tramite \asa{}.
 
 {
     \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
@@ -792,7 +793,7 @@ L'immagine \ref{fig:place_asset} mostra tre \textit{screenshot} dell'applicazion
     \end{longtable}
 }
 
-L'immagine \ref{fig:asset_list} mostra che effettuando un \textit{on-tap} su un ancoraggio vengono mostrate le corrette informazioni contestuali e viene permesso di raggiungere i dettagli dell'\textit{asset} o di elimanare l'\textit{anchor}. Inoltre si vede che nella lista degli \textit{asset} quelli che sono già collegati a un ancoraggio in realtà aumentata lo comunicano tramite un'icona con dicitura "AR" e che è presente il bottone per raggiungere la vista in \textit{augmented reality}.
+L'immagine \ref{fig:asset_list} mostra che effettuando un \textit{on-tap} su un ancoraggio vengono mostrate le corrette informazioni contestuali e viene permesso tramite bottoni di raggiungere i dettagli dell'\textit{asset} o di eliminare l'\textit{anchor}. Inoltre nella lista degli \textit{asset} quelli che sono già collegati a un ancoraggio in realtà aumentata lo comunicano tramite un'icona con dicitura "AR" e che è presente il bottone per raggiungere la vista in \textit{augmented reality}.
 
 {
     \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
@@ -851,9 +852,7 @@ L'immagine \ref{fig:ticket_ar} mostra che è possibile posizionare un \textit{ti
     \end{longtable}
 }
 
-\section{Copertura requisti}
-\label{sec:copertura_requisiti}
-L'unico requisito rimasto insoddisfatto è il seguente:
+In conclusione, l'unico requisito rimasto insoddisfatto è il seguente:
 
 {
     \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
