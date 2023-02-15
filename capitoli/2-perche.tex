@@ -23,7 +23,7 @@ Lo \textit{stage} a me proposto è stato inquadrato in una strategia che prevede
     \includegraphics[width=.3\textwidth]{screen_mobilesyn_tickets}\hfill
     \includegraphics[width=.3\textwidth]{screen_mobilesyn_tasks}\hfill
     \includegraphics[width=.3\textwidth]{screen_mobilesyn_assets}
-    \caption{\textit{Screenshot} di SYN fieldOps (internamente chiamata MobileSYN) delle schermate "\textit{Tickets}", "\textit{Tasks}" e "\textit{Assets}" per lo stabilimento "Plant 1"}
+    \caption[\textit{Screenshot} schermate SYN fieldOps]{\textit{Screenshot} di SYN fieldOps (internamente chiamata MobileSYN) delle schermate "\textit{Tickets}", "\textit{Tasks}" e "\textit{Assets}" per lo stabilimento "Plant 1".}
 \end{figure}
 L'azienda si è attivamente impiegata a supportare il mio \textit{stage} con tutta una serie di attività: sono stato direttamente ospitato in ufficio e ho avuto accesso a risorse aziendali (\textit{account} \aws{} per accedere a MobileSYN) e credenziali \asa{}, inoltre sia il \textit{junior} che il \textit{senior developer} di Datasoil che si occupano del lato \textit{frontend} mi hanno attivamente affiancato durante lo sviluppo nella fase di codifica. Ho inoltre ricevuto supporto nella fase di analisi dei requisiti e in altri piccoli problemi relativi alla configurazione dei dispositivi e dei programmi necessari ad affrontare lo \textit{stage}.
 
@@ -44,7 +44,7 @@ Un \textit{ticket} è semplicemente una notifica relativa a un \textit{asset} (p
       \includegraphics[width=.7\linewidth]{asset_card}
       \captionof{figure}{\textit{Card} e \textit{anchor}}
     \end{minipage}
-    \caption{Nella prima figura vediamo l'\textit{asset} "\textit{Compressor Intake}" in stabilimento "Plant 1", mentre nella seconda una \textit{card} (in primo piano) relativa a una \textit{anchor} (in secondo piano) in vista in realtà aumentata}
+    \caption[\textit{Asset} \textit{Compressor Intake} e \textit{card}]{Nella prima figura vediamo l'\textit{asset} "\textit{Compressor Intake}" in stabilimento "Plant 1", mentre nella seconda una \textit{card} (in primo piano) relativa a una \textit{anchor} (in secondo piano) in vista in realtà aumentata.}
 \end{figure}
 Tutte le funzionalità in realtà aumentata dovranno necessariamente appoggiarsi al servizio di \asa{} perché i gemelli digitali già presenti nel sistema sfruttano proprio questa tecnologia per la localizzazione spaziale e, vista la natura multipiattaforma dell'applicazione, dovranno essere implementate sia in Android che in iOS.\\
 Dalla vista dovrà essere possibile interagire con gli \textit{asset} e i \textit{ticket}, provocando l'apparizione di una \textit{card} all' \textit{on-tap} dell'\textit{anchor}\footnote{Traducibile in italiano con il termine "ancoraggio" è un punto di interesse in uno spazio tridimensionale, ovvero un punto che possiede delle coordinate \textit{(x,y,z)}, al quale possono essere collegati \textit{asset}, \textit{ticket} o altri ancoraggi.}, ovvero mostrando a schermo tramite una piccola finestra in sovrimpressione i vari \textit{ticket} relativi all'\textit{asset} dopo che questo viene toccato, permettendo anche la visione del dettaglio o la rimozione dello stesso.\\

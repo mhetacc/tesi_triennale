@@ -515,7 +515,7 @@ Future<bool?> deleteCloudAnchor({required String anchorId}) async {
 
 Queste chiamate in Android sono implementati tramite chiamate Java innestate in Kotlin:
 
-\begin{lstlisting}[language=Kotlin, label={lst:android_channels}, firstnumber=1,caption={Android chiamate dei \textit{method channel} per effettuare \textit{create, delete, ulpoad, delete cloud anchor} tramite \textit{method channel}}]
+\begin{lstlisting}[language=Kotlin, label={lst:android_channels}, firstnumber=1,caption={Android chiamate dei \textit{method channel} per effettuare \textit{create, delete, ulpoad, delete cloud anchor}}]
 private val onAnchorMethodCall =
 MethodChannel.MethodCallHandler { call, result ->
     when (call.method) {
