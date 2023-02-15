@@ -36,6 +36,7 @@ Sezioni: solo prima lettera caps
 - [ ] tesi-config.tex : riga 34 : twoside 
 - [ ] tesi.tex : riga 14 : pagecolor
 - [ ] controllare glossari con overleaf
+- [ ] glossario ??
 - [ ] MVP = model view presenter?
 - [ ] glossary entries descritpions
 - [ ] § requisiti: allineare larghezza tabelle a header

@@ -1,6 +1,7 @@
 \begin{appendices}
     
 \chapter{Flutter}
+\label{ch:flutter}
 E' impossibile parlare di Flutter senza prima discutere del linguaggio su cui si basa: Dart.\\
 Faremo quindi un'introduzione quanto più sintetica possibile sulle sue caratteristiche più proprietarie, tralasciando invece le similitudini a linguaggi popolari che possono facilmente essere intuite dal lettore.
 \section{Dart}
@@ -143,7 +144,7 @@ Future<void> checkVersion () async {
 Trattiamo infine le caratteristiche peculiari di Dart per quanto riguarda classi e metodi:
 
 \begin{itemize}
-    \item Esistono i costruttori costanti, marcati \verb+const+, che sono inizializzati a \textit{compile-time}. Tutti gli altri sono implicitamente dinamici (quindi \textit{run-time});
+    \item Esistono i costruttori costanti, marcati \verb+const+, che sono inizializzati a \textit{compile time}. Tutti gli altri sono implicitamente dinamici (quindi \textit{runtime});
     \item Posso creare costruttori nominati per implementare costruttori multipli tramite la sintassi:
 \begin{lstlisting}[language=dart]
 ClassName.constructorName () :
@@ -298,7 +299,7 @@ class MyHomePage extends HookWidget {
 }
 \end{lstlisting}
 
-\section{Method Channels}
+\section{Method channels}
 I \textit{method channel} nascono per uno scopo: utilizzare codice nativo tramite Flutter, ad esempio per chiamare \api{} \textit{platform-specific} in Kotlin o Java per Android, in Swift per iOS o in C++ per Windows.\\
 Flutter non usa queste funzionalità tramite generazione di codice e preferisce un approccio basato sullo scambio di messaggi. Vediamone quindi un esempio per ottenere, tramite Java, il valore di carica della batteria di un dispositivo Android.\\
 Per prima cosa è necessario agire sull'Android \textit{manifest} inserendo il nome dell'applicazione di Flutter, in questo caso \verb+batterylevel+ (l'applicazione si può creare con il comando: \verb+flutter create nome_applicazione+).

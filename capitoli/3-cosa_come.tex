@@ -36,7 +36,8 @@ Nella maggior parte dei casi è bene che oggetti multipli siano legati a un anco
   \caption[Ancoraggi singoli per multipli elementi]{A un ancoraggio (in viola) possono essere collegati molteplici elementi (rispettivamente i cubi rossi per l'ancoraggio in alto e i cilindri gialli per quello in basso), e gli ancoraggi possono essere nello stesso spazio ma su due piani diversi.}
 \end{figure}
 
-\subsection{Azure ToolKit}
+\subsection{Microsoft Azure}
+\label{subsec:azure}
 Azure è l'ombrello sotto al quale vivono tutti i servizi \textit{cloud} di Microsoft esterni al pacchetto Office 365, e comprendono \textit{database} relazionali con scalabilità automatica (Azure SQL o Azure Cosmos DB), macchine virtuali remote (Virtual Machines e Azure Virtual Desktop), ma anche funzionalità estremamente avanzate come Azure Kubernetes Service che fornisce un sistema automatizzato per rilasciare, scalare e gestire grandi applicativi \textit{sofware} (ad esempio per i \textit{data center}), oppure Azure Quantum che mette a disposizioni soluzioni per scrivere e provare \textit{software} su \textit{hardware} quantistico.\\
 La \textit{suite} Azure, quindi, è indirizzata a utenti altamente specializzati e ancora più spesso a organizzazioni vere e proprie.
 
@@ -58,6 +59,7 @@ Il primo è un portale accessibile tramite \textit{browser} che serve a gestire,
 Le \asa{} forniscono tre \sdk{}s, uno per Microsoft HoloLens, uno per iOS appoggiandosi su ARKit e uno per Android basato su ARCore, possono collegarsi tra loro creando relazioni che formano dei veri e propri percorsi (funzionalità usata spesso nel contesto degli \textit{asset} aziendali, ad esempio in una stessa linea produttiva) e possono essere contenuti dentro un \textit{resource group} di Azure che funge da contenitore di risorse dentro al quale esse vengono create e gestite.
 
 \subsection{Framework realtà aumentata per Flutter}
+\label{subsec:framework_ar}
 Essendo lo scopo di questo stage, e quindi il caso di studio di questa tesi, l'implementazione di una vista in realtà aumentata (nello specifico sfruttando \asa{}) in un'applicazione preesistente sviluppata in Flutter, una grossa parte del lavoro svolto si è incentrato sullo studio dei \textit{framework} e/o \textit{plugin} disponibili.\\
 Sfortunatamente, complici la giovinezza di Flutter e la scarsa diffusione di tecnologie per la realtà aumentata, le opzioni sono alquanto ridotte:
 
@@ -668,10 +670,11 @@ class IosARView implements PlatformARView {
 \end{lstlisting}
 
 \section{Verifica}
-Non è stato implementato nessun sistema di verifica standardizzato, quindi mi è impossibile mostrare tabelle di \textit{test} di unità, integrazione, sistema o accettazione e, di conseguenza, è anche impossibile effettuare delle verifiche calcolabili come \textit{test} di \textit{code coverage}.\\
-\e{} tuttavia possibile verificare la copertura dei requisti tramite il codice e le \textit{screnshot} dell'applicazione proposte.\\
-Nei frammenti \ref{lst:mobilesyn_asset_provider}, \ref{lst:mobilesyn_ticket_provider}, \ref{lst:mobilesyn_asset_ticket_provider} si vedono i \textit{provider} di MobileSYN che servono a comunicare con le \api{} di Syn, e ottengono quindi i dati relativi a \textit{ticket} e \textit{asset}.
-Nei frammenti \ref{lst:mobilesyn_managers}, \ref{lst:mobilesyn_onARViewCreated} invece viene mostrato che MobileSYN ottiene i \textit{manager} per la realtà aumentata da \aplug{}.
+\label{sec:copertura_requisiti}
+Non ho implementato nessun sistema di verifica standardizzato, quindi mi è impossibile mostrare tabelle di \textit{test} di unità, integrazione, sistema o accettazione e, di conseguenza, è anche impossibile effettuare delle verifiche calcolabili come \textit{test} di \textit{code coverage}.\\
+Posso tuttavia verificare la copertura dei requisti tramite il codice e le \textit{screnshot} dell'applicazione proposte.\\
+I frammenti \ref{lst:mobilesyn_asset_provider}, \ref{lst:mobilesyn_ticket_provider}, \ref{lst:mobilesyn_asset_ticket_provider} mostrano i \textit{provider} di MobileSYN che servono a comunicare con le \api{} di Syn, e ottengono quindi i dati relativi a \textit{ticket} e \textit{asset}.
+I frammenti \ref{lst:mobilesyn_managers}, \ref{lst:mobilesyn_onARViewCreated} mostrano che MobileSYN ottiene i \textit{manager} per la realtà aumentata da \aplug{}.
 
 {
     \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
@@ -703,7 +706,7 @@ Nei frammenti \ref{lst:mobilesyn_managers}, \ref{lst:mobilesyn_onARViewCreated} 
     \end{longtable}
 }
 
-Nei frammenti \ref{lst:arplug_manager}, \ref{lst:android_channels}, \ref{lst:ios_channels} si vedono i \textit{method channel} per lanciare le chiamate per agire sugli ancoraggi in codice nativo che, come viene mostrato nei frammenti \ref{lst:asa_android_call} e \ref{lst:asa_manager_delete}, implementa le \textit{anchor} tramite \asa{}.
+I frammenti \ref{lst:arplug_manager}, \ref{lst:android_channels}, \ref{lst:ios_channels} mostrano i \textit{method channel} per lanciare le chiamate per agire sugli ancoraggi in codice nativo nel quale, come viene mostrato dai frammenti \ref{lst:asa_android_call} e \ref{lst:asa_manager_delete}, ho implementato le \textit{anchor} tramite \asa{}.
 
 {
     \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
@@ -790,7 +793,7 @@ L'immagine \ref{fig:place_asset} mostra tre \textit{screenshot} dell'applicazion
     \end{longtable}
 }
 
-L'immagine \ref{fig:asset_list} mostra che effettuando un \textit{on-tap} su un ancoraggio vengono mostrate le corrette informazioni contestuali e viene permesso di raggiungere i dettagli dell'\textit{asset} o di elimanare l'\textit{anchor}. Inoltre si vede che nella lista degli \textit{asset} quelli che sono già collegati a un ancoraggio in realtà aumentata lo comunicano tramite un'icona con dicitura "AR" e che è presente il bottone per raggiungere la vista in \textit{augmented reality}.
+L'immagine \ref{fig:asset_list} mostra che effettuando un \textit{on-tap} su un ancoraggio vengono mostrate le corrette informazioni contestuali e viene permesso tramite bottoni di raggiungere i dettagli dell'\textit{asset} o di eliminare l'\textit{anchor}. Inoltre nella lista degli \textit{asset} quelli che sono già collegati a un ancoraggio in realtà aumentata lo comunicano tramite un'icona con dicitura "AR" e che è presente il bottone per raggiungere la vista in \textit{augmented reality}.
 
 {
     \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
@@ -849,8 +852,7 @@ L'immagine \ref{fig:ticket_ar} mostra che è possibile posizionare un \textit{ti
     \end{longtable}
 }
 
-\section{Copertura requisti}
-L'unico requisito rimasto insoddisfatto è il seguente:
+In conclusione, l'unico requisito rimasto insoddisfatto è il seguente:
 
 {
     \setlength{\freewidth}{\dimexpr\textwidth-10\tabcolsep}
