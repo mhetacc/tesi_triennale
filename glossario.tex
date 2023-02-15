@@ -4,14 +4,12 @@
 %**************************************************************
 \renewcommand{\acronymname}{Acronimi e abbreviazioni}
 
+%no acronimi e abbreviazioni
+
+\iffalse
 \newacronym[description={\glslink{apig}{Application Program Interface}}]
     {api}{API}{Application Program Interface}
-
-\newacronym[description={\glslink{umlg}{Unified Modeling Language}}]
-    {uml}{UML}{Unified Modeling Language}
-
-\newacronym[description={\glslink{mvpg}{Model View Presenter}}]
-    {mvp}{MVP}{Model View Presenter}
+\fi
 
 %**************************************************************
 % Glossario
@@ -21,98 +19,15 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%no termini glossario
+%tutto è definito subito in footnote
+
+\iffalse
 \newglossaryentry{asset}
 {
     name=asset,
     sort=asset,
     description={todo}
 }
-\newglossaryentry{digital twin}
-{
-    name=digital twin,
-    sort=digital twin,
-    description={todo}
-}
-\newglossaryentry{anchor}
-{
-    name=anchor,
-    sort=anchor,
-    description={todo}
-}
-\newglossaryentry{asa}
-{
-    name=Azure Spatial Anchors,
-    sort=azure spatial anchors,
-    description={todo}
-}
-\newglossaryentry{branch}
-{
-    name=branch,
-    sort=branch,
-    description={Rappresenta una linea di sviluppo indipendente e serve come astrazione per il processo di modifica,
-stage o commit.}
-}
-\newglossaryentry{fork}
-{
-    name=fork,
-    sort=fork,
-    description={Sviluppo di un nuovo progetto software che parte dal codice sorgente di un altro già esistente}
-}
-
-\newglossaryentry{pull request}
-{
-    name=pull request,
-    sort=pull request,
-    description={È una richiesta, fatta all’autore originale di un sofware o di un documento, di includere le nostre personali modifiche al suo progetto. Una pull request controlla automaticamente se sono presenti conflitti tra i file da unire.}
-}
-
-\newglossaryentry{agile}
-{
-    name=agile,
-    sort=agile,
-    description={È un modello di sviluppo che si contrappone ai classici modelli a cascata o incrementali proponendo un approccio meno strutturato e focalizzato sull'obiettivo di consegnare al cliente, in tempi brevi e frequentemente, software funzionante e di qualità. }
-}
-\newglossaryentry{BMI}
-{
-    name=BMI,
-    sort=bmi,
-    description={Body Mass Index è un dato biometrico, espresso come rapporto tra peso e quadrato dell'altezza di un individuo ed è utilizzato come un indicatore dello stato di peso forma. }
-}
-\newglossaryentry{bot}
-{
-    name=bot,
-    sort=bot,
-    description={Con la parola “bot”, abbreviazione di “robot”, in informatica si intende un programma che ha accesso agli stessi sistemi di comunicazione e interazione con le macchine usate dagli esseri umani.}
-}
-
-\newglossaryentry{JWT}
-{
-    name=JWT,
-    sort=jwt,
-    description={JSON Web Token è uno standard Internet proposto per la creazione di dati con firma opzionale e/o crittografia opzionale il cui payload contiene un JSON che afferma un certo numero di attestazioni. I token vengono firmati utilizzando una crittografica simmetrica o asimmetrica utilizzando una coppia di chaivi pubblica/privata.}
-}
-\newglossaryentry{gamification}
-{
-    name=gamification,
-    sort=gamification,
-    description={È l'utilizzo di elementi mutuati dai giochi e delle tecniche di game design in contesti non ludici. L'idea è quella di coinvolgere le persone a provare più divertimento e partecipazione nelle attività quotidiane ricche di azioni monotone e noiose attraverso il gioco.}
-}
-\newglossaryentry{SDK}
-{
-    name=SDK,
-    sort=sdk,
-    description={Un Software Developer Kit è un insieme di strumenti per lo sviluppo e la documentazione di software}
-}
-
-\newglossaryentry{SRP}
-{
-    name=SRP,
-    sort=srp,
-    description={Il Single Responsability Princile afferma che ogni elemento di un programma deve avere una sola responsabilità, e che tale responsabilità debba essere interamente incapsulata dall'elemento stesso. Tutti i servizi offerti dall'elemento dovrebbero essere strettamente allineati a tale responsabilità. }
-}
-\newglossaryentry{codebase}
-{
-    name=codebase,
-    sort=codebase,
-    description={Collezione di codice sorgente usata per costruire una particolare applicazione o un particolare componente.}
-}
+\fi
