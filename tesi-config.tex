@@ -20,14 +20,14 @@
 % !TEX spellcheck = it-IT
 
 % PDF/A filecontents
-%\RequirePackage{filecontents}
-%\begin{filecontents*}{\jobname.xmpdata}
-%  \Title{Document’s title}
-%  \Author{Author’s name}
-%  \Language{it-IT}
-%  \Subject{The abstract, or short description.}
-%  \Keywords{keyword1\sep keyword2\sep keyword3}
-%\end{filecontents*}
+\RequirePackage{filecontents}
+\begin{filecontents*}{\jobname.xmpdata}
+  \Title{Gestione asset per gemello digitale immerso in realtà aumentata}
+  \Author{Bellò Marco}
+  \Language{it-IT}
+  \Subject{La maggioranza dei programmi oggi distribuiti sono applicazioni mobile, il cui mercato è diviso tra due sistemi operativi concorrenti e incompatibili: iOS e Android. Questo dualismo si traduce nella necessità di sviluppare ogni applicativo due volte, il che ha favorito la nascita di framework come Flutter: esso permette di scrivere applicazioni frontend in Dart, che traduce poi autonomamente nelle rispettive versioni native (condivide quindi l’ethos di Java “Write Once, Run Anywhere”). Una tecnologia ancora poco esplorata in campo mobile è quella della realtà aumentata, nonostante le “Big Five”, ovvero Google (Alphabet), Amazon, Facebook (Meta), Apple e Microsoft, investano tutte nel campo dell’augmented reality (AR) e alcune (Meta e Microsoft) producano anche hardware specifico (Quest e HoloLens rispettivamente). L’integrazione di queste tecnologie è però limitata a SDK e framework già consolidati, come Unity. Questa tesi studia le possibilità di integrare una vista AR in un’applicazione di auditing aziendale (preesistente) sviluppata in Flutter, tramite i “method channels” che consentono di innestare codice nativo (come Swift o Java) in Dart. A seguito di uno studio delle (poche) tecnologie esistenti, mi sono concentrato sul comprendere il funzionamento del plugin scelto e del pacchetto di API di cui esso si serve (Sceneform) per poi integrare al suo interno le Azure Spatial Anchors di Microsoft, necessarie ad agganciarsi alle componenti geospaziali già presenti nell’applicazione sulla quale ho svolto il lavoro di tesi. Il risultato ottenuto è soddisfacente, soprattutto considerando l’estrema scarsità documentale associata a questo ecosistema tecnologico.}
+  \Keywords{Realtà Aumentata\sep Multipiattaforma\sep Ancoraggi 3D\sep Controllo Qualità\sep Gemello Digitale}
+\end{filecontents*}
 
 \documentclass[10pt,                    % corpo del font principale
                a4paper,                 % carta A4
@@ -249,13 +249,6 @@
     format=hang,
     labelfont=bf
 }
-
-%**************************************************************
-% Impostazioni di glossaries
-%**************************************************************
-\input{glossario} % database di termini
-\makeglossaries
-
 
 %**************************************************************
 % Impostazioni di graphicx
