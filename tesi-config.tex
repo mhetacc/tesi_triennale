@@ -29,6 +29,8 @@
   \Keywords{Realtà Aumentata\sep Multipiattaforma\sep Ancoraggi 3D\sep Controllo Qualità\sep Gemello Digitale}
 \end{filecontents*}
 
+
+
 \documentclass[10pt,                    % corpo del font principale
                a4paper,                 % carta A4
                twoside,                 % impagina per fronte-retro 
@@ -42,6 +44,7 @@
 %**************************************************************
 % Importazione package
 %************************************************************** 
+
 
 \usepackage[table]{xcolor}                       % colore tabelle
 
@@ -590,3 +593,8 @@
 %\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
 \setlength\parindent{0pt}
+
+\let\tmp\oddsidemargin
+\let\oddsidemargin\evensidemargin
+\let\evensidemargin\tmp
+\reversemarginpar
