@@ -488,7 +488,7 @@ cython_debug/
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,python,latex
 
-*.pdf
+build/*
 
 *.bkp
 *.dtmp
