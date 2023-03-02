@@ -6,8 +6,8 @@
 [![Build Latex documents](https://github.com/Bug-s-Bunny-Team/docs/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/Bug-s-Bunny-Team/docs/actions/workflows/build.yml)
 
 ## Introduzione
-Questo repository mantiene gli strumenti e i sorgenti *Latex* per compilare la documentazione. 
-I documenti compilati in formato *PDF*, e in versione stabile, si trovano nella  oppure nella cartella [pdf](pdf/).
+Questo repository contiene i sorgenti *Latex* per compilare la tesi di laurea e i lucidi della discussione (in *beamer*). 
+I documenti compilati in formato *PDF*, e in versione stabile, si trovano nella cartella [pdf](pdf/).
 
 ## Prerequisiti
 ### Latex
