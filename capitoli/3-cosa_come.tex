@@ -11,7 +11,7 @@
 In questa sezione presento le tecnologie principali utilizzate durante il progetto, cercando di essere quanto più chiaro e sintetico possibile. Questo allo scopo di agevolare la comprensione delle parti finali del capitolo.
 
 \subsection{Realtà aumentata}
-La realtà aumentata consiste nel prendere lo spazio tridimensionale reale e trasporlo, tramite tecniche di mappatura, in formato digitale per poi poterci effettuare delle manipolazioni tramite \textit{software}. Ad esempio è possibile, nell'applicazione di Ikea, inquadrare il proprio salotto e posizionarci dei modelli poligonali\footnote{Detti anche \textit{asset} poligonali, prendono questo nome perché nel mondo della modellazione digitale tridimensionale le entità sono composte da triangoli adiacenti tra loro (poligoni appunto) che costruiscono una figura volumetrica. Questo perché il triangolo è la più semplice forma bidimensionale esistente, e quindi la meno esosa da calcolare.} che rappresentano la mobilia venduta dal colosso svedese.\\
+La realtà aumentata consiste nel prendere lo spazio tridimensionale reale e trasporlo, tramite tecniche di mappatura, in formato digitale per poi poterci effettuare delle manipolazioni tramite \textit{software}. Ad esempio è possibile, nell'applicazione di Ikea, inquadrare il proprio salotto e posizionarci dei modelli poligonali\footnote{Detti anche \textit{asset} poligonali, prendono questo nome perché nel mondo della modellazione digitale tridimensionale le entità sono composte da triangoli adiacenti tra loro (poligoni appunto) che costruiscono una figura volumetrica. Questo perché il triangolo è la più semplice forma bidimensionale esistente, e quindi la meno esosa da calcolare.} che rappresentano la mobilia venduta dal colosso svedese.
 
 \begin{figure}[H]
   \centering
@@ -29,7 +29,7 @@ Sebbene sia possibile immaginare lo spazio virtuale come un cubo vuoto all'inter
 \end{figure}
 
 Nella maggior parte dei casi è bene che oggetti multipli siano legati a un ancoraggio singolo, questo perché la \textit{pose} degli oggetti (ovvero rotazione verticale e orizzontale) è legata a quella della \textit{anchor} associata. Di conseguenza se vogliamo rappresentare in una stanza un insieme realistico di mobili (o meglio, di modelli poligonali e quindi gemelli digitali di mobili), e li leghiamo a un ancoraggio centrale rispetto alla stanza tutti gli elementi avranno sempre una posizione relativa corretta tra loro. Se invece ogni elemento ha la sua \textit{anchor} potremmo vedere rotazioni errate oppure potrebbero spostarsi anche di qualche metro rispetto alla loro posizione originale (entrambi questi scenari vanno intesi in relazione con gli altri ancoraggi e quindi con gli altri oggetti).
-
+\newpage
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{ancoraggi_multipiano}
@@ -354,7 +354,7 @@ Avremo quindi, a livello logico, MobileSYN che otterrà \textit{ticket} e \texti
 \subsection{Interfaccia utente}
 Mostro dei \textit{mockup} che danno un'idea di massima di come l'interfaccia utente dovrebbe presentarsi: dai requisiti, l'utente deve poter posizionare ancoraggi, caricarli sul \textit{cloud} quando sono stati ottenuti sufficienti dati spaziali e, all'\textit{on-tap} su una \textit{anchor}, deve vedere una \textit{bottom sheet} che gli presenti informazioni riguardo all'\textit{asset} collegato (ad esempio i \textit{ticket} aperti) e che gli permetta di raggiungere i dettagli dell'\textit{asset} o di eliminare l'\textit{anchor}.\\
 Inoltre nella lista degli \textit{asset} devono essere presenti sia un'icona che identifichi quali hanno un ancoraggio associato posizionato in realtà aumentata che un bottone (in alto a destra in questo caso) che permetta di lanciare la vista.
-
+\newpage
 \begin{figure}[H]
   \centering
   %\includegraphics[height=5cm]{screen_mobilesyn}
@@ -945,7 +945,7 @@ In quest'ultima sezione riporto il risultato finale del lavoro di stage tramite 
 Le seguenti immagini mostrano il progresso in vista in realtà aumentata che porta a creare un ancoraggio relativo all'\textit{asset} "IT-TESTP-ELight0324" (privo di eventi o \textit{ticket} correlati), per poi caricarlo in \textit{cloud} e, successivamente a chiusura e riapertura dell'applicazione, ritrovarlo in posizione (si noti che è leggermente arretrato).\\
 Inoltre nella prima immagine, viene anche mostrato il livello di progressione di \textit{scan} dell'ambiente, necessario a caricare correttamente un ancoraggio.
 
-\begin{figure}[H]
+\begin{figure}[h]
   \centering
   %\includegraphics[height=5cm]{screen_mobilesyn}
   \includegraphics[width=.3\textwidth]{place_asset_scanLevel}\hfill
@@ -958,26 +958,25 @@ Inoltre nella prima immagine, viene anche mostrato il livello di progressione di
 
 Effettuando un \textit{On-Tap} su un ancoraggio appare una \textit{bottom sheet} che mostra l'identificatore dell'\textit{asset} e, se ci sono, gli eventi e i \textit{ticket} aperti a lui associati. Permette inoltre di raggiungere i dettagli dell'\textit{asset} o di rimuoverlo.\\
 Poi, nella lista degli \textit{asset} disponibili, quelli già collegati a un ancoraggio in realtà aumentata presentano un piccolo marcatore con dicitura "AR", permettendo di raggiungere la vista con il bottone a forma di cubo in altro a destra. \e{} grigio perché l'uso richiederebbe di essere fisicamente presenti in "Plant 1" e di selezionare inoltre stabilimento, piano e stanza.
-
+\newpage
 \begin{figure}[H]
   \centering
   %\includegraphics[height=5cm]{screen_mobilesyn}
-  \includegraphics[width=.3\textwidth]{asset_card_onTap}\hfill
-  \includegraphics[width=.3\textwidth]{remove_asset}\hfill
-  \includegraphics[width=.3\textwidth]{asset_list}
+  \includegraphics[width=.26\textwidth]{asset_card_onTap}\hfill
+  \includegraphics[width=.26\textwidth]{remove_asset}\hfill
+  \includegraphics[width=.26\textwidth]{asset_list}
   \caption[\textit{Bottom sheet asset} per eliminazione e lista \textit{asset}]{\textit{Bottom sheet} per l'\textit{asset} "IT-TESTP-ELight0324" e successiva eliminazione tramite bottone con dicitura \textit{"Remove Asset"}. L'ultima immagine mostra invece la lista degli \textit{asset} presenti con il bottone per raggiungere la vista in realtà aumentata.}
   \label{fig:asset_list}
 \end{figure}
 
 Per quanto riguarda i \textit{ticket} invece l'approccio che ho scelto è quello di far apparire, al completamento della compilazione di un \textit{ticket}, una finestra che permette di posizionarlo in realtà aumentata. In questo caso si può notare la \textit{card} di stato aggiornata per quanto riguarda la notifica del livello di \textit{scan} per il caricamento dell'ancoraggio.\\
 Inoltre che i \textit{ticket} aperti di un \textit{asset} mettono in chiaro data e ora di apertura.
-
 \begin{figure}[H]
   \centering
   %\includegraphics[height=5cm]{screen_mobilesyn}
-  \includegraphics[width=.3\textwidth]{ticket_ar1}\hfill
-  \includegraphics[width=.3\textwidth]{ticket_ar2}\hfill
-  \includegraphics[width=.3\textwidth]{asset_with_ticket}
+  \includegraphics[width=.26\textwidth]{ticket_ar1}\hfill
+  \includegraphics[width=.26\textwidth]{ticket_ar2}\hfill
+  \includegraphics[width=.26\textwidth]{asset_with_ticket}
   \caption[Caricamento \textit{ticket} realtà aumentata e \textit{ticket} su \textit{asset}]{Una volta compilato il \textit{ticket} appare una finestra in sovrimpressione che permette di posizionarlo in realtà aumentata. Inoltre i \textit{ticket} di un \textit{asset} mostrano data e ora di apertura.}
   \label{fig:ticket_ar}
 \end{figure}
