@@ -1,4 +1,4 @@
-# Tesi
+# Tesi Triennale
 <p align="center">
     <img src="immagini/logo-unipd.png" alt="UniPd logo" width="220">
 </p>
